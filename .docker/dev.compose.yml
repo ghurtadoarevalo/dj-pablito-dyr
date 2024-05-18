@@ -1,0 +1,22 @@
+version: '3.9'
+services:
+  node-front:
+    build:
+      context: ..
+      dockerfile: .docker/dev.Dockerfile
+    platform: linux/arm64
+    volumes:
+      - ../.:/app
+      - nodemods:/app/node_modules
+      - pnpmstore:/app/.pnpm-store
+    ports:
+      - 4321:4321
+      - 9229:9229
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+    command: bash -c 'pnpm i && pnpm dev'
+
+volumes:
+  nodemods:
+  pnpmstore:
