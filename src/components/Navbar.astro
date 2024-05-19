@@ -1,0 +1,60 @@
+---
+import logo from "@assets/logo.png";
+import { FaInstagram } from "react-icons/fa";
+import { FiYoutube } from "react-icons/fi";
+import { Image } from "astro:assets";
+import { SiDiscogs } from "react-icons/si";
+---
+
+<header class="fixed top-0 left-0 right-0 mt-3 bg-white/10 p-5">
+  <div
+    class="flex flex-row place-content-between mx-20 text-xl font-mono items-center"
+  >
+    <div class="flex place-content-center items-center gap-2">
+  <SiDiscogs
+        className="text-4xl text-yellow-500"
+      />
+    </div>
+    {/*<Image class="w-32 aspect-[836/759]" src={logo} alt="dj logo" />*/}
+    <nav>
+      <ul class="flex items-center gap-5">
+        <li>
+          <a
+            class="flex items-center gap-2 p-2 rounded-xl hover:bg-yellow-400/20"
+            href=""
+          >
+            <FaInstagram className="text-xl text-yellow-400" /> IG</a
+          >
+        </li>
+        •
+        <li>
+          <a
+            class="flex items-center gap-2 p-2 rounded-xl hover:bg-yellow-400/20"
+            href="/"
+          >
+            <FiYoutube className="text-xl text-yellow-400" /> Youtube</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <nav>
+      <ul class="flex items-center gap-5">
+        <li>
+          <a class="flex gap-2 p-2 rounded-xl hover:bg-yellow-400/20" href="#hola">
+            BIO</a
+          >
+        </li>
+        <li>
+          <a class="flex gap-2 p-2 rounded-xl hover:bg-yellow-400/20" href="">
+            Servicios</a
+          >
+        </li>
+        <li>
+          <a class="flex gap-2 p-2 rounded-xl hover:bg-yellow-400/20" href="">
+            Contacto</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

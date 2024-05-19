@@ -1,8 +1,11 @@
 import { defineConfig } from 'astro/config';
-
-server: { host: true}
+import react from "@astrojs/react";
+import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-    server: { host: true}
+  server: {
+    host: true
+  },
+  integrations: [react(), tailwind()]
 });

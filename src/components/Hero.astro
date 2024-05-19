@@ -1,0 +1,16 @@
+---
+import { Image } from "astro:assets";
+import logo from "@assets/logo.webp";
+import pablo from "@assets/pablo.jpg";
+import pablo2 from "@assets/pablo2.jpeg";
+---
+
+<section class="flex flex-col place-items-center">
+  <h1 class="text-[8rem]  font-dancing font-extralight ">DJ <span class="">PABLITO</span> DYR</h1>
+  <Image class="w-[45%] animate-pulse -mt-10" src={logo} alt="dj logo" />
+
+  <div class="flex flex-row place-content-center">
+    <Image class="w-[26rem]" src={logo} alt="dj logo" />
+    <Image class="rounded-full w-80 h-90 bg-white/5 p-20" src={pablo2} alt="a" />
+  </div>
+</section>
