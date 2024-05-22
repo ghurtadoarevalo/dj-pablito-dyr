@@ -5,8 +5,6 @@ export default {
 		extend: {
 			fontFamily: {
 				customFont: ['"Custom Font"', "Fake Receipt", "Lucida Console", "Courier", "monospace"],
-				'dancing': ['Dancing Script']
-
 			  },
 		},
 	},

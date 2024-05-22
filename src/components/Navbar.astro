@@ -1,56 +1,59 @@
 ---
-import logo from "@assets/logo.png";
 import { FaInstagram } from "react-icons/fa";
 import { FiYoutube } from "react-icons/fi";
-import { Image } from "astro:assets";
 import { SiDiscogs } from "react-icons/si";
 ---
 
-<header class="fixed top-0 left-0 right-0 mt-3 bg-white/10 p-5">
+<header class="fixed top-0 left-0 right-0 bg-white/5 py-3 lg:p-2">
   <div
-    class="flex flex-row place-content-between mx-20 text-xl font-mono items-center"
+    class="flex flex-row place-content-between mx-5 lg:mx-20 lg:text-lg items-center font-customFont"
   >
-    <div class="flex place-content-center items-center gap-2">
-  <SiDiscogs
-        className="text-4xl text-yellow-500"
-      />
+    <div class="flex">
+      <SiDiscogs className="text-4xl lg:text-6xl text-white" />
+      <div class="ml-5" style="border-left:2px solid rgb(202 138 4 / 1)"></div>
     </div>
+
     {/*<Image class="w-32 aspect-[836/759]" src={logo} alt="dj logo" />*/}
-    <nav>
-      <ul class="flex items-center gap-5">
+    <nav class=" ml-3 lg:ml-5">
+      <ul class="flex items-center lg:gap-5">
         <li>
           <a
-            class="flex items-center gap-2 p-2 rounded-xl hover:bg-yellow-400/20"
+            class="flex items-center lg:gap-2 p-2 rounded-lg hover:bg-white/5"
             href=""
           >
-            <FaInstagram className="text-xl text-yellow-400" /> IG</a
+            <FaInstagram className="text-3xl text-yellow-500" />
+            <span class="hidden lg:block text-gray-400">IG</span></a
           >
         </li>
-        •
+        <span class="hidden lg:block ">•</span>
         <li>
           <a
-            class="flex items-center gap-2 p-2 rounded-xl hover:bg-yellow-400/20"
+            class="flex items-center lg:gap-2 p-2 rounded-lg hover:bg-white/5"
             href="/"
           >
-            <FiYoutube className="text-xl text-yellow-400" /> Youtube</a
+            <FiYoutube className="text-3xl text-yellow-500" />
+            <span class="hidden lg:block text-gray-400">Youtube</span></a
           >
         </li>
       </ul>
     </nav>
     <nav>
-      <ul class="flex items-center gap-5">
+      <ul class="flex items-center px-1  lg:ml-0 lg:gap-5">
         <li>
-          <a class="flex gap-2 p-2 rounded-xl hover:bg-yellow-400/20" href="#hola">
-            BIO</a
+          <a
+            class="flex gap-2 px-1 lg:p-2 rounded-lg hover:bg-white/5"
+            href="#hola"
           >
-        </li>
-        <li>
-          <a class="flex gap-2 p-2 rounded-xl hover:bg-yellow-400/20" href="">
             Servicios</a
           >
         </li>
         <li>
-          <a class="flex gap-2 p-2 rounded-xl hover:bg-yellow-400/20" href="">
+          <a class="flex gap-2 px-1 lg:p-2 rounded-lg hover:bg-white/5" href="">
+            BIO</a
+          >
+        </li>
+        <li>
+          <a class="flex gap-2 lg:p-2 px-1 rounded-lg hover:bg-white/5" href="">
             Contacto</a
           >
         </li>

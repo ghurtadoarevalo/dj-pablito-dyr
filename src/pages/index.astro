@@ -2,14 +2,19 @@
 import Layout from "@layouts/Layout.astro";
 import Navbar from "@components/Navbar.astro";
 import Hero from "@components/Hero.astro";
-
+import Bio from "@components/Bio.astro";
+import Services from "@components/Services.astro";
+import YoutubeVideo from "@components/Videos.astro"
 ---
 
 <Layout title="Welcome to Astro.">
-  <main class="mx-20 ">
+  <main class="">
     <Navbar></Navbar>
-    <main class="pt-24">
+    <main class="pt-16">
       <Hero></Hero>
+      <YoutubeVideo title="MIX" videoCode="ZlJ-w6fMHCI"></YoutubeVideo>
+      <Services></Services>
+      <Bio></Bio>
     </main>
 
 
