@@ -4,25 +4,22 @@ import Navbar from "@components/Navbar.astro";
 import Hero from "@components/Hero.astro";
 import Bio from "@components/Bio.astro";
 import Services from "@components/Services.astro";
-import YoutubeVideo from "@components/Videos.astro"
+import Videos from "@components/Videos.astro";
 ---
 
 <Layout title="Welcome to Astro.">
   <main class="">
-    <Navbar></Navbar>
+    <Navbar />
     <main class="pt-16">
-      <Hero></Hero>
-      <YoutubeVideo title="MIX" videoCode="ZlJ-w6fMHCI"></YoutubeVideo>
-      <Services></Services>
-      <Bio></Bio>
+      <Hero />
+      <Videos />
+      <Services />
+      <Bio />
     </main>
-
-
   </main>
 </Layout>
 
 <style>
-
   html {
     scroll-behavior: smooth;
   }
@@ -30,5 +27,4 @@ import YoutubeVideo from "@components/Videos.astro"
   main {
     color: white;
   }
-
 </style>
