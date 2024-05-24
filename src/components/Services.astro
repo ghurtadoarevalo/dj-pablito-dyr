@@ -1,91 +1,77 @@
 ---
+import Service from "./Service.astro";
 
+interface Service {
+  title: string;
+  price: string;
+  description: string;
+  features: string[];
+  featured: boolean;
+}
+
+const services: Service[] = [
+  {
+    title: "Básico",
+    price: "$300",
+    description: "Ideal para eventos pequeños y reuniones íntimas.",
+    features: [
+      "Duración: 3 horas",
+      "Sistema de sonido estándar",
+      "Selección musical básica",
+      "1 sesión de planificación previa",
+    ],
+    featured: false,
+  },
+  {
+    title: "Intermedio",
+    price: "$500",
+    description:
+      "Perfecto para celebraciones medianas como cumpleaños y eventos corporativos.",
+    features: [
+      "Duración: 5 horas",
+      "Sistema de sonido de alta calidad",
+      "Selección musical personalizada",
+      "2 sesiones de planificación previa",
+    ],
+    featured: false,
+
+  },
+  {
+    title: "Avanzado",
+    price: "$800",
+    description: "Para eventos grandes como bodas y aniversarios.",
+    features: [
+      "Duración: 7 horas",
+      "Sistema de sonido premium",
+      "Selección musical personalizada y listas de reproducción a medida",
+      "3 sesiones de planificación previa",
+    ],
+    featured: true,
+
+  },
+  {
+    title: "Premium",
+    price: "$1200",
+    description:
+      "La mejor opción para eventos de gran escala y alta exigencia.",
+    features: [
+      "Duración: 10 horas",
+      "Sistema de sonido profesional y equipo de iluminación",
+      "Selección musical personalizada con opciones de DJ en vivo",
+      "5 sesiones de planificación previa y soporte completo el día del evento",
+    ],
+    featured: false,
+  },
+];
 ---
 
-<section>
+<section id="services">
   <h1 class="text-center font-customFont text-3xl bg-zinc-800 py-10">
     SERVICIOS
   </h1>
   <div
-    class="flex flex-col md:flex-row gap-10 bg-gray-800 pt-10 place-content-center"
+    class="flex flex-col md:flex-row gap-6 place-content-between m-10"
   >
-    <div class="w-full md:w-full px-10">
-      <header class="font-bold text-center">PLAN 1</header>
-      <p class="mt-5 font-thin">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-        tristique consectetur arcu in tincidunt. Pellentesque habitant morbi
-        tristique senectus et netus et malesuada fames ac turpis egestas.
-        Aliquam ut purus egestas, sollicitudin nisl a, hendrerit lorem.
-        Phasellus at finibus justo, vitae tristique dolor. In eget efficitur
-        metus. Sed ipsum diam, ultricies sit amet nibh sit amet, suscipit
-        elementum quam. Curabitur dictum sapien in sodales sagittis.
-      </p>
-
-      <p class="mt-5 font-thin">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-        tristique consectetur arcu in tincidunt. Pellentesque habitant morbi
-        tristique senectus et netus et malesuada fames ac turpis egestas.
-        Aliquam ut purus egestas, sollicitudin nisl a, hendrerit lorem.
-        Phasellus at finibus justo, vitae tristique dolor. In eget efficitur
-        metus. Sed ipsum diam, ultricies sit amet nibh sit amet, suscipit
-        elementum quam. Curabitur dictum sapien in sodales sagittis.
-      </p>
-      <button
-        class="mt-5 hover:bg-white/30 rounded-lg w-full p-2 outline outline-1 outline-yellow-500 font-customFont"
-        >Nuestros servicios</button
-      >
-    </div>
-    <div class="w-full md:w-1/2 px-10">
-      <header class="font-bold text-center">PLAN 2</header>
-      <p class="mt-5 font-thin">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-        tristique consectetur arcu in tincidunt. Pellentesque habitant morbi
-        tristique senectus et netus et malesuada fames ac turpis egestas.
-        Aliquam ut purus egestas, sollicitudin nisl a, hendrerit lorem.
-        Phasellus at finibus justo, vitae tristique dolor. In eget efficitur
-        metus. Sed ipsum diam, ultricies sit amet nibh sit amet, suscipit
-        elementum quam. Curabitur dictum sapien in sodales sagittis.
-      </p>
-
-      <p class="mt-5 font-thin">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-        tristique consectetur arcu in tincidunt. Pellentesque habitant morbi
-        tristique senectus et netus et malesuada fames ac turpis egestas.
-        Aliquam ut purus egestas, sollicitudin nisl a, hendrerit lorem.
-        Phasellus at finibus justo, vitae tristique dolor. In eget efficitur
-        metus. Sed ipsum diam, ultricies sit amet nibh sit amet, suscipit
-        elementum quam. Curabitur dictum sapien in sodales sagittis.
-      </p>
-      <button
-        class="mt-5 hover:bg-white/30 rounded-lg w-full p-2 outline outline-1 outline-yellow-500 font-customFont"
-        >Nuestros servicios</button
-      >
-    </div>
-    <div class="w-full md:w-1/2 px-10">
-      <header class="font-bold text-center">PLAN 3</header>
-      <p class="mt-5 font-thin">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-        tristique consectetur arcu in tincidunt. Pellentesque habitant morbi
-        tristique senectus et netus et malesuada fames ac turpis egestas.
-        Aliquam ut purus egestas, sollicitudin nisl a, hendrerit lorem.
-        Phasellus at finibus justo, vitae tristique dolor. In eget efficitur
-        metus. Sed ipsum diam, ultricies sit amet nibh sit amet, suscipit
-        elementum quam. Curabitur dictum sapien in sodales sagittis.
-      </p>
-
-      <p class="mt-5 font-thin">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-        tristique consectetur arcu in tincidunt. Pellentesque habitant morbi
-        tristique senectus et netus et malesuada fames ac turpis egestas.
-        Aliquam ut purus egestas, sollicitudin nisl a, hendrerit lorem.
-        Phasellus at finibus justo, vitae tristique dolor. In eget efficitur
-        metus. Sed ipsum diam, ultricies sit amet nibh sit amet, suscipit
-        elementum quam. Curabitur dictum sapien in sodales sagittis.
-      </p>
-      <button
-        class="mt-5 hover:bg-white/30 rounded-lg w-full p-2 outline outline-1 outline-yellow-500 font-customFont"
-        >Nuestros servicios</button
-      >
-    </div>
+    {services.map((service) => <Service {service} />)}
   </div>
 </section>

@@ -4,13 +4,13 @@ import { FiYoutube } from "react-icons/fi";
 import { SiDiscogs } from "react-icons/si";
 ---
 
-<header class="fixed top-0 left-0 right-0 bg-white/5 py-3 lg:p-2">
+<header class="fixed top-0 left-0 right-0 bg-zinc-900 py-3 lg:p-2 z-10">
   <div
-    class="flex flex-row place-content-between mx-5 lg:mx-20 lg:text-lg items-center font-customFont"
+    class="flex flex-row place-content-between mx-1 lg:mx-20 lg:text-lg items-center font-customFont"
   >
     <div class="flex">
       <SiDiscogs className="text-4xl lg:text-6xl text-white" />
-      <div class="ml-5" style="border-left:2px solid rgb(202 138 4 / 1)"></div>
+      <div class="ml-3 lg:ml-5" style="border-left:2px solid rgb(202 138 4 / 1)"></div>
     </div>
 
     {/*<Image class="w-32 aspect-[836/759]" src={logo} alt="dj logo" />*/}
@@ -21,7 +21,7 @@ import { SiDiscogs } from "react-icons/si";
             class="flex items-center lg:gap-2 p-2 rounded-lg hover:bg-white/5"
             href=""
           >
-            <FaInstagram className="text-3xl text-yellow-500" />
+            <FaInstagram className="text-2xl text-yellow-500" />
             <span class="hidden lg:block text-gray-400">IG</span></a
           >
         </li>
@@ -31,7 +31,7 @@ import { SiDiscogs } from "react-icons/si";
             class="flex items-center lg:gap-2 p-2 rounded-lg hover:bg-white/5"
             href="/"
           >
-            <FiYoutube className="text-3xl text-yellow-500" />
+            <FiYoutube className="text-2xl text-yellow-500" />
             <span class="hidden lg:block text-gray-400">Youtube</span></a
           >
         </li>
@@ -42,13 +42,13 @@ import { SiDiscogs } from "react-icons/si";
         <li>
           <a
             class="flex gap-2 px-1 lg:p-2 rounded-lg hover:bg-white/5"
-            href="#hola"
+            href="#services"
           >
             Servicios</a
           >
         </li>
         <li>
-          <a class="flex gap-2 px-1 lg:p-2 rounded-lg hover:bg-white/5" href="">
+          <a class="flex gap-2 px-1 lg:p-2 rounded-lg hover:bg-white/5" href="#bio">
             BIO</a
           >
         </li>

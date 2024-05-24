@@ -8,20 +8,16 @@ const { title, videoCode } = Astro.props;
 ---
 
 <button
-  class="relative w-full h-52 outline outline-1 outline-white/50 hover:outline-white/100 rounded-r-2xl rounded-b-2xl -z-50"
-  style={`background-image:url(https://img.youtube.com/vi/${videoCode}/sddefault.jpg); background-position: center; background-size: 400px auto`}
+  class="relative w-full h-52 outline outline-1 outline-white/50 hover:outline-white/100 rounded-xl z-0"
+  style={`background-image:url(https://img.youtube.com/vi/${videoCode}/sddefault.jpg); background-position: center; background-size: 500px auto`}
 >
   <a
     href={`https://www.youtube.com/watch?v=${videoCode}`}
     target="_blank"
-    class=""
   >
+    <div class="absolute top-0 bg-black/50 w-full h-full rounded-xl"></div>
     <div
-      class="absolute top-0 bg-black/50 w-full h-full rounded-r-2xl rounded-b-2xl"
-    >
-    </div>
-    <div
-      class="absolute top-0 bg-zinc-900/20 hover:bg-white/100 rounded-r-xl px-2 text-sm text-white font-mono"
+      class="absolute top-0 bg-zinc-900/20 hover:bg-white/100 rounded-t-l-xl px-2 text-sm text-white font-mono"
     >
       {title}
     </div>
