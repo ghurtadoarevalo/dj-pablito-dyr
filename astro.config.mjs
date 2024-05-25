@@ -7,5 +7,7 @@ export default defineConfig({
   server: {
     host: true
   },
-  integrations: [react(), tailwind()]
+  integrations: [react(), tailwind()],
+  trailingSlash: "always",
+
 });

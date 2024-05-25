@@ -1,20 +1,47 @@
 ---
 import portrait from "@assets/portrait.webp";
 import { Image } from "astro:assets";
+import SocialMedia from "./SocialMedia.tsx";
+
+const socialMedia = [
+  {
+    name: "Instagram",
+    url: "https://www.linkedin.com/in/ghurtadoa94/",
+  },
+  {
+    name: "Youtube",
+    url: "https://github.com/ghurtadoarevalo",
+  },
+  {
+    name: "Tiktok",
+    url: "",
+  },
+  {
+    name: "Whatsapp",
+    url: "",
+  },
+  {
+    name: "Facebook",
+    url: "",
+  },
+]
+
 ---
+
+
 
 <section id="bio">
   <h1 class="text-center font-customFont text-3xl bg-zinc-800 py-10">BIO</h1>
   <div
-    class="flex flex-col md:flex-row gap-10 bg-gray-800/50 pt-10 place-content-center"
+    class="flex flex-col lg:flex-row bg-gray-800/50 py-10 place-content-center xl:px-[10%]"
   >
     <Image
-      class="object-contain w-[60%] md:w-[30%] rounded-2xl place-self-center"
+      class="object-contain w-[60%] md:w-[40%] lg:w-[35%] rounded-2xl place-self-center"
       src={portrait}
       alt="dj logo"
     />
-    <div class="w-full md:w-1/2 px-10">
-      <header class="font-bold">Dj Pablito Dyr</header>
+    <div class="w-full lg:w-1/2 px-20 sm:py-5">
+      <header class="font-bold text-center">Dj Pablito Dyr</header>
       <p class="mt-5 font-thin">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
         tristique consectetur arcu in tincidunt. Pellentesque habitant morbi
@@ -34,10 +61,22 @@ import { Image } from "astro:assets";
         metus. Sed ipsum diam, ultricies sit amet nibh sit amet, suscipit
         elementum quam. Curabitur dictum sapien in sodales sagittis.
       </p>
-      <button
-        class="mt-5 hover:bg-white/30 rounded-lg w-full p-2 outline outline-1 outline-yellow-500 font-customFont"
-        >Nuestros servicios</button
-      >
+
+      <p class="mt-5 text-center">¡Sígueme en mis redes sociales!</p>
+      <ul class="flex items-center place-content-center mt-2 lg:gap-5">
+        {socialMedia.map((media) => (
+          <li>
+            <a
+              class="flex flex-col items-center lg:gap-2 p-2 rounded-lg hover:bg-white/5 text-2xl text-yellow-500"
+              href={media.url}
+              target="_blank"
+            >
+              <SocialMedia socialName={media.name}/>
+              <span class=" text-sm text-gray-400">{media.name}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   </div>
 </section>

@@ -34,11 +34,11 @@ let videos: YoutubeVideo[] = [
 ];
 ---
 
-<section>
+<section id="mixing">
   <h1 class="text-center font-customFont text-3xl bg-zinc-800 py-10">
     MIXING IN THE HOUSE
   </h1>
-  <article class="grid grid-cols-2 md:grid md:grid-cols-3 gap-3 px-10 py-10 bg-slate-900">
+  <article class="grid grid-cols-2 lg:grid lg:grid-cols-3 gap-4 px-5 lg:px-40 lg:gap-10 py-10 bg-slate-900">
     {
       videos.map(({ title, videoCode }: YoutubeVideo) => {
         return <YoutubeVideo {title} {videoCode} />;

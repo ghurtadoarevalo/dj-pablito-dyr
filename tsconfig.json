@@ -9,6 +9,8 @@
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react",
+    "verbatimModuleSyntax": true,
+    "incremental": true,
 
     /* Linting */
     "strict": true,

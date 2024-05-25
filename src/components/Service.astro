@@ -18,7 +18,7 @@ const { service } = Astro.props;
 
 {
   service.featured ? (
-    <div class="relative w-full shadow-inner shadow-white/40 bg-yellow-700/50 p-8  rounded-3xl text-white/90">
+    <div class="relative w-full shadow-inner shadow-white/40 bg-[#4B1B6B]/60 p-8  rounded-3xl text-white/90">
       <header class="place-content-center items-center font-mono text-lg flex flex-row gap-4">
         <SiDiscogs className="text-2xl" /> {service.title.toUpperCase()}
       </header>
@@ -29,12 +29,12 @@ const { service } = Astro.props;
           <li>{feature}</li>
         ))}
       </ul>
-      <button class="absolute bottom-5 sm:bottom-14 right-0 left-0 mx-auto hover:bg-white/30 bg-zinc-700/90 text-white/90 outline outline-1 outline-white/50 rounded-xl w-1/2 p-3 font-mono">
+      <button class="absolute bottom-5 md:bottom-14 right-0 left-0 mx-auto hover:bg-white/30 bg-zinc-700/90 text-white/90 outline outline-1 outline-white/30 rounded-xl w-1/2 p-3 font-mono">
         Contáctame
       </button>
     </div>
   ) : (
-    <div class="relative w-full sm:w-5/6 py-10 px-8  bg-zinc-800 rounded-3xl text-white/90">
+    <div class="relative w-full lg:w-5/6 py-10 px-8  bg-zinc-800 rounded-3xl text-white/90">
       <header class="place-content-center items-center font-mono text-lg flex flex-row gap-4">
         <SiDiscogs className="text-2xl" /> {service.title.toUpperCase()}
       </header>
@@ -46,7 +46,7 @@ const { service } = Astro.props;
           <li style="list-style-type: circle;">{feature}</li>
         ))}
       </ul>
-      <button class="absolute bottom-5 right-0 left-0 mx-auto hover:bg-white/30 rounded-lg w-1/2 p-3 outline outline-1 outline-yellow-500 font-mono">
+      <button class="absolute bottom-5 right-0 left-0 mx-auto hover:bg-white/30 rounded-lg w-1/2 p-3 outline outline-1 outline-[#6B2E94] font-mono">
         Contáctame
       </button>
     </div>
