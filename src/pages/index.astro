@@ -7,19 +7,21 @@ import Services from "@components/Services.astro";
 import Videos from "@components/Videos.astro";
 import Footer from "@components/Footer.astro";
 import Contact from "@components/Contact.astro";
+import Equipments from "@components/Equipments.astro";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="DJ PABLITO DYR">
   <main class="">
-    <Navbar client:load/>
+    <Navbar client:load />
     <main class="pt-16">
       <Hero />
       <Videos />
       <Services />
-      <Bio/>
-      <Contact/>
+      <Equipments />
+      <Bio />
     </main>
-    <Footer></Footer>
+    <Contact />
+    <Footer />
   </main>
 </Layout>
 

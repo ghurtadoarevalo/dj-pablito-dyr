@@ -1,4 +1,4 @@
-import { useEffect, useState, type Dispatch, type SetStateAction } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
 import { FaFacebook, FaInstagram, FaTiktok, FaWhatsapp } from "react-icons/fa";
 import { FiYoutube } from "react-icons/fi";
 import { SiDiscogs } from "react-icons/si";
@@ -54,8 +54,9 @@ const navigationButtons = [
   { name: "Home", href: "#home" },
   { name: "Mixing", href: "#mixing" },
   { name: "Servicios", href: "#services" },
+  { name: "Equipos", href: "#equipment" },
   { name: "Bio", href: "#bio" },
-  { name: "Contacto", href: "#contact" },
+  { name: "Contacto", href: "#contact"},
 ];
 
 const Navbar = () => {

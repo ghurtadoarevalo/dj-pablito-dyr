@@ -1,0 +1,57 @@
+---
+import Equipment from "./Equipment.astro";
+
+const equipements = [
+  {
+    name: "Pionner ddj400",
+    description: "Controlador DJ de 2 canales para rekordbox. Todo el poder de la mezcla en un solo lugar.",
+    imgName: "ddj400",
+    quantity: 1,
+  },
+  {
+    name: "SPOT 30W",
+    description: "Cabezal movil led de 30 watts. Ideal para iluminar la pista con un toque profesional.",
+    imgName: "beam30",
+    quantity: 2,
+  },
+  {
+    name: "Luz led RGB",
+    description: "Luz de escenario DJ. Led RGB de 18 luces Control DMX.",
+    imgName: "ledLight",
+    quantity: 10,
+  },
+
+  { name: "jbl jrx 115", description: "Sistema de altavoces de refuerzo de sonido bidireccional. Más de 1000W de potencia con el mejor sonido.", imgName: "jbl115", quantity: 2 },
+
+  { name: "tv samsung 42'", description: "Televisor HD de 42'. Ideal para karaokes y videos acompañados con la mejor música.", imgName: "tvsamsung", quantity: 1 },
+
+  { name: "máquina de humo", description: "Máquina de humo de 1200 a 1500 Watts. Lleva tu fiesta a otro nivel.", imgName: "fogmachine", quantity: 1 },
+
+  { name: "Micrófono inhalambrico", description: "Micrófono inhalambrico de alta calidad, para que no hayan excusas para cantar y/o animar tus fiestas.", imgName: "mics", quantity: 2 },
+];
+---
+
+<section aria-label="Equipamiento con el que se cuenta" id="equipment">
+  <h1 class="text-center font-customFont text-3xl bg-zinc-800 py-10">
+    Equipamiento
+  </h1>
+  <div class="flex flex-col md:grid md:grid-cols-2 xl:grid xl:grid-cols-3 place-content-center gap-5 my-10 md:px-5">
+    <p
+      class="w-screen md:w-full text-center place-content-center px-10 text-xl text-balance py-5 outline outline-1 outline-yellow-500/60 bg-white/10 md:rounded-3xl"
+    >
+      Contamos con <span class="text-yellow-500 font-bold"
+        >el mejor equipamiento</span
+      > para hacer de tu fiesta el mejor momento.
+    </p>
+    {
+      equipements.map((equipment) => (
+        <Equipment
+          name={equipment.name}
+          description={equipment.description}
+          imgName={equipment.imgName}
+          quantity={equipment.quantity}
+        />
+      ))
+    }
+  </div>
+</section>

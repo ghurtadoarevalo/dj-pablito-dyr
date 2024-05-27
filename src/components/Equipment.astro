@@ -1,0 +1,41 @@
+---
+import { Image } from "astro:assets";
+import ddj400 from "@assets/equipments/ddj400.png";
+import beam30 from "@assets/equipments/beam30.png";
+import ledLight from "@assets/equipments/ledLight.png";
+import jbl115 from "@assets/equipments/jbl115.png";
+import tvsamsung from "@assets/equipments/tvsamsung.png";
+import fogmachine from "@assets/equipments/fogmachine.png";
+import mics from "@assets/equipments/mics.png";
+
+interface Props {
+  name: string;
+  description: string;
+  imgName: string;
+  quantity: number
+}
+
+interface Dictionary<T> {
+  [Key: string]: T;
+}
+const imgs: Dictionary<ImageMetadata> = {
+  ddj400,
+  beam30,
+  ledLight,
+  jbl115,
+  tvsamsung,
+  fogmachine,
+  mics
+};
+
+const { name, description, imgName, quantity } = Astro.props;
+---
+
+<div class="flex flex-col md:flex-row md:gap-2 place-content-center bg-white/10 rounded-3xl px-10 mx-[10%] sm:mx-[20%] md:mx-0 xl:px-5">
+  <Image src={imgs[imgName]} alt={""} width={150} height={100} class="mt-2 place-self-center" />
+  <div class="text-center my-5 xl:mb-10">
+    <span>x{quantity}</span><p class="font-bold">{name.toUpperCase()}</p> 
+    <hr class="w-48 mx-auto my-2 border-white/40">
+    <p>{description}</p> 
+  </div>
+</div>
