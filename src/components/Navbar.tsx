@@ -22,7 +22,15 @@ const linkRouteClassName = (routeName: string, currentRoute: string) => {
     : "text-gray-500 pl-4";
 };
 
-const socialMedia = [
+type SocialMediaName = 'Instagram' | 'Youtube' | 'Tiktok' | 'Whatsapp' | 'Facebook';
+
+type SocialMediaType = {
+  name: SocialMediaName,
+  icon: JSX.Element,
+  url: string
+}
+
+const socialMedia: SocialMediaType[] = [
   {
     name: "Instagram",
     icon: <FaInstagram className="text-2xl text-yellow-500" />,
@@ -73,7 +81,7 @@ const Navbar = () => {
 
         <nav className="ml-3 lg:ml-5">
           <ul className="flex items-center lg:gap-1">
-            {socialMedia.map((media) => (
+            {socialMedia.map((media:SocialMediaType) => (
               <li>
                 <a
                   className="flex items-center lg:gap-2 p-2 rounded-lg hover:bg-white/5 text-2xl text-yellow-500"
