@@ -7,6 +7,8 @@ export default defineConfig({
   server: {
     host: true
   },
+  site: 'https://ghurtado.github.io',
+  base: 'dj_dyr',
   integrations: [react(), tailwind()],
   trailingSlash: "always",
 
