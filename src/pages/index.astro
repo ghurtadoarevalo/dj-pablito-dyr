@@ -6,7 +6,7 @@ import Bio from "@components/Bio.astro";
 import Services from "@components/Services.astro";
 import Videos from "@components/Videos.astro";
 import Footer from "@components/Footer.astro";
-import Contact from "@components/Contact.astro";
+import Contact from "@components/Contact.tsx"
 import Equipments from "@components/Equipments.astro";
 ---
 
@@ -20,7 +20,7 @@ import Equipments from "@components/Equipments.astro";
       <Equipments />
       <Bio />
     </main>
-    <Contact />
+    <Contact client:load />
     <Footer />
   </main>
 </Layout>

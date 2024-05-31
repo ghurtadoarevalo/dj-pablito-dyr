@@ -1,15 +1,16 @@
 ---
-import Service from "./Service.astro";
+import Service from "./Service.tsx"
 
-interface Service {
+interface ServiceInterface {
   title: string;
   price: string;
   description: string;
   features: string[];
   featured: boolean;
+  wspMessage: string
 }
 
-const services: Service[] = [
+const services: ServiceInterface[] = [
   {
     title: "Básico",
     price: "$300",
@@ -21,6 +22,7 @@ const services: Service[] = [
       "1 sesión de planificación previa",
     ],
     featured: false,
+    wspMessage: 'Hola, estoy interesado en contratar el plan básico, ¿Me podrías dar más información? '
   },
   {
     title: "Intermedio",
@@ -34,6 +36,8 @@ const services: Service[] = [
       "2 sesiones de planificación previa",
     ],
     featured: false,
+    wspMessage: 'Hola, estoy interesado en contratar el plan intermedio, ¿Me podrías dar más información? '
+
 
   },
   {
@@ -47,11 +51,11 @@ const services: Service[] = [
       "3 sesiones de planificación previa",
     ],
     featured: true,
-
+    wspMessage: 'Hola, estoy interesado en contratar el plan avanzado, ¿Me podrías dar más información? '
   },
   {
-    title: "Premium",
-    price: "$1200",
+    title: "Personalizado",
+    price: "$$$$",
     description:
       "La mejor opción para eventos de gran escala y alta exigencia.",
     features: [
@@ -61,6 +65,7 @@ const services: Service[] = [
       "5 sesiones de planificación previa y soporte completo el día del evento",
     ],
     featured: false,
+    wspMessage: 'Hola, estoy interesado en tener un plan personalizado , ¿Me podrías dar más información?'
   },
 ];
 ---
@@ -72,6 +77,6 @@ const services: Service[] = [
   <div
     class="flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-row gap-6 place-content-between m-10"
   >
-    {services.map((service) => <Service {service} />)}
+    {services.map((service: ServiceInterface) => <Service client:load {service} />)}
   </div>
 </section>

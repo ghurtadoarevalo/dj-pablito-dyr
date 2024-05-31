@@ -4,13 +4,15 @@ import Equipment from "./Equipment.astro";
 const equipements = [
   {
     name: "Pionner ddj400",
-    description: "Controlador DJ de 2 canales para rekordbox. Todo el poder de la mezcla en un solo lugar.",
+    description:
+      "Controlador DJ de 2 canales para rekordbox. Todo el poder de la mezcla en un solo lugar.",
     imgName: "ddj400",
     quantity: 1,
   },
   {
     name: "SPOT 30W",
-    description: "Cabezal movil led de 30 watts. Ideal para iluminar la pista con un toque profesional.",
+    description:
+      "Cabezal movil led de 30 watts. Ideal para iluminar la pista con un toque profesional.",
     imgName: "beam30",
     quantity: 2,
   },
@@ -20,14 +22,48 @@ const equipements = [
     imgName: "ledLight",
     quantity: 10,
   },
-
-  { name: "jbl jrx 115", description: "Sistema de altavoces de refuerzo de sonido bidireccional. Más de 1000W de potencia con el mejor sonido.", imgName: "jbl115", quantity: 2 },
-
-  { name: "tv samsung 42'", description: "Televisor HD de 42'. Ideal para karaokes y videos acompañados con la mejor música.", imgName: "tvsamsung", quantity: 1 },
-
-  { name: "máquina de humo", description: "Máquina de humo de 1200 a 1500 Watts. Lleva tu fiesta a otro nivel.", imgName: "fogmachine", quantity: 1 },
-
-  { name: "Micrófono inhalambrico", description: "Micrófono inhalambrico de alta calidad, para que no hayan excusas para cantar y/o animar tus fiestas.", imgName: "mics", quantity: 2 },
+  {
+    name: "jbl jrx 115",
+    description:
+      "Sistema de altavoces de refuerzo de sonido bidireccional. Más de 1000W de potencia con el mejor sonido.",
+    imgName: "jbl115",
+    quantity: 2,
+  },
+  {
+    name: "tv samsung 42'",
+    description:
+      "Televisor HD de 42'. Ideal para karaokes y videos acompañados con la mejor música.",
+    imgName: "tvsamsung",
+    quantity: 1,
+  },
+  {
+    name: "máquina de humo",
+    description:
+      "Máquina de humo de 1200 a 1500 Watts. Lleva tu fiesta a otro nivel.",
+    imgName: "fogmachine",
+    quantity: 1,
+  },
+  {
+    name: "Micrófono inhalambrico",
+    description:
+      "Micrófono inhalambrico de alta calidad, para que no hayan excusas para cantar y/o animar tus fiestas.",
+    imgName: "mics",
+    quantity: 2,
+  }, 
+  {
+    name: "Spider Beam RGB",
+    description:
+      "Cabezas móviles RGB para iluminar todo al ritmo de la música",
+    imgName: "ledspider",
+    quantity: 2,
+  },
+  {
+    name: "Atril Iluminación Carverpro",
+    description:
+      "Atril de iluminación doble. Ajustable de 1.8m a 3.45m de altura y 3.6m de ancho. Para todos aquellos que quieran una pista o escenario con un toque profesional.",
+    imgName: "arcoatril",
+    quantity: 2,
+  },
 ];
 ---
 
@@ -35,7 +71,9 @@ const equipements = [
   <h1 class="text-center font-customFont text-3xl bg-zinc-800 py-10">
     Equipamiento
   </h1>
-  <div class="flex flex-col md:grid md:grid-cols-2 xl:grid xl:grid-cols-3 place-content-center gap-5 my-10 md:px-5">
+  <div
+    class="flex flex-col md:grid md:grid-cols-2 xl:grid xl:grid-cols-3 place-content-center gap-5 my-10 md:px-5"
+  >
     <p
       class="w-screen md:w-full text-center place-content-center px-10 text-xl text-balance py-5 outline outline-1 outline-yellow-500/60 bg-white/10 md:rounded-3xl"
     >
