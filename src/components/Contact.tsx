@@ -23,10 +23,6 @@ const Contact = () => {
         />
         <a></a>
       </a>
-
-      <div>
-        Si selecc
-      </div>
     </div>
   </section>
 };
