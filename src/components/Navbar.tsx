@@ -126,7 +126,7 @@ const Navbar = () => {
           </button>
         </nav>
         {burguerMenu && (
-          <ul className="fixed flex flex-col top-16 right-0 items-center pt-5 gap-5 bg-zinc-900 rounded-es-3xl w-1/2 h-1/2">
+          <ul className="fixed flex flex-col top-16 right-0 items-center place-content-center gap-5 bg-zinc-900 rounded-es-3xl w-1/3 h-1/2 flex-wrap">
             {navigationButtons.map((navigationButton) => (
               <li>
                 <a
