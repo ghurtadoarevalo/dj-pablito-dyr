@@ -97,7 +97,7 @@ const Contact = () => {
             {socialMedia.map((media) => (
               <li>
                 <a
-                  className="flex flex-col items-center lg:gap-2 p-2 rounded-lg hover:bg-white/5 text-4xl text-yellow-500"
+                  className="flex flex-col items-center lg:gap-2 p-2 rounded-lg hover:bg-white/5 text-3xl text-yellow-500"
                   href={media.url}
                   target="_blank"
                 >
