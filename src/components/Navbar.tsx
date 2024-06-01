@@ -1,5 +1,5 @@
 import { useState, type Dispatch, type SetStateAction } from "react";
-import { FaFacebook, FaInstagram, FaTiktok, FaWhatsapp } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
 import { FiYoutube } from "react-icons/fi";
 import { SiDiscogs } from "react-icons/si";
 import { IoMdMenu } from "react-icons/io";
@@ -47,11 +47,6 @@ const socialMedia: SocialMediaType[] = [
     url: "",
   },
   {
-    name: "Whatsapp",
-    icon: <FaWhatsapp className="text-2xl text-yellow-500" />,
-    url: "",
-  },
-  {
     name: "Facebook",
     icon: <FaFacebook className="text-2xl text-yellow-500" />,
     url: "",
@@ -84,7 +79,7 @@ const Navbar = () => {
             {socialMedia.map((media:SocialMediaType) => (
               <li>
                 <a
-                  className="flex items-center lg:gap-2 p-2 rounded-lg hover:bg-white/5 text-2xl text-yellow-500"
+                  className="flex items-center lg:gap-2 p-2 rounded-lg hover:bg-white/5 text-xl lg:text-2xl text-yellow-500"
                   href={media.url}
                   target="_blank"
                   key={media.name}

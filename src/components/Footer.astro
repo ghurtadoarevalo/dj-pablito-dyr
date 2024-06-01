@@ -1,3 +1,32 @@
-<footer class="pt-10 pb-5 text-center">
-    © 2024 <a href="https://www.linkedin.com/in/ghurtadoa94/" target="_blank">gHurtado_dev.</a> 
+---
+import { Image } from "astro:assets";
+---
+
+<footer
+  class="py-2 bg-slate-800/40 text-sm text-white/80 flex flex-col md:flex-row gap-3 place-items-center place-content-center"
+>
+  <div class="text-center italic">
+    <p class="w-2/3 mx-auto">© 2024 Dj Pablito Dyr. Todos los derechos reservados.</p>
+  </div>
+
+  <div
+    class="flex flex-row place-items-center gap-3 bg-gray-600/20 hover:outline hover:outline-1 hover:outline-white/70 hover:text-white/70 text-white/50 rounded-full pr-5 "
+  >
+    <Image
+      src="https://unavatar.io/ghurtadoarevalo"
+      alt=""
+      width={30}
+      height={20}
+      class="rounded-l-full"
+    />
+    <div>
+      <a
+        href="https://www.linkedin.com/in/ghurtadoa94/"
+        target="_blank"
+        class="text-center"
+      >
+        <p>Desarrollado por gHurtado_dev</p>
+      </a>
+    </div>
+  </div>
 </footer>

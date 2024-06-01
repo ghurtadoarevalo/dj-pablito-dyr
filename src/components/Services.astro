@@ -75,8 +75,12 @@ const services: ServiceInterface[] = [
     SERVICIOS
   </h1>
   <div
-    class="flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-row gap-6 place-content-between m-10"
+    class="flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-row gap-6 place-content-between mx-10 mt-5"
   >
     {services.map((service: ServiceInterface) => <Service client:load {service} />)}
   </div>
+  <p class="text-center text-sm my-4 text-white/80">* Los precios de los planes podrían variar en el tiempo</p>
+
+
+
 </section>
