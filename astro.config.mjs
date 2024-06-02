@@ -5,10 +5,9 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 export default defineConfig({
   server: {
-    host: true
+    host: false
   },
-  site: 'djpablitodyr.cl',
-  base: '/',
+  site: 'https://djpablitodyr.cl',
   integrations: [react(), tailwind()],
   trailingSlash: "always",
 
