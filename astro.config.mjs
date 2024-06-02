@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     host: true
   },
-  site: 'djpablitodyr',
+  site: 'djpablitodyr.cl',
   base: '/',
   integrations: [react(), tailwind()],
   trailingSlash: "always",
