@@ -2,36 +2,6 @@ import { FaWhatsapp } from "react-icons/fa";
 import SocialMedia from "./SocialMedia.tsx";
 import { useState } from "react";
 
-type SocialMediaName =
-  | "Instagram"
-  | "Youtube"
-  | "Tiktok"
-  | "Whatsapp"
-  | "Facebook";
-
-type SocialMediaType = {
-  name: SocialMediaName;
-  url: string;
-};
-
-const socialMedia: SocialMediaType[] = [
-  {
-    name: "Instagram",
-    url: "https://www.linkedin.com/in/ghurtadoa94/",
-  },
-  {
-    name: "Youtube",
-    url: "https://github.com/ghurtadoarevalo",
-  },
-  {
-    name: "Tiktok",
-    url: "",
-  },
-  {
-    name: "Facebook",
-    url: "",
-  },
-];
 
 const Contact = () => {
   const [formClienttName, setFormClienttName] = useState("");

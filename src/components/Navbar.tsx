@@ -1,6 +1,4 @@
 import { useState, type Dispatch, type SetStateAction } from "react";
-import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
-import { FiYoutube } from "react-icons/fi";
 import { SiDiscogs } from "react-icons/si";
 import { IoMdMenu } from "react-icons/io";
 import SocialMedia from "./SocialMedia";
