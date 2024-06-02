@@ -16,12 +16,15 @@ import djBackground from "@assets/djBackground.mp4";
   <div
     class="flex flex-col md:flex-row md:place-content-evenly xl:h-screen place-items-center text-white/80"
   >
-    <Image
-      class="object-contain w-[70%] px-2 md:px-0 md:w-[60%] lg:w-[40%] md:animate-pulse"
-      src={logo}
-      alt="Logo de dj pablito dyr"
-      loading="eager"
-    />
+    <img src={logo.src}
+     srcset=`${logo.src} 600w, ${logo.src} 1200w, ${logo.src} 2000w`
+     sizes="(max-width: 600px) 70vw, (max-width: 1200px) 60vw, 40vw"
+     class="object-contain w-[70%] px-2 md:px-0 md:w-[60%] lg:w-[40%] md:animate-pulse"
+     alt="Logo de dj pablito dyr"
+     loading="eager"
+     width="2094"
+     height="1900"
+     decoding="async">
     <div
       class="bg-gray-800/50 text-center md:text-start rounded-xl w-screen md:w-1/2  xl:w-1/3 px-10 md:px-16 py-8 place-content-center"
     >
