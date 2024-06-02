@@ -21,9 +21,9 @@ const Service = ({ service }: ServiceProps) => {
       <header className="place-content-center items-center font-mono text-lg flex flex-row gap-4">
         <SiDiscogs className="text-2xl" /> {service.title.toUpperCase()}
       </header>
-      <h3 className="text-center text-4xl font-bold font-customFont">
+      <h2 className="text-center text-4xl font-bold font-customFont">
         *{service.price}
-      </h3>
+      </h2>
       <p className="mt-10  text-center">{service.description}</p>
       <ul className="list-disc ml-8 mt-5 px-4 mb-16">
         {service.features.map((feature: string) => (
@@ -51,9 +51,9 @@ const Service = ({ service }: ServiceProps) => {
       <header className="place-content-center items-center font-mono text-lg flex flex-row gap-4">
         <SiDiscogs className="text-2xl" /> {service.title.toUpperCase()}
       </header>
-      <h3 className="text-center text-2xl font-bold font-customFont">
+      <h2 className="text-center text-2xl font-bold font-customFont">
         *{service.price}
-      </h3>
+      </h2>
       <hr className="mt-6 w-2/3 mx-auto" />
       <p className="mt-3 text-center">{service.description}</p>
       <ul className="list-disc ml-8 mt-5 mb-16">

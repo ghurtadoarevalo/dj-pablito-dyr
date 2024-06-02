@@ -16,8 +16,8 @@ const pressRouteMenu = (
 
 const linkRouteClassName = (routeName: string, currentRoute: string) => {
   return currentRoute === routeName
-    ? "text-gray-300 pl-4"
-    : "text-gray-500 pl-4";
+    ? "text-gray-100 pl-4"
+    : "text-gray-400 pl-4";
 };
 
 const navigationButtons = [
@@ -26,7 +26,7 @@ const navigationButtons = [
   { name: "Servicios", href: "#services" },
   { name: "Equipos", href: "#equipment" },
   { name: "Bio", href: "#bio" },
-  { name: "Contacto", href: "#contact"},
+  { name: "Contacto", href: "#contact" },
 ];
 
 const Navbar = () => {
@@ -42,7 +42,7 @@ const Navbar = () => {
         </div>
 
         <nav className="ml-3 lg:ml-5">
-            <SocialMedia namesRequired={false}  />
+          <SocialMedia namesRequired={false} />
         </nav>
 
         <nav className="hidden lg:block">
@@ -57,6 +57,7 @@ const Navbar = () => {
                   href={navigationButton.href}
                   key={navigationButton.name}
                   onClick={() => setCurrentRoute(navigationButton.name)}
+                  aria-label={`botón link para ir a ${navigationButton.name}`}
                 >
                   {navigationButton.name}
                 </a>
@@ -65,7 +66,10 @@ const Navbar = () => {
           </ul>
         </nav>
         <nav>
-          <button className="mt-1">
+          <button
+            className="mt-1"
+            aria-label={`botón para abrir menú de hamburguesa`}
+          >
             {burguerMenu ? (
               <IoMdMenu
                 className="text-3xl lg:hidden text-yellow-500"
@@ -94,6 +98,8 @@ const Navbar = () => {
                       setBurguerMenu,
                     )
                   }
+                  aria-label={`botón link para ir a ${navigationButton.name}`}
+
                 >
                   {navigationButton.name}
                 </a>
