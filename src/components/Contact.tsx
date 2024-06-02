@@ -25,7 +25,7 @@ const Contact = () => {
 
   const redirectToWhatsApp = () => {
     window.open(
-      `https://wa.me/56988182965?text=${encodeURIComponent(
+      `https://wa.me/56971768418?text=${encodeURIComponent(
         `Nombre cliente: ${formClienttName}\nMensaje: ${formClientMessage}`,
       )}`,
       "_blank",

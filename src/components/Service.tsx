@@ -33,7 +33,7 @@ const Service = ({ service }: ServiceProps) => {
 
       <a
         aria-label="Chat on WhatsApp"
-        href={`https://wa.me/56988182965?text=${service.wspMessage}`}
+        href={`https://wa.me/56971768418?text=${service.wspMessage}`}
         target="_blank"
       >
         <button
@@ -64,7 +64,7 @@ const Service = ({ service }: ServiceProps) => {
 
       <a
         aria-label="Chat on WhatsApp"
-        href={`https://wa.me/56988182965?text=${service.wspMessage}`}
+        href={`https://wa.me/56971768418?text=${service.wspMessage}`}
         target="_blank"
         className="flex flex-col place-content-center place-items-center"
       >
