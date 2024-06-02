@@ -1,8 +1,6 @@
-import { useAtom } from "jotai";
 import { FaWhatsapp } from "react-icons/fa";
-
-import { wspMessageAtom } from "./Atom";
 import SocialMedia from "./SocialMedia.tsx";
+import { useState } from "react";
 
 type SocialMediaName =
   | "Instagram"
@@ -36,7 +34,33 @@ const socialMedia: SocialMediaType[] = [
 ];
 
 const Contact = () => {
-  const [wspMessage] = useAtom(wspMessageAtom);
+  const [formClienttName, setFormClienttName] = useState("");
+  const [formClientMessage, setFormClientMessage] = useState("");
+  const [isFormValid, setIsFormValid] = useState(true);
+
+  const handleSubmit = () => {
+    if (validateForm()) {
+      redirectToWhatsApp();
+    }
+  };
+
+  const validateForm = () => {
+    if (formClienttName.trim() === "" || formClientMessage.trim() === "") {
+      setIsFormValid(false);
+      return false;
+    }
+    setIsFormValid(true);
+    return true;
+  };
+
+  const redirectToWhatsApp = () => {
+    window.open(
+      `https://wa.me/56988182965?text=${encodeURIComponent(
+        `Nombre cliente: ${formClienttName}\nMensaje: ${formClientMessage}`,
+      )}`,
+      "_blank",
+    );
+  };
 
   return (
     <section id="contact" className="bg-slate-950 pb-10">
@@ -44,7 +68,10 @@ const Contact = () => {
         Contacto
       </h1>
       <div className="flex flex-col md:flex-row place-content-center place-items-center lg:mx-auto bg-slate-900/80  lg:w-4/5 xl:w-2/3 p-5 mt-10 mx-3 rounded-3xl">
-        <form className="flex flex-col gap-5 md:px-5 w-full text-white/90">
+        <form
+          className="flex flex-col gap-5 md:px-5 w-full text-white/90"
+          onSubmit={handleSubmit}
+        >
           <h2 className="text-center font-bold text-xl">
             Formulario de contacto
           </h2>
@@ -54,34 +81,42 @@ const Contact = () => {
               className="rounded-r-lg rounded-b-lg bg-black/10 outline outline-1 hover:outline-white p-3 italic"
               type="text"
               placeholder="Ingresa tu nombre"
+              required
+              value={formClienttName}
+              onChange={(event) => setFormClienttName(event.target.value)}
             />
           </div>
           <div className="flex flex-col gap-2 mt-2">
             <p className=" text-sm">Mensaje</p>
             <textarea
               className="rounded-r-lg rounded-b-lg bg-black/10 outline outline-1 hover:outline-white p-3 italic"
-              placeholder={wspMessage}
+              placeholder={
+                "Ejemplo: Hola, me interesa saber más sobre los servicios que entrega."
+              }
+              value={formClientMessage}
               rows={6}
+              required
+              onChange={(event) => setFormClientMessage(event.target.value)}
             />
           </div>
+          {!isFormValid && (
+            <p className="text-red-600">
+              Por favor, completa todos los campos.
+            </p>
+          )}
           <button
-            type="submit"
-            className="mx-auto hover:bg-white/30 bg-green-500/5 rounded-lg p-3 outline outline-1 outline-green-500/20 font-mono"
+            type="button"
+            onClick={handleSubmit}
+            className="flex flex-col place-content-center place-items-center mx-auto hover:bg-white/30 bg-green-500/5 rounded-lg p-3 outline outline-1 outline-green-500/20 font-mono"
           >
-            <a
-              aria-label="Chat on WhatsApp"
-              href={`https://wa.me/56988182965?text=hola`}
-              className="flex flex-col place-content-center place-items-center"
-            >
-              <div className="flex md:flex-row place-content-center place-items-center gap-2">
-                <FaWhatsapp className="text-2xl text-green-500/90" />
-                <span className="text-white/80">Hablemos por WhatsApp</span>
-              </div>
-            </a>
+            <div className="flex md:flex-row place-content-center place-items-center gap-2">
+              <FaWhatsapp className="text-2xl text-green-500/90" />
+              <span className="text-white/80">Hablemos por WhatsApp</span>
+            </div>
           </button>
         </form>
         <div className="w-full mt-5 md:mt-0">
-          <div className="bg-slate-800/60  p-10 rounded-xl text-white/80">
+          <div className="bg-slate-800/60  p-10 rounded-xl text-white/80 mb-5">
             <p className="text-center">
               ¿Aún no estás seguro/a del servicio que deseas contratar?
             </p>
@@ -93,20 +128,7 @@ const Contact = () => {
               DJ PLABLITO DYR
             </p>
           </div>
-          <ul className="flex items-center place-content-center mt-2 lg:gap-5">
-            {socialMedia.map((media) => (
-              <li>
-                <a
-                  className="flex flex-col items-center lg:gap-2 p-2 rounded-lg hover:bg-white/5 text-3xl text-yellow-500"
-                  href={media.url}
-                  target="_blank"
-                >
-                  <SocialMedia socialName={media.name} />
-                  <span className=" text-sm text-gray-400">{media.name}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
+          <SocialMedia namesRequired={true} />
         </div>
       </div>
     </section>

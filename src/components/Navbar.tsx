@@ -22,37 +22,6 @@ const linkRouteClassName = (routeName: string, currentRoute: string) => {
     : "text-gray-500 pl-4";
 };
 
-type SocialMediaName = 'Instagram' | 'Youtube' | 'Tiktok' | 'Whatsapp' | 'Facebook';
-
-type SocialMediaType = {
-  name: SocialMediaName,
-  icon: JSX.Element,
-  url: string
-}
-
-const socialMedia: SocialMediaType[] = [
-  {
-    name: "Instagram",
-    icon: <FaInstagram className="text-2xl text-yellow-500" />,
-    url: "https://www.linkedin.com/in/ghurtadoa94/",
-  },
-  {
-    name: "Youtube",
-    icon: <FiYoutube className="text-2xl text-yellow-500" />,
-    url: "https://github.com/ghurtadoarevalo",
-  },
-  {
-    name: "Tiktok",
-    icon: <FaTiktok className="text-2xl text-yellow-500" />,
-    url: "",
-  },
-  {
-    name: "Facebook",
-    icon: <FaFacebook className="text-2xl text-yellow-500" />,
-    url: "",
-  },
-];
-
 const navigationButtons = [
   { name: "Home", href: "#home" },
   { name: "Mixing", href: "#mixing" },
@@ -75,20 +44,7 @@ const Navbar = () => {
         </div>
 
         <nav className="ml-3 lg:ml-5">
-          <ul className="flex items-center lg:gap-1">
-            {socialMedia.map((media:SocialMediaType) => (
-              <li>
-                <a
-                  className="flex items-center lg:gap-2 p-2 rounded-lg hover:bg-white/5 text-xl lg:text-2xl text-yellow-500"
-                  href={media.url}
-                  target="_blank"
-                  key={media.name}
-                >
-                  <SocialMedia socialName={media.name} />
-                </a>
-              </li>
-            ))}
-          </ul>
+            <SocialMedia namesRequired={false}  />
         </nav>
 
         <nav className="hidden lg:block">

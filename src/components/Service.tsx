@@ -1,5 +1,3 @@
-import { useAtom } from "jotai";
-import { wspMessageAtom } from "./Atom";
 import { SiDiscogs } from "react-icons/si";
 import { FaWhatsapp } from "react-icons/fa";
 
@@ -17,12 +15,6 @@ type ServiceProps = {
 };
 
 const Service = ({ service }: ServiceProps) => {
-  const [, setWspServiceMessage] = useAtom(wspMessageAtom);
-
-  const contactForm = (wspServiceMessage: string) => {
-    console.log("aaa");
-    setWspServiceMessage(wspServiceMessage);
-  };
 
   return service.featured ? (
     <div className="relative w-full shadow-inner shadow-white/40 bg-[#4B1B6B]/60 p-8  rounded-3xl text-white/80">
@@ -45,7 +37,6 @@ const Service = ({ service }: ServiceProps) => {
         target="_blank"
       >
         <button
-          onClick={() => contactForm(service.wspMessage)}
           className="absolute bottom-5 md:bottom-14 right-0 left-0 mx-auto hover:bg-white/30 bg-green-500/10 text-white/90 outline outline-1 outline-green-500/50 rounded-xl w-1/2 p-3 font-mono"
         >
           <div className="flex md:flex-row place-content-center place-items-center gap-2">
@@ -75,7 +66,6 @@ const Service = ({ service }: ServiceProps) => {
         aria-label="Chat on WhatsApp"
         href={`https://wa.me/56988182965?text=${service.wspMessage}`}
         target="_blank"
-        onClick={() => contactForm(service.wspMessage)}
         className="flex flex-col place-content-center place-items-center"
       >
         <button className="absolute bottom-5 right-0 left-0 mx-auto hover:bg-white/30 bg-green-500/5 rounded-lg w-1/2 p-3 outline outline-1 outline-green-500/20 font-mono">
