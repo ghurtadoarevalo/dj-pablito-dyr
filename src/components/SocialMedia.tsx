@@ -12,6 +12,7 @@ type SocialMediaType = {
   name: SocialMediaName;
   icon: JSX.Element;
   url: string;
+  label: string
 };
 
 const socialMedia: SocialMediaType[] = [
@@ -19,21 +20,25 @@ const socialMedia: SocialMediaType[] = [
     name: "Instagram",
     icon: <FaInstagram className="text-2xl text-yellow-500" />,
     url: "https://www.instagram.com/dj_pablito_dyr_/",
+    label: "Instagram button link"
   },
   {
     name: "Youtube",
     icon: <FiYoutube className="text-2xl text-yellow-500" />,
     url: "https://www.youtube.com/@DVJPD",
+    label: "Youtube button link"
   },
   {
     name: "Tiktok",
     icon: <FaTiktok className="text-2xl text-yellow-500" />,
     url: "https://www.tiktok.com/@djpablitodyr",
+    label: "Tiktok button link"
   },
   {
     name: "Facebook",
     icon: <FaFacebook className="text-2xl text-yellow-500" />,
     url: "https://www.facebook.com/profile.php?id=100083210888590",
+    label: "Facebook button link"
   },
 ];
 
@@ -55,6 +60,7 @@ const SocialMedia = ({ namesRequired }: { namesRequired: boolean }) => {
             href={media.url}
             target="_blank"
             key={media.name}
+            aria-label={media.label}
           >
             {iconComponents[media.name]}
             {namesRequired ? (

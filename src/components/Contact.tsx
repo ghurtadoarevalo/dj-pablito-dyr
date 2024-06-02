@@ -33,7 +33,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="bg-slate-950 pb-10">
+    <section id="contact" className="bg-slate-950 pb-10" aria-label="Sección de contacto para contratar servicios con dj pablito dyr">
       <h1 className="text-center font-customFont text-3xl bg-zinc-800 py-10">
         Contacto
       </h1>

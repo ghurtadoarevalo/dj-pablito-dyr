@@ -8,6 +8,7 @@ const equipements = [
       "Controlador DJ de 2 canales para rekordbox. Todo el poder de la mezcla en un solo lugar.",
     imgName: "ddj400",
     quantity: 1,
+    label: "imagen Pionner ddj400"
   },
   {
     name: "SPOT 30W",
@@ -15,12 +16,14 @@ const equipements = [
       "Cabezal movil led de 30 watts. Ideal para iluminar la pista con un toque profesional.",
     imgName: "beam30",
     quantity: 2,
+    label: "imagen SPOT 30W"
   },
   {
     name: "Luz led RGB",
     description: "Luz de escenario DJ. Led RGB de 18 luces Control DMX.",
     imgName: "ledLight",
     quantity: 10,
+    label: "imagen Luz led RGB"
   },
   {
     name: "jbl jrx 115",
@@ -28,6 +31,7 @@ const equipements = [
       "Sistema de altavoces de refuerzo de sonido bidireccional. Más de 1000W de potencia con el mejor sonido.",
     imgName: "jbl115",
     quantity: 2,
+    label: "imagen jbl jrx 115"
   },
   {
     name: "tv samsung 42'",
@@ -35,6 +39,8 @@ const equipements = [
       "Televisor HD de 42'. Ideal para karaokes y videos acompañados con la mejor música.",
     imgName: "tvsamsung",
     quantity: 1,
+    label: "imagen tv samsung 42 pulgadas"
+
   },
   {
     name: "máquina de humo",
@@ -42,6 +48,8 @@ const equipements = [
       "Máquina de humo de 1200 a 1500 Watts. Lleva tu fiesta a otro nivel.",
     imgName: "fogmachine",
     quantity: 1,
+    label: "imagen máquina de humo"
+
   },
   {
     name: "Micrófono inhalambrico",
@@ -49,6 +57,8 @@ const equipements = [
       "Micrófono inhalambrico de alta calidad, para que no hayan excusas para cantar y/o animar tus fiestas.",
     imgName: "mics",
     quantity: 2,
+    label: "imagen Micrófono inhalambrico"
+
   }, 
   {
     name: "Spider Beam RGB",
@@ -56,6 +66,8 @@ const equipements = [
       "Cabezas móviles RGB para iluminar todo al ritmo de la música",
     imgName: "ledspider",
     quantity: 2,
+    label: "imagen Spider Beam RGB"
+
   },
   {
     name: "Atril Iluminación Carverpro",
@@ -63,11 +75,13 @@ const equipements = [
       "Atril de iluminación doble. Ajustable de 1.8m a 3.45m de altura y 3.6m de ancho. Para todos aquellos que quieran una pista o escenario con un toque profesional.",
     imgName: "arcoatril",
     quantity: 2,
+    label: "imagen Atril Iluminación Carverpro"
+
   },
 ];
 ---
 
-<section aria-label="Equipamiento con el que se cuenta" id="equipment">
+<section aria-label="sección de Equipamiento con el que se cuenta por parte de dj pablito dyr" id="equipment">
   <h1 class="text-center font-customFont text-3xl bg-zinc-800 py-10">
     Equipamiento
   </h1>
@@ -88,6 +102,7 @@ const equipements = [
           description={equipment.description}
           imgName={equipment.imgName}
           quantity={equipment.quantity}
+          label={equipment.label}
         />
       ))
     }

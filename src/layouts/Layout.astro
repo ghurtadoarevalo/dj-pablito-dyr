@@ -19,17 +19,17 @@ const { title, description } = Astro.props;
         basic: {
           title: title,
           type: "website",
-          image: "/favicon.webp"
+          image: "/logo.jpeg"
         },
       }}
       extend={{
         // extending the default link tags
-        link: [{ rel: "icon", href: "/favicon.webp" }],
+        link: [{ rel: "icon", href: "/logo.jpeg" }],
         // extending the default meta tags
         meta: [
           {
             name: "twitter:image",
-            content: "/favicon.webp",
+            content: "/logo.jpeg",
           },
           { name: "twitter:title", content: title },
           { name: "twitter:description", content: description },
@@ -41,10 +41,6 @@ const { title, description } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Danfo&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body class="bg-zinc-900">
     <slot />
