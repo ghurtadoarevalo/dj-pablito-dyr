@@ -17,17 +17,15 @@ const { title, description } = Astro.props;
       description={description}
       openGraph={{
         basic: {
-          title: `${title}`,
+          title: title,
           type: "website",
           description: description,
-          image: 
-            {
-              url: "/favicon.webp",
-              width: 1200,
-              height: 630,
-              alt: { title },
-            },
-        
+          image: {
+            url: "/favicon.webp",
+            width: 1200,
+            height: 630,
+            alt: title,
+          },
         },
       }}
       extend={{
@@ -39,8 +37,8 @@ const { title, description } = Astro.props;
             name: "twitter:image",
             content: "/favicon.webp",
           },
-          { name: "twitter:title", content: { title } },
-          { name: "twitter:description", content: { description } },
+          { name: "twitter:title", content: title },
+          { name: "twitter:description", content: description },
         ],
       }}
     />
