@@ -8,6 +8,7 @@ export default defineConfig({
     host: true
   },
   site: 'djpablitodyr',
+  base: '/',
   integrations: [react(), tailwind()],
   trailingSlash: "always",
 
