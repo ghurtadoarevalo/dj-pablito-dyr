@@ -2,47 +2,47 @@
 import portrait from "@assets/portrait.webp";
 import { Image } from "astro:assets";
 import SocialMedia from "./SocialMedia.tsx";
-
-
 ---
-
-
 
 <section id="bio" aria-label="Sección de Biografía de dj pablito dyr">
   <h1 class="text-center font-customFont text-3xl bg-zinc-800 py-10">BIO</h1>
-  <div
-    class="flex flex-col lg:flex-row  py-10 place-content-center xl:px-[10%]"
-  >
+  <div class="flex flex-col lg:flex-row py-10 place-content-center xl:px-[10%]">
     <Image
       class="object-contain w-[60%] md:w-[40%] lg:w-[35%] rounded-2xl place-self-center"
       src={portrait}
       alt="Dj plablito dyr portrait"
     />
-    <div class="w-full lg:w-1/2 px-20 sm:py-5 text-white/80">
-      <header class="font-bold text-center">Dj Pablito Dyr</header>
+    <div class="w-full lg:w-1/2 px-10 text-center lg:text-left lg:px-20 sm:py-5 text-white/80 text-pretty">
+      <header class="font-bold text-center text-xl">DJ Pablito Dyr</header>
       <p class="mt-5 font-thin">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-        tristique consectetur arcu in tincidunt. Pellentesque habitant morbi
-        tristique senectus et netus et malesuada fames ac turpis egestas.
-        Aliquam ut purus egestas, sollicitudin nisl a, hendrerit lorem.
-        Phasellus at finibus justo, vitae tristique dolor. In eget efficitur
-        metus. Sed ipsum diam, ultricies sit amet nibh sit amet, suscipit
-        elementum quam. Curabitur dictum sapien in sodales sagittis.
+        Siempre he sido un amante de la música de todos los estilos, y desde que
+        tuve acceso a una computadora, comencé a mezclar con programas como
+        VirtualDJ o FruityLoops. Así, <span class="text-yellow-500 font-normal">
+          lo que comenzó como un hobby rápidamente se transformó en una de mis
+          mayores pasiones.</span
+        >
       </p>
-
       <p class="mt-5 font-thin">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-        tristique consectetur arcu in tincidunt. Pellentesque habitant morbi
-        tristique senectus et netus et malesuada fames ac turpis egestas.
-        Aliquam ut purus egestas, sollicitudin nisl a, hendrerit lorem.
-        Phasellus at finibus justo, vitae tristique dolor. In eget efficitur
-        metus. Sed ipsum diam, ultricies sit amet nibh sit amet, suscipit
-        elementum quam. Curabitur dictum sapien in sodales sagittis.
+        Esta aventura <span class="text-yellow-500 font-normal"
+          >se inició hace más de 3 años</span
+        > en uno de los locales más prestigiosos de la comuna de Maipú. Desde ese
+        momento, comenzó una carrera por distintos recintos donde me presenté exitosamente
+        hasta crear <span class="text-yellow-500 font-normal">
+          DJ Pablito Dyr Producciones</span
+        >. Una pequeña, pero exitosa productora que presta servicios tales como
+        Barwoman, Garzones, Coctelería, Cámara 360°, trabajando en alianza con
+        distintas marcas.
+      </p>
+      <p class="mt-5 font-thin">
+        Hemos realizado distintos tipos de eventos a lo largo del tiempo, tales
+        como matrimonios, bautizos, cumpleaños, graduaciones, entre otros.
+        Logrando llevar a cabo con éxito las múltiples celebraciones en las que
+        hemos participado, con excelentes referencias por parte de nuestros
+        clientes.
       </p>
 
       <p class="my-5 text-center">¡Sígueme en mis redes sociales!</p>
-      <SocialMedia namesRequired={true}/>
-
+      <SocialMedia namesRequired={true} />
     </div>
   </div>
 </section>
