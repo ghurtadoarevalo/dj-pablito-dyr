@@ -95,7 +95,7 @@ const Contact = () => {
               tu fiesta quedará en las mejores manos con:
             </p>
             <p className="text-center font-customFont font-bold text-yellow-500 italic text-2xl mt-1">
-              DJ PLABLITO DYR
+              DJ PABLITO DYR
             </p>
           </div>
           <SocialMedia namesRequired={true} />

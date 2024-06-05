@@ -17,15 +17,15 @@ type ServiceProps = {
 const Service = ({ service }: ServiceProps) => {
 
   return service.featured ? (
-    <div className="relative w-full shadow-inner shadow-white/40 bg-yellow-700/80 p-8  rounded-3xl text-white/80">
+    <div className="relative w-full shadow-inner shadow-white/40 bg-yellow-700/80 px-3 p-8  rounded-3xl text-white/80">
       <header className="place-content-center items-center font-mono text-lg flex flex-row gap-4">
         <SiDiscogs className="text-2xl" /> {service.title.toUpperCase()}
       </header>
       <h2 className="text-center text-4xl font-bold font-customFont">
         *{service.price}
       </h2>
-      <p className="mt-5 text-center">{service.description}</p>
-      <ul className="list-disc ml-8 mt-5 px-4 mb-16">
+      <p className="mt-5 text-center w-5/6 md:w-full mx-auto">{service.description}</p>
+      <ul className="list-disc mt-5 mb-16 mx-auto w-[70%] lg:w-full lg:px-8 text-balance">
         {service.features.map((feature: string) => (
           <li>{feature}</li>
         ))}
@@ -40,14 +40,14 @@ const Service = ({ service }: ServiceProps) => {
           className="absolute bottom-5 md:bottom-8 right-0 left-0 mx-auto hover:bg-white/30 bg-white/5 text-white/90 outline outline-2 outline-green-500/50 rounded-xl w-2/3 p-3 font-mono"
         >
           <div className="flex md:flex-row place-content-center place-items-center gap-2">
-            <FaWhatsapp className="text-3xl text-green-500/90" />{" "}
+            <FaWhatsapp className="text-3xl text-green-500/90" />
             <span className="font">Contáctame</span>
           </div>
         </button>
       </a>
     </div>
   ) : (
-    <div className="relative w-full lg:w-5/6 py-10 px-8  bg-zinc-800 rounded-3xl text-white/80">
+    <div className="relative w-full lg:w-5/6 py-10 px-4  bg-zinc-800 rounded-3xl text-white/80">
       <header className="place-content-center items-center font-mono text-lg flex flex-row gap-4">
         <SiDiscogs className="text-2xl" /> {service.title.toUpperCase()}
       </header>
@@ -56,7 +56,7 @@ const Service = ({ service }: ServiceProps) => {
       </h2>
       <hr className="mt-6 w-2/3 mx-auto" />
       <p className="mt-3 text-center">{service.description}</p>
-      <ul className="list-disc ml-8 mt-5 mb-16">
+      <ul className="list-disc mt-5 mb-16 mx-auto w-[70%] lg:w-full lg:px-4 text-balance">
         {service.features.map((feature: string) => (
           <li style={{ listStyleType: "circle" }}>{feature}</li>
         ))}
@@ -68,7 +68,7 @@ const Service = ({ service }: ServiceProps) => {
         target="_blank"
         className="flex flex-col place-content-center place-items-center"
       >
-        <button className="absolute bottom-5 right-0 left-0 mx-auto hover:bg-white/30 bg-green-500/5 rounded-lg w-1/2 p-3 outline outline-1 outline-green-500/20 font-mono">
+        <button className="absolute bottom-5 right-0 left-0 mx-auto hover:bg-white/30 bg-green-500/5 rounded-lg w-2/3 p-3 outline outline-1 outline-green-500/20 font-mono">
           <div className="flex md:flex-row place-content-center place-items-center gap-2">
             <FaWhatsapp className="text-2xl text-green-500/90" />
             <span>Contáctame</span>

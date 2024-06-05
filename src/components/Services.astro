@@ -12,9 +12,25 @@ interface ServiceInterface {
 
 const services: ServiceInterface[] = [
   {
+    title: "Economic",
+    price: "$130.000",
+    description:
+      "Nuestro plan más accesible, pero sin perder la calidad.",
+    features: [
+      "4 horas de la mejor música",
+      "Atriles x2",
+      "Iluminación Spider LED RGB x2",
+      "Amplificación",
+    ],
+    featured: false,
+    wspMessage:
+      "Hola, estoy interesado en contratar el plan Economic, ¿Me podrías dar más información? ",
+  },
+  {
     title: "Basic",
     price: "$160.000",
-    description: "Ideal para eventos pequeños y reuniones íntimas con amigos o familiares.",
+    description:
+      "Ideal para eventos pequeños y reuniones íntimas con amigos o familiares.",
     features: [
       "5 horas de la mejor música",
       "Arco de Iluminación",
@@ -38,7 +54,7 @@ const services: ServiceInterface[] = [
       "Cabeza móvil Led Beam 360°",
       "Amplificación",
       "Animación",
-      "2 Micrófonos Inalámbricos"
+      "2 Micrófonos Inalámbricos",
     ],
     featured: false,
     wspMessage:
@@ -47,7 +63,8 @@ const services: ServiceInterface[] = [
   {
     title: "Gold",
     price: "$250.000",
-    description: "Un pack hecho a la medida para aquellos que quieren la mezcla de música y videos en un mismo lugar.",
+    description:
+      "Un pack hecho a la medida para aquellos que quieren la mezcla de música y videos en un mismo lugar.",
     features: [
       "7 horas de la mejor música",
       "Arco de Iluminación",
@@ -57,7 +74,7 @@ const services: ServiceInterface[] = [
       "Animación",
       "2 Micrófonos Inalámbricos",
       "Pantalla 42",
-      "Vídeos musicales"
+      "Vídeos musicales",
     ],
     featured: true,
     wspMessage:
@@ -68,7 +85,7 @@ const services: ServiceInterface[] = [
     price: "300.000",
     description:
       "La mejor opción para eventos de gran escala y alta exigencia.",
-      features: [
+    features: [
       "8 horas de la mejor música",
       "Arco de Iluminación",
       "Iluminación LED RGB",
@@ -78,11 +95,11 @@ const services: ServiceInterface[] = [
       "2 Micrófonos Inalámbricos",
       "Pantalla 42",
       "Vídeos musicales",
-      "Karaoke"
+      "Karaoke",
     ],
     featured: false,
     wspMessage:
-    "Hola, estoy interesado en contratar el plan Deluxe, ¿Me podrías dar más información? ",
+      "Hola, estoy interesado en contratar el plan Deluxe, ¿Me podrías dar más información? ",
   },
 ];
 ---
@@ -92,7 +109,7 @@ const services: ServiceInterface[] = [
     SERVICIOS
   </h1>
   <div
-    class="flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-row gap-6 place-content-between mx-10 mt-5"
+    class="flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-row gap-3 place-content-between mx-3 mt-5"
   >
     {
       services.map((service: ServiceInterface) => (
@@ -105,8 +122,8 @@ const services: ServiceInterface[] = [
   >
     <p>
       Costo de tralado de equipos
-      <span class="font-bold text-yellow-500">gratis dentro de Maipú.</span> Otras comunas de la
-      RM $10.000. Zonas rurales dentro de la RM $20.000. *
+      <span class="font-bold text-yellow-500">gratis dentro de Maipú.</span> Otras
+      comunas de la RM $10.000. Zonas rurales dentro de la RM $20.000. *
     </p>
   </div>
   <p class="text-center text-sm my-4 text-white/80">
