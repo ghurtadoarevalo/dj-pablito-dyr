@@ -17,7 +17,7 @@ type ServiceProps = {
 const Service = ({ service }: ServiceProps) => {
 
   return service.featured ? (
-    <div className="relative w-full shadow-inner shadow-white/40 bg-yellow-700/80 px-3 p-8  rounded-3xl text-white/80">
+    <div className="relative w-full shadow-inner shadow-white/40 bg-yellow-500/65 px-3 p-8  rounded-3xl text-white/80">
       <header className="place-content-center items-center font-mono text-lg flex flex-row gap-4">
         <SiDiscogs className="text-2xl" /> {service.title.toUpperCase()}
       </header>
