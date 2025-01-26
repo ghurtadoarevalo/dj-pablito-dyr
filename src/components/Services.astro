@@ -12,95 +12,86 @@ interface ServiceInterface {
 
 const services: ServiceInterface[] = [
   {
-    title: "Economic",
-    price: "$130.000",
-    description:
-      "Nuestro plan más accesible, pero sin perder la calidad.",
+    title: "Económico",
+    price: "$100.000",
+    description: "Nuestro plan más accesible, pero sin perder la calidad.",
     features: [
       "4 horas de la mejor música",
-      "Atriles x2",
-      "Iluminación Spider LED RGB x2",
-      "Iluminación LED RGB x2",
-      "Amplificación",
+      "Amplificación con 2 parlantes JBL",
+      "$20.000 por hora extra",
     ],
     featured: false,
     wspMessage:
-      "Hola, estoy interesado en contratar el plan Economic, ¿Me podrías dar más información? ",
+      "Hola, estoy interesado en contratar el plan Económico, ¿Me podrías dar más información? ",
   },
   {
-    title: "Basic",
-    price: "$160.000",
+    title: "Básico",
+    price: "$150.000",
     description:
       "Ideal para eventos pequeños y reuniones íntimas con amigos o familiares.",
     features: [
       "5 horas de la mejor música",
-      "Arco de Iluminación",
-      "Iluminación LED RGB",
-      "Cabeza móvil Led Beam 360°",
-      "Amplificación",
+      "2 atriles",
+      "Iluminación RGB: 3 luces fijas y 2 móviles",
+      "Amplificación con 2 parlantes JBL",
+      "$25.000 por hora extras",
     ],
     featured: false,
     wspMessage:
-      "Hola, estoy interesado en contratar el plan Basic, ¿Me podrías dar más información? ",
+      "Hola, estoy interesado en contratar el plan Básico, ¿Me podrías dar más información? ",
   },
   {
-    title: "Premium",
+    title: "Medio",
     price: "$200.000",
     description:
       "Perfecto para celebraciones medianas como cumpleaños y fiestas.",
     features: [
-      "6 horas de la mejor música",
-      "Arco de Iluminación",
-      "Iluminación LED RGB",
-      "Cabeza móvil Led Beam 360°",
-      "Amplificación",
-      "Animación",
-      "2 Micrófonos Inalámbricos",
+      "5 horas de la mejor música",
+      "2 atriles",
+      "Iluminación RGB: 5 luces fijas y 2 móviles",
+      "Amplificación con 2 parlantes JBL",
+      "Animación del evento",
+      "$25.000 por hora extra",
     ],
     featured: true,
     wspMessage:
-      "Hola, estoy interesado en contratar el plan Premium, ¿Me podrías dar más información? ",
+      "Hola, estoy interesado en contratar el plan Medio, ¿Me podrías dar más información? ",
   },
   {
     title: "Gold",
-    price: "$250.000",
+    price: "$280.000",
     description:
       "Un pack hecho a la medida para aquellos que quieren la mezcla de música y videos en un mismo lugar.",
     features: [
-      "7 horas de la mejor música",
-      "Arco de Iluminación",
-      "Iluminación LED RGB",
-      "Cabeza móvil Led Beam 360°",
-      "Amplificación",
-      "Animación",
-      "2 Micrófonos Inalámbricos",
-      "Pantalla 42",
-      "Vídeos musicales",
+      "6 horas de la mejor música",
+      "Arco de Iluminación Medio",
+      "Iluminación RGB: 6 luces fijas y 2 móviles",
+      "Amplificación con 2 parlantes JBL",
+      "Animación y co-animación del evento",
+      "$30.000 por hora extra",
     ],
     featured: false,
     wspMessage:
       "Hola, estoy interesado en contratar el plan Gold, ¿Me podrías dar más información? ",
   },
   {
-    title: "Deluxe",
-    price: "300.000",
-    description:
-      "La mejor opción para eventos de gran escala y alta exigencia.",
+    title: "Premium",
+    price: "350.000",
+    description: "La mejor opción para matrimonios y grandes eventos.</b> ",
     features: [
-      "8 horas de la mejor música",
-      "Arco de Iluminación",
-      "Iluminación LED RGB",
-      "Cabeza móvil Led Beam 360°",
-      "Amplificación",
-      "Animación",
+      "7 horas de la mejor música",
+      "Arco de Iluminación Full",
+      "Iluminación RGB: 10 luces fijas y 2 móviles",
+      "Amplificación con 2 parlantes JBL",
+      "Animación y co-animación del evento",
+      "Pantalla de 43 pulgadas",
+      "Videos musicales",
       "2 Micrófonos Inalámbricos",
-      "Pantalla 42",
-      "Vídeos musicales",
       "Karaoke",
     ],
     featured: false,
     wspMessage:
-      "Hola, estoy interesado en contratar el plan Deluxe, ¿Me podrías dar más información? ",
+      "Hola, estoy interesado en contratar el plan Premium, ¿Me podrías dar más información? ",
   },
 ];
 ---
@@ -118,15 +109,55 @@ const services: ServiceInterface[] = [
       ))
     }
   </div>
-  <div
-    class="text-white/90 flex flex-col mx-auto mt-5 w-3/4 md:w-1/2 text-center rounded-2xl p-8 outline outline-2 outline-yellow-500/80"
-  >
-    <p>
-      Costo de traslado de equipos
-      <span class="font-bold text-yellow-500">gratis dentro de Santiago.</span> Zonas rurales dentro de la RM $20.000. *
-    </p>
+  
+  <div class="flex flex-col md:flex-row gap-5 px-5 pt-10">
+
+    <div
+      class="bg-white/5 text-white/90 flex flex-col mx-auto mt-5 w-4/5 md:w-1/2 h-1/2 p-4  rounded-2xl outline outline-1 outline-yellow-500/80 place-content-center"
+    >
+      <div class="px-10 text-pretty">
+        <ul class="list-disc list-inside">
+          <li class="my-2">
+            <span class="font-bold text-yellow-500"> Videos y Karaoke: </span>
+            Ambos por <span class="font-semibold"> $30.000</span> extra en Pack básico,
+            medio y Gold. Incluye pantalla de 43" y 2 micrófonos inalámbricos.
+          </li>
+          <li class="my-2">
+            <span class="font-bold text-yellow-500"> Máquina de humo: </span>
+            Se puede incluir por <span class="font-semibold"> $20.000</span> extra
+            en Pack básico, medio y Gold.
+          </li>
+          <li class="my-2">
+            <span class="font-bold text-yellow-500"> Animación: </span>
+            Se puede incluir por <span class="font-semibold"> $30.000</span> extra
+            en Pack básico, medio y Gold.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mx-auto w-4/5 md:w-1/4 mt-5">
+      <div
+        class="text-white/90 flex flex-col text-center rounded-2xl p-8 outline outline-1 outline-yellow-500/80 "
+      >
+        <p>
+          Costo de traslado de equipos
+          <span class="font-bold text-yellow-500"
+            >gratis dentro de Santiago.</span
+          > Zonas rurales dentro de la RM $20.000.
+        </p>
+        <p class="mt-2">
+          El servicio se paga <span class="font-bold text-yellow-500">
+            una vez instalados
+          </span>
+          los equipos en el evento.
+        </p>
+      </div>
+      <p class="text-start text-sm my-4 text-white/80">
+        * Los precios de los planes podrían variar en el tiempo
+      </p>
+    </div>
+
+
   </div>
-  <p class="text-center text-sm my-4 text-white/80">
-    * Los precios de los planes podrían variar en el tiempo
-  </p>
 </section>
