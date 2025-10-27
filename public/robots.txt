@@ -1,0 +1,10 @@
+# robots.txt para DJ Pablito Dyr
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://djpablitodyr.cl/sitemap-index.xml
+
+# Crawl-delay para respetar recursos del servidor
+Crawl-delay: 1
+

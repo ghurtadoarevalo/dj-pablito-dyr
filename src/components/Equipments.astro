@@ -8,7 +8,7 @@ const equipements = [
       "Controlador DJ de 2 canales para rekordbox. Todo el poder de la mezcla en un solo lugar.",
     imgName: "ddj400",
     quantity: 1,
-    label: "imagen Pionner ddj400"
+    label: "Controlador Pioneer DDJ-400 - Equipo profesional de DJ usado por DJ Pablito Dyr"
   },
   {
     name: "SPOT 30W",
@@ -16,14 +16,14 @@ const equipements = [
       "Cabezal movil led de 30 watts. Ideal para iluminar la pista con un toque profesional.",
     imgName: "beam30",
     quantity: 2,
-    label: "imagen SPOT 30W"
+    label: "Cabezal móvil LED SPOT 30W - Iluminación profesional para eventos y fiestas"
   },
   {
     name: "Luz led RGB",
     description: "Luz de escenario DJ. Led RGB de 18 luces Control DMX.",
     imgName: "ledLight",
     quantity: 10,
-    label: "imagen Luz led RGB"
+    label: "Luz LED RGB de escenario - Iluminación profesional con control DMX para eventos"
   },
   {
     name: "jbl jrx 115",
@@ -31,7 +31,7 @@ const equipements = [
       "Sistema de altavoces de refuerzo de sonido bidireccional. Más de 1000W de potencia con el mejor sonido.",
     imgName: "jbl115",
     quantity: 2,
-    label: "imagen jbl jrx 115"
+    label: "Parlantes JBL JRX 115 - Sistema de sonido profesional de 1000W para eventos"
   },
   {
     name: "tv samsung 42'",
@@ -39,7 +39,7 @@ const equipements = [
       "Televisor HD de 42'. Ideal para karaokes y videos acompañados con la mejor música.",
     imgName: "tvsamsung",
     quantity: 1,
-    label: "imagen tv samsung 42 pulgadas"
+    label: "Televisor Samsung 42 pulgadas - Pantalla HD para karaoke y videos en eventos"
 
   },
   {
@@ -48,7 +48,7 @@ const equipements = [
       "Máquina de humo de 1200 a 1500 Watts. Lleva tu fiesta a otro nivel.",
     imgName: "fogmachine",
     quantity: 1,
-    label: "imagen máquina de humo"
+    label: "Máquina de humo profesional 1500W - Efectos especiales para fiestas y eventos"
 
   },
   {
@@ -57,7 +57,7 @@ const equipements = [
       "Micrófono inhalambrico de alta calidad, para que no hayan excusas para cantar y/o animar tus fiestas.",
     imgName: "mics",
     quantity: 2,
-    label: "imagen Micrófono inhalambrico"
+    label: "Micrófonos inalámbricos profesionales - Equipo de audio para karaoke y animación"
 
   }, 
   {
@@ -66,7 +66,7 @@ const equipements = [
       "Cabezas móviles RGB para iluminar todo al ritmo de la música",
     imgName: "ledspider",
     quantity: 2,
-    label: "imagen Spider Beam RGB"
+    label: "Spider Beam RGB - Cabezales móviles de iluminación LED para eventos y fiestas"
 
   },
   {
@@ -75,16 +75,23 @@ const equipements = [
       "Atril de iluminación doble. Ajustable de 1.8m a 3.45m de altura y 3.6m de ancho. Para todos aquellos que quieran una pista o escenario con un toque profesional.",
     imgName: "arcoatril",
     quantity: 2,
-    label: "imagen Atril Iluminación Carverpro"
-
+    label: "Atril de iluminación Carverpro - Sistema profesional de montaje de luces para eventos"
   },
+  {
+    name: "Pizarra Led Luminosa",
+    description:
+      "Pizarra Led luminosa donde se puede escribir con el nombre de los festejados o el mensaje que tú quieras.",
+    imgName: "lightBoard",
+    quantity: 2,
+    label: "Pizarra Led luminosa - Pizarra profesional para eventos y fiestas"
+  }
 ];
 ---
 
-<section aria-label="sección de Equipamiento con el que se cuenta por parte de dj pablito dyr" id="equipment">
-  <h1 class="text-center font-customFont text-3xl bg-zinc-800 py-10">
+<section id="equipment" aria-labelledby="equipment-title">
+  <h2 id="equipment-title" class="text-center font-customFont text-3xl bg-zinc-800 py-10">
     Equipamiento
-  </h1>
+  </h2>
   <div
     class="flex flex-col md:grid md:grid-cols-2 xl:grid xl:grid-cols-3 place-content-center gap-5 my-10 md:px-5"
   >

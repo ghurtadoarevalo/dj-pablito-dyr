@@ -4,13 +4,13 @@ import { Image } from "astro:assets";
 import SocialMedia from "./SocialMedia.tsx";
 ---
 
-<section id="bio" aria-label="Sección de Biografía de dj pablito dyr">
-  <h1 class="text-center font-customFont text-3xl bg-zinc-800 py-10">BIO</h1>
-  <div class="flex flex-col lg:flex-row py-10 place-content-center xl:px-[10%]">
+<section id="bio" aria-labelledby="bio-title">
+  <h2 id="bio-title" class="text-center font-customFont text-3xl bg-zinc-800 py-10">BIO</h2>
+  <div class="flex flex-col lg:flex-row py-10 place-content-center xl:px-[10%] text-xl">
     <Image
       class="object-contain w-[60%] md:w-[40%] lg:w-[35%] rounded-2xl place-self-center"
       src={portrait}
-      alt="Dj plablito dyr portrait"
+      alt="DJ Pablito Dyr - Retrato profesional del DJ en Santiago de Chile"
     />
     <div class="w-full lg:w-1/2 px-10 text-center lg:text-left lg:px-20 sm:py-5 text-white/80 text-pretty">
       <header class="font-bold text-center text-xl">DJ Pablito Dyr</header>

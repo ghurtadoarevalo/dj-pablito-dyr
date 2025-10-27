@@ -12,94 +12,106 @@ interface ServiceInterface {
 
 const services: ServiceInterface[] = [
   {
-    title: "Económico",
-    price: "$100.000",
+    title: "Básico",
+    price: "$130.000",
     description: "Nuestro plan más accesible, pero sin perder la calidad.",
     features: [
-      "4 horas de la mejor música",
+      "4 horas de música a elección",
       "Amplificación con 2 parlantes JBL",
+      "2 luces láser",
+      "1 luz beam 360°",
+      "2 Luces 18 LED RGB",
       "$20.000 por hora extra",
     ],
     featured: false,
     wspMessage:
-      "Hola, estoy interesado en contratar el plan Económico, ¿Me podrías dar más información? ",
-  },
-  {
-    title: "Básico",
-    price: "$150.000",
-    description:
-      "Ideal para eventos pequeños y reuniones íntimas con amigos o familiares.",
-    features: [
-      "5 horas de la mejor música",
-      "2 atriles",
-      "Iluminación RGB: 3 luces fijas y 2 móviles",
-      "Amplificación con 2 parlantes JBL",
-      "$25.000 por hora extras",
-    ],
-    featured: false,
-    wspMessage:
-      "Hola, estoy interesado en contratar el plan Básico, ¿Me podrías dar más información? ",
+      "Hola, estoy interesado en contratar el Pack Básico, ¿Me podrías dar más información? ",
   },
   {
     title: "Medio",
+    price: "$180.000",
+    description:
+      "Ideal para eventos pequeños y reuniones íntimas con amigos o familiares.",
+    features: [
+      "4 horas de música a elección + 1 horas extra incluida",
+      "Todo el equipamiento del Pack Básico +",
+      "2 luces LED RGB Spider Beam",
+      "2 Atriles para luces",
+      "Máquina de humo",
+      "2 Pizarras Led Luminosas con nombre de los festejados",
+      "$20.000 por hora extra",
+    ],
+    featured: false,
+    wspMessage:
+      "Hola, estoy interesado en contratar el Pack Medio, ¿Me podrías dar más información? ",
+  },
+  {
+    title: "Avanzado",
     price: "$200.000",
     description:
       "Perfecto para celebraciones medianas como cumpleaños y fiestas.",
     features: [
-      "5 horas de la mejor música",
-      "2 atriles",
-      "Iluminación RGB: 5 luces fijas y 2 móviles",
-      "Amplificación con 2 parlantes JBL",
-      "Animación del evento",
+      "4 horas de música a elección + 1 horas extra incluida",
+      "Todo el equipamiento del Pack Medio +",
+      "Animación profesional",
       "$25.000 por hora extra",
     ],
-    featured: true,
+    featured: false,
     wspMessage:
-      "Hola, estoy interesado en contratar el plan Medio, ¿Me podrías dar más información? ",
+      "Hola, estoy interesado en contratar el Pack Avanzado, ¿Me podrías dar más información? ",
   },
   {
     title: "Gold",
-    price: "$280.000",
+    price: "$250.000",
     description:
       "Un pack hecho a la medida para aquellos que quieren la mezcla de música y videos en un mismo lugar.",
     features: [
-      "6 horas de la mejor música",
-      "Arco de Iluminación Medio",
-      "Iluminación RGB: 6 luces fijas y 2 móviles",
-      "Amplificación con 2 parlantes JBL",
-      "Animación y co-animación del evento",
+      "6 horas de música a elección",
+      "Todo el equipamiento del Pack Avanzado +",
+      "2 Luces 18 LED RGB adicionales",
+      "Arco pequeño para luces",
+      "Animación profesional",
+      "Pantalla de 42\"",
+      "Videos musicales",
+      "Karaoke en vivo",
+      "$30.000 por hora extra",
+    ],
+    featured: true,
+    wspMessage:
+      "Hola, estoy interesado en contratar el Pack Gold, ¿Me podrías dar más información? ",
+  },
+  {
+    title: "Premium",
+    price: "$400.000",
+    description:
+      "Pensado en matrimonios o eventos grandes o de larga duración.",
+    features: [
+      "7 horas de música a elección",
+      "Todo el equipamiento del Pack Gold +",
+      "1 luz láser adicional",
+      "10 luces 18 LED RGB en total",
+      "1 Luz LED RGB Spider adicional",
+      "Arco de luces Full",
+      "Animación profesional",
+      "Pantalla de 42\"",
+      "Videos musicales",
+      "Karaoke en vivo",
       "$30.000 por hora extra",
     ],
     featured: false,
     wspMessage:
-      "Hola, estoy interesado en contratar el plan Gold, ¿Me podrías dar más información? ",
-  },
-  {
-    title: "Premium",
-    price: "350.000",
-    description: "La mejor opción para matrimonios y grandes eventos.",
-    features: [
-      "7 horas de la mejor música",
-      "Arco de Iluminación Full",
-      "Iluminación RGB: 10 luces fijas y 2 móviles",
-      "Amplificación con 2 parlantes JBL",
-      "Animación y co-animación del evento",
-      "Pantalla de 43 pulgadas",
-      "Videos musicales",
-      "2 Micrófonos Inalámbricos",
-      "Karaoke",
-    ],
-    featured: false,
-    wspMessage:
-      "Hola, estoy interesado en contratar el plan Premium, ¿Me podrías dar más información? ",
+      "Hola, estoy interesado en contratar el Pack Premium, ¿Me podrías dar más información? ",
   },
 ];
 ---
 
-<section id="services">
-  <h1 class="text-center font-customFont text-3xl bg-zinc-800 py-10">
+<section id="services" aria-labelledby="services-title">
+  <h2
+    id="services-title"
+    class="text-center font-customFont text-3xl bg-zinc-800 py-10"
+  >
     SERVICIOS
-  </h1>
+  </h2>
   <div
     class="flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-row gap-3 place-content-between mx-3 mt-5"
   >
@@ -109,28 +121,24 @@ const services: ServiceInterface[] = [
       ))
     }
   </div>
-  
-  <div class="flex flex-col md:flex-row gap-5 px-5 pt-10">
 
+  <div class="flex flex-col md:flex-row gap-5 px-5 pt-10">
     <div
-      class="bg-white/5 text-white/90 flex flex-col mx-auto mt-5 w-4/5 md:w-1/2 h-1/2 p-4  rounded-2xl outline outline-1 outline-yellow-500/80 place-content-center"
+      class="bg-white/5 text-white/90 flex flex-col mx-auto mt-5 w-4/5 md:w-1/2 h-1/2 p-4 rounded-2xl outline outline-1 outline-yellow-500/80 place-content-center"
     >
       <div class="px-10 text-pretty">
         <ul class="list-disc list-inside">
           <li class="my-2">
             <span class="font-bold text-yellow-500"> Videos y Karaoke: </span>
-            Ambos por <span class="font-semibold"> $30.000</span> extra en Pack básico,
-            medio y Gold. Incluye pantalla de 43" y 2 micrófonos inalámbricos.
+            Ambos por <span class="font-semibold"> $30.000</span> extra en Pack Básico
+            y Medio. Incluye pantalla de 43" y 2 micrófonos inalámbricos.
           </li>
           <li class="my-2">
-            <span class="font-bold text-yellow-500"> Máquina de humo: </span>
-            Se puede incluir por <span class="font-semibold"> $20.000</span> extra
-            en Pack básico, medio y Gold.
-          </li>
-          <li class="my-2">
-            <span class="font-bold text-yellow-500"> Animación: </span>
-            Se puede incluir por <span class="font-semibold"> $30.000</span> extra
-            en Pack básico, medio y Gold.
+            <span class="font-bold text-yellow-500">
+              Gratis en todos los packs:
+            </span>
+            Pizarra Led luminosa con los nombres de los festejados, según sea la
+            ocasión.
           </li>
         </ul>
       </div>
@@ -138,13 +146,13 @@ const services: ServiceInterface[] = [
 
     <div class="mx-auto w-4/5 md:w-1/4 mt-5">
       <div
-        class="text-white/90 flex flex-col text-center rounded-2xl p-8 outline outline-1 outline-yellow-500/80 "
+        class="text-white/90 flex flex-col text-center rounded-2xl p-8 outline outline-1 outline-yellow-500/80"
       >
         <p>
           Costo de traslado de equipos
           <span class="font-bold text-yellow-500"
-            >gratis dentro de Santiago.</span
-          > Zonas rurales dentro de la RM $20.000.
+            >GRATIS dentro de Santiago.</span
+          > Zonas rurales dentro de Santiago $20.000.
         </p>
         <p class="mt-2">
           El servicio se paga <span class="font-bold text-yellow-500">
@@ -157,7 +165,5 @@ const services: ServiceInterface[] = [
         * Los precios de los planes podrían variar en el tiempo
       </p>
     </div>
-
-
   </div>
 </section>

@@ -24,8 +24,8 @@ const Service = ({ service }: ServiceProps) => {
       <h2 className="text-center text-4xl font-bold font-customFont">
         *{service.price}
       </h2>
-      <p className="mt-5 text-center w-5/6 md:w-full mx-auto">{service.description}</p>
-      <ul className="list-disc mt-5 mb-16 mx-auto w-[70%] lg:w-full lg:px-8 text-balance">
+      <p className="mt-5 text-center w-5/6 md:w-full mx-auto text-lg">{service.description}</p>
+      <ul className="list-disc mt-5 mb-16 mx-auto w-[70%] lg:w-full lg:px-8 text-balance text-lg">
         {service.features.map((feature: string) => (
           <li>{feature}</li>
         ))}
@@ -41,7 +41,7 @@ const Service = ({ service }: ServiceProps) => {
         >
           <div className="flex md:flex-row place-content-center place-items-center gap-2">
             <FaWhatsapp className="text-3xl text-green-500/90" />
-            <span className="font">Contáctame</span>
+            <span className="text-xl">Contáctame</span>
           </div>
         </button>
       </a>
@@ -55,8 +55,8 @@ const Service = ({ service }: ServiceProps) => {
         *{service.price}
       </h2>
       <hr className="mt-6 w-2/3 mx-auto" />
-      <p className="mt-3 text-center">{service.description}</p>
-      <ul className="list-disc mt-5 mb-16 mx-auto w-[70%] lg:w-full lg:px-4 text-balance">
+      <p className="mt-3 text-center text-lg">{service.description}</p>
+      <ul className="list-disc mt-5 mb-16 mx-auto w-[70%] lg:w-full lg:px-4 text-balance text-lg">
         {service.features.map((feature: string) => (
           <li style={{ listStyleType: "circle" }}>{feature}</li>
         ))}
@@ -68,10 +68,10 @@ const Service = ({ service }: ServiceProps) => {
         target="_blank"
         className="flex flex-col place-content-center place-items-center"
       >
-        <button className="absolute bottom-5 right-0 left-0 mx-auto hover:bg-white/30 bg-green-500/5 rounded-lg w-2/3 p-3 outline outline-1 outline-green-500/20 font-mono">
+        <button className="absolute bottom-5 right-0 left-0 mx-auto hover:bg-white/30 bg-green-500/5 rounded-lg w-2/3 p-3 outline outline-1 outline-green-500/80 font-mono">
           <div className="flex md:flex-row place-content-center place-items-center gap-2">
-            <FaWhatsapp className="text-2xl text-green-500/90" />
-            <span>Contáctame</span>
+            <FaWhatsapp className="text-3xl text-green-500/100" />
+            <span className="text-lg">Contáctame</span>
           </div>
         </button>
       </a>
