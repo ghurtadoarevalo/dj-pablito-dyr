@@ -17,14 +17,15 @@ type ServiceProps = {
 const Service = ({ service }: ServiceProps) => {
 
   return service.featured ? (
-    <div className="relative w-full shadow-inner shadow-white/40 bg-yellow-500/65 px-3 p-8  rounded-3xl text-white/80">
+    <article className="relative w-full shadow-inner shadow-white/40 bg-yellow-500/65 px-3 p-8  rounded-3xl text-white/80" itemScope itemType="http://schema.org/Offer">
       <header className="place-content-center items-center font-mono text-lg flex flex-row gap-4">
-        <SiDiscogs className="text-2xl" /> {service.title.toUpperCase()}
+        <SiDiscogs className="text-2xl" /> <span itemProp="name">{service.title.toUpperCase()}</span>
       </header>
       <h2 className="text-center text-4xl font-bold font-customFont">
-        *{service.price}
+        *<span itemProp="price">{service.price}</span>
+        <meta itemProp="priceCurrency" content="CLP" />
       </h2>
-      <p className="mt-5 text-center w-5/6 md:w-full mx-auto text-lg">{service.description}</p>
+      <p className="mt-5 text-center w-5/6 md:w-full mx-auto text-lg" itemProp="description">{service.description}</p>
       <ul className="list-disc mt-5 mb-16 mx-auto w-[70%] lg:w-full lg:px-8 text-balance text-lg">
         {service.features.map((feature: string) => (
           <li>{feature}</li>
@@ -45,17 +46,18 @@ const Service = ({ service }: ServiceProps) => {
           </div>
         </button>
       </a>
-    </div>
+    </article>
   ) : (
-    <div className="relative w-full lg:w-5/6 py-10 px-4  bg-zinc-800 rounded-3xl text-white/80">
+    <article className="relative w-full lg:w-5/6 py-10 px-4  bg-zinc-800 rounded-3xl text-white/80" itemScope itemType="http://schema.org/Offer">
       <header className="place-content-center items-center font-mono text-lg flex flex-row gap-4">
-        <SiDiscogs className="text-2xl" /> {service.title.toUpperCase()}
+        <SiDiscogs className="text-2xl" /> <span itemProp="name">{service.title.toUpperCase()}</span>
       </header>
       <h2 className="text-center text-2xl font-bold font-customFont">
-        *{service.price}
+        *<span itemProp="price">{service.price}</span>
+        <meta itemProp="priceCurrency" content="CLP" />
       </h2>
       <hr className="mt-6 w-2/3 mx-auto" />
-      <p className="mt-3 text-center text-lg">{service.description}</p>
+      <p className="mt-3 text-center text-lg" itemProp="description">{service.description}</p>
       <ul className="list-disc mt-5 mb-16 mx-auto w-[70%] lg:w-full lg:px-4 text-balance text-lg">
         {service.features.map((feature: string) => (
           <li style={{ listStyleType: "circle" }}>{feature}</li>
@@ -75,7 +77,7 @@ const Service = ({ service }: ServiceProps) => {
           </div>
         </button>
       </a>
-    </div>
+    </article>
   );
 };
 

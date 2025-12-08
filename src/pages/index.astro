@@ -8,11 +8,12 @@ import Videos from "@components/Videos.astro";
 import Footer from "@components/Footer.astro";
 import Contact from "@components/Contact.tsx"
 import Equipments from "@components/Equipments.astro";
+import FAQ from "@components/FAQ.astro";
 ---
 
 <Layout 
   title="DJ Pablito Dyr" 
-  description="Servicios profesionales de DJ en Santiago de Chile. Contamos con DJ, animación, karaoke, iluminación profesional y equipos de sonido para matrimonios, cumpleaños, graduaciones y eventos corporativos. Más de 4 años de experiencia en Maipú y toda la Región Metropolitana."
+  description="Servicios profesionales de DJ en Santiago de Chile. Contamos con DJ, animación, karaoke, iluminación profesional y equipos de sonido para matrimonios, cumpleaños, graduaciones y eventos corporativos. Más de 4 años de experiencia en Maipú y toda la Región Metropolitana. Zona oeste, todo Santiago y eventos 2025."
 >
     <Navbar client:load />
     <main class="pt-16">
@@ -20,6 +21,7 @@ import Equipments from "@components/Equipments.astro";
       <Videos />
       <Services />
       <Equipments />
+      <FAQ />
       <Bio />
     </main>
     <Contact client:load />

@@ -1,0 +1,72 @@
+---
+const faqs = [
+  {
+    question: "¿En qué zonas de Santiago prestan servicio?",
+    answer: "Prestamos servicio en toda la Región Metropolitana de Santiago, especialmente en Maipú y la zona oeste. El traslado es GRATIS dentro de Santiago. Para zonas rurales dentro de Santiago, el costo de traslado es de $20.000."
+  },
+  {
+    question: "¿Cuánto cuesta el servicio de DJ?",
+    answer: "Nuestros servicios van desde $130.000 (Pack Básico) hasta $350.000 (Pack Premium). Cada pack incluye diferentes horas de música, equipos de iluminación y servicios adicionales como animación y karaoke. Contáctanos para cotizar el pack perfecto para tu evento."
+  },
+  {
+    question: "¿Cuál es la diferencia entre los packs?",
+    answer: "Los packs varían en duración (4 a 7 horas), cantidad de equipos de iluminación, inclusión de servicios como animación profesional, karaoke, micrófonos inalámbricos, y pantallas. El Pack Gold Karaoke y Premium incluyen videos musicales y karaoke en vivo con pantalla de 42 pulgadas."
+  },
+  {
+    question: "¿Los packs incluyen animación y karaoke?",
+    answer: "Los packs Medio, Avanzado, Gold Karaoke y Premium incluyen animación profesional. El karaoke y videos musicales están incluidos en los packs Gold Karaoke y Premium. Para los packs Básico y Medio, puedes agregar videos y karaoke por $30.000 extra."
+  },
+  {
+    question: "¿Cómo se realiza el pago del servicio?",
+    answer: "El servicio se paga una vez instalados los equipos en el evento. Aceptamos diferentes formas de pago y te brindamos la flexibilidad que necesitas para tu celebración."
+  },
+  {
+    question: "¿Qué tipo de eventos cubren?",
+    answer: "Realizamos todo tipo de eventos: matrimonios, cumpleaños, graduaciones, bautizos, eventos corporativos, fiestas privadas y más. Contamos con más de 4 años de experiencia en Maipú y toda la Región Metropolitana."
+  },
+  {
+    question: "¿Qué incluye el servicio de iluminación?",
+    answer: "Según el pack, incluimos luces láser, luces beam 360°, luces LED RGB de 18, luces LED RGB Spider Beam, atriles para luces, máquina de humo, arcos para luces, y pizarras LED luminosas personalizadas con los nombres de los festejados."
+  },
+  {
+    question: "¿Cuánto cuesta una hora extra de servicio?",
+    answer: "El costo de hora extra varía según el pack: $20.000 para packs Básico, Medio y Avanzado; $25.000 para el Pack Gold Karaoke; y $30.000 para el Pack Premium."
+  }
+];
+
+// FAQ Schema (JSON-LD)
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<section id="faq" aria-labelledby="faq-title" class="py-10 bg-zinc-900">
+  <h2 id="faq-title" class="text-center font-customFont text-3xl bg-zinc-800 py-10 text-white">
+    PREGUNTAS FRECUENTES
+  </h2>
+  
+  <div class="max-w-4xl mx-auto px-4 md:px-8 mt-10">
+    {faqs.map((faq, index) => (
+      <article class="mb-6 bg-zinc-800/50 rounded-lg p-6 text-white/90 hover:bg-zinc-800/70 transition-colors">
+        <h3 class="text-xl font-semibold text-yellow-500 mb-3">
+          {faq.question}
+        </h3>
+        <p class="text-white/80 leading-relaxed text-pretty">
+          {faq.answer}
+        </p>
+      </article>
+    ))}
+  </div>
+
+  <!-- FAQ Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</section>

@@ -130,6 +130,39 @@ const services: ServiceInterface[] = [
       "Hola, estoy interesado en contratar el Pack Premium, ¿Me podrías dar más información? ",
   },
 ];
+
+// Structured Data for Service Offers
+const offersSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": services.map((service, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "item": {
+      "@type": "Offer",
+      "name": `Pack ${service.title}`,
+      "description": service.description,
+      "price": service.price.replace(/[$.]/g, ''),
+      "priceCurrency": "CLP",
+      "itemOffered": {
+        "@type": "Service",
+        "name": `Servicio de DJ ${service.title}`,
+        "description": service.description,
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "DJ Pablito Dyr Producciones"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Santiago",
+          "addressCountry": "CL"
+        }
+      },
+      "availability": "https://schema.org/InStock",
+      "url": "https://djpablitodyr.cl/#services"
+    }
+  }))
+};
 ---
 
 <section id="services" aria-labelledby="services-title">
@@ -148,6 +181,9 @@ const services: ServiceInterface[] = [
       ))
     }
   </div>
+  
+  <!-- Service Offers Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(offersSchema)} />
 
   <div class="flex flex-col md:flex-row gap-5 px-5 pt-10">
     <div
