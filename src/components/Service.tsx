@@ -16,7 +16,6 @@ type ServiceProps = {
 };
 
 const Service = ({ service }: ServiceProps) => {
-
   return service.featured ? (
     <article
       className="relative w-full bg-yellow-500/15 border border-yellow-500/50 px-5 py-7 rounded-3xl text-white/90 shadow-lg shadow-yellow-500/10"
@@ -57,7 +56,7 @@ const Service = ({ service }: ServiceProps) => {
       </div>
 
       <ul className="list-disc pl-5 mb-20 space-y-1.5 text-balance text-base opacity-95">
-        {service.features.map((feature: string, index: number) => (
+        {service.features.map((feature, index) => (
           <li key={`featured-${index}`}>{feature}</li>
         ))}
       </ul>
@@ -67,14 +66,10 @@ const Service = ({ service }: ServiceProps) => {
         href={`https://wa.me/56971768418?text=${service.wspMessage}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="absolute bottom-6 left-0 right-0 mx-auto w-2/3"
+        className="absolute bottom-6 left-0 right-0 mx-auto w-2/3 flex items-center justify-center gap-2 hover:bg-white/20 bg-white/10 text-white outline outline-2 outline-green-500/60 rounded-xl p-3 font-mono transition-colors"
       >
-        <button className="w-full hover:bg-white/20 bg-white/10 text-white outline outline-2 outline-green-500/60 rounded-xl p-3 font-mono transition-colors">
-          <div className="flex items-center justify-center gap-2">
-            <FaWhatsapp className="text-2xl text-green-500" />
-            <span className="text-lg">Contáctame</span>
-          </div>
-        </button>
+        <FaWhatsapp className="text-2xl text-green-500" />
+        <span className="text-lg">Contáctame</span>
       </a>
     </article>
   ) : (
@@ -109,8 +104,11 @@ const Service = ({ service }: ServiceProps) => {
         ))}
       </div>
 
-      <ul className="list-disc pl-5 mb-20 space-y-1 text-balance text-sm opacity-90" style={{ listStyleType: "circle" }}>
-        {service.features.map((feature: string, index: number) => (
+      <ul
+        className="list-disc pl-5 mb-20 space-y-1 text-balance text-sm opacity-90"
+        style={{ listStyleType: "circle" }}
+      >
+        {service.features.map((feature, index) => (
           <li key={`standard-${index}`}>{feature}</li>
         ))}
       </ul>
@@ -120,14 +118,10 @@ const Service = ({ service }: ServiceProps) => {
         href={`https://wa.me/56971768418?text=${service.wspMessage}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="absolute bottom-6 left-0 right-0 mx-auto w-2/3"
+        className="absolute bottom-6 left-0 right-0 mx-auto w-2/3 flex items-center justify-center gap-2 hover:bg-white/20 bg-green-500/10 text-white outline outline-1 outline-green-500/80 rounded-lg p-3 font-mono transition-colors"
       >
-        <button className="w-full hover:bg-white/20 bg-green-500/10 text-white outline outline-1 outline-green-500/80 rounded-lg p-3 font-mono transition-colors">
-          <div className="flex items-center justify-center gap-2">
-            <FaWhatsapp className="text-2xl text-green-500" />
-            <span className="text-base">Contáctame</span>
-          </div>
-        </button>
+        <FaWhatsapp className="text-2xl text-green-500" />
+        <span className="text-base">Contáctame</span>
       </a>
     </article>
   );
