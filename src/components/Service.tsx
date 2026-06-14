@@ -63,7 +63,7 @@ const Service = ({ service }: ServiceProps) => {
 
       <a
         aria-label="Chat on WhatsApp"
-        href={`https://wa.me/56971768418?text=${service.wspMessage}`}
+        href={`https://wa.me/56971768418?text=${encodeURIComponent(service.wspMessage)}`}
         target="_blank"
         rel="noopener noreferrer"
         className="absolute bottom-6 left-0 right-0 mx-auto w-2/3 flex items-center justify-center gap-2 hover:bg-white/20 bg-white/10 text-white outline outline-2 outline-green-500/60 rounded-xl p-3 font-mono transition-colors"
@@ -115,7 +115,7 @@ const Service = ({ service }: ServiceProps) => {
 
       <a
         aria-label="Chat on WhatsApp"
-        href={`https://wa.me/56971768418?text=${service.wspMessage}`}
+        href={`https://wa.me/56971768418?text=${encodeURIComponent(service.wspMessage)}`}
         target="_blank"
         rel="noopener noreferrer"
         className="absolute bottom-6 left-0 right-0 mx-auto w-2/3 flex items-center justify-center gap-2 hover:bg-white/20 bg-green-500/10 text-white outline outline-1 outline-green-500/80 rounded-lg p-3 font-mono transition-colors"
