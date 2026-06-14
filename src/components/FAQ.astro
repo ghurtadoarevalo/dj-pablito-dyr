@@ -2,23 +2,23 @@
 const faqs = [
   {
     question: "¿En qué zonas de Santiago prestan servicio?",
-    answer: "Prestamos servicio en toda la Región Metropolitana de Santiago, especialmente en Maipú y la zona oeste. El traslado es GRATIS dentro de Santiago. Para zonas rurales dentro de Santiago, el costo de traslado es de $20.000."
+    answer: "Prestamos servicio en toda la Región Metropolitana de Santiago, especialmente en Maipú y la zona oeste. El traslado es GRATIS dentro de Santiago. Para zonas rurales dentro de Santiago, el costo de traslado es de $20.000. Fuera de Santiago el valor se calcula previamente."
   },
   {
     question: "¿Cuánto cuesta el servicio de DJ?",
-    answer: "Nuestros servicios van desde $130.000 (Pack Básico) hasta $350.000 (Pack Premium). Cada pack incluye diferentes horas de música, equipos de iluminación y servicios adicionales como animación y karaoke. Contáctanos para cotizar el pack perfecto para tu evento."
+    answer: "Nuestros servicios van desde $150.000 (Pack Celebration) hasta $400.000 (Pack Premium Infinity). Cada pack incluye diferentes horas de música, equipos de iluminación y servicios adicionales como animación y karaoke. Contáctanos para cotizar el pack perfecto para tu evento."
   },
   {
     question: "¿Cuál es la diferencia entre los packs?",
-    answer: "Los packs varían en duración (4 a 7 horas), cantidad de equipos de iluminación, inclusión de servicios como animación profesional, karaoke, micrófonos inalámbricos, y pantallas. El Pack Gold Karaoke y Premium incluyen videos musicales y karaoke en vivo con pantalla de 42 pulgadas."
+    answer: "Los packs varían en duración (4 a 8 horas), cantidad de equipos de iluminación, inclusión de servicios como animación profesional, karaoke, micrófonos inalámbricos, pantalla, proyector y telón. Los packs Karaoke Dancing, Gold Karaoke y Premium Infinity incluyen videos musicales y karaoke en vivo."
   },
   {
     question: "¿Los packs incluyen animación y karaoke?",
-    answer: "Los packs Medio, Avanzado, Gold Karaoke y Premium incluyen animación profesional. El karaoke y videos musicales están incluidos en los packs Gold Karaoke y Premium. Para los packs Básico y Medio, puedes agregar videos y karaoke por $30.000 extra."
+    answer: "Los packs Full Dancing, Karaoke Dancing, Gold Karaoke y Premium Infinity incluyen DJ y animación. El karaoke y videos musicales están incluidos en los packs Karaoke Dancing, Gold Karaoke y Premium Infinity."
   },
   {
     question: "¿Cómo se realiza el pago del servicio?",
-    answer: "El servicio se paga una vez instalados los equipos en el evento. Aceptamos diferentes formas de pago y te brindamos la flexibilidad que necesitas para tu celebración."
+    answer: "La reserva se realiza con el 20% del total del servicio. El resto del pago se realiza una vez que llegamos a hacer la instalación de los equipos en el evento."
   },
   {
     question: "¿Qué tipo de eventos cubren?",
@@ -26,11 +26,11 @@ const faqs = [
   },
   {
     question: "¿Qué incluye el servicio de iluminación?",
-    answer: "Según el pack, incluimos luces láser, luces beam 360°, luces LED RGB de 18, luces LED RGB Spider Beam, atriles para luces, máquina de humo, arcos para luces, y pizarras LED luminosas personalizadas con los nombres de los festejados."
+    answer: "Según el pack, incluimos luces LED Spider RGB, luces LED RGB 18, luces Beam 360°, luces láser RGB, atriles o arco de iluminación, máquina de humo y 2 Pantallas Led Luminosas personalizadas con el nombre del festejado(a) gratis en todos los packs."
   },
   {
     question: "¿Cuánto cuesta una hora extra de servicio?",
-    answer: "El costo de hora extra varía según el pack: $20.000 para packs Básico, Medio y Avanzado; $25.000 para el Pack Gold Karaoke; y $30.000 para el Pack Premium."
+    answer: "El costo de hora extra varía según el pack: $25.000 para Pack Celebration; $30.000 para Pack Full Dancing; $35.000 para Pack Karaoke Dancing y Pack Gold Karaoke; y $40.000 para Pack Premium Infinity."
   }
 ];
 
@@ -53,7 +53,7 @@ const faqSchema = {
   <h2 id="faq-title" class="text-center font-customFont text-3xl bg-zinc-800 py-10 text-white">
     PREGUNTAS FRECUENTES
   </h2>
-  
+
   <div class="max-w-4xl mx-auto px-4 md:px-8 mt-10">
     {faqs.map((faq) => (
       <article class="mb-6 bg-zinc-800/50 rounded-lg p-6 text-white/90 hover:bg-zinc-800/70 transition-colors">
