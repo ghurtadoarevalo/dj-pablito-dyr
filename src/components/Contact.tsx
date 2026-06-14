@@ -34,9 +34,9 @@ const Contact = () => {
 
   return (
     <section id="contact" className="bg-slate-950 pb-10" aria-label="Sección de contacto para contratar servicios con dj pablito dyr">
-      <h1 className="text-center text-white font-customFont text-3xl bg-zinc-800 py-10">
+      <h2 className="text-center text-white font-customFont text-3xl bg-zinc-800 py-10">
         Contacto
-      </h1>
+      </h2>
       <div className="flex flex-col md:flex-row place-content-center place-items-center lg:mx-auto bg-slate-900/80  lg:w-4/5 xl:w-2/3 p-5 mt-10 mx-3 rounded-3xl">
         <form
           className="flex flex-col gap-5 md:px-5 w-full text-white/90"

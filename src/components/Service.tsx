@@ -36,6 +36,7 @@ const Service = ({ service }: ServiceProps) => {
         aria-label="Chat on WhatsApp"
         href={`https://wa.me/56971768418?text=${service.wspMessage}`}
         target="_blank"
+        rel="noopener noreferrer"
       >
         <button
           className="absolute bottom-5 md:bottom-8 right-0 left-0 mx-auto hover:bg-white/30 bg-white/5 text-white/90 outline outline-2 outline-green-500/50 rounded-xl w-2/3 p-3 font-mono"
@@ -68,6 +69,7 @@ const Service = ({ service }: ServiceProps) => {
         aria-label="Chat on WhatsApp"
         href={`https://wa.me/56971768418?text=${service.wspMessage}`}
         target="_blank"
+        rel="noopener noreferrer"
         className="flex flex-col place-content-center place-items-center"
       >
         <button className="absolute bottom-5 right-0 left-0 mx-auto hover:bg-white/30 bg-green-500/5 rounded-lg w-2/3 p-3 outline outline-1 outline-green-500/80 font-mono">

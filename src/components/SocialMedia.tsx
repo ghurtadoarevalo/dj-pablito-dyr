@@ -59,6 +59,7 @@ const SocialMedia = ({ namesRequired }: { namesRequired: boolean }) => {
             className="flex flex-col items-center lg:gap-2 p-2 rounded-lg hover:bg-white/5 text-xl lg:text-2xl text-yellow-500"
             href={media.url}
             target="_blank"
+            rel="noopener noreferrer"
             key={media.name}
             aria-label={media.label}
           >
