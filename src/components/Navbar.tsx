@@ -48,14 +48,13 @@ const Navbar = () => {
         <nav className="hidden lg:block">
           <ul className="flex items-center px-1 lg:ml-0 lg:gap-5">
             {navigationButtons.map((navigationButton) => (
-              <li>
+              <li key={navigationButton.name}>
                 <a
                   className={
                     linkRouteClassName(navigationButton.name, currentRoute) +
                     " flex gap-2 px-1 lg:p-2 rounded-lg hover:bg-white/5"
                   }
                   href={navigationButton.href}
-                  key={navigationButton.name}
                   onClick={() => setCurrentRoute(navigationButton.name)}
                   aria-label={`botón link para ir a ${navigationButton.name}`}
                 >
@@ -86,11 +85,10 @@ const Navbar = () => {
         {burguerMenu && (
           <ul className="fixed flex flex-col top-16 right-0 items-center place-content-center gap-5 bg-zinc-900 rounded-es-3xl w-1/3 h-1/2 flex-wrap">
             {navigationButtons.map((navigationButton) => (
-              <li>
+              <li key={navigationButton.name}>
                 <a
                   className="flex gap-2 px-1 lg:p-2 rounded-lg hover:bg-white/5"
                   href={navigationButton.href}
-                  key={navigationButton.name}
                   onClick={() =>
                     pressRouteMenu(
                       setCurrentRoute,
@@ -99,7 +97,6 @@ const Navbar = () => {
                     )
                   }
                   aria-label={`botón link para ir a ${navigationButton.name}`}
-
                 >
                   {navigationButton.name}
                 </a>
