@@ -6,6 +6,7 @@ interface ServiceInterface {
   price: string;
   description: string;
   features: string[];
+  chips: string[];
   featured: boolean;
   wspMessage: string;
 }

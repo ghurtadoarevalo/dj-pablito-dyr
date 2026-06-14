@@ -6,6 +6,7 @@ interface ServiceInterface {
   price: string;
   description: string;
   features: string[];
+  chips: string[];
   featured: boolean;
   wspMessage: string;
 }
@@ -26,6 +27,7 @@ const services: ServiceInterface[] = [
       "2 Pantallas Led Luminosas personalizadas con el nombre del festejado(a)",
       "$25.000 por hora extra",
     ],
+    chips: ["⏱️ 4 horas", "💡 Iluminación básica", "💰 Hora extra $25.000"],
     featured: false,
     wspMessage:
       "Hola, estoy interesado en contratar el Pack Celebration, ¿Me podrías dar más información? ",
@@ -46,6 +48,13 @@ const services: ServiceInterface[] = [
       "Máquina de humo",
       "2 Pantallas Led Luminosas personalizadas con el nombre del festejado(a)",
       "$30.000 por hora extra",
+    ],
+    chips: [
+      "⏱️ 5 horas",
+      "🎤 Animación",
+      "💡 Iluminación mejorada",
+      "💨 Máquina de humo",
+      "💰 Hora extra $30.000",
     ],
     featured: false,
     wspMessage:
@@ -71,6 +80,15 @@ const services: ServiceInterface[] = [
       "Máquina de humo",
       "2 Pantallas Led Luminosas personalizadas con el nombre del festejado(a)",
       "$35.000 por hora extra",
+    ],
+    chips: [
+      "⏱️ 6 horas",
+      "🎤 Animación",
+      "💡 Iluminación avanzada",
+      "🎤 Karaoke + Pantalla",
+      "🎙️ 2 micrófonos",
+      "💨 Máquina de humo",
+      "💰 Hora extra $35.000",
     ],
     featured: true,
     wspMessage:
@@ -98,6 +116,15 @@ const services: ServiceInterface[] = [
       "2 Pantallas Led Luminosas personalizadas con el nombre del festejado(a)",
       "$35.000 por hora extra",
     ],
+    chips: [
+      "⏱️ 7 horas",
+      "🎤 Animación",
+      "💡 Iluminación avanzada",
+      "🎤 Karaoke + Proyector",
+      "🎙️ 2 micrófonos",
+      "💨 Máquina de humo",
+      "💰 Hora extra $35.000",
+    ],
     featured: false,
     wspMessage:
       "Hola, estoy interesado en contratar el Pack Gold Karaoke, ¿Me podrías dar más información? ",
@@ -124,6 +151,15 @@ const services: ServiceInterface[] = [
       "Máquina de humo",
       "2 Pantallas Led Luminosas personalizadas con el nombre del festejado(a)",
       "$40.000 por hora extra",
+    ],
+    chips: [
+      "⏱️ 8 horas",
+      "🎤 Animación + Co Animación",
+      "💡 Iluminación pro",
+      "🎤 Karaoke + Proyector",
+      "🎙️ 2 micrófonos",
+      "💨 Máquina de humo",
+      "💰 Hora extra $40.000",
     ],
     featured: false,
     wspMessage:
