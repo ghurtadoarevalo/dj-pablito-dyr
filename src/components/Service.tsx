@@ -27,8 +27,8 @@ const Service = ({ service }: ServiceProps) => {
       </h2>
       <p className="mt-5 text-center w-5/6 md:w-full mx-auto text-lg" itemProp="description">{service.description}</p>
       <ul className="list-disc mt-5 mb-16 mx-auto w-[70%] lg:w-full lg:px-8 text-balance text-lg">
-        {service.features.map((feature: string) => (
-          <li>{feature}</li>
+        {service.features.map((feature: string, index: number) => (
+          <li key={`featured-${index}`}>{feature}</li>
         ))}
       </ul>
 
@@ -60,8 +60,8 @@ const Service = ({ service }: ServiceProps) => {
       <hr className="mt-6 w-2/3 mx-auto" />
       <p className="mt-3 text-center text-lg" itemProp="description">{service.description}</p>
       <ul className="list-disc mt-5 mb-16 mx-auto w-[70%] lg:w-full lg:px-4 text-balance text-lg">
-        {service.features.map((feature: string) => (
-          <li style={{ listStyleType: "circle" }}>{feature}</li>
+        {service.features.map((feature: string, index: number) => (
+          <li key={`standard-${index}`} style={{ listStyleType: "circle" }}>{feature}</li>
         ))}
       </ul>
 
