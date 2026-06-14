@@ -10,18 +10,20 @@ import mics from "@assets/equipments/mics.png";
 import arcoatril from "@assets/equipments/arcoatril.webp";
 import ledspider from "@assets/equipments/ledspider.png";
 import lightBoard from "@assets/equipments/lightBoard.png";
+import projector from "@assets/equipments/projector.png";
 
 interface Props {
   name: string;
   description: string;
   imgName: string;
-  quantity: number
-  label: string
+  quantity: number;
+  label: string;
 }
 
 interface Dictionary<T> {
   [Key: string]: T;
 }
+
 const imgs: Dictionary<ImageMetadata> = {
   ddj400,
   beam30,
@@ -32,17 +34,30 @@ const imgs: Dictionary<ImageMetadata> = {
   mics,
   arcoatril,
   ledspider,
-  lightBoard
+  lightBoard,
+  projector,
 };
 
 const { name, description, imgName, quantity, label } = Astro.props;
 ---
 
-<div class="flex flex-col md:flex-row md:gap-2 place-content-center bg-white/10 rounded-3xl px-10 mx-[10%] sm:mx-[20%] md:mx-0 xl:px-5">
-  <Image src={imgs[imgName]} alt={label} title={name} width={150} height={100} class="mt-2 place-self-center" loading="lazy" />
-  <div class="text-center my-5 xl:mb-10 text-white/80">
-    <span>x{quantity}</span><p class="font-bold">{name.toUpperCase()}</p> 
-    <hr class="w-48 mx-auto my-2 border-white/40">
-    <p class="lg:px-10">{description}</p> 
-  </div>
-</div>
+<article
+  class="equipment-card flex flex-col items-center rounded-3xl border border-white/10 bg-white/5 px-6 py-8 text-center"
+>
+  <Image
+    src={imgs[imgName]}
+    alt={label}
+    title={name}
+    width={160}
+    height={110}
+    class="mb-6 h-auto w-36 object-contain"
+    loading="lazy"
+  />
+  <p class="mb-2 text-sm font-medium text-yellow-400">×{quantity}</p>
+  <h3 class="mb-3 text-base font-bold uppercase tracking-wider text-white">
+    {name}
+  </h3>
+  <p class="max-w-xs text-sm leading-relaxed text-white/60">
+    {description}
+  </p>
+</article>
