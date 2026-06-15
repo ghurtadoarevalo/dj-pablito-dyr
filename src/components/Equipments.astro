@@ -138,7 +138,7 @@ const equipements = [
 </section>
 
 <style>
-  .equipment-card {
+  :global(.equipment-card) {
     opacity: 0;
     transform: translateY(1rem);
     transition:
@@ -146,13 +146,13 @@ const equipements = [
       transform 600ms ease;
   }
 
-  .equipment-card.is-visible {
+  :global(.equipment-card.is-visible) {
     opacity: 1;
     transform: translateY(0);
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .equipment-card {
+    :global(.equipment-card) {
       opacity: 1;
       transform: none;
       transition: none;
