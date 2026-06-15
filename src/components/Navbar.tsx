@@ -35,7 +35,7 @@ const Navbar = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-zinc-900 py-3 z-10">
-      <div className="flex flex-row place-content-evenly mx-1 lg:mx-20 lg:text-lg items-center font-customFont">
+      <div className="flex flex-row place-content-evenly mx-1 lg:mx-20 lg:text-lg items-center font-sans">
         <div className="flex">
           <SiDiscogs className="text-4xl lg:text-6xl text-white" />
           <div className="ml-3 lg:ml-5 border border-yellow-500"></div>

@@ -34,7 +34,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="bg-slate-950 pb-10" aria-label="Sección de contacto para contratar servicios con dj pablito dyr">
-      <h2 className="text-center text-white font-customFont text-3xl bg-zinc-800 py-10">
+      <h2 className="text-center text-white font-display text-3xl md:text-4xl bg-zinc-800 py-10">
         Contacto
       </h2>
       <div className="flex flex-col md:flex-row place-content-center place-items-center lg:mx-auto bg-slate-900/80  lg:w-4/5 xl:w-2/3 p-5 mt-10 mx-3 rounded-3xl">
@@ -42,11 +42,11 @@ const Contact = () => {
           className="flex flex-col gap-5 md:px-5 w-full text-white/90"
           onSubmit={handleSubmit}
         >
-          <h2 className="text-center font-bold text-xl">
+          <h2 className="text-center font-bold text-2xl">
             Formulario de contacto
           </h2>
           <div className="flex flex-col gap-2">
-            <p className=" text-sm">Nombre</p>
+            <p className="text-base">Nombre</p>
             <input
               className="rounded-r-lg rounded-b-lg bg-black/10 outline outline-1 hover:outline-white p-3 italic"
               type="text"
@@ -57,7 +57,7 @@ const Contact = () => {
             />
           </div>
           <div className="flex flex-col gap-2 mt-2">
-            <p className=" text-sm">Mensaje</p>
+            <p className="text-base">Mensaje</p>
             <textarea
               className="rounded-r-lg rounded-b-lg bg-black/10 outline outline-1 hover:outline-white p-3 italic"
               placeholder={
@@ -77,7 +77,7 @@ const Contact = () => {
           <button
             type="button"
             onClick={handleSubmit}
-            className="flex flex-col place-content-center place-items-center mx-auto hover:bg-white/30 bg-green-500/5 rounded-lg p-3 outline outline-1 outline-green-500/20 font-mono"
+            className="flex flex-col place-content-center place-items-center mx-auto hover:bg-white/30 bg-green-500/5 rounded-lg p-3 outline outline-1 outline-green-500/20 font-sans"
           >
             <div className="flex md:flex-row place-content-center place-items-center gap-2">
               <FaWhatsapp className="text-2xl text-green-500/90" />
@@ -94,7 +94,7 @@ const Contact = () => {
               <span className="">Sígueme en mis RRSS </span>y averigua por qué
               tu fiesta quedará en las mejores manos con:
             </p>
-            <p className="text-center font-customFont font-bold text-yellow-500 italic text-2xl mt-1">
+            <p className="text-center font-sans font-bold text-yellow-500 italic text-2xl mt-1">
               DJ PABLITO DYR
             </p>
           </div>

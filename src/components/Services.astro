@@ -55,8 +55,7 @@ const services: ServiceInterface[] = [
   {
     title: "Karaoke Dancing",
     price: "$250.000",
-    description:
-      "6 Horas de Música, baile y karaoke para una fiesta completa.",
+    description: "6 Horas de Música, baile y karaoke para una fiesta completa.",
     features: [
       "DJ - Animación · Playlist personalizada",
       "Iluminación avanzada: 2 LED Spider RGB, 4 Luces LED RGB 18, 2 Beam 360°, 2 Láser RGB",
@@ -87,7 +86,7 @@ const services: ServiceInterface[] = [
       "DJ - Animación · Playlist personalizada",
       "Iluminación avanzada: 2 LED Spider RGB, 6 Luces LED RGB 18, 2 Beam RGB 360°, 3 Láser RGB",
       "2 atriles o arco de iluminación (según espacio disponible)",
-      "Telón",
+      "Proyector y Telón",
       "Videos",
       "Amplificación profesional · 2 parlantes profesionales JBL",
       "2 Pantallas Led Luminosas personalizadas con el nombre del festejado(a)",
@@ -114,7 +113,7 @@ const services: ServiceInterface[] = [
       "DJ - Animación · Co Animación (si fuese necesario) · Playlist personalizada",
       "Iluminación pro: 2 LED Spider RGB, 10 Luces LED RGB 18, 2 Beam RGB 360°, 3 Láser RGB",
       "Arco de iluminación Full",
-      "Telón",
+      "Proyector y Telón",
       "Videos",
       "Amplificación profesional · 2 parlantes profesionales JBL",
       "2 Pantallas Led Luminosas personalizadas con el nombre del festejado(a)",
@@ -142,40 +141,40 @@ const visuallyOrderedServices = [...featuredServices, ...regularServices];
 const offersSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "itemListElement": visuallyOrderedServices.map((service, index) => ({
+  itemListElement: visuallyOrderedServices.map((service, index) => ({
     "@type": "ListItem",
-    "position": index + 1,
-    "item": {
+    position: index + 1,
+    item: {
       "@type": "Offer",
-      "name": `Pack ${service.title}`,
-      "description": service.description,
-      "price": service.price.replace(/[$.]/g, ''),
-      "priceCurrency": "CLP",
-      "itemOffered": {
+      name: `Pack ${service.title}`,
+      description: service.description,
+      price: service.price.replace(/[$.]/g, ""),
+      priceCurrency: "CLP",
+      itemOffered: {
         "@type": "Service",
-        "name": `Servicio de DJ ${service.title}`,
-        "description": service.description,
-        "provider": {
+        name: `Servicio de DJ ${service.title}`,
+        description: service.description,
+        provider: {
           "@type": "LocalBusiness",
-          "name": "DJ Pablito Dyr Producciones"
+          name: "DJ Pablito Dyr Producciones",
         },
-        "areaServed": {
+        areaServed: {
           "@type": "City",
-          "name": "Santiago",
-          "addressCountry": "CL"
-        }
+          name: "Santiago",
+          addressCountry: "CL",
+        },
       },
-      "availability": "https://schema.org/InStock",
-      "url": "https://djpablitodyr.cl/#services"
-    }
-  }))
+      availability: "https://schema.org/InStock",
+      url: "https://djpablitodyr.cl/#services",
+    },
+  })),
 };
 ---
 
 <section id="services" aria-labelledby="services-title">
   <h2
     id="services-title"
-    class="text-center font-customFont text-3xl bg-zinc-800 py-10"
+    class="text-center font-display text-3xl md:text-4xl bg-zinc-800 py-10"
   >
     SERVICIOS
   </h2>
@@ -198,42 +197,53 @@ const offersSchema = {
   </div>
 
   <!-- Service Offers Structured Data -->
-  <script is:inline type="application/ld+json" set:html={JSON.stringify(offersSchema)} />
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(offersSchema)}
+  />
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
-    <div class="bg-zinc-800/60 rounded-3xl p-6 md:p-8 outline outline-1 outline-yellow-500/40">
-      <h3 class="text-center text-xl md:text-2xl font-customFont text-white mb-6">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-10">
+    <div class="bg-zinc-800/60 rounded-3xl p-6 md:p-8">
+      <h3
+        class="text-center text-xl md:text-2xl font-sans text-white mb-6"
+      >
         Información importante
       </h3>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         <div class="bg-white/5 rounded-xl p-5">
           <h4 class="font-bold text-yellow-500 mb-2">🚚 Traslado</h4>
           <p class="text-white/85 text-sm">
-            Gratis dentro de Santiago. Sectores rurales +$20.000. Fuera de Santiago según cálculo previo.
+            Gratis dentro de Santiago. Sectores rurales +$20.000. Fuera de
+            Santiago según cálculo previo.
           </p>
         </div>
         <div class="bg-white/5 rounded-xl p-5">
           <h4 class="font-bold text-yellow-500 mb-2">🖥️ Equipamiento</h4>
           <p class="text-white/85 text-sm">
-            Telón + Proyector o Pantalla según espacio y preferencia. Telón 80" aprox. y Pantalla 43".
+            Telón + Proyector o Pantalla según espacio y preferencia. Telón 80"
+            aprox. y Pantalla 43".
           </p>
         </div>
         <div class="bg-white/5 rounded-xl p-5">
           <h4 class="font-bold text-yellow-500 mb-2">📝 Reserva</h4>
           <p class="text-white/85 text-sm">
-            Solo el 20% del total. El resto se paga una vez instalados los equipos en el evento.
+            Solo el 20% del total. El resto se paga una vez instalados los
+            equipos en el evento.
           </p>
         </div>
         <div class="bg-white/5 rounded-xl p-5">
           <h4 class="font-bold text-yellow-500 mb-2">✨ Beneficio gratis</h4>
           <p class="text-white/85 text-sm">
-            2 Pantallas Led Luminosas personalizadas con el nombre del festejado(a) en todos los packs.
+            2 Pantallas Led Luminosas personalizadas con el nombre del
+            festejado(a) en todos los packs.
           </p>
         </div>
         <div class="bg-white/5 rounded-xl p-5 md:col-span-2 lg:col-span-2">
           <h4 class="font-bold text-yellow-500 mb-2">💳 Forma de pago</h4>
           <p class="text-white/85 text-sm">
-            El servicio se paga una vez instalados los equipos en el evento. Los precios de los planes podrían variar en el tiempo.
+            El servicio se paga una vez instalados los equipos en el evento. Los
+            precios de los planes podrían variar en el tiempo.
           </p>
         </div>
       </div>

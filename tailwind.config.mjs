@@ -4,8 +4,9 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				customFont: ['"Custom Font"', "Fake Receipt", "Lucida Console", "Courier", "monospace"],
-			  },
+				sans: ['"Montserrat"', 'system-ui', 'sans-serif'],
+				display: ['"Bebas Neue"', 'sans-serif'],
+			},
 		},
 	},
 	plugins: [],
