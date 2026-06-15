@@ -59,7 +59,7 @@ const Service = ({ service }: ServiceProps) => {
         ))}
       </div>
 
-      <ul className="list-disc pl-5 mb-20 space-y-1.5 text-balance text-base opacity-95">
+      <ul className="list-disc pl-5 mb-16 space-y-1.5 text-balance text-base opacity-95">
         {service.features.map((feature, index) => (
           <li key={`featured-${index}`}>{feature}</li>
         ))}
@@ -69,10 +69,10 @@ const Service = ({ service }: ServiceProps) => {
         href={`https://wa.me/56971768418?text=${encodeURIComponent(service.wspMessage)}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="absolute bottom-6 left-0 right-0 mx-auto w-2/3 flex items-center justify-center gap-2 hover:bg-white/20 bg-white/10 text-white outline outline-2 outline-green-500/60 rounded-xl p-3 font-mono transition-colors"
+        className="absolute bottom-5 right-5 flex items-center gap-2 hover:bg-white/20 bg-white/10 text-white outline outline-2 outline-green-500/60 rounded-xl px-5 py-2 text-sm font-mono transition-colors"
       >
-        <FaWhatsapp className="text-2xl text-green-500" />
-        <span className="text-lg">Contáctame</span>
+        <FaWhatsapp className="text-xl text-green-500" />
+        <span>Contáctame</span>
       </a>
     </article>
   ) : (
@@ -108,7 +108,7 @@ const Service = ({ service }: ServiceProps) => {
       </div>
 
       <ul
-        className="list-disc pl-5 mb-20 space-y-1 text-balance text-sm opacity-90"
+        className="list-disc pl-5 mb-16 space-y-1 text-balance text-sm opacity-90"
         style={{ listStyleType: "circle" }}
       >
         {service.features.map((feature, index) => (
@@ -120,10 +120,10 @@ const Service = ({ service }: ServiceProps) => {
         href={`https://wa.me/56971768418?text=${encodeURIComponent(service.wspMessage)}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="absolute bottom-6 left-0 right-0 mx-auto w-2/3 flex items-center justify-center gap-2 hover:bg-white/20 bg-green-500/10 text-white outline outline-1 outline-green-500/80 rounded-lg p-3 font-mono transition-colors"
+        className="absolute bottom-5 right-5 flex items-center gap-2 hover:bg-white/20 bg-green-500/10 text-white outline outline-1 outline-green-500/80 rounded-lg px-4 py-2 text-xs font-mono transition-colors"
       >
-        <FaWhatsapp className="text-2xl text-green-500" />
-        <span className="text-base">Contáctame</span>
+        <FaWhatsapp className="text-lg text-green-500" />
+        <span>Contáctame</span>
       </a>
     </article>
   );

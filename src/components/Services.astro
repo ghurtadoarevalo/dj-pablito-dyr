@@ -179,77 +179,64 @@ const offersSchema = {
   >
     SERVICIOS
   </h2>
-  <div class="flex flex-col gap-4 mx-3 mt-5">
-    {
-      featuredServices.map((service) => (
-        <Service client:load key={service.title} service={service} />
-      ))
-    }
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
+    <div class="flex flex-col gap-4">
       {
-        regularServices.map((service) => (
+        featuredServices.map((service) => (
           <Service client:load key={service.title} service={service} />
         ))
       }
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {
+          regularServices.map((service) => (
+            <Service client:load key={service.title} service={service} />
+          ))
+        }
+      </div>
     </div>
   </div>
 
   <!-- Service Offers Structured Data -->
   <script is:inline type="application/ld+json" set:html={JSON.stringify(offersSchema)} />
 
-  <div class="flex flex-col md:flex-row gap-5 px-5 pt-10">
-    <div
-      class="bg-white/5 text-white/90 flex flex-col mx-auto mt-5 w-4/5 md:w-1/2 h-1/2 p-4 rounded-2xl outline outline-1 outline-yellow-500/80 place-content-center"
-    >
-      <div class="px-10 text-pretty">
-        <ul class="list-disc list-inside">
-          <li class="my-2">
-            <span class="font-bold text-yellow-500"> Consideraciones del servicio: </span>
-            Traslado dentro de Santiago gratis. Sectores rurales +$20.000. Fuera de Santiago según cálculo previo.
-          </li>
-          <li class="my-2">
-            <span class="font-bold text-yellow-500">
-              Equipamiento y disponibilidad:
-            </span>
-            Telón + Proyector o Pantalla según espacio y preferencia del cliente. Telón 80" aproximadamente y Pantalla 43".
-          </li>
-          <li class="my-2">
-            <span class="font-bold text-yellow-500">
-              Políticas de reserva:
-            </span>
-            Reserva con solo el 20% del total del servicio. El resto se paga una vez instalados los equipos en el evento.
-          </li>
-          <li class="my-2">
-            <span class="font-bold text-yellow-500">
-              Gratis en todos los packs:
-            </span>
-            2 Pantallas Led Luminosas personalizadas con el nombre del festejado(a).
-          </li>
-        </ul>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+    <div class="bg-zinc-800/60 rounded-3xl p-6 md:p-8 outline outline-1 outline-yellow-500/40">
+      <h3 class="text-center text-xl md:text-2xl font-customFont text-white mb-6">
+        Información importante
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="bg-white/5 rounded-xl p-5">
+          <h4 class="font-bold text-yellow-500 mb-2">🚚 Traslado</h4>
+          <p class="text-white/85 text-sm">
+            Gratis dentro de Santiago. Sectores rurales +$20.000. Fuera de Santiago según cálculo previo.
+          </p>
+        </div>
+        <div class="bg-white/5 rounded-xl p-5">
+          <h4 class="font-bold text-yellow-500 mb-2">🖥️ Equipamiento</h4>
+          <p class="text-white/85 text-sm">
+            Telón + Proyector o Pantalla según espacio y preferencia. Telón 80" aprox. y Pantalla 43".
+          </p>
+        </div>
+        <div class="bg-white/5 rounded-xl p-5">
+          <h4 class="font-bold text-yellow-500 mb-2">📝 Reserva</h4>
+          <p class="text-white/85 text-sm">
+            Solo el 20% del total. El resto se paga una vez instalados los equipos en el evento.
+          </p>
+        </div>
+        <div class="bg-white/5 rounded-xl p-5">
+          <h4 class="font-bold text-yellow-500 mb-2">✨ Beneficio gratis</h4>
+          <p class="text-white/85 text-sm">
+            2 Pantallas Led Luminosas personalizadas con el nombre del festejado(a) en todos los packs.
+          </p>
+        </div>
+        <div class="bg-white/5 rounded-xl p-5 md:col-span-2 lg:col-span-2">
+          <h4 class="font-bold text-yellow-500 mb-2">💳 Forma de pago</h4>
+          <p class="text-white/85 text-sm">
+            El servicio se paga una vez instalados los equipos en el evento. Los precios de los planes podrían variar en el tiempo.
+          </p>
+        </div>
       </div>
-    </div>
-
-    <div class="mx-auto w-4/5 md:w-1/4 mt-5">
-      <div
-        class="text-white/90 flex flex-col text-center rounded-2xl p-8 outline outline-1 outline-yellow-500/80"
-      >
-        <p>
-          Costo de traslado de equipos
-          <span class="font-bold text-yellow-500"
-            >GRATIS dentro de Santiago.</span
-          > Zonas rurales dentro de Santiago $20.000.
-        </p>
-        <p class="mt-2">
-          El servicio se paga <span class="font-bold text-yellow-500">
-            una vez instalados
-          </span>
-          los equipos en el evento.
-        </p>
-      </div>
-      <p class="text-start text-sm my-4 text-white/80">
-        * Los precios de los planes podrían variar en el tiempo
-      </p>
     </div>
   </div>
 </section>
