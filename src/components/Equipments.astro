@@ -135,6 +135,16 @@ const equipements = [
       }
     </div>
   </div>
+
+  <noscript>
+    <style>
+      .equipment-card {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    </style>
+  </noscript>
 </section>
 
 <style>
@@ -167,6 +177,11 @@ const equipements = [
 
     const cards = grid.querySelectorAll<HTMLElement>(".equipment-card");
     if (cards.length === 0) return;
+
+    if (!("IntersectionObserver" in window)) {
+      cards.forEach((card) => card.classList.add("is-visible"));
+      return;
+    }
 
     const stagger = 80;
 
