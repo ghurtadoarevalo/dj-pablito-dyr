@@ -13,6 +13,9 @@ interface ServiceInterface {
 
 type ServiceProps = {
   service: ServiceInterface;
+  // `key` is a React reconciler prop, but Astro passes it explicitly when
+  // rendering this component inside `.map()`. Keeping it in the type prevents
+  // a TypeScript error in the parent `.astro` file.
   key?: React.Key;
 };
 
@@ -63,7 +66,6 @@ const Service = ({ service }: ServiceProps) => {
       </ul>
 
       <a
-        aria-label="Chat on WhatsApp"
         href={`https://wa.me/56971768418?text=${encodeURIComponent(service.wspMessage)}`}
         target="_blank"
         rel="noopener noreferrer"
@@ -115,7 +117,6 @@ const Service = ({ service }: ServiceProps) => {
       </ul>
 
       <a
-        aria-label="Chat on WhatsApp"
         href={`https://wa.me/56971768418?text=${encodeURIComponent(service.wspMessage)}`}
         target="_blank"
         rel="noopener noreferrer"
