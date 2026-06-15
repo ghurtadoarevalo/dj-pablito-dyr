@@ -13,6 +13,7 @@ interface ServiceInterface {
 
 type ServiceProps = {
   service: ServiceInterface;
+  key?: React.Key;
 };
 
 const Service = ({ service }: ServiceProps) => {

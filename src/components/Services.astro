@@ -215,18 +215,14 @@ const offersSchema = {
   <div class="flex flex-col gap-4 mx-3 mt-5">
     {
       featuredServices.map((service) => (
-        <Fragment key={service.title}>
-          <Service client:load service={service} />
-        </Fragment>
+        <Service client:load key={service.title} service={service} />
       ))
     }
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       {
         regularServices.map((service) => (
-          <Fragment key={service.title}>
-            <Service client:load service={service} />
-          </Fragment>
+          <Service client:load key={service.title} service={service} />
         ))
       }
     </div>
