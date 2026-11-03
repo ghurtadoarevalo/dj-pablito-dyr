@@ -57,48 +57,69 @@ const spans: Record<string, string> = {
 
 const imageScale: Record<string, string> = {
   hero: "left-1/2 top-[42%] h-[62%] w-[72%]",
-  wide: "left-[76%] top-[34%] h-[48%] w-[30%]",
   tall: "left-1/2 top-[44%] h-[74%] w-[80%]",
   base: "left-1/2 top-[42%] h-[58%] w-[78%]",
 };
 
 const isLarge = size === "hero";
-const showDescription = size !== "base";
+const isWide = size === "wide";
 ---
 
 <article
-  class={`equipment-card group relative flex flex-col justify-end overflow-hidden rounded-card border border-line bg-gradient-to-b from-surface to-ink p-4 transition duration-snap hover:border-line-strong md:p-5 ${spans[size]}`}
+  class={`equipment-card group relative flex overflow-hidden rounded-card border border-line bg-gradient-to-b from-surface to-ink p-4 transition duration-snap hover:border-line-strong md:p-5 ${spans[size]} ${
+    isWide ? "flex-row items-center gap-4 md:gap-6" : "flex-col justify-end"
+  }`}
 >
-  <Image
-    src={imgs[imgName]}
-    alt={label}
-    title={name}
-    width={872}
-    height={497}
-    loading="lazy"
-    class={`pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 object-contain drop-shadow-[0_18px_28px_rgba(0,0,0,0.55)] transition duration-reveal ease-reveal group-hover:scale-[1.04] ${imageScale[size]}`}
-  />
-
-  <p
-    class="absolute right-4 top-4 rounded-control border border-accent/40 bg-ink/70 px-2 py-1 text-[10px] font-black text-accent"
-  >
-    ×{quantity}
-  </p>
-
-  <div class="relative">
-    <h3
-      class={`font-display uppercase leading-none tracking-tight text-white ${isLarge ? "text-2xl md:text-3xl" : size === "wide" ? "text-xl" : "text-lg"}`}
-    >
-      {name}
-    </h3>
-    {
-      showDescription && (
-        <p
-          class={`mt-1 text-muted ${isLarge ? "max-w-sm text-sm leading-relaxed line-clamp-3" : "text-xs leading-snug line-clamp-2"}`}
-        >
-          {description}
+  {
+    isWide ? (
+      <>
+        <div class="min-w-0 flex-1">
+          <h3 class="font-display text-xl uppercase leading-none tracking-tight text-white">
+            {name}
+          </h3>
+          <p class="mt-2 text-xs leading-snug text-muted line-clamp-2">
+            {description}
+          </p>
+        </div>
+        <Image
+          src={imgs[imgName]}
+          alt={label}
+          title={name}
+          width={872}
+          height={497}
+          loading="lazy"
+          class="h-[76%] w-[42%] shrink-0 object-contain drop-shadow-[0_18px_28px_rgba(0,0,0,0.55)] transition duration-reveal ease-reveal group-hover:scale-[1.04]"
+        />
+      </>
+    ) : (
+      <>
+        <Image
+          src={imgs[imgName]}
+          alt={label}
+          title={name}
+          width={872}
+          height={497}
+          loading="lazy"
+          class={`pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 object-contain drop-shadow-[0_18px_28px_rgba(0,0,0,0.55)] transition duration-reveal ease-reveal group-hover:scale-[1.04] ${imageScale[size]}`}
+        />
+        <p class="absolute right-4 top-4 rounded-control border border-accent/40 bg-ink/70 px-2 py-1 text-[10px] font-black text-accent">
+          ×{quantity}
         </p>
-      )
-    }
-  </div>
+        <div class="relative">
+          <h3
+            class={`font-display uppercase leading-none tracking-tight text-white ${
+              isLarge ? "text-2xl md:text-3xl" : "text-lg"
+            }`}
+          >
+            {name}
+          </h3>
+          {isLarge && (
+            <p class="mt-1 max-w-sm text-sm leading-relaxed text-muted line-clamp-3">
+              {description}
+            </p>
+          )}
+        </div>
+      </>
+    )
+  }
 </article>
