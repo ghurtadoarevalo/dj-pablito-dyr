@@ -2,8 +2,7 @@
 import SectionHeading from "./SectionHeading.astro";
 import { INSTAGRAM_PROFILE_URL, TESTIMONIALS } from "../data/testimonials";
 
-const featured = TESTIMONIALS.find((testimonial) => testimonial.highlighted);
-const rest = TESTIMONIALS.filter((testimonial) => !testimonial.highlighted);
+const TRACK_ID = "testimonials-track";
 ---
 
 <section
@@ -12,50 +11,102 @@ const rest = TESTIMONIALS.filter((testimonial) => !testimonial.highlighted);
   class="reveal border-t border-line bg-ink py-16 md:py-24"
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <SectionHeading
-      id="testimonials-title"
-      kicker="Clientes reales"
-      title="Testimonios"
-      lead="Comentarios públicos que dejaron en nuestro Instagram, sin editar."
-    />
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <SectionHeading
+        id="testimonials-title"
+        kicker="Clientes reales"
+        title="Testimonios"
+        lead="Comentarios públicos que dejaron en nuestro Instagram, sin editar."
+      />
+      <div class="mb-8 flex gap-2 md:mb-12">
+        <button
+          type="button"
+          data-carousel="prev"
+          data-target={TRACK_ID}
+          aria-label="Testimonio anterior"
+          aria-controls={TRACK_ID}
+          class="grid size-11 place-items-center rounded-control border border-line-strong text-white transition-colors duration-snap hover:border-accent hover:text-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          <span aria-hidden="true">←</span>
+        </button>
+        <button
+          type="button"
+          data-carousel="next"
+          data-target={TRACK_ID}
+          aria-label="Testimonio siguiente"
+          aria-controls={TRACK_ID}
+          class="grid size-11 place-items-center rounded-control border border-line-strong text-white transition-colors duration-snap hover:border-accent hover:text-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          <span aria-hidden="true">→</span>
+        </button>
+      </div>
+    </div>
 
-    {
-      featured && (
-        <figure class="rounded-card border border-line border-l-2 border-l-accent bg-surface p-6 md:p-8">
-          <blockquote class="font-display text-xl uppercase leading-tight tracking-tight text-white md:text-2xl">
-            “{featured.quote}”
-          </blockquote>
-          <figcaption class="mt-4 text-[10px] font-bold uppercase tracking-wide">
-            <span class="text-accent">{featured.handle}</span>
-            <span class="text-muted"> · {featured.context}</span>
-          </figcaption>
-        </figure>
-      )
-    }
-
-    <ul class="mt-4 grid gap-4 md:grid-cols-2">
+    <ul
+      id={TRACK_ID}
+      role="region"
+      aria-label="Testimonios de clientes"
+      tabindex="0"
+      class="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+    >
       {
-        rest.map((testimonial) => (
-          <li class="rounded-card border border-line bg-surface p-5">
-            <p class="text-sm leading-relaxed text-muted">
+        TESTIMONIALS.map((testimonial, index) => (
+          <li
+            class={`relative flex shrink-0 snap-start basis-[85%] flex-col justify-between rounded-card border border-line bg-surface p-5 sm:basis-[48%] lg:basis-[32%] ${
+              testimonial.highlighted ? "border-l-2 border-l-accent" : ""
+            }`}
+          >
+            <blockquote class="text-sm leading-relaxed text-white">
               “{testimonial.quote}”
-            </p>
-            <p class="mt-3 text-[10px] font-bold uppercase tracking-wide">
+            </blockquote>
+            <p class="mt-4 text-[10px] font-bold uppercase tracking-wide">
               <span class="text-accent">{testimonial.handle}</span>
               <span class="text-muted"> · {testimonial.context}</span>
+              <span class="sr-only">
+                {" "}
+                (testimonio {index + 1} de {TESTIMONIALS.length})
+              </span>
             </p>
           </li>
         ))
       }
     </ul>
 
-    <a
-      href={INSTAGRAM_PROFILE_URL}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="mt-6 inline-flex min-h-11 items-center rounded-control border border-line-strong px-5 text-sm font-bold text-white transition-colors duration-snap hover:border-accent hover:text-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-    >
-      Ver más reseñas en Instagram
-    </a>
+    <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
+      <a
+        href={INSTAGRAM_PROFILE_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex min-h-11 items-center rounded-control border border-line-strong px-5 text-sm font-bold text-white transition-colors duration-snap hover:border-accent hover:text-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      >
+        Ver más reseñas en Instagram
+      </a>
+      <p class="text-[10px] font-bold uppercase tracking-wide text-muted">
+        Desliza o usa las flechas
+      </p>
+    </div>
   </div>
 </section>
+
+<script>
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  document
+    .querySelectorAll<HTMLButtonElement>("[data-carousel]")
+    .forEach((button) => {
+      button.addEventListener("click", () => {
+        const track = document.getElementById(button.dataset.target ?? "");
+        const card = track?.querySelector("li");
+        if (!track || !card) return;
+
+        const gap = parseFloat(getComputedStyle(track).columnGap || "0");
+        const step = card.getBoundingClientRect().width + gap;
+        const direction = button.dataset.carousel === "next" ? 1 : -1;
+
+        track.scrollBy({
+          left: direction * step,
+          behavior: reduceMotion.matches ? "auto" : "smooth",
+        });
+      });
+    });
+</script>

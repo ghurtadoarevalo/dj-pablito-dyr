@@ -30,6 +30,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
   .reveal,
   .reveal * {
     animation: none !important;
