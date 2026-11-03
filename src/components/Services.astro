@@ -1,154 +1,23 @@
 ---
-import Service from "./Service";
+import ServicesSection from "./ServicesSection";
+import { SERVICE_PLANS } from "../data/services";
 
-interface ServiceInterface {
-  title: string;
-  price: string;
-  description: string;
-  features: string[];
-  chips: string[];
-  featured: boolean;
-  wspMessage: string;
-}
-
-const services: ServiceInterface[] = [
-  {
-    title: "Celebration",
-    price: "$150.000",
-    description: "4 Horas de Baile y música para celebraciones íntimas.",
-    features: [
-      "DJ",
-      "Playlist personalizada",
-      "Iluminación: 2 LED Spider RGB, 2 Luces LED 18 RGB, 2 Beam 360°",
-      "2 atriles de iluminación",
-      "Amplificación profesional · 2 parlantes profesionales JBL",
-      "2 Pantallas Led Luminosas personalizadas con el nombre del festejado(a)",
-    ],
-    chips: ["⏱️ 4 horas", "💡 Iluminación básica", "💰 Hora extra $25.000"],
-    featured: false,
-    wspMessage:
-      "Hola, estoy interesado en contratar el Pack Celebration, ¿Me podrías dar más información? ",
-  },
-  {
-    title: "Full Dancing",
-    price: "$200.000",
-    description:
-      "5 Horas de Baile non stop con animación para levantar tu fiesta.",
-    features: [
-      "DJ - Animación · Playlist personalizada",
-      "Iluminación mejorada: 2 LED Spider RGB, 2 Luces LED RGB 18, 2 Beam 360°, 2 Láser RGB",
-      "2 atriles de iluminación",
-      "Amplificación profesional · 2 parlantes profesionales JBL",
-      "2 Pantallas Led Luminosas personalizadas con el nombre del festejado(a)",
-    ],
-    chips: [
-      "⏱️ 5 horas",
-      "🎤 Animación",
-      "💡 Iluminación mejorada",
-      "💨 Máquina de humo",
-      "💰 Hora extra $30.000",
-    ],
-    featured: false,
-    wspMessage:
-      "Hola, estoy interesado en contratar el Pack Full Dancing, ¿Me podrías dar más información? ",
-  },
-  {
-    title: "Karaoke Dancing",
-    price: "$250.000",
-    description: "6 Horas de Música, baile y karaoke para una fiesta completa.",
-    features: [
-      "DJ - Animación · Playlist personalizada",
-      "Iluminación avanzada: 2 LED Spider RGB, 4 Luces LED RGB 18, 2 Beam 360°, 2 Láser RGB",
-      "2 atriles o arco de iluminación (según espacio disponible)",
-      "Videos",
-      "Amplificación profesional · 2 parlantes profesionales JBL",
-      "2 Pantallas Led Luminosas personalizadas con el nombre del festejado(a)",
-    ],
-    chips: [
-      "⏱️ 6 horas",
-      "🎤 Animación",
-      "💡 Iluminación avanzada",
-      "🎤 Karaoke + Pantalla",
-      "🎙️ 2 micrófonos",
-      "💨 Máquina de humo",
-      "💰 Hora extra $35.000",
-    ],
-    featured: true,
-    wspMessage:
-      "Hola, estoy interesado en contratar el Pack Karaoke Dancing, ¿Me podrías dar más información? ",
-  },
-  {
-    title: "Gold Karaoke",
-    price: "$320.000",
-    description:
-      "7 Horas de FULL Música, baile y Karaoke con telón y proyector.",
-    features: [
-      "DJ - Animación · Playlist personalizada",
-      "Iluminación avanzada: 2 LED Spider RGB, 6 Luces LED RGB 18, 2 Beam RGB 360°, 3 Láser RGB",
-      "2 atriles o arco de iluminación (según espacio disponible)",
-      "Proyector y Telón",
-      "Videos",
-      "Amplificación profesional · 2 parlantes profesionales JBL",
-      "2 Pantallas Led Luminosas personalizadas con el nombre del festejado(a)",
-    ],
-    chips: [
-      "⏱️ 7 horas",
-      "🎤 Animación",
-      "💡 Iluminación avanzada",
-      "🎤 Karaoke + Proyector",
-      "🎙️ 2 micrófonos",
-      "💨 Máquina de humo",
-      "💰 Hora extra $35.000",
-    ],
-    featured: false,
-    wspMessage:
-      "Hola, estoy interesado en contratar el Pack Gold Karaoke, ¿Me podrías dar más información? ",
-  },
-  {
-    title: "Premium Infinity",
-    price: "$400.000",
-    description:
-      "8 Horas de FULL Música, videos, baile y karaoke con iluminación pro.",
-    features: [
-      "DJ - Animación · Co Animación (si fuese necesario) · Playlist personalizada",
-      "Iluminación pro: 2 LED Spider RGB, 10 Luces LED RGB 18, 2 Beam RGB 360°, 3 Láser RGB",
-      "Arco de iluminación Full",
-      "Proyector y Telón",
-      "Videos",
-      "Amplificación profesional · 2 parlantes profesionales JBL",
-      "2 Pantallas Led Luminosas personalizadas con el nombre del festejado(a)",
-    ],
-    chips: [
-      "⏱️ 8 horas",
-      "🎤 Animación + Co Animación",
-      "💡 Iluminación pro",
-      "🎤 Karaoke + Proyector",
-      "🎙️ 2 micrófonos",
-      "💨 Máquina de humo",
-      "💰 Hora extra $40.000",
-    ],
-    featured: false,
-    wspMessage:
-      "Hola, estoy interesado en contratar el Pack Premium Infinity, ¿Me podrías dar más información? ",
-  },
+const orderedServices = [
+  ...SERVICE_PLANS.filter((service) => service.featured),
+  ...SERVICE_PLANS.filter((service) => !service.featured),
 ];
-
-// Structured Data for Service Offers
-const featuredServices = services.filter((service) => service.featured);
-const regularServices = services.filter((service) => !service.featured);
-const visuallyOrderedServices = [...featuredServices, ...regularServices];
 
 const offersSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  itemListElement: visuallyOrderedServices.map((service, index) => ({
+  itemListElement: orderedServices.map((service, index) => ({
     "@type": "ListItem",
     position: index + 1,
     item: {
       "@type": "Offer",
       name: `Pack ${service.title}`,
       description: service.description,
-      price: service.price.replace(/[$.]/g, ""),
+      price: String(service.price),
       priceCurrency: "CLP",
       itemOffered: {
         "@type": "Service",
@@ -169,83 +38,61 @@ const offersSchema = {
     },
   })),
 };
+
+const conditions = [
+  {
+    title: "Traslado",
+    body: "Gratis dentro de Santiago. Sectores rurales +$20.000. Fuera de Santiago se cotiza por WhatsApp.",
+  },
+  {
+    title: "Equipamiento",
+    body: "Telón + proyector o pantalla según espacio y preferencia. Telón 80\" aprox. y pantalla 43\".",
+  },
+  {
+    title: "Reserva",
+    body: "Solo el 20% del total. El resto se paga una vez instalados los equipos en el evento.",
+  },
+  {
+    title: "Beneficio incluido",
+    body: "2 pantallas LED luminosas personalizadas con el nombre del festejado(a) en todos los packs.",
+  },
+  {
+    title: "Forma de pago",
+    body: "El servicio se paga una vez instalados los equipos. Los precios podrían variar en el tiempo.",
+  },
+];
 ---
 
 <section id="services" aria-labelledby="services-title">
-  <h2
-    id="services-title"
-    class="text-center font-display text-3xl md:text-4xl bg-zinc-800 py-10"
-  >
-    SERVICIOS
-  </h2>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
-    <div class="flex flex-col gap-4">
-      {
-        featuredServices.map((service) => (
-          <Service client:load key={service.title} service={service} />
-        ))
-      }
+  <ServicesSection client:load />
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {
-          regularServices.map((service) => (
-            <Service client:load key={service.title} service={service} />
-          ))
-        }
-      </div>
-    </div>
-  </div>
-
-  <!-- Service Offers Structured Data -->
   <script
     is:inline
     type="application/ld+json"
     set:html={JSON.stringify(offersSchema)}
   />
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-10">
-    <div class="bg-zinc-800/60 rounded-3xl p-6 md:p-8">
-      <h3
-        class="text-center text-xl md:text-2xl font-sans text-white mb-6"
+  <div class="mx-auto max-w-7xl px-4 pb-14 sm:px-6 lg:px-8">
+    <div class="rounded-lg border border-zinc-800 bg-[#141416] p-5 md:p-7">
+      <p
+        class="text-[10px] font-black uppercase tracking-[0.18em] text-yellow-400"
       >
-        Información importante
-      </h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <div class="bg-white/5 rounded-xl p-5">
-          <h4 class="font-bold text-yellow-500 mb-2">🚚 Traslado</h4>
-          <p class="text-white/85 text-sm">
-            Gratis dentro de Santiago. Sectores rurales +$20.000. Fuera de
-            Santiago según cálculo previo.
-          </p>
-        </div>
-        <div class="bg-white/5 rounded-xl p-5">
-          <h4 class="font-bold text-yellow-500 mb-2">🖥️ Equipamiento</h4>
-          <p class="text-white/85 text-sm">
-            Telón + Proyector o Pantalla según espacio y preferencia. Telón 80"
-            aprox. y Pantalla 43".
-          </p>
-        </div>
-        <div class="bg-white/5 rounded-xl p-5">
-          <h4 class="font-bold text-yellow-500 mb-2">📝 Reserva</h4>
-          <p class="text-white/85 text-sm">
-            Solo el 20% del total. El resto se paga una vez instalados los
-            equipos en el evento.
-          </p>
-        </div>
-        <div class="bg-white/5 rounded-xl p-5">
-          <h4 class="font-bold text-yellow-500 mb-2">✨ Beneficio gratis</h4>
-          <p class="text-white/85 text-sm">
-            2 Pantallas Led Luminosas personalizadas con el nombre del
-            festejado(a) en todos los packs.
-          </p>
-        </div>
-        <div class="bg-white/5 rounded-xl p-5 md:col-span-2 lg:col-span-2">
-          <h4 class="font-bold text-yellow-500 mb-2">💳 Forma de pago</h4>
-          <p class="text-white/85 text-sm">
-            El servicio se paga una vez instalados los equipos en el evento. Los
-            precios de los planes podrían variar en el tiempo.
-          </p>
-        </div>
+        Antes de reservar
+      </p>
+      <h3 class="mt-2 text-xl font-black text-white">Información importante</h3>
+      <div class="mt-5 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+        {
+          conditions.map((condition) => (
+            <article class="rounded-sm border border-zinc-800 p-4">
+              <h4 class="text-xs font-black uppercase tracking-wide text-yellow-300">
+                {condition.title}
+              </h4>
+              <p class="mt-2 text-xs leading-relaxed text-zinc-400">
+                {condition.body}
+              </p>
+            </article>
+          ))
+        }
       </div>
     </div>
   </div>
