@@ -2,9 +2,6 @@
 import { Image } from "astro:assets";
 import logo from "../../public/logo.png";
 import djBackground from "@assets/djBackground.mp4";
-import { TESTIMONIALS } from "../data/testimonials";
-
-const featured = TESTIMONIALS.find((testimonial) => testimonial.highlighted);
 ---
 
 <section
@@ -93,26 +90,6 @@ const featured = TESTIMONIALS.find((testimonial) => testimonial.highlighted);
           Escríbenos por WhatsApp
         </a>
       </div>
-
-      {
-        featured && (
-          <figure class="mt-10 max-w-2xl rounded-card border border-line border-l-2 border-l-accent bg-surface p-5">
-            <blockquote class="text-sm leading-relaxed text-white md:text-base">
-              “{featured.quote}”
-            </blockquote>
-            <figcaption class="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] font-bold uppercase tracking-wide">
-              <span class="text-accent">{featured.handle}</span>
-              <span class="text-muted">· {featured.context}</span>
-              <a
-                href="#testimonios"
-                class="text-muted underline decoration-line-strong underline-offset-4 transition-colors hover:text-white"
-              >
-                Ver las 5 reseñas
-              </a>
-            </figcaption>
-          </figure>
-        )
-      }
     </div>
   </div>
 </section>
