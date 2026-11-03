@@ -7,10 +7,10 @@ import djBackground from "@assets/djBackground.mp4";
 <section
   id="home"
   aria-labelledby="hero-title"
-  class="relative isolate flex min-h-[calc(100svh-4rem)] overflow-hidden"
+  class="relative isolate flex min-h-[calc(100svh-4rem)] overflow-hidden bg-ink"
 >
   <div
-    class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_75%_20%,rgba(246,201,69,0.14),transparent_34%),radial-gradient(circle_at_10%_80%,rgba(246,201,69,0.06),transparent_30%)]"
+    class="pointer-events-none absolute inset-0 bg-glow-hero"
     aria-hidden="true"
   >
   </div>
@@ -41,7 +41,7 @@ import djBackground from "@assets/djBackground.mp4";
       playsinline
       aria-label="Video de fondo mostrando ambiente de fiesta con DJ"></video>
     <div
-      class="absolute inset-0 bg-gradient-to-r from-[#0b0b0d] via-[#0b0b0d]/80 to-transparent"
+      class="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-transparent"
     >
     </div>
   </div>
@@ -51,19 +51,17 @@ import djBackground from "@assets/djBackground.mp4";
   >
     <div class="max-w-3xl">
       <p
-        class="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-400 sm:text-xs"
+        class="text-[10px] font-black uppercase tracking-[0.2em] text-accent sm:text-xs"
       >
         DJ · Sonido · Iluminación · Santiago
       </p>
       <h1
         id="hero-title"
-        class="mt-4 font-display text-5xl uppercase leading-[0.92] tracking-tight text-white sm:text-7xl lg:text-8xl"
+        class="mt-4 font-display text-[clamp(2.5rem,8vw,5.5rem)] uppercase leading-[0.92] tracking-tight text-white"
       >
-        ¡Que tu fiesta se sienta <span class="text-yellow-400">enorme!</span>
+        ¡Que tu fiesta se sienta <span class="text-accent">enorme!</span>
       </h1>
-      <p
-        class="mt-6 max-w-2xl text-sm leading-relaxed text-zinc-300 sm:text-base"
-      >
+      <p class="mt-6 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
         Elige un pack probado o arma tu evento a medida. Precios claros,
         producción completa y coordinación directa por WhatsApp.
       </p>
@@ -71,37 +69,37 @@ import djBackground from "@assets/djBackground.mp4";
       <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
         <a
           href="#services"
-          class="flex min-h-12 items-center justify-center rounded-sm bg-yellow-400 px-6 py-3 text-sm font-black uppercase tracking-wide text-zinc-950 transition-colors hover:bg-yellow-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
+          class="flex min-h-12 items-center justify-center rounded-control bg-accent px-6 py-3 text-sm font-black uppercase tracking-wide text-ink transition-colors hover:bg-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
           Ver packs y precios
         </a>
         <a
           href="#contact"
-          class="flex min-h-12 items-center justify-center rounded-sm border border-zinc-700 px-6 py-3 text-sm font-bold text-white transition-colors hover:border-yellow-400 hover:text-yellow-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
+          class="flex min-h-12 items-center justify-center rounded-control border border-line-strong px-6 py-3 text-sm font-bold text-white transition-colors hover:border-accent hover:text-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
           Hablar por WhatsApp
         </a>
       </div>
 
       <ul
-        class="mt-10 flex flex-wrap gap-x-8 gap-y-4 border-t border-zinc-800 pt-6"
+        class="mt-10 grid grid-cols-3 divide-x divide-line overflow-hidden rounded-card border border-line bg-surface"
         aria-label="Datos rápidos del servicio"
       >
-        <li>
+        <li class="px-4 py-3">
           <strong class="block text-xl font-black text-white">5</strong>
-          <span class="text-[10px] uppercase tracking-wide text-zinc-500">
+          <span class="text-[10px] uppercase tracking-wide text-muted">
             packs base
           </span>
         </li>
-        <li>
+        <li class="px-4 py-3">
           <strong class="block text-xl font-black text-white">20%</strong>
-          <span class="text-[10px] uppercase tracking-wide text-zinc-500">
+          <span class="text-[10px] uppercase tracking-wide text-muted">
             para reservar
           </span>
         </li>
-        <li>
+        <li class="px-4 py-3">
           <strong class="block text-xl font-black text-white">$0</strong>
-          <span class="text-[10px] uppercase tracking-wide text-zinc-500">
+          <span class="text-[10px] uppercase tracking-wide text-muted">
             traslado en Santiago
           </span>
         </li>
@@ -110,7 +108,7 @@ import djBackground from "@assets/djBackground.mp4";
 
     <div class="relative hidden justify-center lg:flex">
       <div
-        class="absolute inset-8 rounded-full bg-yellow-400/10 blur-3xl"
+        class="absolute inset-8 rounded-full bg-accent/10 blur-3xl"
         aria-hidden="true"
       >
       </div>
