@@ -2,49 +2,58 @@
 import portrait from "@assets/portrait.webp";
 import { Image } from "astro:assets";
 import SocialMedia from "./SocialMedia.tsx";
+import SectionHeading from "./SectionHeading.astro";
 ---
 
-<section id="bio" aria-labelledby="bio-title">
-  <h2 id="bio-title" class="text-center font-display text-3xl md:text-4xl bg-zinc-800 py-10">BIO</h2>
-  <div class="flex flex-col lg:flex-row py-10 place-content-center xl:px-[10%] text-lg">
-  <Image
-    class="object-contain w-[60%] md:w-[40%] lg:w-[35%] rounded-2xl place-self-center"
-    src={portrait}
-    alt="DJ Pablito Dyr - Retrato profesional del DJ en Santiago de Chile"
-    width={540}
-    height={675}
-  />
-    <div class="w-full lg:w-1/2 px-10 text-center lg:text-left lg:px-20 sm:py-5 text-white/80 text-pretty">
-      <header class="font-bold text-center text-lg">DJ Pablito Dyr</header>
-      <p class="mt-5 font-thin">
-        Siempre he sido un amante de la música de todos los estilos, y desde que
-        tuve acceso a una computadora, comencé a mezclar con programas como
-        VirtualDJ. Así, <span class="text-yellow-500 font-normal">
-          lo que comenzó como un hobby rápidamente se transformó en una de mis
-          mayores pasiones.</span
-        >
-      </p>
-      <p class="mt-5 font-thin">
-        Esta aventura <span class="text-yellow-500 font-normal"
-          >se inició hace más de 3 años</span
-        > en uno de los locales más prestigiosos de la comuna de Maipú. Desde ese
-        momento, comenzó una carrera por distintos recintos donde me presenté exitosamente
-        hasta crear <span class="text-yellow-500 font-normal">
-          DJ Pablito Dyr Producciones</span
-        >. Una pequeña, pero exitosa productora que presta servicios tales como
-        Barwoman, Garzones, Coctelería, Cámara 360°, trabajando en alianza con
-        distintas marcas.
-      </p>
-      <p class="mt-5 font-thin">
-        Hemos realizado distintos tipos de eventos a lo largo del tiempo, tales
-        como matrimonios, bautizos, cumpleaños, graduaciones, entre otros.
-        Logrando llevar a cabo con éxito las múltiples celebraciones en las que
-        hemos participado, con excelentes referencias por parte de nuestros
-        clientes.
-      </p>
+<section
+  id="bio"
+  aria-labelledby="bio-title"
+  class="border-t border-line bg-ink py-16 md:py-24"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <SectionHeading id="bio-title" kicker="Quién soy" title="Bio" />
+    <div
+      class="grid items-center gap-8 lg:grid-cols-[minmax(0,340px)_1fr] lg:gap-16"
+    >
+      <Image
+        class="mx-auto w-full max-w-sm rounded-card border border-line object-contain"
+        src={portrait}
+        alt="DJ Pablito Dyr - Retrato profesional del DJ en Santiago de Chile"
+        width={540}
+        height={675}
+      />
+      <div class="text-center text-white/80 text-pretty lg:text-left">
+        <header class="font-bold text-center text-lg">DJ Pablito Dyr</header>
+        <p class="mt-5 font-thin">
+          Siempre he sido un amante de la música de todos los estilos, y desde
+          que tuve acceso a una computadora, comencé a mezclar con programas
+          como VirtualDJ. Así, <span class="text-accent font-normal">
+            lo que comenzó como un hobby rápidamente se transformó en una de mis
+            mayores pasiones.</span
+          >
+        </p>
+        <p class="mt-5 font-thin">
+          Esta aventura <span class="text-accent font-normal"
+            >se inició hace más de 3 años</span
+          > en uno de los locales más prestigiosos de la comuna de Maipú. Desde ese
+          momento, comenzó una carrera por distintos recintos donde me presenté exitosamente
+          hasta crear <span class="text-accent font-normal">
+            DJ Pablito Dyr Producciones</span
+          >. Una pequeña, pero exitosa productora que presta servicios tales
+          como Barwoman, Garzones, Coctelería, Cámara 360°, trabajando en
+          alianza con distintas marcas.
+        </p>
+        <p class="mt-5 font-thin">
+          Hemos realizado distintos tipos de eventos a lo largo del tiempo,
+          tales como matrimonios, bautizos, cumpleaños, graduaciones, entre
+          otros. Logrando llevar a cabo con éxito las múltiples celebraciones en
+          las que hemos participado, con excelentes referencias por parte de
+          nuestros clientes.
+        </p>
 
-      <p class="my-5 text-center">¡Sígueme en mis redes sociales!</p>
-      <SocialMedia namesRequired={true} />
+        <p class="my-5 text-center">¡Sígueme en mis redes sociales!</p>
+        <SocialMedia namesRequired={true} />
+      </div>
     </div>
   </div>
 </section>
