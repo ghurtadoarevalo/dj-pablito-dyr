@@ -5,15 +5,18 @@ import PlanCard from "./PlanCard";
 
 type ServicesTab = "packs" | "custom";
 
-// Pedido del cliente: la fila "Diseña tu pack" queda oculta, no eliminada.
-const SHOW_CUSTOM_PACK = false;
+// Pedido del cliente: el pack a medida queda oculto, no eliminado.
+// Para volver a mostrarlo, pasar showCustomPack al componente.
+type ServicesSectionProps = {
+  showCustomPack?: boolean;
+};
 
 const tabs: readonly { id: ServicesTab; label: string }[] = [
   { id: "packs", label: "Packs base" },
   { id: "custom", label: "Arma tu evento" },
 ];
 
-const ServicesSection = () => {
+const ServicesSection = ({ showCustomPack = false }: ServicesSectionProps) => {
   const [activeTab, setActiveTab] = useState<ServicesTab>("packs");
   const tabRefs = useRef<Record<ServicesTab, HTMLButtonElement | null>>({
     packs: null,
@@ -45,43 +48,46 @@ const ServicesSection = () => {
           Packs y precios
         </h2>
         <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted">
-          Cinco packs con precio exacto y todo lo que incluye cada uno. Abre el
-          que te interese o arma el tuyo a medida.
+          {showCustomPack
+            ? "Cinco packs con precio exacto y todo lo que incluye cada uno. Abre el que te interese o arma el tuyo a medida."
+            : "Cinco packs con precio exacto y todo lo que incluye cada uno. Abre el que te interese y escríbenos."}
         </p>
       </div>
 
-      <div
-        className="grid grid-cols-2 gap-1 rounded-control border border-line bg-ink p-1 sm:inline-grid sm:auto-cols-max"
-        role="tablist"
-        aria-label="Cómo elegir tu servicio"
-      >
-        {tabs.map((tab) => {
-          const selected = activeTab === tab.id;
+      {showCustomPack && (
+        <div
+          className="grid grid-cols-2 gap-1 rounded-control border border-line bg-ink p-1 sm:inline-grid sm:auto-cols-max"
+          role="tablist"
+          aria-label="Cómo elegir tu servicio"
+        >
+          {tabs.map((tab) => {
+            const selected = activeTab === tab.id;
 
-          return (
-            <button
-              key={tab.id}
-              ref={(node) => {
-                tabRefs.current[tab.id] = node;
-              }}
-              id={`services-tab-${tab.id}`}
-              type="button"
-              role="tab"
-              aria-selected={selected}
-              aria-controls={tab.id === "packs" ? packPanelId : customPanelId}
-              tabIndex={selected ? 0 : -1}
-              onClick={() => setActiveTab(tab.id)}
-              onKeyDown={moveFocus}
-              className={`min-h-11 rounded-control px-4 py-2.5 text-xs font-black transition-colors ${
-                selected ? "bg-accent text-ink" : "text-muted hover:text-paper"
-              }`}
-            >
-              {selected && <span aria-hidden="true">✓ </span>}
-              {tab.label}
-            </button>
-          );
-        })}
-      </div>
+            return (
+              <button
+                key={tab.id}
+                ref={(node) => {
+                  tabRefs.current[tab.id] = node;
+                }}
+                id={`services-tab-${tab.id}`}
+                type="button"
+                role="tab"
+                aria-selected={selected}
+                aria-controls={tab.id === "packs" ? packPanelId : customPanelId}
+                tabIndex={selected ? 0 : -1}
+                onClick={() => setActiveTab(tab.id)}
+                onKeyDown={moveFocus}
+                className={`min-h-11 rounded-control px-4 py-2.5 text-xs font-black transition-colors ${
+                  selected ? "bg-accent text-ink" : "text-muted hover:text-paper"
+                }`}
+              >
+                {selected && <span aria-hidden="true">✓ </span>}
+                {tab.label}
+              </button>
+            );
+          })}
+        </div>
+      )}
 
       {activeTab === "packs" ? (
         <div
@@ -95,8 +101,8 @@ const ServicesSection = () => {
               <PlanCard key={plan.id} plan={plan} />
             ))}
 
-            {SHOW_CUSTOM_PACK && (
-              /* Oculto por pedido del cliente. No borrar: cambiar SHOW_CUSTOM_PACK a true para mostrarlo de nuevo. */
+            {showCustomPack && (
+              /* Oculto por pedido del cliente. No borrar: pasar showCustomPack para mostrarlo de nuevo. */
               <div className="grid grid-cols-[2rem_minmax(0,1fr)_auto] items-center gap-3 py-5 sm:grid-cols-[2.5rem_minmax(0,1fr)_auto] sm:gap-5">
                 <span
                   className="font-display text-xl leading-none text-accent sm:text-2xl"

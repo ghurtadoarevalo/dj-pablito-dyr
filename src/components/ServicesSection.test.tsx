@@ -5,19 +5,25 @@ import { SERVICE_PLANS } from "../data/services";
 import ServicesSection from "./ServicesSection";
 
 describe("ServicesSection", () => {
-  it("starts on the packs tab and renders every plan", () => {
+  it("renders every plan and hides the custom pack by default", () => {
     render(<ServicesSection />);
+    for (const plan of SERVICE_PLANS)
+      expect(screen.getByText(plan.title)).toBeInTheDocument();
+    expect(screen.queryByRole("tab")).not.toBeInTheDocument();
+    expect(screen.queryByText("Diseña tu pack")).not.toBeInTheDocument();
+  });
+
+  it("starts on the packs tab when the custom pack is enabled", () => {
+    render(<ServicesSection showCustomPack />);
     expect(screen.getByRole("tab", { name: "Packs base" })).toHaveAttribute(
       "aria-selected",
       "true",
     );
-    for (const plan of SERVICE_PLANS)
-      expect(screen.getByText(plan.title)).toBeInTheDocument();
   });
 
   it("switches to the custom builder and updates hours, total, and deposit", async () => {
     const user = userEvent.setup();
-    render(<ServicesSection />);
+    render(<ServicesSection showCustomPack />);
     await user.click(screen.getByRole("tab", { name: "Arma tu evento" }));
     expect(screen.getByRole("tab", { name: "Arma tu evento" })).toHaveAttribute(
       "aria-selected",
@@ -31,7 +37,7 @@ describe("ServicesSection", () => {
 
   it("enforces option dependencies and updates the total", async () => {
     const user = userEvent.setup();
-    render(<ServicesSection />);
+    render(<ServicesSection showCustomPack />);
     await user.click(screen.getByRole("tab", { name: "Arma tu evento" }));
     const coanimation = screen.getByRole("button", { name: /Coanimación/ });
     const animation = screen.getByRole("button", { name: /^Animación/ });
@@ -45,7 +51,7 @@ describe("ServicesSection", () => {
 
   it("requests manual transport pricing outside Santiago", async () => {
     const user = userEvent.setup();
-    render(<ServicesSection />);
+    render(<ServicesSection showCustomPack />);
     await user.click(screen.getByRole("tab", { name: "Arma tu evento" }));
     await user.click(screen.getByRole("button", { name: /Fuera de Santiago/ }));
     const summary = screen.getByTestId("desktop-quote-summary");
@@ -61,7 +67,7 @@ describe("ServicesSection", () => {
 
   it("puts the full configuration in the WhatsApp link", async () => {
     const user = userEvent.setup();
-    render(<ServicesSection />);
+    render(<ServicesSection showCustomPack />);
     await user.click(screen.getByRole("tab", { name: "Arma tu evento" }));
     await user.click(screen.getByRole("button", { name: /Karaoke/ }));
     const summary = screen.getByTestId("desktop-quote-summary");
@@ -94,7 +100,7 @@ describe("ServicesSection", () => {
     );
 
     const user = userEvent.setup();
-    render(<ServicesSection />);
+    render(<ServicesSection showCustomPack />);
     await user.click(screen.getByRole("tab", { name: "Arma tu evento" }));
     const bar = screen.getByTestId("mobile-quote-bar");
     expect(bar).toBeInTheDocument();

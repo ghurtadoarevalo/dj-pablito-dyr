@@ -9,12 +9,12 @@ type PlanCardProps = {
 const PlanCard = ({ plan }: PlanCardProps) => {
   return (
     <details className="group" open={plan.featured}>
-      <summary className="grid cursor-pointer list-none grid-cols-[2rem_minmax(0,1fr)_auto] items-center gap-3 py-5 transition-colors hover:text-accent-bright sm:grid-cols-[2.5rem_minmax(0,1fr)_auto] sm:gap-5">
-        <span
-          className="font-display text-xl leading-none text-muted sm:text-2xl"
-          aria-hidden="true"
-        >
-          {plan.hours}
+      <summary className="grid cursor-pointer list-none grid-cols-[2.5rem_minmax(0,1fr)_auto] items-center gap-3 py-5 transition-colors hover:text-accent-bright sm:grid-cols-[3rem_minmax(0,1fr)_auto] sm:gap-5">
+        <span className="flex items-baseline gap-0.5 text-muted">
+          <span className="font-display text-xl leading-none sm:text-2xl">
+            {plan.hours}
+          </span>
+          <span className="text-[11px] font-bold uppercase">h</span>
         </span>
         <span className="min-w-0">
           <span className="flex flex-wrap items-center gap-x-2 sm:flex-nowrap">
@@ -32,7 +32,7 @@ const PlanCard = ({ plan }: PlanCardProps) => {
             />
           </span>
           <span className="mt-1 block text-xs leading-relaxed text-muted">
-            {plan.hours} horas · {plan.adds}
+            {plan.adds}
           </span>
           <span className="sr-only">Ver detalle de {plan.title}</span>
         </span>
