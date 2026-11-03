@@ -9,14 +9,12 @@ type PlanCardProps = {
 const PlanCard = ({ plan }: PlanCardProps) => {
   return (
     <article
-      className={`relative flex h-full flex-col rounded-lg border bg-[#141416] p-5 text-white ${
-        plan.featured
-          ? "border-yellow-400/60 bg-[linear-gradient(145deg,rgba(246,201,69,0.07),transparent_60%)]"
-          : "border-zinc-800"
+      className={`relative flex h-full flex-col rounded-card border bg-surface p-5 text-white ${
+        plan.featured ? "border-accent/60 bg-glow-card" : "border-line"
       }`}
     >
       {plan.featured && (
-        <span className="absolute -top-2.5 left-5 rounded-sm bg-yellow-400 px-2 py-1 text-[10px] font-black uppercase tracking-wider text-zinc-950">
+        <span className="absolute -top-2.5 left-5 rounded-control bg-accent px-2 py-1 text-[10px] font-black uppercase tracking-wider text-ink">
           Más elegido
         </span>
       )}
@@ -26,9 +24,9 @@ const PlanCard = ({ plan }: PlanCardProps) => {
           <h3 className="break-words text-sm font-black uppercase tracking-wide">
             {plan.title}
           </h3>
-          <p className="mt-1 text-xs text-zinc-400">{plan.hours} horas</p>
+          <p className="mt-1 text-xs text-muted">{plan.hours} horas</p>
         </div>
-        <p className="whitespace-nowrap text-xl font-black text-yellow-400">
+        <p className="whitespace-nowrap text-xl font-black text-accent">
           {formatCLP(plan.price)}
         </p>
       </div>
@@ -44,15 +42,15 @@ const PlanCard = ({ plan }: PlanCardProps) => {
         {plan.highlights.map((highlight) => (
           <li
             key={highlight}
-            className="rounded-sm border border-zinc-700 px-2 py-1.5 text-[11px] text-zinc-300"
+            className="rounded-control border border-line-strong px-2 py-1.5 text-[11px] text-zinc-300"
           >
             {highlight}
           </li>
         ))}
       </ul>
 
-      <details className="group mt-5 border-t border-zinc-800 pt-4">
-        <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 text-xs font-semibold text-zinc-400 transition-colors hover:text-yellow-400">
+      <details className="group mt-5 border-t border-line pt-4">
+        <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 text-xs font-semibold text-muted transition-colors hover:text-accent">
           <span>Ver todo lo incluido en {plan.title}</span>
           <span
             aria-hidden="true"
@@ -61,16 +59,16 @@ const PlanCard = ({ plan }: PlanCardProps) => {
             +
           </span>
         </summary>
-        <ul className="mt-4 space-y-2 text-xs leading-relaxed text-zinc-400">
+        <ul className="mt-4 space-y-2 text-xs leading-relaxed text-muted">
           {plan.features.map((feature) => (
             <li key={feature} className="flex gap-2">
-              <span aria-hidden="true" className="text-yellow-400">
+              <span aria-hidden="true" className="text-accent">
                 ·
               </span>
               <span>{feature}</span>
             </li>
           ))}
-          <li className="border-t border-zinc-800 pt-3 font-semibold text-zinc-300">
+          <li className="border-t border-line pt-3 font-semibold text-zinc-300">
             Hora adicional: {formatCLP(plan.extraHourPrice)}
           </li>
         </ul>
@@ -81,7 +79,7 @@ const PlanCard = ({ plan }: PlanCardProps) => {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Elegir ${plan.title}`}
-        className="mt-5 flex min-h-11 items-center justify-center gap-2 rounded-sm bg-yellow-400 px-4 py-2.5 text-xs font-black uppercase tracking-wide text-zinc-950 transition-colors hover:bg-yellow-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
+        className="mt-5 flex min-h-11 items-center justify-center gap-2 rounded-control bg-accent px-4 py-2.5 text-xs font-black uppercase tracking-wide text-ink transition-colors hover:bg-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
       >
         <FaWhatsapp aria-hidden="true" className="text-lg" />
         Elegir pack

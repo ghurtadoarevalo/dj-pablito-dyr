@@ -19,10 +19,10 @@ import {
 import { useIsInView } from "../lib/useIsInView";
 
 const optionClassName = (selected: boolean) =>
-  `flex min-h-11 items-center justify-between gap-3 rounded-sm border px-3 py-2.5 text-left text-xs transition-colors ${
+  `flex min-h-11 items-center justify-between gap-3 rounded-control border px-3 py-2.5 text-left text-xs transition-colors ${
     selected
-      ? "border-yellow-400/80 bg-yellow-400/10 text-white"
-      : "border-zinc-700 text-zinc-300 hover:border-zinc-500"
+      ? "border-accent/80 bg-accent/10 text-white"
+      : "border-line-strong text-zinc-300 hover:border-zinc-500"
   }`;
 
 const CustomQuoteBuilder = () => {
@@ -57,11 +57,11 @@ const CustomQuoteBuilder = () => {
     <div ref={panelRef} className={inView ? "pb-44 lg:pb-0" : undefined}>
       <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start">
         <div className="grid gap-3">
-          <fieldset className="rounded-lg border border-zinc-800 bg-[#141416] p-5">
+          <fieldset className="rounded-card border border-line bg-surface p-5">
             <legend className="px-1 text-xs font-black uppercase tracking-wider text-white">
               1. Duración
             </legend>
-            <p className="mt-1 text-xs leading-relaxed text-zinc-400">
+            <p className="mt-1 text-xs leading-relaxed text-muted">
               La base incluye 4 horas de DJ, sonido JBL e iluminación básica.
             </p>
             <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
@@ -69,7 +69,7 @@ const CustomQuoteBuilder = () => {
                 <p className="text-2xl font-black text-white">
                   {normalized.hours} horas
                 </p>
-                <p className="mt-1 text-[11px] text-zinc-400">
+                <p className="mt-1 text-[11px] text-muted">
                   Hora adicional: {formatCLP(BASE_PACKAGE.extraHourAmount)}
                 </p>
               </div>
@@ -79,7 +79,7 @@ const CustomQuoteBuilder = () => {
                   aria-label="Quitar una hora"
                   disabled={normalized.hours <= BASE_PACKAGE.includedHours}
                   onClick={() => setHours(normalized.hours - 1)}
-                  className="grid size-11 place-items-center rounded-sm border border-zinc-700 bg-zinc-900 text-xl text-white transition-colors hover:border-yellow-400 disabled:cursor-not-allowed disabled:opacity-30"
+                  className="grid size-11 place-items-center rounded-control border border-line-strong bg-zinc-900 text-xl text-white transition-colors hover:border-accent disabled:cursor-not-allowed disabled:opacity-30"
                 >
                   −
                 </button>
@@ -91,7 +91,7 @@ const CustomQuoteBuilder = () => {
                   aria-label="Agregar una hora"
                   disabled={normalized.hours >= BASE_PACKAGE.maxHours}
                   onClick={() => setHours(normalized.hours + 1)}
-                  className="grid size-11 place-items-center rounded-sm border border-zinc-700 bg-zinc-900 text-xl text-white transition-colors hover:border-yellow-400 disabled:cursor-not-allowed disabled:opacity-30"
+                  className="grid size-11 place-items-center rounded-control border border-line-strong bg-zinc-900 text-xl text-white transition-colors hover:border-accent disabled:cursor-not-allowed disabled:opacity-30"
                 >
                   +
                 </button>
@@ -99,11 +99,11 @@ const CustomQuoteBuilder = () => {
             </div>
           </fieldset>
 
-          <fieldset className="rounded-lg border border-zinc-800 bg-[#141416] p-5">
+          <fieldset className="rounded-card border border-line bg-surface p-5">
             <legend className="px-1 text-xs font-black uppercase tracking-wider text-white">
               2. Experiencia
             </legend>
-            <p className="mt-1 text-xs leading-relaxed text-zinc-400">
+            <p className="mt-1 text-xs leading-relaxed text-muted">
               Suma solo lo que quieres. La coanimación incluye animación y el
               proyector incluye karaoke.
             </p>
@@ -122,9 +122,9 @@ const CustomQuoteBuilder = () => {
                     <span className="flex items-center gap-2">
                       <span
                         aria-hidden="true"
-                        className={`grid size-4 place-items-center rounded-sm border text-[10px] ${
+                        className={`grid size-4 place-items-center rounded-control border text-[10px] ${
                           selected
-                            ? "border-yellow-400 bg-yellow-400 text-zinc-950"
+                            ? "border-accent bg-accent text-ink"
                             : "border-zinc-600"
                         }`}
                       >
@@ -133,7 +133,7 @@ const CustomQuoteBuilder = () => {
                       {option.label}
                     </span>
                     <span
-                      className={selected ? "text-yellow-400" : "text-zinc-500"}
+                      className={selected ? "text-accent" : "text-zinc-500"}
                     >
                       +{formatCLP(option.amount)}
                     </span>
@@ -143,11 +143,11 @@ const CustomQuoteBuilder = () => {
             </div>
           </fieldset>
 
-          <fieldset className="rounded-lg border border-zinc-800 bg-[#141416] p-5">
+          <fieldset className="rounded-card border border-line bg-surface p-5">
             <legend className="px-1 text-xs font-black uppercase tracking-wider text-white">
               3. Iluminación
             </legend>
-            <p className="mt-1 text-xs leading-relaxed text-zinc-400">
+            <p className="mt-1 text-xs leading-relaxed text-muted">
               Elige un nivel; no se acumulan.
             </p>
             <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
@@ -157,10 +157,10 @@ const CustomQuoteBuilder = () => {
                 return (
                   <label
                     key={option.id}
-                    className={`flex min-h-11 cursor-pointer flex-col justify-center rounded-sm border px-2 py-2 text-center text-[11px] transition-colors focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-yellow-400 ${
+                    className={`flex min-h-11 cursor-pointer flex-col justify-center rounded-control border px-2 py-2 text-center text-[11px] transition-colors focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-accent ${
                       selected
-                        ? "border-yellow-400 bg-yellow-400/10 text-yellow-300"
-                        : "border-zinc-700 text-zinc-300 hover:border-zinc-500"
+                        ? "border-accent bg-accent/10 text-accent-bright"
+                        : "border-line-strong text-zinc-300 hover:border-zinc-500"
                     }`}
                   >
                     <input
@@ -183,11 +183,11 @@ const CustomQuoteBuilder = () => {
             </div>
           </fieldset>
 
-          <fieldset className="rounded-lg border border-zinc-800 bg-[#141416] p-5">
+          <fieldset className="rounded-card border border-line bg-surface p-5">
             <legend className="px-1 text-xs font-black uppercase tracking-wider text-white">
               4. Ubicación
             </legend>
-            <p className="mt-1 text-xs leading-relaxed text-zinc-400">
+            <p className="mt-1 text-xs leading-relaxed text-muted">
               Cotización exacta dentro de Santiago y sectores rurales. Fuera de
               Santiago se coordina por WhatsApp.
             </p>
@@ -206,9 +206,9 @@ const CustomQuoteBuilder = () => {
                     <span className="flex items-center gap-2">
                       <span
                         aria-hidden="true"
-                        className={`grid size-4 place-items-center rounded-full border text-[9px] ${
+                        className={`grid size-4 place-items-center rounded-pill border text-[9px] ${
                           selected
-                            ? "border-yellow-400 bg-yellow-400 text-zinc-950"
+                            ? "border-accent bg-accent text-ink"
                             : "border-zinc-600"
                         }`}
                       >
@@ -217,7 +217,7 @@ const CustomQuoteBuilder = () => {
                       {option.label}
                     </span>
                     <span
-                      className={selected ? "text-yellow-400" : "text-zinc-500"}
+                      className={selected ? "text-accent" : "text-zinc-500"}
                     >
                       {option.amount === null
                         ? "Consultar"
@@ -236,9 +236,9 @@ const CustomQuoteBuilder = () => {
           id="mobile-quote-breakdown"
           data-testid="desktop-quote-summary"
           aria-live="polite"
-          className="scroll-mt-20 rounded-lg border border-yellow-400/40 bg-[linear-gradient(150deg,rgba(246,201,69,0.06),transparent_45%),#171719] p-5 lg:sticky lg:top-24"
+          className="scroll-mt-20 rounded-card border border-accent/40 bg-glow-summary p-5 lg:sticky lg:top-24"
         >
-          <p className="text-[10px] font-black uppercase tracking-[0.16em] text-yellow-400">
+          <p className="text-[10px] font-black uppercase tracking-[0.16em] text-accent">
             Tu configuración
           </p>
           <h3 className="mt-2 text-xl font-black text-white">
@@ -251,7 +251,7 @@ const CustomQuoteBuilder = () => {
                 key={`${line.label}-${line.amount}`}
                 className="flex items-start justify-between gap-4 text-[11px]"
               >
-                <span className="text-zinc-400">{line.label}</span>
+                <span className="text-muted">{line.label}</span>
                 <span className="whitespace-nowrap text-zinc-200">
                   {formatCLP(line.amount)}
                 </span>
@@ -261,11 +261,11 @@ const CustomQuoteBuilder = () => {
 
           {quote.kind === "exact" ? (
             <>
-              <div className="mt-5 flex items-end justify-between gap-4 border-t border-zinc-700 pt-4">
-                <span className="text-xs text-zinc-400">Total exacto</span>
+              <div className="mt-5 flex items-end justify-between gap-4 border-t border-line-strong pt-4">
+                <span className="text-xs text-muted">Total exacto</span>
                 <strong
                   data-testid="quote-total"
-                  className="text-2xl font-black text-yellow-400"
+                  className="text-2xl font-black text-accent"
                 >
                   {formatCLP(quote.total)}
                 </strong>
@@ -278,7 +278,7 @@ const CustomQuoteBuilder = () => {
               </p>
             </>
           ) : (
-            <p className="mt-5 border-t border-zinc-700 pt-4 text-sm font-bold text-yellow-300">
+            <p className="mt-5 border-t border-line-strong pt-4 text-sm font-bold text-accent-bright">
               El traslado se cotiza según el lugar del evento.
             </p>
           )}
@@ -287,7 +287,7 @@ const CustomQuoteBuilder = () => {
             href={buildCustomQuoteWhatsAppUrl(quote)}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-5 flex min-h-11 items-center justify-center rounded-sm bg-yellow-400 px-4 py-3 text-center text-[11px] font-black uppercase tracking-wide text-zinc-950 transition-colors hover:bg-yellow-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
+            className="mt-5 flex min-h-11 items-center justify-center rounded-control bg-accent px-4 py-3 text-center text-[11px] font-black uppercase tracking-wide text-ink transition-colors hover:bg-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
             {quoteCtaLabel}
           </a>
@@ -302,7 +302,7 @@ const CustomQuoteBuilder = () => {
       {inView && (
         <div
           data-testid="mobile-quote-bar"
-          className="fixed inset-x-0 bottom-0 z-30 border-t border-yellow-400/40 bg-[#171719]/95 p-3 shadow-[0_-12px_35px_rgba(0,0,0,0.45)] backdrop-blur-md lg:hidden"
+          className="fixed inset-x-0 bottom-0 z-30 border-t border-accent/40 bg-surface-raised/95 p-3 shadow-[0_-12px_35px_rgba(0,0,0,0.45)] backdrop-blur-md lg:hidden"
           style={{
             paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))",
           }}
@@ -310,10 +310,10 @@ const CustomQuoteBuilder = () => {
           <div className="mx-auto max-w-lg">
             <div className="flex items-center justify-between gap-3">
               <div className="min-w-0">
-                <p className="text-[9px] font-black uppercase tracking-[0.14em] text-zinc-400">
+                <p className="text-[9px] font-black uppercase tracking-[0.14em] text-muted">
                   {quote.kind === "exact" ? "Total exacto" : "Traslado"}
                 </p>
-                <p className="truncate text-lg font-black text-yellow-400">
+                <p className="truncate text-lg font-black text-accent">
                   {quote.kind === "exact"
                     ? formatCLP(quote.total)
                     : "Cotización por WhatsApp"}
@@ -324,7 +324,7 @@ const CustomQuoteBuilder = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={quoteCtaLabel}
-                className="flex min-h-11 shrink-0 items-center justify-center rounded-sm bg-yellow-400 px-3 py-2 text-center text-[10px] font-black uppercase tracking-wide text-zinc-950"
+                className="flex min-h-11 shrink-0 items-center justify-center rounded-control bg-accent px-3 py-2 text-center text-[10px] font-black uppercase tracking-wide text-ink"
               >
                 <span aria-hidden="true">
                   {quote.kind === "exact" ? "Enviar" : "Cotizar"}
@@ -334,10 +334,10 @@ const CustomQuoteBuilder = () => {
 
             <a
               href="#mobile-quote-breakdown"
-              className="mt-2 flex min-h-11 items-center justify-between border-t border-zinc-800 pt-2 text-[11px] font-bold text-zinc-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
+              className="mt-2 flex min-h-11 items-center justify-between border-t border-line pt-2 text-[11px] font-bold text-zinc-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               Ver desglose
-              <span aria-hidden="true" className="text-base text-yellow-400">
+              <span aria-hidden="true" className="text-base text-accent">
                 ↓
               </span>
             </a>
