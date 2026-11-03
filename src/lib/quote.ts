@@ -106,9 +106,7 @@ export function toggleQuoteExtra(
   });
 }
 
-export function calculateCustomQuote(
-  selection: QuoteSelection,
-): QuoteResult {
+export function calculateCustomQuote(selection: QuoteSelection): QuoteResult {
   const normalized = normalizeQuoteSelection(selection);
   const lines: QuoteLine[] = [
     { label: BASE_PACKAGE.label, amount: BASE_PACKAGE.amount },

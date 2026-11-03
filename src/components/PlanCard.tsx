@@ -37,7 +37,10 @@ const PlanCard = ({ plan }: PlanCardProps) => {
         {plan.description}
       </p>
 
-      <ul className="mt-4 flex flex-wrap gap-1.5" aria-label={`Incluye ${plan.title}`}>
+      <ul
+        className="mt-4 flex flex-wrap gap-1.5"
+        aria-label={`Incluye ${plan.title}`}
+      >
         {plan.highlights.map((highlight) => (
           <li
             key={highlight}

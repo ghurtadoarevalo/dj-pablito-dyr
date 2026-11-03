@@ -64,7 +64,9 @@ const Navbar = () => {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  aria-current={currentRoute === link.label ? "page" : undefined}
+                  aria-current={
+                    currentRoute === link.label ? "page" : undefined
+                  }
                   onClick={() => selectRoute(link.label)}
                   className={linkClassName(link.label)}
                 >

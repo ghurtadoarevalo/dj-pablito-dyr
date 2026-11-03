@@ -39,8 +39,7 @@ import djBackground from "@assets/djBackground.mp4";
       muted
       loop
       playsinline
-      aria-label="Video de fondo mostrando ambiente de fiesta con DJ"
-    ></video>
+      aria-label="Video de fondo mostrando ambiente de fiesta con DJ"></video>
     <div
       class="absolute inset-0 bg-gradient-to-r from-[#0b0b0d] via-[#0b0b0d]/80 to-transparent"
     >
@@ -136,9 +135,7 @@ import djBackground from "@assets/djBackground.mp4";
     if (!(video instanceof HTMLVideoElement)) return;
 
     const desktop = window.matchMedia("(min-width: 768px)");
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    );
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     const syncPlayback = () => {
       if (desktop.matches && !reducedMotion.matches) {

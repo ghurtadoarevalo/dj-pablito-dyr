@@ -99,9 +99,7 @@ const ServicesSection = () => {
               <p className="text-[10px] font-black uppercase tracking-[0.16em] text-yellow-400">
                 ¿Otra combinación?
               </p>
-              <h3 className="mt-2 text-xl font-black">
-                Diseña tu propio pack
-              </h3>
+              <h3 className="mt-2 text-xl font-black">Diseña tu propio pack</h3>
               <p className="mt-3 text-sm leading-relaxed text-zinc-400">
                 Elige duración, experiencia e iluminación. Ve el total exacto
                 mientras configuras.

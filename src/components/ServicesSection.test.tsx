@@ -19,9 +19,10 @@ describe("ServicesSection", () => {
     const user = userEvent.setup();
     render(<ServicesSection />);
     await user.click(screen.getByRole("tab", { name: "Arma tu evento" }));
-    expect(
-      screen.getByRole("tab", { name: "Arma tu evento" }),
-    ).toHaveAttribute("aria-selected", "true");
+    expect(screen.getByRole("tab", { name: "Arma tu evento" })).toHaveAttribute(
+      "aria-selected",
+      "true",
+    );
     expect(screen.getByTestId("quote-total")).toHaveTextContent("$150.000");
     await user.click(screen.getByRole("button", { name: "Agregar una hora" }));
     expect(screen.getByTestId("quote-total")).toHaveTextContent("$175.000");
@@ -98,9 +99,7 @@ describe("ServicesSection", () => {
     const bar = screen.getByTestId("mobile-quote-bar");
     expect(bar).toBeInTheDocument();
     expect(within(bar).getByText("Ver desglose")).toBeInTheDocument();
-    await user.click(
-      screen.getByRole("button", { name: /Fuera de Santiago/ }),
-    );
+    await user.click(screen.getByRole("button", { name: /Fuera de Santiago/ }));
     expect(
       within(bar).getByRole("link", {
         name: /Cotización de traslado por WhatsApp/,

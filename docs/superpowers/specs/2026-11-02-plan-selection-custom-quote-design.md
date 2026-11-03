@@ -41,7 +41,7 @@ The services section presents five long cards with repeated equipment details an
 ## Constraints
 
 - Keep the existing Astro, React, TypeScript, and Tailwind stack.
-- Use Spanish (`es-CL`) for visitor-facing content.
+- Use Spanish (`es-CL`) for every visitor-facing string, including navigation labels and visible option labels. Internal identifiers, type names, and code stay in English; the language rule applies to what the visitor reads, not to how the code is written.
 - Keep the existing WhatsApp destination used by pack cards and contact: `56971768418`.
 - The approved prices are provisional business configuration and must be centralized so they can be adjusted without rewriting UI logic.
 - The calculated total is exact for the selected configuration; only date availability remains subject to confirmation.
@@ -79,6 +79,8 @@ Advantages: more space for the configurator and a lighter homepage. Tradeoff: ad
 
 The redesign scope covers the shared visual treatment of the navbar, hero, and services/custom-quote experience. Unrelated sections retain their content and behavior; only minimal shared color or typography alignment is allowed where necessary to avoid a broken transition.
 
+Navigation labels are `es-CL` and keep their current anchors: `Inicio` (`#home`), `Mixes` (`#mixing`, matching the section's own heading), `Servicios` (`#services`), `Equipos` (`#equipment`), `Biografía` (`#bio`), `Contacto` (`#contact`).
+
 ## Base Pack Experience
 
 - Two tabs: **Packs base** and **Arma tu evento**.
@@ -102,15 +104,27 @@ The configurator appears inside the same services section and uses four labeled 
 | Additional hour, up to 8 total hours | 25,000 |
 | Animation | 20,000 |
 | Co-animation | 25,000 |
-| Karaoke, two microphones, and screen | 30,000 |
+| Karaoke, two microphones, and the standard screen | 30,000 |
 | Music videos | 10,000 |
-| Projector and screen upgrade | 20,000 |
+| Projector upgrade, replaces the standard karaoke screen | 20,000 |
 | Smoke machine | 5,000 |
 | Improved lighting | 10,000 |
 | Advanced lighting | 25,000 |
 | Professional lighting | 80,000 |
 | Transport within Santiago | 0 |
 | Rural-area transport | 20,000 |
+
+### Visitor-facing option labels
+
+These strings are the single source of truth for the configurator controls, the breakdown lines, and the WhatsApp message. The data module must export them verbatim.
+
+- Base line: `Base · DJ, sonido e iluminación básica`
+- Additional hours line: `Horas adicionales ({N})`
+- Extras: `Animación`, `Coanimación`, `Karaoke + 2 micrófonos`, `Mejora a proyector + telón`, `Videos musicales`, `Máquina de humo`
+- Lighting options: `Básica`, `Mejorada`, `Avanzada`, `Profesional`; the breakdown line prefixes `Iluminación `, for example `Iluminación avanzada`
+- Location options: `Santiago`, `Sector rural`, `Fuera de Santiago`
+
+The karaoke label names the microphones because that is what the visitor gains over a DJ-only pack; the standard screen is included in that same 30,000 line. The projector line states that it replaces the screen, so no configuration ever reads as two screens.
 
 ### Calculation Rules
 

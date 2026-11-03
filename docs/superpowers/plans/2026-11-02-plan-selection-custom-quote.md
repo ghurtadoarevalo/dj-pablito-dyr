@@ -13,7 +13,7 @@
 ## Global Constraints
 
 - Keep all five existing packs and their prices.
-- Spanish (`es-CL`) for all visitor-facing copy.
+- Spanish (`es-CL`) for all visitor-facing copy, including navigation labels. Internal identifiers, type names, variable names, and code stay in English.
 - Existing WhatsApp number: `56971768418`.
 - No new runtime dependency.
 - Exact custom totals only for Santiago and rural sectors; outside Santiago is quote-by-WhatsApp.
@@ -24,6 +24,7 @@
 - Mobile is designed and verified at 320 px before desktop polish.
 - Interactive targets are at least 44×44 CSS pixels.
 - No commit gets AI attribution; use conventional commits.
+- Every task runs `pnpm exec prettier --write` on the files it changed before its commit, so each work-unit commit ships formatted and Task 6 only has to verify.
 
 ## Review Focus
 
@@ -295,7 +296,7 @@ Create `src/lib/quote.ts` with the exported interfaces from the Interfaces block
 
 - `formatCLP`: prefix `$` and format the rounded integer with `toLocaleString("es-CL")`.
 - `normalizeQuoteSelection`: convert hours with `Math.trunc`, clamp to 4–8, add animation when co-animation appears, drop co-animation when animation is absent, add karaoke when projector appears, drop projector when karaoke is absent, and keep extras in rate-card order.
-- `toggleQuoteExtra`: add or remove one extra, then normalize.
+- `toggleQuoteExtra`: normalize first, then add the extra, or remove it. When the removed extra is `animation`, remove `coanimation` in the same step; when it is `karaoke`, remove `projector`. Normalize again at the end. The cascade is mandatory because `normalizeQuoteSelection` re-adds `animation` whenever `coanimation` is present, so a remove-then-normalize-only implementation would leave the dependent option selected and fail the dependency tests.
 - `calculateCustomQuote`: build line items for base, additional hours, each extra, selected non-basic lighting, and rural transport. Return an exact quote with total and 20% deposit for Santiago/rural, or a manual quote with `total: null` and `deposit: null` outside Santiago.
 - Message builders: use the Spanish labels from the data module. Custom messages include duration, extras or “Sin extras”, lighting, location, exact total/deposit when exact, and the manual transport request when applicable. Pack messages include the pack title and formatted price.
 - URL builders: encode the message with `encodeURIComponent` and prefix `https://wa.me/${WHATSAPP_NUMBER}?text=`.
@@ -309,6 +310,12 @@ pnpm exec vitest run src/lib/quote.test.ts
 ```
 
 Expected: all quote tests pass.
+
+Then normalize formatting before committing, so the Task 6 gate starts clean:
+
+```bash
+pnpm exec prettier --write src/test/setup.ts src/data/services.ts src/lib/quote.ts src/lib/quote.test.ts vitest.config.ts
+```
 
 - [ ] **Step 7: Commit**
 
@@ -609,7 +616,6 @@ describe("useIsInView", () => {
     expect(observe).toHaveBeenCalledTimes(1);
     unmount();
     expect(disconnect).toHaveBeenCalledTimes(1);
-    vi.unstubAllGlobals();
   });
 });
 ```
@@ -759,7 +765,7 @@ describe("Navbar mobile menu", () => {
     expect(closeButton).toHaveAttribute("aria-expanded", "true");
     const menu = document.getElementById(controls!);
     expect(menu).not.toBeNull();
-    for (const name of ["Home", "Mixing", "Servicios", "Equipos", "Bio", "Contacto"]) {
+    for (const name of ["Inicio", "Mixes", "Servicios", "Equipos", "Biografía", "Contacto"]) {
       expect(within(menu!).getByRole("link", { name })).toBeInTheDocument();
     }
 
@@ -792,14 +798,14 @@ Expected: failure because the current menu button lacks `aria-expanded` and `ari
 
 - [ ] **Step 3: Implement the navigation**
 
-Keep the same six anchors and social links. Apply the compact Club Premium bar: near-black background, restrained border, prominent `PABLITO DYR` wordmark, yellow active/hover treatment. Make the menu button at least 44×44 px, set its accessible name to `Abrir menú` or `Cerrar menú`, and close the mobile menu on link activation and Escape. Keep desktop navigation visible from `lg`.
+Keep the same six anchors and social links, and rename every visitor-facing label to `es-CL`: `Inicio` (`#home`), `Mixes` (`#mixing`, matching the section's own heading), `Servicios` (`#services`), `Equipos` (`#equipment`), `Biografía` (`#bio`), `Contacto` (`#contact`). Keep internal identifiers, state values, and code in English while the rendered text stays Spanish. Apply the compact Club Premium bar: near-black background, restrained border, a prominent wordmark whose text is `DJ Pablito Dyr` (uppercase styling is fine, the accessible text must be the real brand name), yellow active/hover treatment. Make the menu button at least 44×44 px, set its accessible name to `Abrir menú` or `Cerrar menú`, and close the mobile menu on link activation and Escape. Keep desktop navigation visible from `lg`.
 
 - [ ] **Step 4: Implement the hero**
 
 Replace the current split logo/header treatment with the approved hero copy:
 
 - Kicker: `DJ · Sonido · Iluminación · Santiago`
-- Heading: `Que tu fiesta se sienta enorme.`
+- Heading: `¡Que tu fiesta se sienta enorme!`
 - Supporting copy: `Elige un pack probado o arma tu evento a medida. Precios claros, producción completa y coordinación directa por WhatsApp.`
 - Primary action: `Ver packs y precios`
 - Proof points: `5 packs base`, `20% para reservar`, `$0 traslado en Santiago`
@@ -848,16 +854,18 @@ pnpm build
 
 Expected: all tests pass and the Astro production build succeeds.
 
-- [ ] **Step 2: Verify formatting and lint on changed source files**
+- [ ] **Step 2: Normalize formatting, then verify formatting and lint on changed source files**
 
 Run:
 
 ```bash
-pnpm exec prettier --check src/data/services.ts src/lib/quote.ts src/lib/quote.test.ts src/lib/useIsInView.ts src/lib/useIsInView.test.tsx src/components/PlanCard.tsx src/components/PlanCard.test.tsx src/components/CustomQuoteBuilder.tsx src/components/ServicesSection.tsx src/components/ServicesSection.test.tsx src/components/Navbar.tsx src/components/Navbar.test.tsx src/components/Services.astro src/components/Hero.astro
+changed="src/data/services.ts src/lib/quote.ts src/lib/quote.test.ts src/lib/useIsInView.ts src/lib/useIsInView.test.tsx src/components/PlanCard.tsx src/components/PlanCard.test.tsx src/components/CustomQuoteBuilder.tsx src/components/ServicesSection.tsx src/components/ServicesSection.test.tsx src/components/Navbar.tsx src/components/Navbar.test.tsx src/components/Services.astro src/components/Hero.astro"
+pnpm exec prettier --write $changed
+pnpm exec prettier --check $changed
 pnpm exec eslint src/components/Services.astro src/components/Hero.astro
 ```
 
-Expected: no formatting errors and no Astro lint errors in changed files. The current ESLint flat config only handles Astro files, so TypeScript coverage comes from `astro check` in Step 1 plus this explicit check:
+Expected: `--write` is the normalization pass and may reformat files committed by earlier tasks (for example the `calculateCustomQuote` signature in `src/lib/quote.ts`); commit that formatting-only diff before trusting `--check`. After it, `--check` reports no formatting errors and ESLint reports no Astro errors. The current ESLint flat config only handles Astro files, so TypeScript coverage comes from `astro check` in Step 1 plus this explicit check:
 
 ```bash
 rg -n "\bany\b" src/data/services.ts src/lib src/components/PlanCard.tsx src/components/CustomQuoteBuilder.tsx src/components/ServicesSection.tsx src/components/Navbar.tsx
@@ -887,6 +895,7 @@ Confirm these visible totals:
 | --- | ---: | ---: |
 | 4 h, no extras, basic, Santiago | $150.000 | $30.000 |
 | 6 h, animation + karaoke + advanced, rural | $295.000 | $59.000 |
+| 6 h, animation + karaoke + videos + smoke + advanced, Santiago | $290.000 | $58.000 |
 | 8 h, all extras, pro, rural | $460.000 | $92.000 |
 | Any configuration, outside Santiago | Quote by WhatsApp | Not shown |
 

@@ -10,7 +10,8 @@ describe("PlanCard", () => {
       expect(html).toContain(plan.title);
       expect(html).toContain(plan.description);
       expect(html).toContain(`$${plan.price.toLocaleString("es-CL")}`);
-      for (const highlight of plan.highlights) expect(html).toContain(highlight);
+      for (const highlight of plan.highlights)
+        expect(html).toContain(highlight);
       for (const feature of plan.features) expect(html).toContain(feature);
       expect(html).toContain("<details");
       expect(html).toContain("<summary");

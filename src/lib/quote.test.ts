@@ -51,12 +51,18 @@ describe("calculateCustomQuote", () => {
 
   it("clamps duration to the supported range", () => {
     expect(calculateCustomQuote({ ...base, hours: 2 }).selection.hours).toBe(4);
-    expect(calculateCustomQuote({ ...base, hours: 12 }).selection.hours).toBe(8);
-    expect(calculateCustomQuote({ ...base, hours: 6.9 }).selection.hours).toBe(6);
+    expect(calculateCustomQuote({ ...base, hours: 12 }).selection.hours).toBe(
+      8,
+    );
+    expect(calculateCustomQuote({ ...base, hours: 6.9 }).selection.hours).toBe(
+      6,
+    );
   });
 
   it("returns a manual quote without totals outside Santiago", () => {
-    expect(calculateCustomQuote({ ...base, location: "outside" })).toMatchObject({
+    expect(
+      calculateCustomQuote({ ...base, location: "outside" }),
+    ).toMatchObject({
       kind: "manual",
       total: null,
       deposit: null,
@@ -137,7 +143,9 @@ describe("formatting and handoff", () => {
 
   it("builds a pack URL for every base plan", () => {
     for (const plan of SERVICE_PLANS) {
-      expect(decodeURIComponent(buildPackWhatsAppUrl(plan))).toContain(plan.title);
+      expect(decodeURIComponent(buildPackWhatsAppUrl(plan))).toContain(
+        plan.title,
+      );
     }
   });
 });
