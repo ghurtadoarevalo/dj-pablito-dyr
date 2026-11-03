@@ -50,9 +50,9 @@ const Contact = () => {
           className="flex flex-col gap-5 md:px-5 w-full text-white"
           onSubmit={handleSubmit}
         >
-          <h2 className="text-center font-bold text-2xl">
+          <h3 className="text-center font-bold text-2xl">
             Formulario de contacto
-          </h2>
+          </h3>
           <div className="flex flex-col gap-2">
             <p className="text-base">Nombre</p>
             <input
