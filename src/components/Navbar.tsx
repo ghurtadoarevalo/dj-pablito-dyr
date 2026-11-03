@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IoMdClose, IoMdMenu } from "react-icons/io";
 import SocialMedia from "./SocialMedia";
 
@@ -16,12 +16,15 @@ const mobileMenuId = "mobile-navigation";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentRoute, setCurrentRoute] = useState("Inicio");
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!menuOpen) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setMenuOpen(false);
+      if (event.key !== "Escape") return;
+      menuButtonRef.current?.focus();
+      setMenuOpen(false);
     };
 
     document.addEventListener("keydown", handleKeyDown);
@@ -37,7 +40,7 @@ const Navbar = () => {
     const active = currentRoute === label;
     const base = mobile
       ? "flex min-h-11 items-center rounded-sm px-3 text-sm font-bold transition-colors"
-      : "rounded-sm px-2 py-2 text-xs font-bold uppercase tracking-wide transition-colors";
+      : "inline-flex min-h-11 items-center rounded-sm px-2 py-2 text-xs font-bold uppercase tracking-wide transition-colors";
 
     return `${base} ${
       active
@@ -82,6 +85,7 @@ const Navbar = () => {
         </div>
 
         <button
+          ref={menuButtonRef}
           type="button"
           aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={menuOpen}
@@ -97,34 +101,33 @@ const Navbar = () => {
         </button>
       </div>
 
-      {menuOpen && (
-        <div
-          id={mobileMenuId}
-          className="border-t border-zinc-800 bg-[#0b0b0d] px-4 pb-5 pt-3 shadow-2xl lg:hidden"
-        >
-          <nav aria-label="Navegación móvil">
-            <ul className="grid gap-1">
-              {navigationLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    aria-current={
-                      currentRoute === link.label ? "page" : undefined
-                    }
-                    onClick={() => selectRoute(link.label)}
-                    className={linkClassName(link.label, true)}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <div className="mt-4 border-t border-zinc-800 pt-3">
-            <SocialMedia namesRequired />
-          </div>
+      <div
+        id={mobileMenuId}
+        hidden={!menuOpen}
+        className="border-t border-zinc-800 bg-[#0b0b0d] px-4 pb-5 pt-3 shadow-2xl lg:hidden"
+      >
+        <nav aria-label="Navegación móvil">
+          <ul className="grid gap-1">
+            {navigationLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  aria-current={
+                    currentRoute === link.label ? "page" : undefined
+                  }
+                  onClick={() => selectRoute(link.label)}
+                  className={linkClassName(link.label, true)}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div className="mt-4 border-t border-zinc-800 pt-3">
+          <SocialMedia namesRequired />
         </div>
-      )}
+      </div>
     </header>
   );
 };

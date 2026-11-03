@@ -11,6 +11,7 @@ describe("Navbar mobile menu", () => {
     const controls = openButton.getAttribute("aria-controls");
     expect(openButton).toHaveAttribute("aria-expanded", "false");
     expect(controls).toBeTruthy();
+    expect(document.getElementById(controls!)).toHaveAttribute("hidden");
 
     await user.click(openButton);
     const closeButton = screen.getByRole("button", { name: "Cerrar menú" });
@@ -29,10 +30,9 @@ describe("Navbar mobile menu", () => {
     }
 
     await user.keyboard("{Escape}");
-    expect(screen.getByRole("button", { name: "Abrir menú" })).toHaveAttribute(
-      "aria-expanded",
-      "false",
-    );
+    const reopenedButton = screen.getByRole("button", { name: "Abrir menú" });
+    expect(reopenedButton).toHaveAttribute("aria-expanded", "false");
+    expect(reopenedButton).toHaveFocus();
 
     await user.click(screen.getByRole("button", { name: "Abrir menú" }));
     const reopened = document.getElementById(controls!);

@@ -54,9 +54,9 @@ const CustomQuoteBuilder = () => {
   };
 
   return (
-    <div ref={panelRef}>
+    <div ref={panelRef} className={inView ? "pb-44 lg:pb-0" : undefined}>
       <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start">
-        <div className="grid gap-3 pb-44 lg:pb-0">
+        <div className="grid gap-3">
           <fieldset className="rounded-lg border border-zinc-800 bg-[#141416] p-5">
             <legend className="px-1 text-xs font-black uppercase tracking-wider text-white">
               1. Duración
@@ -157,7 +157,7 @@ const CustomQuoteBuilder = () => {
                 return (
                   <label
                     key={option.id}
-                    className={`flex min-h-11 cursor-pointer flex-col justify-center rounded-sm border px-2 py-2 text-center text-[11px] transition-colors ${
+                    className={`flex min-h-11 cursor-pointer flex-col justify-center rounded-sm border px-2 py-2 text-center text-[11px] transition-colors focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-yellow-400 ${
                       selected
                         ? "border-yellow-400 bg-yellow-400/10 text-yellow-300"
                         : "border-zinc-700 text-zinc-300 hover:border-zinc-500"
@@ -233,9 +233,10 @@ const CustomQuoteBuilder = () => {
         </div>
 
         <aside
+          id="mobile-quote-breakdown"
           data-testid="desktop-quote-summary"
           aria-live="polite"
-          className="hidden rounded-lg border border-yellow-400/40 bg-[linear-gradient(150deg,rgba(246,201,69,0.06),transparent_45%),#171719] p-5 lg:sticky lg:top-24 lg:block"
+          className="scroll-mt-20 rounded-lg border border-yellow-400/40 bg-[linear-gradient(150deg,rgba(246,201,69,0.06),transparent_45%),#171719] p-5 lg:sticky lg:top-24"
         >
           <p className="text-[10px] font-black uppercase tracking-[0.16em] text-yellow-400">
             Tu configuración
@@ -331,38 +332,15 @@ const CustomQuoteBuilder = () => {
               </a>
             </div>
 
-            <details className="group mt-2 border-t border-zinc-800 pt-2">
-              <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between text-[11px] font-bold text-zinc-300">
-                Ver desglose
-                <span
-                  aria-hidden="true"
-                  className="text-base text-yellow-400 transition-transform group-open:rotate-45"
-                >
-                  +
-                </span>
-              </summary>
-              <div className="max-h-[45vh] space-y-2 overflow-y-auto pb-1">
-                {quote.lines.map((line) => (
-                  <div
-                    key={`mobile-${line.label}-${line.amount}`}
-                    className="flex items-start justify-between gap-4 text-[10px]"
-                  >
-                    <span className="text-zinc-400">{line.label}</span>
-                    <span className="whitespace-nowrap text-zinc-200">
-                      {formatCLP(line.amount)}
-                    </span>
-                  </div>
-                ))}
-                {quote.kind === "exact" && (
-                  <p className="border-t border-zinc-800 pt-2 text-[10px] text-zinc-400">
-                    Reserva con el 20%:{" "}
-                    <span className="font-bold text-zinc-200">
-                      {formatCLP(quote.deposit)}
-                    </span>
-                  </p>
-                )}
-              </div>
-            </details>
+            <a
+              href="#mobile-quote-breakdown"
+              className="mt-2 flex min-h-11 items-center justify-between border-t border-zinc-800 pt-2 text-[11px] font-bold text-zinc-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
+            >
+              Ver desglose
+              <span aria-hidden="true" className="text-base text-yellow-400">
+                ↓
+              </span>
+            </a>
           </div>
         </div>
       )}

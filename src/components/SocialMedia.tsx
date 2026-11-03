@@ -12,7 +12,7 @@ type SocialMediaType = {
   name: SocialMediaName;
   icon: JSX.Element;
   url: string;
-  label: string
+  label: string;
 };
 
 const socialMedia: SocialMediaType[] = [
@@ -20,25 +20,25 @@ const socialMedia: SocialMediaType[] = [
     name: "Instagram",
     icon: <FaInstagram className="text-2xl text-yellow-500" />,
     url: "https://www.instagram.com/dj_pablito_dyr_/",
-    label: "Instagram button link"
+    label: "Instagram button link",
   },
   {
     name: "Youtube",
     icon: <FiYoutube className="text-2xl text-yellow-500" />,
     url: "https://www.youtube.com/@DVJPD",
-    label: "Youtube button link"
+    label: "Youtube button link",
   },
   {
     name: "Tiktok",
     icon: <FaTiktok className="text-2xl text-yellow-500" />,
     url: "https://www.tiktok.com/@djpablitodyr",
-    label: "Tiktok button link"
+    label: "Tiktok button link",
   },
   {
     name: "Facebook",
     icon: <FaFacebook className="text-2xl text-yellow-500" />,
     url: "https://www.facebook.com/profile.php?id=100083210888590",
-    label: "Facebook button link"
+    label: "Facebook button link",
   },
 ];
 
@@ -52,26 +52,28 @@ const iconComponents: Record<SocialMediaName, JSX.Element> = {
 
 const SocialMedia = ({ namesRequired }: { namesRequired: boolean }) => {
   {
-    return <ul className="flex flex-row items-center lg:gap-1 place-content-center">
-      {socialMedia.map((media: SocialMediaType) => (
-        <li key={media.name}>
-          <a
-            className="flex flex-col items-center lg:gap-2 p-2 rounded-lg hover:bg-white/5 text-xl lg:text-2xl text-yellow-500"
-            href={media.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={media.label}
-          >
-            {iconComponents[media.name]}
-            {namesRequired ? (
-              <span className=" text-sm text-gray-400">{media.name}</span>
-            ) : (
-              ""
-            )}
-          </a>
-        </li>
-      ))}
-    </ul>;
+    return (
+      <ul className="flex flex-row items-center lg:gap-1 place-content-center">
+        {socialMedia.map((media: SocialMediaType) => (
+          <li key={media.name}>
+            <a
+              className="flex min-h-11 min-w-11 flex-col items-center justify-center rounded-lg p-2 text-xl text-yellow-500 hover:bg-white/5 lg:gap-2 lg:text-2xl"
+              href={media.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={media.label}
+            >
+              {iconComponents[media.name]}
+              {namesRequired ? (
+                <span className=" text-sm text-gray-400">{media.name}</span>
+              ) : (
+                ""
+              )}
+            </a>
+          </li>
+        ))}
+      </ul>
+    );
   }
 };
 

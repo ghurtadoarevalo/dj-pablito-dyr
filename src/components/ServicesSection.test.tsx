@@ -98,7 +98,9 @@ describe("ServicesSection", () => {
     await user.click(screen.getByRole("tab", { name: "Arma tu evento" }));
     const bar = screen.getByTestId("mobile-quote-bar");
     expect(bar).toBeInTheDocument();
-    expect(within(bar).getByText("Ver desglose")).toBeInTheDocument();
+    expect(
+      within(bar).getByRole("link", { name: "Ver desglose" }),
+    ).toHaveAttribute("href", "#mobile-quote-breakdown");
     await user.click(screen.getByRole("button", { name: /Fuera de Santiago/ }));
     expect(
       within(bar).getByRole("link", {
