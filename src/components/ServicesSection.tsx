@@ -32,7 +32,7 @@ const ServicesSection = () => {
     <div className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 lg:px-8">
       <div className="mb-8 md:mb-12">
         <p className="text-[10px] font-black uppercase tracking-[0.18em] text-accent">
-          <span className="mr-2 text-white/40">04</span>
+          <span className="mr-2 text-white/40">03</span>
           Servicios
         </p>
         <h2
