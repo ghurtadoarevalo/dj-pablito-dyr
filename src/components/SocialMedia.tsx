@@ -19,13 +19,13 @@ const socialMedia: SocialMediaType[] = [
   {
     name: "Instagram",
     icon: <FaInstagram className="text-2xl text-accent" />,
-    url: "https://www.instagram.com/dj_pablito_dyr_/",
+    url: "https://www.instagram.com/dj_dyr_producciones/",
     label: "Instagram button link",
   },
   {
     name: "Youtube",
     icon: <FiYoutube className="text-2xl text-accent" />,
-    url: "https://www.youtube.com/@DVJPD",
+    url: "https://www.youtube.com/@VDJDP",
     label: "Youtube button link",
   },
   {
