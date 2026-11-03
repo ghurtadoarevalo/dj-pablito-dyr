@@ -1,7 +1,10 @@
 ---
 import { Image } from "astro:assets";
+import { SITE_TAGLINE } from "../data/site";
 import logo from "../../public/logo.png";
 import djBackground from "@assets/djBackground.mp4";
+const [taglineLead, ...taglineRest] = SITE_TAGLINE.split(",");
+const taglineTail = taglineRest.join(",").trim();
 ---
 
 <section
@@ -69,7 +72,7 @@ import djBackground from "@assets/djBackground.mp4";
         id="hero-title"
         class="mt-4 font-display text-[clamp(2.5rem,8vw,5.5rem)] uppercase leading-[0.92] tracking-tight text-white"
       >
-        ¡Que tu fiesta se sienta <span class="text-accent">enorme!</span>
+        {taglineLead}, <span class="text-accent">{taglineTail}</span>
       </h1>
       <p class="mt-6 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
         Elige un pack probado o arma tu evento a medida. Precios claros,

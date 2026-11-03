@@ -2,8 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { IoMdClose, IoMdMenu } from "react-icons/io";
 import SocialMedia from "./SocialMedia";
 
-import { SITE_TAGLINE } from "../data/site";
-
 const navigationLinks = [
   { label: "Inicio", href: "#home" },
   { label: "Mixes", href: "#mixing" },
@@ -53,20 +51,15 @@ const Navbar = () => {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-ink/95 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:h-20 lg:px-8">
-        <div className="flex flex-col justify-center leading-none">
-          <a
-            href="#home"
-            onClick={() => selectRoute("Inicio")}
-            className="min-h-11 whitespace-nowrap py-3 text-sm font-black tracking-[0.14em] text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
-            aria-label="DJ Pablito Dyr, ir al inicio"
-          >
-            PABLITO <span className="text-accent">DYR</span>
-          </a>
-          <p className="hidden text-[10px] uppercase tracking-[0.16em] text-muted lg:block">
-            {SITE_TAGLINE}
-          </p>
-        </div>
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        <a
+          href="#home"
+          onClick={() => selectRoute("Inicio")}
+          className="min-h-11 whitespace-nowrap py-3 text-sm font-black tracking-[0.14em] text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+          aria-label="DJ Pablito Dyr, ir al inicio"
+        >
+          PABLITO <span className="text-accent">DYR</span>
+        </a>
 
         <nav aria-label="Navegación principal" className="hidden lg:block">
           <ul className="flex items-center gap-1">

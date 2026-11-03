@@ -7,7 +7,9 @@ describe("Navbar mobile menu", () => {
   it("exposes state, closes on Escape, and closes after navigation", async () => {
     const user = userEvent.setup();
     render(<Navbar />);
-    expect(screen.getByText("Tu evento, nuestra pasión")).toBeInTheDocument();
+    expect(
+      screen.queryByText("Tu evento, nuestra pasión"),
+    ).not.toBeInTheDocument();
     const openButton = screen.getByRole("button", { name: "Abrir menú" });
     const controls = openButton.getAttribute("aria-controls");
     expect(openButton).toHaveAttribute("aria-expanded", "false");
