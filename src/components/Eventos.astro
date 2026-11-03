@@ -1,51 +1,61 @@
 ---
-import { Image } from "astro:assets";
 import SectionHeading from "./SectionHeading.astro";
-import bodas from "@assets/eventos/bodas-de-oro.jpg";
-import cumple from "@assets/eventos/cumpleanos-calera.jpg";
-import privada from "@assets/eventos/fiesta-privada.jpg";
-import evento1 from "@assets/eventos/evento-1.jpg";
-import evento2 from "@assets/eventos/evento-2.jpg";
 
-const photos = [
-  { src: bodas, alt: "Bodas de oro con pista de baile montada" },
-  { src: cumple, alt: "Cumpleaños en Calera de Tango con animación" },
-  { src: privada, alt: "Fiesta privada con luces y sonido profesional" },
-  { src: evento1, alt: "Evento con DJ, animación e iluminación" },
-  { src: evento2, alt: "Montaje de sonido e iluminación en un evento" },
+interface Reel {
+  code: string;
+  title: string;
+}
+
+const reels: Reel[] = [
+  { code: "DezQqZBRO4N", title: "Bodas de oro con DJ y animación" },
+  { code: "DT80j5IEZOl", title: "Cumpleaños en Calera de Tango" },
+  { code: "DX69tN_xYuq", title: "Fiesta privada con sonido e iluminación" },
+  { code: "DfPfGQIODuN", title: "Evento con DJ, luces y karaoke" },
+  { code: "DfFvsq4OpH3", title: "Montaje de sonido e iluminación" },
+  { code: "DbybB_sRG1z", title: "Evento municipal en Teatro Oriente" },
 ];
 ---
 
 <section
   id="eventos"
   aria-labelledby="eventos-title"
-  class="reveal overflow-hidden border-t border-line bg-ink py-16 md:py-24"
+  class="reveal border-t border-line bg-ink py-16 md:py-24"
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <SectionHeading
+      number="02"
       id="eventos-title"
       kicker="Eventos reales"
       title="Así se ve"
-      lead="Fotos de fiestas que ya pasaron: matrimonios, cumpleaños y eventos privados."
+      lead="Reels de fiestas que ya pasaron, directo desde nuestro Instagram."
     />
   </div>
 
   <ul
-    class="mt-10 flex gap-3 overflow-x-auto px-4 pb-2 sm:px-6 md:gap-4 lg:grid lg:grid-cols-5 lg:px-8"
+    class="no-scrollbar mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:px-6 lg:grid lg:grid-cols-3 lg:px-8 xl:grid-cols-6"
   >
     {
-      photos.map((photo) => (
-        <li class="w-56 shrink-0 lg:w-auto">
-          <Image
-            src={photo.src}
-            alt={photo.alt}
-            width={540}
-            height={675}
+      reels.map((reel) => (
+        <li class="w-[240px] shrink-0 snap-start lg:w-auto">
+          <iframe
+            src={`https://www.instagram.com/reel/${reel.code}/embed/`}
+            title={reel.title}
+            class="h-[420px] w-full rounded-card border border-line bg-surface"
             loading="lazy"
-            class="h-72 w-full rounded-card border border-line object-cover transition duration-reveal ease-reveal hover:border-line-strong lg:h-96"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+            allowtransparency="true"
+            frameborder="0"
+            scrolling="no"
           />
         </li>
       ))
     }
   </ul>
+
+  <p
+    class="mx-auto mt-4 max-w-7xl px-4 text-[10px] font-bold uppercase tracking-wide text-muted sm:px-6 lg:px-8"
+  >
+    Los videos se reproducen dentro de Instagram. Si no cargan, revisá el
+    bloqueador de contenido.
+  </p>
 </section>
