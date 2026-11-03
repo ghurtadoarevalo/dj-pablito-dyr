@@ -59,7 +59,7 @@ const TOTAL = TESTIMONIALS.length;
       role="region"
       aria-label="Testimonios de clientes"
       tabindex="0"
-      class="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+      class="no-scrollbar flex gap-4 overflow-x-auto pb-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
     >
       {
         SLIDES.map((testimonial, index) => (
@@ -104,7 +104,7 @@ const TOTAL = TESTIMONIALS.length;
 </section>
 
 <script>
-  const AUTOPLAY_MS = 5200;
+  const SPEED_PX_PER_MS = 0.028;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   function setupCarousel() {
@@ -117,121 +117,106 @@ const TOTAL = TESTIMONIALS.length;
       '[data-carousel="toggle"]',
     );
     const icon = toggle?.querySelector<HTMLElement>("[data-carousel-icon]");
-    let timer: number | null = null;
     let paused = reduceMotion.matches;
+    let pausedByUser = reduceMotion.matches;
+    let holding = false;
+    let step = 0;
+    let loopWidth = 0;
+    let frame = 0;
+    let lastTime = 0;
+    let resumeHandle: number | null = null;
 
-    const stepSize = () => {
+    const measure = () => {
       const card = slides[0];
       const gap = parseFloat(getComputedStyle(track).columnGap || "0");
-      return card ? card.getBoundingClientRect().width + gap : 0;
+      step = card ? card.getBoundingClientRect().width + gap : 0;
+      loopWidth = step * half;
     };
 
-    const normalize = () => {
-      const loopWidth = stepSize() * half;
+    const wrap = () => {
       if (!loopWidth) return;
-      if (track.scrollLeft >= loopWidth - 2) {
+      if (track.scrollLeft >= loopWidth) {
         track.scrollLeft -= loopWidth;
-      } else if (track.scrollLeft < 2) {
+      } else if (track.scrollLeft < 0) {
         track.scrollLeft += loopWidth;
       }
     };
 
-    const move = (direction: number, smooth: boolean) => {
-      track.scrollBy({
-        left: direction * stepSize(),
-        behavior: smooth ? "smooth" : "auto",
-      });
-      window.setTimeout(normalize, smooth ? 700 : 60);
-    };
-
-    const stop = () => {
-      if (timer !== null) {
-        window.clearInterval(timer);
-        timer = null;
+    const tick = (now: number) => {
+      const delta = lastTime ? now - lastTime : 0;
+      lastTime = now;
+      if (!paused && !holding && !reduceMotion.matches && delta < 200) {
+        track.scrollLeft += SPEED_PX_PER_MS * delta;
+        wrap();
       }
+      frame = requestAnimationFrame(tick);
     };
 
     const syncToggle = () => {
       if (!toggle || !icon) return;
       toggle.setAttribute(
         "aria-label",
-        paused
+        pausedByUser
           ? "Reproducir el carrusel de testimonios"
           : "Pausar el carrusel de testimonios",
       );
-      icon.textContent = paused ? "▶" : "❚❚";
+      icon.textContent = pausedByUser ? "▶" : "❚❚";
     };
 
-    const start = () => {
-      stop();
-      if (paused) return;
-      timer = window.setInterval(() => {
-        move(1, !reduceMotion.matches);
-      }, AUTOPLAY_MS);
-    };
-
-    const pause = () => {
-      paused = true;
-      stop();
-      syncToggle();
+    const resumeSoon = () => {
+      if (resumeHandle !== null) window.clearTimeout(resumeHandle);
+      resumeHandle = window.setTimeout(() => {
+        holding = false;
+        lastTime = 0;
+      }, 8000);
     };
 
     toggle?.addEventListener("click", () => {
-      paused = !paused;
+      pausedByUser = !pausedByUser;
+      paused = pausedByUser || reduceMotion.matches;
+      lastTime = 0;
       syncToggle();
-      if (paused) stop();
-      else start();
     });
 
-    track.addEventListener("scroll", normalize, { passive: true });
-    track.addEventListener("pointerenter", stop);
-    track.addEventListener("pointerleave", () => {
-      if (!paused) start();
-    });
-    track.addEventListener("focusin", stop);
-    track.addEventListener("focusout", () => {
-      if (!paused) start();
-    });
-
-    let resumeHandle: number | null = null;
-    const holdForInteraction = () => {
-      stop();
-      if (resumeHandle !== null) window.clearTimeout(resumeHandle);
-      resumeHandle = window.setTimeout(() => {
-        if (!paused) start();
-      }, 10000);
+    const hold = () => {
+      holding = true;
+      resumeSoon();
     };
-    track.addEventListener("pointerdown", holdForInteraction, {
-      passive: true,
-    });
-    track.addEventListener("touchstart", holdForInteraction, {
-      passive: true,
-    });
+
+    track.addEventListener("pointerenter", hold);
+    track.addEventListener("pointerdown", hold, { passive: true });
+    track.addEventListener("touchstart", hold, { passive: true });
+    track.addEventListener("focusin", hold);
+    track.addEventListener("pointerleave", resumeSoon);
+    track.addEventListener("focusout", resumeSoon);
 
     document
-      .querySelectorAll<HTMLButtonElement>("[data-carousel]")
+      .querySelectorAll<HTMLButtonElement>(
+        '[data-carousel="prev"], [data-carousel="next"]',
+      )
       .forEach((button) => {
-        if (button.dataset.carousel === "toggle") return;
         button.addEventListener("click", () => {
-          move(
-            button.dataset.carousel === "next" ? 1 : -1,
-            !reduceMotion.matches,
-          );
-          if (!paused) start();
+          measure();
+          track.scrollBy({
+            left: (button.dataset.carousel === "next" ? 1 : -1) * step,
+            behavior: reduceMotion.matches ? "auto" : "smooth",
+          });
+          hold();
         });
       });
 
     reduceMotion.addEventListener("change", (event) => {
-      if (event.matches) pause();
-      else {
-        paused = false;
-        syncToggle();
-        start();
-      }
+      paused = pausedByUser || event.matches;
+      lastTime = 0;
+      if (!event.matches) syncToggle();
     });
 
+    window.addEventListener("resize", measure, { passive: true });
+
+    measure();
     syncToggle();
-    start();
+    frame = requestAnimationFrame(tick);
+    window.addEventListener("pagehide", () => cancelAnimationFrame(frame));
   }
 
   setupCarousel();
