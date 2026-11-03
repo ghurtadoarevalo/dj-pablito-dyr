@@ -46,7 +46,9 @@ import djBackground from "@assets/djBackground.mp4";
     </div>
   </div>
 
-  <div class="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+  <div
+    class="relative mx-auto grid w-full max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16 lg:px-8"
+  >
     <div class="max-w-4xl">
       <Image
         src={logo}
@@ -56,7 +58,7 @@ import djBackground from "@assets/djBackground.mp4";
         height={600}
         loading="eager"
         decoding="async"
-        class="mb-6 h-20 w-auto object-contain md:h-28"
+        class="mb-6 h-20 w-auto object-contain lg:hidden"
       />
       <p
         class="text-[10px] font-black uppercase tracking-[0.2em] text-accent sm:text-xs"
@@ -89,6 +91,34 @@ import djBackground from "@assets/djBackground.mp4";
         >
           Escríbenos por WhatsApp
         </a>
+      </div>
+    </div>
+
+    <div class="relative hidden lg:flex">
+      <div
+        class="absolute inset-0 rounded-pill bg-accent/10 blur-3xl"
+        aria-hidden="true"
+      >
+      </div>
+      <div
+        class="relative flex w-[280px] flex-col items-center gap-2 rounded-card border border-line bg-surface/70 p-4 backdrop-blur-sm"
+      >
+        <Image
+          src={logo}
+          alt="DJ Pablito Dyr, DJ profesional en Santiago"
+          title="DJ Pablito Dyr Producciones"
+          loading="eager"
+          fetchpriority="high"
+          width={800}
+          height={600}
+          decoding="async"
+          class="h-auto w-full object-contain"
+        />
+        <p
+          class="text-center text-[10px] font-black uppercase tracking-[0.18em] text-accent"
+        >
+          Producciones
+        </p>
       </div>
     </div>
   </div>
