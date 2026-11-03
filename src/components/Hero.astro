@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { SITE_TAGLINE } from "../data/site";
 import logo from "../../public/logo.png";
+import crest from "@assets/logo-dyr-crest.jpg";
 import djBackground from "@assets/djBackground.mp4";
 const [taglineLead, ...taglineRest] = SITE_TAGLINE.split(",");
 const taglineTail = taglineRest.join(",").trim();
@@ -104,15 +105,15 @@ const taglineTail = taglineRest.join(",").trim();
       >
       </div>
       <Image
-        src={logo}
-        alt="DJ Pablito Dyr, DJ profesional en Santiago"
-        title="DJ Pablito Dyr Producciones"
+        src={crest}
+        alt="Escudo de DJ DYR Producciones: DJ, animación y karaoke"
+        title="DJ DYR Producciones"
         loading="eager"
         fetchpriority="high"
-        width={408}
-        height={612}
+        width={1080}
+        height={1080}
         decoding="async"
-        class="relative w-[340px] object-contain"
+        class="crest-blend relative w-[400px] object-contain"
       />
     </div>
   </div>
