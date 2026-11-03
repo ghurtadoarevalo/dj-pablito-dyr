@@ -39,13 +39,12 @@ const equipements = [
       "Parlantes JBL JRX 115 - Sistema de sonido profesional de 1000W para eventos",
   },
   {
-    name: "Pantalla / Proyector + Telón",
+    name: "Pantalla de 43",
     description:
-      'Pantalla de 43" o Telón de 80" aproximadamente con proyector, según espacio y preferencia del cliente. Ideal para karaokes y videos acompañados con la mejor música.',
+      'Pantalla de 43" para karaoke y videos, ubicada según el espacio y la preferencia del cliente.',
     imgName: "tvsamsung",
     quantity: 1,
-    label:
-      "Pantalla 43 pulgadas o Telón 80 pulgadas con proyector - Para karaoke y videos en eventos",
+    label: "Pantalla de 43 pulgadas para karaoke y videos en eventos",
   },
   {
     name: "máquina de humo",
@@ -93,14 +92,21 @@ const equipements = [
   {
     name: "Proyector y telón",
     description:
-      "Proyector de alta resolución acompañado de un telón de gran formato. Perfecto para proyectar videos, fotografías, presentaciones o animar tu fiesta con un increíble karaoke.",
+      'Proyector de alta resolución con telón de 80" aproximadamente, montado según el espacio. Perfecto para videos, fotografías, presentaciones o un karaoke completo.',
     imgName: "projector",
     quantity: 1,
     label:
       "Proyector y telón de gran formato - Equipo audiovisual profesional para videos, presentaciones y karaoke en eventos",
   },
 ];
-const SIZES = ["hero", "wide", "tall"] as const;
+const SIZES: Record<number, "hero" | "wide" | "tall"> = {
+  0: "hero", // Pionner DDJ-400
+  1: "wide", // Spot 30W
+  2: "tall", // Luz LED RGB
+  4: "hero", // Pantalla / Proyector + Telón
+  6: "wide", // Micrófonos
+  10: "tall", // Proyector y telón
+};
 ---
 
 <section
