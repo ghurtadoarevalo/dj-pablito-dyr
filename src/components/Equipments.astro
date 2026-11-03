@@ -116,9 +116,7 @@ const equipements = [
       lead="Sonido, iluminación y tecnología profesional para tu evento"
     />
 
-    <div
-      class="equipment-grid grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 xl:grid-cols-4"
-    >
+    <div class="equipment-grid grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-5">
       {
         equipements.map((equipment, index) => (
           <Equipment
@@ -128,6 +126,7 @@ const equipements = [
             quantity={equipment.quantity}
             label={equipment.label}
             featured={index === 0}
+            wide={index === 1}
           />
         ))
       }

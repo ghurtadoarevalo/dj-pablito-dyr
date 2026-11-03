@@ -12,18 +12,20 @@ import SectionHeading from "./SectionHeading.astro";
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <SectionHeading number="07" id="bio-title" kicker="Quién soy" title="Bio" />
-    <div
-      class="grid items-center gap-8 lg:grid-cols-[minmax(0,460px)_1fr] lg:gap-16"
-    >
+    <div class="grid gap-8 lg:grid-cols-2 lg:items-stretch lg:gap-12">
       <Image
-        class="mx-auto w-full rounded-card border border-line object-cover shadow-[0_24px_70px_-30px_rgba(0,0,0,0.9)]"
+        class="h-72 w-full rounded-card border border-line object-cover object-top shadow-[0_24px_70px_-30px_rgba(0,0,0,0.9)] sm:h-96 lg:h-full lg:min-h-[520px]"
         src={portrait}
         alt="DJ Pablito Dyr - Retrato profesional del DJ en Santiago de Chile"
         width={540}
         height={675}
       />
       <div class="text-center text-white/80 text-pretty lg:text-left">
-        <header class="font-bold text-center text-lg">DJ Pablito Dyr</header>
+        <p
+          class="font-display text-4xl uppercase leading-none tracking-tight text-white sm:text-5xl"
+        >
+          DJ Pablito Dyr
+        </p>
         <p class="mt-5 font-thin">
           Siempre he sido un amante de la música de todos los estilos, y desde
           que tuve acceso a una computadora, comencé a mezclar con programas

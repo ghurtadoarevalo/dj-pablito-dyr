@@ -19,6 +19,7 @@ interface Props {
   quantity: number;
   label: string;
   featured?: boolean;
+  wide?: boolean;
 }
 
 interface Dictionary<T> {
@@ -46,14 +47,17 @@ const {
   quantity,
   label,
   featured = false,
+  wide = false,
 } = Astro.props;
 ---
 
 <article
   class={`equipment-card rounded-card border border-line bg-surface px-6 py-8 ${
     featured
-      ? "flex flex-col items-center gap-6 text-center sm:col-span-2 sm:flex-row sm:text-left"
-      : "flex flex-col items-center text-center"
+      ? "col-span-2 row-span-2 flex flex-col items-start justify-end gap-4 text-left"
+      : wide
+        ? "col-span-2 flex flex-row items-center gap-5 text-left"
+        : "flex flex-col items-center text-center"
   }`}
 >
   <Image
@@ -62,7 +66,7 @@ const {
     title={name}
     width={160}
     height={110}
-    class={`h-auto object-contain ${featured ? "w-44 sm:w-52" : "mb-6 w-36"}`}
+    class={`h-auto object-contain ${featured ? "w-52 sm:w-64" : wide ? "w-28 shrink-0" : "mb-6 w-36"}`}
     loading="lazy"
   />
   <div>

@@ -11,14 +11,14 @@ const { title, videoCode } = Astro.props;
   href={`https://www.youtube.com/watch?v=${videoCode}`}
   target="_blank"
   rel="noopener noreferrer"
-  class="relative block h-52 w-full overflow-hidden rounded-card border border-line transition duration-snap hover:-translate-y-0.5 hover:border-line-strong focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+  class="group relative block aspect-video w-full overflow-hidden rounded-card border border-line transition duration-snap hover:-translate-y-0.5 hover:border-line-strong focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
   style={`background-image:url(https://img.youtube.com/vi/${videoCode}/sddefault.jpg); background-position: center; background-size: cover`}
 >
   <span
     class="absolute inset-0 block bg-ink/60 transition-colors duration-snap group-hover:bg-ink/40"
     aria-hidden="true"></span>
   <span
-    class="absolute inset-x-0 top-0 block px-3 py-2 text-sm font-semibold text-white"
+    class="absolute inset-x-0 bottom-0 block bg-gradient-to-t from-ink via-ink/60 to-transparent px-5 pb-4 pt-16 font-display text-2xl uppercase leading-none tracking-tight text-white sm:text-3xl"
     aria-hidden="true">{title}</span
   >
   <span
