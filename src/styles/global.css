@@ -42,13 +42,3 @@
     opacity: 1 !important;
   }
 }
-
-.crest-blend {
-  mix-blend-mode: screen;
-  -webkit-mask-image: radial-gradient(
-    circle at 50% 48%,
-    #000 82%,
-    transparent 100%
-  );
-  mask-image: radial-gradient(circle at 50% 48%, #000 82%, transparent 100%);
-}
