@@ -2,12 +2,12 @@ import { describe, expect, it } from "vitest";
 import { INSTAGRAM_PROFILE_URL, TESTIMONIALS } from "./testimonials";
 
 describe("TESTIMONIALS", () => {
-  it("carries the five real client comments with a verifiable handle", () => {
-    expect(TESTIMONIALS).toHaveLength(5);
+  it("carries the real client comments with a verifiable handle", () => {
+    expect(TESTIMONIALS).toHaveLength(7);
     for (const testimonial of TESTIMONIALS) {
       expect(testimonial.handle.startsWith("@")).toBe(true);
       expect(testimonial.handle).not.toContain(" ");
-      expect(testimonial.quote.length).toBeGreaterThan(40);
+      expect(testimonial.quote.length).toBeGreaterThan(25);
       expect(testimonial.sourceUrl).toContain("instagram.com");
     }
     expect(INSTAGRAM_PROFILE_URL).toBe(

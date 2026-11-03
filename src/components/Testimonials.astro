@@ -1,21 +1,41 @@
 ---
+import { Image } from "astro:assets";
 import SectionHeading from "./SectionHeading.astro";
 import { INSTAGRAM_PROFILE_URL, TESTIMONIALS } from "../data/testimonials";
+import tamaritaandreaAvatar from "@assets/testimonials/tamaritaandrea.webp";
+import moniquita36molinaAvatar from "@assets/testimonials/moniquita36molina.webp";
+import jecaMoraAvatar from "@assets/testimonials/jeca_mora.webp";
+import ceciliamolinalilloAvatar from "@assets/testimonials/ceciliamolinalillo.webp";
+import sjesitoAvatar from "@assets/testimonials/sjesito.webp";
+import luismolina153Avatar from "@assets/testimonials/luismolina153.webp";
+import xmoraAvatar from "@assets/testimonials/xmora.b.webp";
 
 const TRACK_ID = "testimonials-track";
 const SLIDES = [...TESTIMONIALS, ...TESTIMONIALS];
 const TOTAL = TESTIMONIALS.length;
+
+const avatars: Record<string, ImageMetadata> = {
+  "@tamaritaandrea": tamaritaandreaAvatar,
+  "@moniquita36molina": moniquita36molinaAvatar,
+  "@jeca_mora": jecaMoraAvatar,
+  "@ceciliamolinalillo": ceciliamolinalilloAvatar,
+  "@sjesito": sjesitoAvatar,
+  "@luismolina153": luismolina153Avatar,
+  "@xmora.b": xmoraAvatar,
+};
+
+const initial = (handle: string) =>
+  handle.replace("@", "").trim().charAt(0).toUpperCase();
 ---
 
 <section
   id="testimonios"
   aria-labelledby="testimonials-title"
-  class="reveal border-t border-line bg-ink pt-6 pb-10 md:pt-8 md:pb-14"
+  class="reveal border-t border-line bg-ink pt-8 pb-12 md:pt-10 md:pb-16"
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex flex-wrap items-end justify-between gap-4">
       <SectionHeading
-        number="01"
         id="testimonials-title"
         kicker="Clientes reales"
         title="Testimonios"
@@ -28,7 +48,7 @@ const TOTAL = TESTIMONIALS.length;
           data-target={TRACK_ID}
           aria-label="Testimonio anterior"
           aria-controls={TRACK_ID}
-          class="grid size-11 place-items-center rounded-control border border-line-strong text-white transition-colors duration-snap hover:border-accent hover:text-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          class="grid size-11 place-items-center rounded-control border border-line-strong text-paper transition-colors duration-snap hover:border-accent hover:text-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
           <span aria-hidden="true">←</span>
         </button>
@@ -38,7 +58,7 @@ const TOTAL = TESTIMONIALS.length;
           data-target={TRACK_ID}
           aria-label="Testimonio siguiente"
           aria-controls={TRACK_ID}
-          class="grid size-11 place-items-center rounded-control border border-line-strong text-white transition-colors duration-snap hover:border-accent hover:text-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          class="grid size-11 place-items-center rounded-control border border-line-strong text-paper transition-colors duration-snap hover:border-accent hover:text-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
           <span aria-hidden="true">→</span>
         </button>
@@ -48,7 +68,7 @@ const TOTAL = TESTIMONIALS.length;
           data-target={TRACK_ID}
           aria-label="Pausar el carrusel de testimonios"
           aria-controls={TRACK_ID}
-          class="grid size-11 place-items-center rounded-control border border-line-strong text-white transition-colors duration-snap hover:border-accent hover:text-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          class="grid size-11 place-items-center rounded-control border border-line-strong text-paper transition-colors duration-snap hover:border-accent hover:text-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
           <span aria-hidden="true" data-carousel-icon>❚❚</span>
         </button>
@@ -70,19 +90,41 @@ const TOTAL = TESTIMONIALS.length;
               testimonial.highlighted ? "border-l-2 border-l-accent" : ""
             }`}
           >
-            <blockquote class="text-sm leading-relaxed text-white">
+            <blockquote class="text-sm leading-relaxed text-paper">
               “{testimonial.quote}”
             </blockquote>
-            <p class="mt-4 text-[10px] font-bold uppercase tracking-wide">
-              <span class="text-accent">{testimonial.handle}</span>
-              <span class="text-muted"> · {testimonial.context}</span>
-              {index < TOTAL && (
-                <span class="sr-only">
-                  {" "}
-                  (testimonio {index + 1} de {TOTAL})
-                </span>
-              )}
-            </p>
+            <div class="mt-4 flex items-center gap-3">
+              {
+                avatars[testimonial.handle] ? (
+                  <Image
+                    src={avatars[testimonial.handle]}
+                    alt=""
+                    aria-hidden="true"
+                    width={72}
+                    height={72}
+                    loading="lazy"
+                    class="size-9 shrink-0 rounded-pill border border-accent/40 object-cover"
+                  />
+                ) : (
+                  <span
+                    class="grid size-9 shrink-0 place-items-center rounded-pill border border-accent/40 bg-accent/10 font-display text-base leading-none text-accent"
+                    aria-hidden="true"
+                  >
+                    {initial(testimonial.handle)}
+                  </span>
+                )
+              }
+              <p class="text-[11px] font-bold uppercase tracking-wide">
+                <span class="text-accent">{testimonial.handle}</span>
+                <span class="text-muted"> · {testimonial.context}</span>
+                {index < TOTAL && (
+                  <span class="sr-only">
+                    {" "}
+                    (testimonio {index + 1} de {TOTAL})
+                  </span>
+                )}
+              </p>
+            </div>
           </li>
         ))
       }
@@ -93,11 +135,11 @@ const TOTAL = TESTIMONIALS.length;
         href={INSTAGRAM_PROFILE_URL}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex min-h-11 items-center rounded-control border border-line-strong px-5 text-sm font-bold text-white transition-colors duration-snap hover:border-accent hover:text-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        class="inline-flex min-h-11 items-center rounded-control border border-line-strong px-5 text-sm font-bold text-paper transition-colors duration-snap hover:border-accent hover:text-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
       >
         Ver más reseñas en Instagram
       </a>
-      <p class="text-[10px] font-bold uppercase tracking-wide text-muted">
+      <p class="text-[11px] font-bold uppercase tracking-wide text-muted">
         Desliza, usa las flechas o pausa el movimiento
       </p>
     </div>

@@ -8,44 +8,37 @@ import SectionHeading from "./SectionHeading.astro";
 <section
   id="bio"
   aria-labelledby="bio-title"
-  class="reveal border-t border-line bg-ink py-10 md:py-14"
+  class="reveal border-t border-line bg-ink py-12 md:py-20"
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <SectionHeading number="07" id="bio-title" kicker="Quién soy" title="Bio" />
-    <div class="grid gap-8 lg:grid-cols-2 lg:items-stretch lg:gap-12">
+    <SectionHeading id="bio-title" kicker="Quién soy" title="Bio" />
+    <div class="grid gap-8 lg:grid-cols-[minmax(0,420px)_minmax(0,1fr)] lg:items-stretch lg:gap-14">
       <Image
-        class="h-72 w-full rounded-card border border-line object-cover object-top shadow-[0_24px_70px_-30px_rgba(0,0,0,0.9)] sm:h-96 lg:h-full lg:min-h-[520px]"
+        class="aspect-[4/5] w-full rounded-card border border-line object-cover object-top shadow-[0_24px_70px_-30px_rgba(0,0,0,0.9)] lg:aspect-auto lg:h-full lg:min-h-[480px]"
         src={portrait}
         alt="DJ Pablito Dyr - Retrato profesional del DJ en Santiago de Chile"
         width={540}
         height={675}
       />
-      <div class="text-center text-white/80 text-pretty lg:text-left">
-        <p
-          class="font-display text-4xl uppercase leading-none tracking-tight text-white sm:text-5xl"
-        >
-          DJ Pablito Dyr
-        </p>
-        <p class="mt-5 font-thin">
+      <div class="max-w-xl text-pretty">
+        <p class="text-base leading-relaxed text-paper sm:text-lg">
           Siempre he sido un amante de la música de todos los estilos, y desde
           que tuve acceso a una computadora, comencé a mezclar con programas
-          como VirtualDJ. Así, <span class="text-accent font-normal">
-            lo que comenzó como un hobby rápidamente se transformó en una de mis
-            mayores pasiones.</span
-          >
+          como VirtualDJ. Así, lo que comenzó como un hobby rápidamente se
+          transformó en una de mis mayores pasiones.
         </p>
-        <p class="mt-5 font-thin">
-          Esta aventura <span class="text-accent font-normal"
-            >se inició hace más de 3 años</span
-          > en uno de los locales más prestigiosos de la comuna de Maipú. Desde ese
-          momento, comenzó una carrera por distintos recintos donde me presenté exitosamente
-          hasta crear <span class="text-accent font-normal">
+        <p class="mt-5 text-sm leading-relaxed text-paper/75">
+          Esta aventura se inició hace más de 3 años en uno de los locales más
+          prestigiosos de la comuna de Maipú. Desde ese momento, comenzó una
+          carrera por distintos recintos donde me presenté exitosamente hasta
+          crear{" "}
+          <span class="font-semibold text-accent-bright">
             DJ Pablito Dyr Producciones</span
           >. Una pequeña, pero exitosa productora que presta servicios tales
           como Barwoman, Garzones, Coctelería, Cámara 360°, trabajando en
           alianza con distintas marcas.
         </p>
-        <p class="mt-5 font-thin">
+        <p class="mt-5 text-sm leading-relaxed text-paper/75">
           Hemos realizado distintos tipos de eventos a lo largo del tiempo,
           tales como matrimonios, bautizos, cumpleaños, graduaciones, entre
           otros. Logrando llevar a cabo con éxito las múltiples celebraciones en
@@ -53,8 +46,14 @@ import SectionHeading from "./SectionHeading.astro";
           nuestros clientes.
         </p>
 
-        <p class="my-5 text-center">¡Sígueme en mis redes sociales!</p>
-        <SocialMedia namesRequired={true} />
+        <div class="mt-8 border-t border-line pt-5">
+          <p class="text-[11px] font-black uppercase tracking-[0.16em] text-muted">
+            Sígueme
+          </p>
+          <div class="mt-2">
+            <SocialMedia namesRequired={true} align="start" />
+          </div>
+        </div>
       </div>
     </div>
   </div>

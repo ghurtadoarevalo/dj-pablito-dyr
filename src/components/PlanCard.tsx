@@ -8,63 +8,64 @@ type PlanCardProps = {
 
 const PlanCard = ({ plan }: PlanCardProps) => {
   return (
-    <article
-      className={`relative flex h-full flex-col overflow-hidden rounded-card border bg-surface p-5 text-white transition duration-snap hover:border-line-strong ${
-        plan.featured ? "border-accent/70 bg-glow-card" : "border-line"
-      }`}
-    >
-      {plan.featured && (
-        <span className="absolute right-0 top-0 rounded-bl-card bg-accent px-3 py-1.5 text-[10px] font-black uppercase tracking-wider text-ink">
-          Más elegido
+    <details className="group" open={plan.featured}>
+      <summary className="grid cursor-pointer list-none grid-cols-[2rem_minmax(0,1fr)_auto] items-center gap-3 py-5 transition-colors hover:text-accent-bright sm:grid-cols-[2.5rem_minmax(0,1fr)_auto] sm:gap-5">
+        <span
+          className="font-display text-xl leading-none text-muted sm:text-2xl"
+          aria-hidden="true"
+        >
+          {plan.hours}
         </span>
-      )}
-
-      <p className="text-[10px] font-black uppercase tracking-[0.18em] text-muted">
-        {plan.hours} horas de fiesta
-      </p>
-
-      <h3 className="mt-1 break-words font-display text-2xl uppercase leading-none tracking-tight sm:text-3xl">
-        {plan.title}
-      </h3>
-
-      <p className="mt-4 flex items-baseline gap-1 font-display text-5xl leading-none text-accent">
-        {formatCLP(plan.price)}
-      </p>
-      <p className="mt-1 text-[11px] font-semibold text-muted">
-        Reserva con {formatCLP(plan.price * RESERVATION_RATE)} · hora extra{" "}
-        {formatCLP(plan.extraHourPrice)}
-      </p>
-
-      <p className="mt-4 text-sm leading-relaxed text-zinc-300">
-        {plan.description}
-      </p>
-
-      <ul
-        className="mt-4 flex flex-wrap gap-1.5"
-        aria-label={`Incluye ${plan.title}`}
-      >
-        {plan.highlights.map((highlight) => (
-          <li
-            key={highlight}
-            className="rounded-control border border-line-strong px-2 py-1.5 text-[11px] text-zinc-300"
-          >
-            {highlight}
-          </li>
-        ))}
-      </ul>
-
-      <details className="group mt-5 border-t border-line pt-4">
-        <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 text-xs font-semibold text-muted transition-colors hover:text-accent">
-          <span>Ver todo lo incluido en {plan.title}</span>
-          <span
-            aria-hidden="true"
-            className="text-base transition-transform group-open:rotate-45"
-          >
-            +
+        <span className="min-w-0">
+          <span className="flex flex-wrap items-center gap-x-2 sm:flex-nowrap">
+            <span className="font-display text-xl uppercase leading-none tracking-tight text-paper sm:text-2xl">
+              {plan.title}
+            </span>
+            {plan.featured && (
+              <span className="rounded-control bg-accent px-1.5 py-0.5 text-[11px] font-black uppercase tracking-wide text-ink">
+                Más elegido
+              </span>
+            )}
+            <span
+              className="hidden h-px flex-1 bg-line sm:block"
+              aria-hidden="true"
+            />
           </span>
-        </summary>
-        <ul className="mt-4 space-y-2 text-xs leading-relaxed text-muted">
-          {plan.features.map((feature) => (
+          <span className="mt-1 block text-xs leading-relaxed text-muted">
+            {plan.hours} horas · {plan.adds}
+          </span>
+          <span className="sr-only">Ver detalle de {plan.title}</span>
+        </span>
+        <span className="text-right">
+          <span className="block font-display text-2xl leading-none text-accent sm:text-3xl">
+            {formatCLP(plan.price)}
+          </span>
+          <span className="mt-1 hidden text-[11px] text-muted sm:block">
+            Reserva {formatCLP(plan.price * RESERVATION_RATE)}
+          </span>
+        </span>
+      </summary>
+
+      <div className="pb-7 sm:pl-[3.75rem]">
+        <p className="text-sm leading-relaxed text-paper/80">
+          {plan.description}
+        </p>
+
+        <ul
+          className="mt-4 flex flex-wrap gap-1.5"
+          aria-label={`Incluye ${plan.title}`}
+        >
+          {plan.highlights.map((highlight) => (
+            <li
+              key={highlight}
+              className="rounded-control border border-line-strong px-2 py-1 text-[11px] text-paper/80"
+            >
+              {highlight}
+            </li>
+          ))}
+        </ul>
+
+        <ul className="mt-5 space-y-2 text-xs leading-relaxed text-muted">          {plan.features.map((feature) => (
             <li key={feature} className="flex gap-2">
               <span aria-hidden="true" className="text-accent">
                 ·
@@ -72,27 +73,23 @@ const PlanCard = ({ plan }: PlanCardProps) => {
               <span>{feature}</span>
             </li>
           ))}
-          <li className="border-t border-line pt-3 font-semibold text-zinc-300">
+          <li className="border-t border-line pt-3 font-semibold text-paper/80">
             Hora adicional: {formatCLP(plan.extraHourPrice)}
           </li>
         </ul>
-      </details>
 
-      <a
-        href={buildPackWhatsAppUrl(plan)}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`Elegir ${plan.title}`}
-        className={`mt-auto flex min-h-11 items-center justify-center gap-2 rounded-control px-4 py-2.5 pt-2.5 text-xs font-black uppercase tracking-wide transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
-          plan.featured
-            ? "bg-accent text-ink hover:bg-accent-bright"
-            : "border border-line-strong text-white hover:border-accent hover:text-accent-bright"
-        }`}
-      >
-        <FaWhatsapp aria-hidden="true" className="text-lg" />
-        Elegir {plan.title}
-      </a>
-    </article>
+        <a
+          href={buildPackWhatsAppUrl(plan)}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Elegir ${plan.title}`}
+          className="mt-5 flex min-h-11 w-full items-center justify-center gap-2 rounded-control bg-accent px-4 py-2.5 text-xs font-black uppercase tracking-wide text-ink transition-colors hover:bg-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:inline-flex sm:w-auto"
+        >
+          <FaWhatsapp aria-hidden="true" className="text-lg" />
+          Elegir {plan.title}
+        </a>
+      </div>
+    </details>
   );
 };
 

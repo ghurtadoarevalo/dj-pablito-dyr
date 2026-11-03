@@ -2,8 +2,12 @@
 import { Image } from "astro:assets";
 import { SITE_TAGLINE } from "../data/site";
 import logo from "../../public/logo.png";
-import crest from "@assets/logo-dyr-crest.png";
-import djBackground from "@assets/djBackground.mp4";
+import partyLoop from "@assets/hero/party-loop.mp4";
+import partyPoster from "@assets/hero/party-poster.webp";
+import boothLoop from "@assets/hero/booth-loop.mp4";
+import boothPoster from "@assets/hero/booth-poster.webp";
+import signLoop from "@assets/hero/sign-loop.mp4";
+import signPoster from "@assets/hero/sign-poster.webp";
 const [taglineLead, ...taglineRest] = SITE_TAGLINE.split(",");
 const taglineTail = taglineRest.join(",").trim();
 ---
@@ -11,7 +15,7 @@ const taglineTail = taglineRest.join(",").trim();
 <section
   id="home"
   aria-labelledby="hero-title"
-  class="reveal relative isolate flex overflow-hidden bg-ink pt-10 pb-4 md:pt-14 md:pb-6"
+  class="reveal relative isolate overflow-hidden bg-ink pt-10 pb-10 md:pt-14 md:pb-14"
 >
   <div
     class="pointer-events-none absolute inset-0 bg-glow-hero"
@@ -19,63 +23,35 @@ const taglineTail = taglineRest.join(",").trim();
   >
   </div>
 
-  <Image
-    src={logo}
-    alt=""
-    aria-hidden="true"
-    width={800}
-    height={600}
-    loading="eager"
-    decoding="async"
-    class="pointer-events-none absolute -right-24 top-10 w-80 opacity-10 blur-2xl md:hidden"
-  />
-
   <div
-    class="pointer-events-none absolute inset-0 hidden md:block"
-    aria-hidden="true"
-  >
-    <video
-      data-hero-video
-      class="h-full w-full object-cover opacity-25 blur-[2px]"
-      src={djBackground}
-      poster="/logo.webp"
-      preload="none"
-      muted
-      loop
-      playsinline
-      aria-label="Video de fondo mostrando ambiente de fiesta con DJ"></video>
-    <div
-      class="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-transparent"
-    >
-    </div>
-  </div>
-
-  <div
-    class="relative mx-auto grid w-full max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16 lg:px-8"
+    class="relative mx-auto grid w-full max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_520px] lg:gap-14 lg:px-8"
   >
     <div class="max-w-4xl">
       <Image
         src={logo}
         alt=""
         aria-hidden="true"
-        width={800}
-        height={600}
+        width={408}
+        height={612}
         loading="eager"
         decoding="async"
         class="mb-6 h-24 w-auto object-contain lg:hidden"
       />
       <p
-        class="text-[10px] font-black uppercase tracking-[0.2em] text-accent sm:text-xs"
+        class="flex items-center gap-3 text-[11px] font-black uppercase tracking-[0.2em] text-accent-bright sm:text-xs"
       >
+        <span class="h-px w-8 bg-accent-bright" aria-hidden="true"></span>
         DJ · Sonido · Iluminación · Santiago
       </p>
       <h1
         id="hero-title"
-        class="mt-4 font-display text-[clamp(2.5rem,8vw,5.5rem)] uppercase leading-[0.92] tracking-tight text-white"
+        class="mt-4 font-display text-[clamp(2.5rem,8vw,5.5rem)] uppercase leading-[0.92] tracking-tight text-paper"
       >
-        {taglineLead}, <span class="text-accent">{taglineTail}</span>
+        {taglineLead}, {taglineTail}
       </h1>
-      <p class="mt-6 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
+      <p
+        class="mt-6 max-w-2xl text-sm leading-relaxed text-paper-muted sm:text-base"
+      >
         Ya hicimos cumpleaños, graduaciones, bodas de oro y hasta eventos
         municipales. Tú invitas, eliges la música y nosotros montamos todo:
         sonido, luces, karaoke y la mejor animación.
@@ -92,52 +68,85 @@ const taglineTail = taglineRest.join(",").trim();
           href="https://wa.me/56971768418"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex min-h-12 items-center justify-center rounded-control border border-line-strong px-6 py-3 text-sm font-bold text-white transition-colors hover:border-accent hover:text-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          class="flex min-h-12 items-center justify-center rounded-control border border-line px-6 py-3 text-sm font-bold text-paper transition-colors hover:border-accent hover:text-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
           Escríbenos por WhatsApp
         </a>
       </div>
     </div>
 
-    <div class="relative hidden justify-center lg:flex">
+    <div
+      class="mx-auto grid w-full max-w-sm grid-cols-2 items-start gap-3 sm:max-w-none sm:grid-cols-3 lg:mx-0 lg:justify-self-end"
+    >
       <div
-        class="absolute inset-8 rounded-pill bg-accent/10 blur-3xl"
-        aria-hidden="true"
+        class="overflow-hidden rounded-card border border-accent/30 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)]"
       >
+        <video
+          data-hero-video
+          class="aspect-[4/5] w-full object-cover"
+          src={boothLoop}
+          poster={boothPoster.src}
+          preload="metadata"
+          muted
+          loop
+          playsinline
+          aria-label="DJ Pablito Dyr operando su controlador y laptop en un evento al aire libre"
+        ></video>
       </div>
-      <Image
-        src={crest}
-        alt="Escudo de DJ DYR Producciones: DJ, animación y karaoke"
-        title="DJ DYR Producciones"
-        loading="eager"
-        fetchpriority="high"
-        width={1080}
-        height={1080}
-        decoding="async"
-        class="relative w-[230px] object-contain xl:w-[260px]"
-      />
+      <div
+        class="mt-10 overflow-hidden rounded-card border border-accent/30 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)]"
+      >
+        <video
+          data-hero-video
+          class="aspect-[4/5] w-full object-cover"
+          src={partyLoop}
+          poster={partyPoster.src}
+          preload="metadata"
+          muted
+          loop
+          playsinline
+          aria-label="Invitados bailando de noche con luces de colores en un evento"
+        ></video>
+      </div>
+      <div
+        class="mt-20 hidden overflow-hidden rounded-card border border-accent/30 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)] sm:block"
+      >
+        <video
+          data-hero-video
+          class="aspect-[4/5] w-full object-cover"
+          src={signLoop}
+          poster={signPoster.src}
+          preload="metadata"
+          muted
+          loop
+          playsinline
+          aria-label="Cartel LED luminoso con el mensaje Feliz triple cumple junto al equipamiento de DJ"
+        ></video>
+      </div>
     </div>
   </div>
 </section>
 
 <script is:inline>
   (() => {
-    const video = document.querySelector("[data-hero-video]");
-    if (!(video instanceof HTMLVideoElement)) return;
+    const videos = document.querySelectorAll("[data-hero-video]");
+    if (videos.length === 0) return;
 
-    const desktop = window.matchMedia("(min-width: 768px)");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     const syncPlayback = () => {
-      if (desktop.matches && !reducedMotion.matches) {
-        video.play().catch(() => {});
-      } else {
-        video.pause();
-      }
+      videos.forEach((node) => {
+        if (!(node instanceof HTMLVideoElement)) return;
+        if (reducedMotion.matches || document.hidden) {
+          node.pause();
+        } else {
+          node.play().catch(() => {});
+        }
+      });
     };
 
     syncPlayback();
-    desktop.addEventListener("change", syncPlayback);
     reducedMotion.addEventListener("change", syncPlayback);
+    document.addEventListener("visibilitychange", syncPlayback);
   })();
 </script>

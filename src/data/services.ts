@@ -13,6 +13,7 @@ export interface ServicePlan {
   extraHourPrice: number;
   description: string;
   highlights: readonly string[];
+  adds: string;
   features: readonly string[];
   featured: boolean;
 }
@@ -47,6 +48,7 @@ export const SERVICE_PLANS: readonly ServicePlan[] = [
     extraHourPrice: 25000,
     description: "4 Horas de Baile y música para celebraciones íntimas.",
     highlights: ["DJ", "Sonido JBL", "Iluminación básica"],
+    adds: "DJ, sonido JBL e iluminación básica",
     features: [
       "DJ",
       "Playlist personalizada",
@@ -66,6 +68,7 @@ export const SERVICE_PLANS: readonly ServicePlan[] = [
     description:
       "5 Horas de Baile non stop con animación para levantar tu fiesta.",
     highlights: ["DJ + animación", "Humo", "Iluminación mejorada"],
+    adds: "suma animación, humo e iluminación mejorada",
     features: [
       "DJ - Animación · Playlist personalizada",
       "Iluminación mejorada: 2 LED Spider RGB, 2 Luces LED RGB 18, 2 Beam 360°, 2 Láser RGB",
@@ -89,6 +92,7 @@ export const SERVICE_PLANS: readonly ServicePlan[] = [
       "Iluminación avanzada",
       "2 micrófonos",
     ],
+    adds: "suma karaoke con 2 micrófonos, videos y luces avanzadas",
     features: [
       "DJ - Animación · Playlist personalizada",
       "Iluminación avanzada: 2 LED Spider RGB, 4 Luces LED RGB 18, 2 Beam 360°, 2 Láser RGB",
@@ -115,6 +119,7 @@ export const SERVICE_PLANS: readonly ServicePlan[] = [
       "Iluminación avanzada",
       "Videos",
     ],
+    adds: "suma proyector y telón, y más luces",
     features: [
       "DJ - Animación · Playlist personalizada",
       "Iluminación avanzada: 2 LED Spider RGB, 6 Luces LED RGB 18, 2 Beam RGB 360°, 3 Láser RGB",
@@ -142,6 +147,7 @@ export const SERVICE_PLANS: readonly ServicePlan[] = [
       "Iluminación profesional",
       "Karaoke",
     ],
+    adds: "suma coanimación, arco full e iluminación pro",
     features: [
       "DJ - Animación · Co Animación (si fuese necesario) · Playlist personalizada",
       "Iluminación pro: 2 LED Spider RGB, 10 Luces LED RGB 18, 2 Beam RGB 360°, 3 Láser RGB",

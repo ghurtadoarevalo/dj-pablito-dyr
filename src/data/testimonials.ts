@@ -37,7 +37,21 @@ export const TESTIMONIALS: readonly Testimonial[] = [
   },
   {
     handle: "@ceciliamolinalillo",
-    quote: "Maravillos todo excelente gracias gracias",
+    quote: "Excelente la animación, la música y el sonido, al 1000%. Gracias, se pasaron",
+    context: "Bodas de oro",
+    sourceUrl: profile,
+    highlighted: false,
+  },
+  {
+    handle: "@sjesito",
+    quote: "Todo muy lindo y muy buena producción",
+    context: "Bodas de oro",
+    sourceUrl: profile,
+    highlighted: false,
+  },
+  {
+    handle: "@luismolina153",
+    quote: "Muy bueno y la música excelente",
     context: "Bodas de oro",
     sourceUrl: profile,
     highlighted: false,

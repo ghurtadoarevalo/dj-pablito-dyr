@@ -8,14 +8,15 @@ export default {
         display: ['"Bebas Neue"', "sans-serif"],
       },
       colors: {
-        ink: "#0b0b0d",
-        surface: "#141416",
-        "surface-raised": "#171719",
-        line: "#27272a",
-        "line-strong": "#3f3f46",
-        accent: "#eab308",
-        "accent-bright": "#facc15",
-        muted: "#a1a1aa",
+        ink: "#0c0a09",
+        surface: "#181210",
+        "surface-raised": "#1f1815",
+        line: "#34261f",
+        "line-strong": "#4a382d",
+        accent: "#d9a62e",
+        "accent-bright": "#f0c75e",
+        muted: "#b9a99a",
+        paper: "#f4ede4",
       },
       borderRadius: {
         card: "0.5rem",
@@ -24,11 +25,11 @@ export default {
       },
       backgroundImage: {
         "glow-hero":
-          "radial-gradient(circle at 75% 20%, rgba(234,179,8,0.14), transparent 34%), radial-gradient(circle at 10% 80%, rgba(234,179,8,0.06), transparent 30%)",
+          "radial-gradient(circle at 75% 20%, rgba(217,166,46,0.16), transparent 36%), radial-gradient(circle at 12% 86%, rgba(224,33,138,0.10), transparent 38%)",
         "glow-card":
-          "linear-gradient(145deg, rgba(234,179,8,0.07), transparent 60%)",
+          "linear-gradient(145deg, rgba(217,166,46,0.08), transparent 60%)",
         "glow-summary":
-          "linear-gradient(150deg, rgba(234,179,8,0.06), transparent 45%)",
+          "linear-gradient(150deg, rgba(217,166,46,0.07), transparent 45%)",
       },
       transitionTimingFunction: {
         reveal: "cubic-bezier(0.22, 1, 0.36, 1)",

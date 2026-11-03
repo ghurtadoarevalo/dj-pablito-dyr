@@ -1,27 +1,18 @@
 ---
 import { Image } from "astro:assets";
-import { SITE_TAGLINE } from "../data/site";
 
 const year = new Date().getFullYear();
 ---
 
 <footer
-  class="flex flex-col gap-3 border-t border-line bg-surface px-4 pt-10 pb-5 text-sm text-white/80 flex flex-col md:flex-row gap-3 place-items-center place-content-center"
+  class="flex flex-col items-center justify-between gap-4 border-t border-line bg-surface px-4 py-8 text-sm text-paper/70 md:flex-row md:px-8"
 >
-  <p
-    class="text-center text-[10px] font-black uppercase tracking-[0.16em] text-accent"
-  >
-    {SITE_TAGLINE}
+  <p class="text-center text-xs text-paper/60 md:text-left">
+    © {year} DJ Pablito Dyr. Todos los derechos reservados.
   </p>
 
-  <div class="text-center italic">
-    <p class="w-2/3 mx-auto">
-      © {year} Dj Pablito Dyr. Todos los derechos reservados.
-    </p>
-  </div>
-
   <div
-    class="flex min-h-11 flex-row place-items-center gap-3 bg-surface-raised hover:outline hover:outline-1 hover:outline-white/70 hover:text-white/70 text-white/50 rounded-full pr-5"
+    class="flex min-h-11 flex-row items-center gap-3 rounded-pill bg-surface-raised pr-5 transition-colors hover:text-paper/70"
   >
     <Image
       src="https://unavatar.io/github/ghurtadoarevalo"

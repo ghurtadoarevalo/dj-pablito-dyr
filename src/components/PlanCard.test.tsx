@@ -9,6 +9,7 @@ describe("PlanCard", () => {
       const html = renderToStaticMarkup(<PlanCard plan={plan} />);
       expect(html).toContain(plan.title);
       expect(html).toContain(plan.description);
+      expect(html).toContain(plan.adds);
       expect(html).toContain(`$${plan.price.toLocaleString("es-CL")}`);
       for (const highlight of plan.highlights)
         expect(html).toContain(highlight);
@@ -28,6 +29,6 @@ describe("PlanCard", () => {
     );
     expect(html).toContain("Más elegido");
     expect(html).toContain("Elegir Karaoke Dancing");
-    expect(html).toContain("Ver todo lo incluido en Karaoke Dancing");
+    expect(html).toContain("Ver detalle de Karaoke Dancing");
   });
 });

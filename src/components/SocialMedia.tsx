@@ -50,14 +50,24 @@ const iconComponents: Record<SocialMediaName, JSX.Element> = {
   Facebook: <FaFacebook />,
 };
 
-const SocialMedia = ({ namesRequired }: { namesRequired: boolean }) => {
+const SocialMedia = ({
+  namesRequired,
+  align = "center",
+}: {
+  namesRequired: boolean;
+  align?: "center" | "start";
+}) => {
   {
     return (
-      <ul className="flex flex-row items-center lg:gap-1 place-content-center">
+      <ul
+        className={`flex flex-row items-center lg:gap-1 ${
+          align === "center" ? "place-content-center" : "justify-start"
+        }`}
+      >
         {socialMedia.map((media: SocialMediaType) => (
           <li key={media.name}>
             <a
-              className="flex min-h-11 min-w-11 flex-col items-center justify-center rounded-card p-2 text-xl text-accent hover:bg-white/5 lg:gap-2 lg:text-2xl"
+              className="flex min-h-11 min-w-11 flex-col items-center justify-center rounded-card p-2 text-xl text-accent hover:bg-paper/5 lg:gap-2 lg:text-2xl"
               href={media.url}
               target="_blank"
               rel="noopener noreferrer"

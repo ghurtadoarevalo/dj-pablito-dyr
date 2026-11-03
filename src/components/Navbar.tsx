@@ -7,6 +7,8 @@ const navigationLinks = [
   { label: "Mixes", href: "#mixing" },
   { label: "Servicios", href: "#services" },
   { label: "Equipos", href: "#equipment" },
+  { label: "Eventos", href: "#eventos" },
+  { label: "Preguntas", href: "#faq" },
   { label: "Biografía", href: "#bio" },
   { label: "Contacto", href: "#contact" },
 ] as const;
@@ -31,6 +33,38 @@ const Navbar = () => {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [menuOpen]);
 
+  useEffect(() => {
+    if (!("IntersectionObserver" in window)) return;
+
+    const sections = navigationLinks
+      .map((link) => document.querySelector(link.href))
+      .filter((section): section is Element => section !== null);
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (a, b) => a.boundingClientRect.top - b.boundingClientRect.top,
+          );
+
+        const current = visible[0];
+        if (!current) return;
+
+        const link = navigationLinks.find(
+          (item) => item.href === `#${current.target.id}`,
+        );
+        if (link) setCurrentRoute(link.label);
+      },
+      { rootMargin: "-72px 0px -55% 0px", threshold: 0 },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
   const selectRoute = (label: string) => {
     setCurrentRoute(label);
     setMenuOpen(false);
@@ -45,7 +79,7 @@ const Navbar = () => {
     return `${base} ${
       active
         ? "text-accent after:absolute after:inset-x-2 after:-bottom-0.5 after:h-px after:bg-accent"
-        : "text-muted hover:text-white"
+        : "text-muted hover:text-paper"
     }`;
   };
 
@@ -55,7 +89,7 @@ const Navbar = () => {
         <a
           href="#home"
           onClick={() => selectRoute("Inicio")}
-          className="min-h-11 whitespace-nowrap py-3 text-sm font-black tracking-[0.14em] text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+          className="min-h-11 whitespace-nowrap py-3 text-sm font-black tracking-[0.14em] text-paper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
           aria-label="DJ Pablito Dyr, ir al inicio"
         >
           PABLITO <span className="text-accent">DYR</span>
@@ -68,7 +102,7 @@ const Navbar = () => {
                 <a
                   href={link.href}
                   aria-current={
-                    currentRoute === link.label ? "page" : undefined
+                    currentRoute === link.label ? "location" : undefined
                   }
                   onClick={() => selectRoute(link.label)}
                   className={linkClassName(link.label)}
@@ -91,7 +125,7 @@ const Navbar = () => {
           aria-expanded={menuOpen}
           aria-controls={mobileMenuId}
           onClick={() => setMenuOpen((open) => !open)}
-          className="grid size-11 place-items-center rounded-control text-2xl text-white transition-colors hover:bg-white/5 hover:text-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:hidden"
+          className="grid size-11 place-items-center rounded-control text-2xl text-paper transition-colors hover:bg-paper/5 hover:text-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:hidden"
         >
           {menuOpen ? (
             <IoMdClose aria-hidden="true" />
@@ -113,7 +147,7 @@ const Navbar = () => {
                 <a
                   href={link.href}
                   aria-current={
-                    currentRoute === link.label ? "page" : undefined
+                    currentRoute === link.label ? "location" : undefined
                   }
                   onClick={() => selectRoute(link.label)}
                   className={linkClassName(link.label, true)}

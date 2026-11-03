@@ -21,8 +21,8 @@ import { useIsInView } from "../lib/useIsInView";
 const optionClassName = (selected: boolean) =>
   `flex min-h-11 items-center justify-between gap-3 rounded-control border px-3 py-2.5 text-left text-xs transition-colors ${
     selected
-      ? "border-accent/80 bg-accent/10 text-white"
-      : "border-line-strong text-zinc-300 hover:border-zinc-500"
+      ? "border-accent/80 bg-accent/10 text-paper"
+      : "border-line-strong text-paper hover:border-line-strong"
   }`;
 
 const CustomQuoteBuilder = () => {
@@ -58,7 +58,7 @@ const CustomQuoteBuilder = () => {
       <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start">
         <div className="grid gap-3">
           <fieldset className="rounded-card border border-line bg-surface p-5">
-            <legend className="px-1 text-xs font-black uppercase tracking-wider text-white">
+            <legend className="px-1 text-xs font-black uppercase tracking-wider text-paper">
               1. Duración
             </legend>
             <p className="mt-1 text-xs leading-relaxed text-muted">
@@ -66,7 +66,7 @@ const CustomQuoteBuilder = () => {
             </p>
             <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
               <div>
-                <p className="text-2xl font-black text-white">
+                <p className="text-2xl font-black text-paper">
                   {normalized.hours} horas
                 </p>
                 <p className="mt-1 text-[11px] text-muted">
@@ -79,11 +79,11 @@ const CustomQuoteBuilder = () => {
                   aria-label="Quitar una hora"
                   disabled={normalized.hours <= BASE_PACKAGE.includedHours}
                   onClick={() => setHours(normalized.hours - 1)}
-                  className="grid size-11 place-items-center rounded-control border border-line-strong bg-zinc-900 text-xl text-white transition-colors hover:border-accent disabled:cursor-not-allowed disabled:opacity-30"
+                  className="grid size-11 place-items-center rounded-control border border-line-strong bg-ink text-xl text-paper transition-colors hover:border-accent disabled:cursor-not-allowed disabled:opacity-30"
                 >
                   −
                 </button>
-                <span className="min-w-6 text-center text-sm font-black text-white">
+                <span className="min-w-6 text-center text-sm font-black text-paper">
                   {normalized.hours}
                 </span>
                 <button
@@ -91,7 +91,7 @@ const CustomQuoteBuilder = () => {
                   aria-label="Agregar una hora"
                   disabled={normalized.hours >= BASE_PACKAGE.maxHours}
                   onClick={() => setHours(normalized.hours + 1)}
-                  className="grid size-11 place-items-center rounded-control border border-line-strong bg-zinc-900 text-xl text-white transition-colors hover:border-accent disabled:cursor-not-allowed disabled:opacity-30"
+                  className="grid size-11 place-items-center rounded-control border border-line-strong bg-ink text-xl text-paper transition-colors hover:border-accent disabled:cursor-not-allowed disabled:opacity-30"
                 >
                   +
                 </button>
@@ -100,7 +100,7 @@ const CustomQuoteBuilder = () => {
           </fieldset>
 
           <fieldset className="rounded-card border border-line bg-surface p-5">
-            <legend className="px-1 text-xs font-black uppercase tracking-wider text-white">
+            <legend className="px-1 text-xs font-black uppercase tracking-wider text-paper">
               2. Experiencia
             </legend>
             <p className="mt-1 text-xs leading-relaxed text-muted">
@@ -122,10 +122,10 @@ const CustomQuoteBuilder = () => {
                     <span className="flex items-center gap-2">
                       <span
                         aria-hidden="true"
-                        className={`grid size-4 place-items-center rounded-control border text-[10px] ${
+                        className={`grid size-4 place-items-center rounded-control border text-[11px] ${
                           selected
                             ? "border-accent bg-accent text-ink"
-                            : "border-zinc-600"
+                            : "border-line-strong"
                         }`}
                       >
                         {selected ? "✓" : ""}
@@ -133,7 +133,7 @@ const CustomQuoteBuilder = () => {
                       {option.label}
                     </span>
                     <span
-                      className={selected ? "text-accent" : "text-zinc-500"}
+                      className={selected ? "text-accent" : "text-paper-muted"}
                     >
                       +{formatCLP(option.amount)}
                     </span>
@@ -144,7 +144,7 @@ const CustomQuoteBuilder = () => {
           </fieldset>
 
           <fieldset className="rounded-card border border-line bg-surface p-5">
-            <legend className="px-1 text-xs font-black uppercase tracking-wider text-white">
+            <legend className="px-1 text-xs font-black uppercase tracking-wider text-paper">
               3. Iluminación
             </legend>
             <p className="mt-1 text-xs leading-relaxed text-muted">
@@ -160,7 +160,7 @@ const CustomQuoteBuilder = () => {
                     className={`flex min-h-11 cursor-pointer flex-col justify-center rounded-control border px-2 py-2 text-center text-[11px] transition-colors focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-accent ${
                       selected
                         ? "border-accent bg-accent/10 text-accent-bright"
-                        : "border-line-strong text-zinc-300 hover:border-zinc-500"
+                        : "border-line-strong text-paper hover:border-line-strong"
                     }`}
                   >
                     <input
@@ -172,7 +172,7 @@ const CustomQuoteBuilder = () => {
                       className="sr-only"
                     />
                     <span className="font-bold">{option.label}</span>
-                    <span className="mt-1 text-[10px] opacity-75">
+                    <span className="mt-1 text-[11px] opacity-75">
                       {option.amount === 0
                         ? "Incluida"
                         : `+${formatCLP(option.amount)}`}
@@ -184,7 +184,7 @@ const CustomQuoteBuilder = () => {
           </fieldset>
 
           <fieldset className="rounded-card border border-line bg-surface p-5">
-            <legend className="px-1 text-xs font-black uppercase tracking-wider text-white">
+            <legend className="px-1 text-xs font-black uppercase tracking-wider text-paper">
               4. Ubicación
             </legend>
             <p className="mt-1 text-xs leading-relaxed text-muted">
@@ -206,10 +206,10 @@ const CustomQuoteBuilder = () => {
                     <span className="flex items-center gap-2">
                       <span
                         aria-hidden="true"
-                        className={`grid size-4 place-items-center rounded-pill border text-[9px] ${
+                        className={`grid size-4 place-items-center rounded-pill border text-[11px] ${
                           selected
                             ? "border-accent bg-accent text-ink"
-                            : "border-zinc-600"
+                            : "border-line-strong"
                         }`}
                       >
                         {selected ? "✓" : ""}
@@ -217,7 +217,7 @@ const CustomQuoteBuilder = () => {
                       {option.label}
                     </span>
                     <span
-                      className={selected ? "text-accent" : "text-zinc-500"}
+                      className={selected ? "text-accent" : "text-paper-muted"}
                     >
                       {option.amount === null
                         ? "Consultar"
@@ -238,10 +238,10 @@ const CustomQuoteBuilder = () => {
           aria-live="polite"
           className="scroll-mt-20 rounded-card border border-accent/40 bg-glow-summary p-5 lg:sticky lg:top-24"
         >
-          <p className="text-[10px] font-black uppercase tracking-[0.16em] text-accent">
+          <p className="text-[11px] font-black uppercase tracking-[0.16em] text-accent">
             Tu configuración
           </p>
-          <h3 className="mt-2 text-xl font-black text-white">
+          <h3 className="mt-2 text-xl font-black text-paper">
             Resumen del evento
           </h3>
 
@@ -252,7 +252,7 @@ const CustomQuoteBuilder = () => {
                 className="flex items-start justify-between gap-4 text-[11px]"
               >
                 <span className="text-muted">{line.label}</span>
-                <span className="whitespace-nowrap text-zinc-200">
+                <span className="whitespace-nowrap text-paper">
                   {formatCLP(line.amount)}
                 </span>
               </div>
@@ -270,9 +270,9 @@ const CustomQuoteBuilder = () => {
                   {formatCLP(quote.total)}
                 </strong>
               </div>
-              <p className="mt-2 text-right text-[10px] text-zinc-500">
+              <p className="mt-2 text-right text-[11px] text-paper-muted">
                 Reserva con el 20%:{" "}
-                <span data-testid="quote-deposit" className="text-zinc-300">
+                <span data-testid="quote-deposit" className="text-paper">
                   {formatCLP(quote.deposit)}
                 </span>
               </p>
@@ -291,7 +291,7 @@ const CustomQuoteBuilder = () => {
           >
             {quoteCtaLabel}
           </a>
-          <p className="mt-3 text-center text-[10px] leading-relaxed text-zinc-500">
+          <p className="mt-3 text-center text-[11px] leading-relaxed text-paper-muted">
             {quote.kind === "exact"
               ? "El valor no cambia al contactar. La fecha queda sujeta a disponibilidad."
               : "Enviaremos la configuración para calcular el traslado contigo."}
@@ -310,7 +310,7 @@ const CustomQuoteBuilder = () => {
           <div className="mx-auto max-w-lg">
             <div className="flex items-center justify-between gap-3">
               <div className="min-w-0">
-                <p className="text-[9px] font-black uppercase tracking-[0.14em] text-muted">
+                <p className="text-[11px] font-black uppercase tracking-[0.14em] text-muted">
                   {quote.kind === "exact" ? "Total exacto" : "Traslado"}
                 </p>
                 <p className="truncate text-lg font-black text-accent">
@@ -324,7 +324,7 @@ const CustomQuoteBuilder = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={quoteCtaLabel}
-                className="flex min-h-11 shrink-0 items-center justify-center rounded-control bg-accent px-3 py-2 text-center text-[10px] font-black uppercase tracking-wide text-ink"
+                className="flex min-h-11 shrink-0 items-center justify-center rounded-control bg-accent px-3 py-2 text-center text-[11px] font-black uppercase tracking-wide text-ink"
               >
                 <span aria-hidden="true">
                   {quote.kind === "exact" ? "Enviar" : "Cotizar"}
@@ -334,7 +334,7 @@ const CustomQuoteBuilder = () => {
 
             <a
               href="#mobile-quote-breakdown"
-              className="mt-2 flex min-h-11 items-center justify-between border-t border-line pt-2 text-[11px] font-bold text-zinc-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              className="mt-2 flex min-h-11 items-center justify-between border-t border-line pt-2 text-[11px] font-bold text-paper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               Ver desglose
               <span aria-hidden="true" className="text-base text-accent">

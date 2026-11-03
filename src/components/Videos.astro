@@ -26,15 +26,14 @@ const fallbackThumb = (code: string) =>
 <section
   id="mixing"
   aria-labelledby="mixing-title"
-  class="reveal border-t border-line bg-ink py-10 md:py-14"
+  class="reveal border-t border-line bg-ink py-12 md:py-20"
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <SectionHeading
-      number="02"
       id="mixing-title"
       kicker="Nuestro sonido"
       title="Mixes"
-      lead="Sets completos grabados en vivo. Se abren en YouTube, donde podés escucharlos completos."
+      lead="Sets completos grabados en vivo. Se abren en YouTube, donde puedes escucharlos completos."
     />
 
     <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -65,10 +64,10 @@ const fallbackThumb = (code: string) =>
                 ▶
               </span>
               <span class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4">
-                <span class="font-display text-xl uppercase leading-none tracking-tight text-white sm:text-2xl">
+                <span class="font-display text-xl uppercase leading-none tracking-tight text-paper sm:text-2xl">
                   {video.title}
                 </span>
-                <span class="text-[10px] font-black uppercase tracking-[0.14em] text-accent">
+                <span class="text-[11px] font-black uppercase tracking-[0.14em] text-accent">
                   YouTube
                 </span>
               </span>
@@ -79,14 +78,14 @@ const fallbackThumb = (code: string) =>
     </ul>
 
     <div class="mt-8 flex flex-wrap items-center justify-between gap-4">
-      <p class="text-[10px] font-bold uppercase tracking-wide text-muted">
+      <p class="text-[11px] font-bold uppercase tracking-wide text-muted">
         {videos.length} mixes · {videos.length} noches de fiesta
       </p>
       <a
         href={CHANNEL_URL}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex min-h-11 items-center rounded-control border border-line-strong px-5 text-sm font-bold text-white transition-colors duration-snap hover:border-accent hover:text-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        class="inline-flex min-h-11 items-center rounded-control border border-line-strong px-5 text-sm font-bold text-paper transition-colors duration-snap hover:border-accent hover:text-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
       >
         Ver el canal en YouTube
       </a>

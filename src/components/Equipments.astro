@@ -4,7 +4,7 @@ import SectionHeading from "./SectionHeading.astro";
 
 const equipements = [
   {
-    name: "Pionner ddj400",
+    name: "Pioneer DDJ-400",
     description:
       "Controlador DJ de 2 canales para rekordbox. Todo el poder de la mezcla en un solo lugar.",
     imgName: "ddj400",
@@ -13,24 +13,24 @@ const equipements = [
       "Controlador Pioneer DDJ-400 - Equipo profesional de DJ usado por DJ Pablito Dyr",
   },
   {
-    name: "SPOT 30W",
+    name: "Spot 30W",
     description:
-      "Cabezal movil led de 30 watts. Ideal para iluminar la pista con un toque profesional.",
+      "Cabezal móvil LED de 30 watts. Ideal para iluminar la pista con un toque profesional.",
     imgName: "beam30",
     quantity: 2,
     label:
       "Cabezal móvil LED SPOT 30W - Iluminación profesional para eventos y fiestas",
   },
   {
-    name: "Luz led RGB",
-    description: "Luz de escenario DJ. Led RGB de 18 luces Control DMX.",
+    name: "Luz LED RGB",
+    description: "Luz de escenario LED RGB de 18 luces con control DMX.",
     imgName: "ledLight",
     quantity: 10,
     label:
       "Luz LED RGB de escenario - Iluminación profesional con control DMX para eventos",
   },
   {
-    name: "jbl jrx 115",
+    name: "JBL JRX 115",
     description:
       "Sistema de altavoces de refuerzo de sonido bidireccional. Más de 1000W de potencia con el mejor sonido.",
     imgName: "jbl115",
@@ -39,7 +39,7 @@ const equipements = [
       "Parlantes JBL JRX 115 - Sistema de sonido profesional de 1000W para eventos",
   },
   {
-    name: "Pantalla de 43",
+    name: `Pantalla de 43"`,
     description:
       'Pantalla de 43" para karaoke y videos, ubicada según el espacio y la preferencia del cliente.',
     imgName: "tvsamsung",
@@ -47,7 +47,7 @@ const equipements = [
     label: "Pantalla de 43 pulgadas para karaoke y videos en eventos",
   },
   {
-    name: "máquina de humo",
+    name: "Máquina de humo",
     description:
       "Máquina de humo de 1200 a 1500 Watts. Lleva tu fiesta a otro nivel.",
     imgName: "fogmachine",
@@ -56,9 +56,9 @@ const equipements = [
       "Máquina de humo profesional 1500W - Efectos especiales para fiestas y eventos",
   },
   {
-    name: "Micrófono inhalambrico",
+    name: "Micrófono inalámbrico",
     description:
-      "Micrófono inhalambrico de alta calidad, para que no hayan excusas para cantar y/o animar tus fiestas.",
+      "Micrófono inalámbrico de alta calidad, para que no haya excusas para cantar o animar tus fiestas.",
     imgName: "mics",
     quantity: 2,
     label:
@@ -66,25 +66,25 @@ const equipements = [
   },
   {
     name: "Spider Beam RGB",
-    description: "Cabezas móviles RGB para iluminar todo al ritmo de la música",
+    description: "Cabezas móviles RGB para iluminar todo al ritmo de la música.",
     imgName: "ledspider",
     quantity: 2,
     label:
       "Spider Beam RGB - Cabezales móviles de iluminación LED para eventos y fiestas",
   },
   {
-    name: "Atril Iluminación Carverpro",
+    name: "Atril de iluminación Carverpro",
     description:
-      "Atril de iluminación doble. Ajustable de 1.8m a 3.45m de altura y 3.6m de ancho. Para todos aquellos que quieran una pista o escenario con un toque profesional.",
+      "Atril de iluminación doble. Ajustable de 1,8 m a 3,45 m de altura y 3,6 m de ancho. Para todos aquellos que quieran una pista o escenario con un toque profesional.",
     imgName: "arcoatril",
     quantity: 2,
     label:
       "Atril de iluminación Carverpro - Sistema profesional de montaje de luces para eventos",
   },
   {
-    name: "Pizarra Led Luminosa",
+    name: "Pizarra LED luminosa",
     description:
-      "Pizarra Led luminosa donde se puede escribir con el nombre de los festejados o el mensaje que tú quieras.",
+      "Pizarra LED luminosa donde se puede escribir el nombre de los festejados o el mensaje que quieras.",
     imgName: "lightBoard",
     quantity: 2,
     label: "Pizarra Led luminosa - Pizarra profesional para eventos y fiestas",
@@ -112,11 +112,10 @@ const SIZES: Record<number, "hero" | "wide" | "tall"> = {
 <section
   id="equipment"
   aria-labelledby="equipment-title"
-  class="reveal border-t border-line bg-ink py-10 md:py-14"
+  class="reveal border-t border-line bg-ink py-12 md:py-20"
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <SectionHeading
-      number="04"
       id="equipment-title"
       kicker="Sonido e iluminación"
       title="Equipamiento"
@@ -146,71 +145,31 @@ const SIZES: Record<number, "hero" | "wide" | "tall"> = {
       .equipment-card {
         opacity: 1 !important;
         transform: none !important;
-        transition: none !important;
+        animation: none !important;
       }
     </style>
   </noscript>
 </section>
 
 <style>
-  :global(.equipment-card) {
-    opacity: 0;
-    transform: translateY(1rem);
-    transition:
-      opacity 600ms ease,
-      transform 600ms ease;
-  }
-
-  :global(.equipment-card.is-visible) {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    :global(.equipment-card) {
+  @keyframes equipment-in {
+    from {
+      opacity: 0.45;
+      transform: translateY(14px);
+    }
+    to {
       opacity: 1;
       transform: none;
-      transition: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      :global(.equipment-card) {
+        animation: equipment-in linear both;
+        animation-timeline: view();
+        animation-range: entry 8% cover 26%;
+      }
     }
   }
 </style>
-
-<script>
-  (function () {
-    const grid = document.querySelector(".equipment-grid");
-    if (!grid) return;
-
-    const cards = grid.querySelectorAll<HTMLElement>(".equipment-card");
-    if (cards.length === 0) return;
-
-    if (!("IntersectionObserver" in window)) {
-      cards.forEach((card) => card.classList.add("is-visible"));
-      return;
-    }
-
-    const stagger = 80;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = Array.from(cards).indexOf(
-              entry.target as HTMLElement,
-            );
-            const delay = index * stagger;
-            setTimeout(() => {
-              entry.target.classList.add("is-visible");
-            }, delay);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      },
-    );
-
-    cards.forEach((card) => observer.observe(card));
-  })();
-</script>

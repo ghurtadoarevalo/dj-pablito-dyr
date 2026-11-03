@@ -3,6 +3,10 @@
   outline-offset: 2px;
 }
 
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
 .reveal {
   opacity: 1;
   transform: none;

@@ -5,6 +5,9 @@ import PlanCard from "./PlanCard";
 
 type ServicesTab = "packs" | "custom";
 
+// Pedido del cliente: la fila "Diseña tu pack" queda oculta, no eliminada.
+const SHOW_CUSTOM_PACK = false;
+
 const tabs: readonly { id: ServicesTab; label: string }[] = [
   { id: "packs", label: "Packs base" },
   { id: "custom", label: "Arma tu evento" },
@@ -31,19 +34,19 @@ const ServicesSection = () => {
   return (
     <div className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 lg:px-8">
       <div className="mb-8 md:mb-12">
-        <p className="text-[10px] font-black uppercase tracking-[0.18em] text-accent">
-          <span className="mr-2 text-white/40">03</span>
+        <p className="flex items-center gap-3 text-[11px] font-black uppercase tracking-[0.18em] text-accent">
+          <span className="h-px w-6 bg-accent" aria-hidden="true" />
           Servicios
         </p>
         <h2
           id="services-title"
-          className="mt-2 break-words font-display text-4xl uppercase leading-[0.9] tracking-tight text-white sm:text-5xl lg:text-7xl"
+          className="mt-2 break-words font-display text-4xl uppercase leading-[0.9] tracking-tight text-paper sm:text-5xl lg:text-7xl"
         >
-          Tu evento, a tu manera
+          Packs y precios
         </h2>
         <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted">
-          Compara lo esencial de cada pack o configura una propuesta con el
-          valor exacto antes de contactar.
+          Cinco packs con precio exacto y todo lo que incluye cada uno. Abre el
+          que te interese o arma el tuyo a medida.
         </p>
       </div>
 
@@ -70,7 +73,7 @@ const ServicesSection = () => {
               onClick={() => setActiveTab(tab.id)}
               onKeyDown={moveFocus}
               className={`min-h-11 rounded-control px-4 py-2.5 text-xs font-black transition-colors ${
-                selected ? "bg-accent text-ink" : "text-muted hover:text-white"
+                selected ? "bg-accent text-ink" : "text-muted hover:text-paper"
               }`}
             >
               {selected && <span aria-hidden="true">✓ </span>}
@@ -87,33 +90,42 @@ const ServicesSection = () => {
           aria-labelledby="services-tab-packs"
           className="mt-5"
         >
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
+          <div className="divide-y divide-line border-y border-line">
             {SERVICE_PLANS.map((plan) => (
               <PlanCard key={plan.id} plan={plan} />
             ))}
 
-            <article className="flex min-h-64 flex-col justify-center rounded-card border border-dashed border-accent/40 bg-accent/[0.035] p-5 text-white">
-              <p className="text-[10px] font-black uppercase tracking-[0.16em] text-accent">
-                ¿Otra combinación?
-              </p>
-              <h3 className="mt-2 text-xl font-black">Diseña tu propio pack</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted">
-                Elige duración, experiencia e iluminación. Ve el total exacto
-                mientras configuras.
-              </p>
-              <button
-                type="button"
-                onClick={() => setActiveTab("custom")}
-                className="mt-5 min-h-11 self-start rounded-control bg-accent px-4 py-2.5 text-xs font-black uppercase tracking-wide text-ink transition-colors hover:bg-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-              >
-                Personalizar evento →
-              </button>
-            </article>
+            {SHOW_CUSTOM_PACK && (
+              /* Oculto por pedido del cliente. No borrar: cambiar SHOW_CUSTOM_PACK a true para mostrarlo de nuevo. */
+              <div className="grid grid-cols-[2rem_minmax(0,1fr)_auto] items-center gap-3 py-5 sm:grid-cols-[2.5rem_minmax(0,1fr)_auto] sm:gap-5">
+                <span
+                  className="font-display text-xl leading-none text-accent sm:text-2xl"
+                  aria-hidden="true"
+                >
+                  +
+                </span>
+                <span className="min-w-0">
+                  <span className="block font-display text-xl uppercase leading-none tracking-tight text-paper sm:text-2xl">
+                    Diseña tu pack
+                  </span>
+                  <span className="mt-1 block text-xs text-muted">
+                    Eliges horas, extras e iluminación · desde $150.000
+                  </span>
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab("custom")}
+                  className="min-h-11 rounded-control border border-accent/50 px-3 text-xs font-black uppercase tracking-wide text-accent-bright transition-colors hover:border-accent hover:bg-accent/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:px-4"
+                >
+                  Armar →
+                </button>
+              </div>
+            )}
           </div>
-          <p className="mt-4 rounded-control border border-line px-4 py-3 text-center text-xs leading-relaxed text-muted">
+          <p className="mt-4 text-center text-xs leading-relaxed text-muted">
             Todos los packs incluyen playlist personalizada, amplificación
             profesional y{" "}
-            <strong className="text-accent-bright">
+            <strong className="font-semibold text-paper">
               2 letras LED con el nombre del festejado.
             </strong>
           </p>
