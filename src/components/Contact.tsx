@@ -39,6 +39,7 @@ const Contact = () => {
     >
       <div className="mx-auto mb-8 max-w-7xl px-4 sm:px-6 md:mb-12 lg:px-8">
         <p className="text-[10px] font-black uppercase tracking-[0.18em] text-accent">
+          <span className="mr-2 text-white/40">08</span>
           Hablemos
         </p>
         <h2 className="mt-2 break-words font-display text-3xl uppercase tracking-tight text-white md:text-4xl lg:text-5xl">

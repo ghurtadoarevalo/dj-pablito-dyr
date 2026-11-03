@@ -4,13 +4,15 @@ interface Props {
   title: string;
   lead?: string;
   id?: string;
+  number?: string;
 }
 
-const { kicker, title, lead, id } = Astro.props;
+const { kicker, title, lead, id, number } = Astro.props;
 ---
 
 <div class="mb-8 md:mb-12">
   <p class="text-[10px] font-black uppercase tracking-[0.18em] text-accent">
+    {number && <span class="mr-2 text-white/40">{number}</span>}
     {kicker}
   </p>
   <h2

@@ -32,6 +32,7 @@ const ServicesSection = () => {
     <div className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 lg:px-8">
       <div className="mb-8 md:mb-12">
         <p className="text-[10px] font-black uppercase tracking-[0.18em] text-accent">
+          <span className="mr-2 text-white/40">04</span>
           Servicios
         </p>
         <h2
@@ -88,7 +89,12 @@ const ServicesSection = () => {
         >
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
             {SERVICE_PLANS.map((plan) => (
-              <PlanCard key={plan.id} plan={plan} />
+              <div
+                key={plan.id}
+                className={plan.featured ? "xl:col-span-2" : undefined}
+              >
+                <PlanCard plan={plan} />
+              </div>
             ))}
 
             <article className="flex min-h-64 flex-col justify-center rounded-card border border-dashed border-accent/40 bg-accent/[0.035] p-5 text-white">
