@@ -3,6 +3,8 @@ import SectionHeading from "./SectionHeading.astro";
 import { INSTAGRAM_PROFILE_URL, TESTIMONIALS } from "../data/testimonials";
 
 const TRACK_ID = "testimonials-track";
+const SLIDES = [...TESTIMONIALS, ...TESTIMONIALS];
+const TOTAL = TESTIMONIALS.length;
 ---
 
 <section
@@ -39,6 +41,16 @@ const TRACK_ID = "testimonials-track";
         >
           <span aria-hidden="true">→</span>
         </button>
+        <button
+          type="button"
+          data-carousel="toggle"
+          data-target={TRACK_ID}
+          aria-label="Pausar el carrusel de testimonios"
+          aria-controls={TRACK_ID}
+          class="grid size-11 place-items-center rounded-control border border-line-strong text-white transition-colors duration-snap hover:border-accent hover:text-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          <span aria-hidden="true" data-carousel-icon>❚❚</span>
+        </button>
       </div>
     </div>
 
@@ -50,8 +62,9 @@ const TRACK_ID = "testimonials-track";
       class="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
     >
       {
-        TESTIMONIALS.map((testimonial, index) => (
+        SLIDES.map((testimonial, index) => (
           <li
+            aria-hidden={index >= TOTAL ? "true" : undefined}
             class={`relative flex shrink-0 snap-start basis-[85%] flex-col justify-between rounded-card border border-line bg-surface p-5 sm:basis-[48%] lg:basis-[32%] ${
               testimonial.highlighted ? "border-l-2 border-l-accent" : ""
             }`}
@@ -62,10 +75,12 @@ const TRACK_ID = "testimonials-track";
             <p class="mt-4 text-[10px] font-bold uppercase tracking-wide">
               <span class="text-accent">{testimonial.handle}</span>
               <span class="text-muted"> · {testimonial.context}</span>
-              <span class="sr-only">
-                {" "}
-                (testimonio {index + 1} de {TESTIMONIALS.length})
-              </span>
+              {index < TOTAL && (
+                <span class="sr-only">
+                  {" "}
+                  (testimonio {index + 1} de {TOTAL})
+                </span>
+              )}
             </p>
           </li>
         ))
@@ -82,31 +97,127 @@ const TRACK_ID = "testimonials-track";
         Ver más reseñas en Instagram
       </a>
       <p class="text-[10px] font-bold uppercase tracking-wide text-muted">
-        Desliza o usa las flechas
+        Desliza, usa las flechas o pausa el movimiento
       </p>
     </div>
   </div>
 </section>
 
 <script>
+  const AUTOPLAY_MS = 5200;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-  document
-    .querySelectorAll<HTMLButtonElement>("[data-carousel]")
-    .forEach((button) => {
-      button.addEventListener("click", () => {
-        const track = document.getElementById(button.dataset.target ?? "");
-        const card = track?.querySelector("li");
-        if (!track || !card) return;
+  function setupCarousel() {
+    const track = document.getElementById("testimonials-track");
+    if (!track) return;
 
-        const gap = parseFloat(getComputedStyle(track).columnGap || "0");
-        const step = card.getBoundingClientRect().width + gap;
-        const direction = button.dataset.carousel === "next" ? 1 : -1;
+    const slides = [...track.querySelectorAll("li")];
+    const half = slides.length / 2;
+    const toggle = document.querySelector<HTMLButtonElement>(
+      '[data-carousel="toggle"]',
+    );
+    const icon = toggle?.querySelector<HTMLElement>("[data-carousel-icon]");
+    let timer: number | null = null;
+    let paused = reduceMotion.matches;
 
-        track.scrollBy({
-          left: direction * step,
-          behavior: reduceMotion.matches ? "auto" : "smooth",
+    const stepSize = () => {
+      const card = slides[0];
+      const gap = parseFloat(getComputedStyle(track).columnGap || "0");
+      return card ? card.getBoundingClientRect().width + gap : 0;
+    };
+
+    const normalize = () => {
+      const loopWidth = stepSize() * half;
+      if (!loopWidth) return;
+      if (track.scrollLeft >= loopWidth - 2) {
+        track.scrollLeft -= loopWidth;
+      } else if (track.scrollLeft < 2) {
+        track.scrollLeft += loopWidth;
+      }
+    };
+
+    const move = (direction: number, smooth: boolean) => {
+      track.scrollBy({
+        left: direction * stepSize(),
+        behavior: smooth ? "smooth" : "auto",
+      });
+      window.setTimeout(normalize, smooth ? 700 : 60);
+    };
+
+    const stop = () => {
+      if (timer !== null) {
+        window.clearInterval(timer);
+        timer = null;
+      }
+    };
+
+    const syncToggle = () => {
+      if (!toggle || !icon) return;
+      toggle.setAttribute(
+        "aria-label",
+        paused
+          ? "Reproducir el carrusel de testimonios"
+          : "Pausar el carrusel de testimonios",
+      );
+      icon.textContent = paused ? "▶" : "❚❚";
+    };
+
+    const start = () => {
+      stop();
+      if (paused) return;
+      timer = window.setInterval(() => {
+        move(1, !reduceMotion.matches);
+      }, AUTOPLAY_MS);
+    };
+
+    const pause = () => {
+      paused = true;
+      stop();
+      syncToggle();
+    };
+
+    toggle?.addEventListener("click", () => {
+      paused = !paused;
+      syncToggle();
+      if (paused) stop();
+      else start();
+    });
+
+    track.addEventListener("scroll", normalize, { passive: true });
+    track.addEventListener("pointerenter", stop);
+    track.addEventListener("pointerleave", () => {
+      if (!paused) start();
+    });
+    track.addEventListener("focusin", stop);
+    track.addEventListener("focusout", () => {
+      if (!paused) start();
+    });
+
+    document
+      .querySelectorAll<HTMLButtonElement>("[data-carousel]")
+      .forEach((button) => {
+        if (button.dataset.carousel === "toggle") return;
+        button.addEventListener("click", () => {
+          move(
+            button.dataset.carousel === "next" ? 1 : -1,
+            !reduceMotion.matches,
+          );
+          if (!paused) start();
         });
       });
+
+    reduceMotion.addEventListener("change", (event) => {
+      if (event.matches) pause();
+      else {
+        paused = false;
+        syncToggle();
+        start();
+      }
     });
+
+    syncToggle();
+    start();
+  }
+
+  setupCarousel();
 </script>
