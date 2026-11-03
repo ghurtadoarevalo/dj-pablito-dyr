@@ -193,6 +193,21 @@ const TOTAL = TESTIMONIALS.length;
       if (!paused) start();
     });
 
+    let resumeHandle: number | null = null;
+    const holdForInteraction = () => {
+      stop();
+      if (resumeHandle !== null) window.clearTimeout(resumeHandle);
+      resumeHandle = window.setTimeout(() => {
+        if (!paused) start();
+      }, 10000);
+    };
+    track.addEventListener("pointerdown", holdForInteraction, {
+      passive: true,
+    });
+    track.addEventListener("touchstart", holdForInteraction, {
+      passive: true,
+    });
+
     document
       .querySelectorAll<HTMLButtonElement>("[data-carousel]")
       .forEach((button) => {
