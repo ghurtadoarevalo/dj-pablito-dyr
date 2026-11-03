@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import { SITE_TAGLINE } from "../data/site";
 import logo from "../../public/logo.png";
-import crest from "@assets/logo-dyr-crest.jpg";
+import crest from "@assets/logo-dyr-crest.png";
 import djBackground from "@assets/djBackground.mp4";
 const [taglineLead, ...taglineRest] = SITE_TAGLINE.split(",");
 const taglineTail = taglineRest.join(",").trim();
@@ -113,7 +113,7 @@ const taglineTail = taglineRest.join(",").trim();
         width={1080}
         height={1080}
         decoding="async"
-        class="relative w-[400px] rounded-[2rem] object-cover shadow-[0_18px_60px_-20px_rgba(0,0,0,0.85)]"
+        class="relative w-[420px] object-contain"
       />
     </div>
   </div>
