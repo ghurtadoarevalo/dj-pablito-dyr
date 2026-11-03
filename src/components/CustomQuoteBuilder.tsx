@@ -16,6 +16,7 @@ import {
   formatCLP,
   toggleQuoteExtra,
 } from "../lib/quote";
+import { useIsInView } from "../lib/useIsInView";
 
 const optionClassName = (selected: boolean) =>
   `flex min-h-11 items-center justify-between gap-3 rounded-sm border px-3 py-2.5 text-left text-xs transition-colors ${
@@ -28,8 +29,13 @@ const CustomQuoteBuilder = () => {
   const [selection, setSelection] = useState<QuoteSelection>(
     DEFAULT_QUOTE_SELECTION,
   );
+  const [panelRef, inView] = useIsInView<HTMLDivElement>();
   const quote = calculateCustomQuote(selection);
   const normalized = quote.selection;
+  const quoteCtaLabel =
+    quote.kind === "exact"
+      ? "Enviar configuración por WhatsApp"
+      : "Cotización de traslado por WhatsApp";
 
   const setHours = (hours: number) => {
     setSelection((current) => ({ ...current, hours }));
@@ -48,8 +54,9 @@ const CustomQuoteBuilder = () => {
   };
 
   return (
-    <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start">
-      <div className="grid gap-3">
+    <div ref={panelRef}>
+      <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start">
+        <div className="grid gap-3 pb-44 lg:pb-0">
         <fieldset className="rounded-lg border border-zinc-800 bg-[#141416] p-5">
           <legend className="px-1 text-xs font-black uppercase tracking-wider text-white">
             1. Duración
@@ -232,7 +239,7 @@ const CustomQuoteBuilder = () => {
       <aside
         data-testid="desktop-quote-summary"
         aria-live="polite"
-        className="rounded-lg border border-yellow-400/40 bg-[linear-gradient(150deg,rgba(246,201,69,0.06),transparent_45%),#171719] p-5 lg:sticky lg:top-24"
+        className="hidden rounded-lg border border-yellow-400/40 bg-[linear-gradient(150deg,rgba(246,201,69,0.06),transparent_45%),#171719] p-5 lg:sticky lg:top-24 lg:block"
       >
         <p className="text-[10px] font-black uppercase tracking-[0.16em] text-yellow-400">
           Tu configuración
@@ -285,9 +292,7 @@ const CustomQuoteBuilder = () => {
           rel="noopener noreferrer"
           className="mt-5 flex min-h-11 items-center justify-center rounded-sm bg-yellow-400 px-4 py-3 text-center text-[11px] font-black uppercase tracking-wide text-zinc-950 transition-colors hover:bg-yellow-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
         >
-          {quote.kind === "exact"
-            ? "Enviar configuración por WhatsApp"
-            : "Cotización de traslado por WhatsApp"}
+          {quoteCtaLabel}
         </a>
         <p className="mt-3 text-center text-[10px] leading-relaxed text-zinc-500">
           {quote.kind === "exact"
@@ -295,6 +300,76 @@ const CustomQuoteBuilder = () => {
             : "Enviaremos la configuración para calcular el traslado contigo."}
         </p>
       </aside>
+      </div>
+
+      {inView && (
+        <div
+          data-testid="mobile-quote-bar"
+          className="fixed inset-x-0 bottom-0 z-30 border-t border-yellow-400/40 bg-[#171719]/95 p-3 shadow-[0_-12px_35px_rgba(0,0,0,0.45)] backdrop-blur-md lg:hidden"
+          style={{
+            paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))",
+          }}
+        >
+          <div className="mx-auto max-w-lg">
+            <div className="flex items-center justify-between gap-3">
+              <div className="min-w-0">
+                <p className="text-[9px] font-black uppercase tracking-[0.14em] text-zinc-400">
+                  {quote.kind === "exact" ? "Total exacto" : "Traslado"}
+                </p>
+                <p className="truncate text-lg font-black text-yellow-400">
+                  {quote.kind === "exact"
+                    ? formatCLP(quote.total)
+                    : "Cotización por WhatsApp"}
+                </p>
+              </div>
+              <a
+                href={buildCustomQuoteWhatsAppUrl(quote)}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={quoteCtaLabel}
+                className="flex min-h-11 shrink-0 items-center justify-center rounded-sm bg-yellow-400 px-3 py-2 text-center text-[10px] font-black uppercase tracking-wide text-zinc-950"
+              >
+                <span aria-hidden="true">
+                  {quote.kind === "exact" ? "Enviar" : "Cotizar"}
+                </span>
+              </a>
+            </div>
+
+            <details className="group mt-2 border-t border-zinc-800 pt-2">
+              <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between text-[11px] font-bold text-zinc-300">
+                Ver desglose
+                <span
+                  aria-hidden="true"
+                  className="text-base text-yellow-400 transition-transform group-open:rotate-45"
+                >
+                  +
+                </span>
+              </summary>
+              <div className="max-h-[45vh] space-y-2 overflow-y-auto pb-1">
+                {quote.lines.map((line) => (
+                  <div
+                    key={`mobile-${line.label}-${line.amount}`}
+                    className="flex items-start justify-between gap-4 text-[10px]"
+                  >
+                    <span className="text-zinc-400">{line.label}</span>
+                    <span className="whitespace-nowrap text-zinc-200">
+                      {formatCLP(line.amount)}
+                    </span>
+                  </div>
+                ))}
+                {quote.kind === "exact" && (
+                  <p className="border-t border-zinc-800 pt-2 text-[10px] text-zinc-400">
+                    Reserva con el 20%:{" "}
+                    <span className="font-bold text-zinc-200">
+                      {formatCLP(quote.deposit)}
+                    </span>
+                  </p>
+                )}
+              </div>
+            </details>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

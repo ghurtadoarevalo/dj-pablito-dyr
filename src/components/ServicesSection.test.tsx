@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
-import { render, screen, within } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
+import { act, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { SERVICE_PLANS } from "../data/services";
 import ServicesSection from "./ServicesSection";
@@ -47,12 +47,15 @@ describe("ServicesSection", () => {
     render(<ServicesSection />);
     await user.click(screen.getByRole("tab", { name: "Arma tu evento" }));
     await user.click(screen.getByRole("button", { name: /Fuera de Santiago/ }));
+    const summary = screen.getByTestId("desktop-quote-summary");
     expect(
-      screen.getByRole("link", {
+      within(summary).getByRole("link", {
         name: /Cotización de traslado por WhatsApp/,
       }),
     ).toBeInTheDocument();
-    expect(screen.queryByText("Reserva con el 20%")).not.toBeInTheDocument();
+    expect(
+      within(summary).queryByText("Reserva con el 20%"),
+    ).not.toBeInTheDocument();
   });
 
   it("puts the full configuration in the WhatsApp link", async () => {
@@ -67,5 +70,48 @@ describe("ServicesSection", () => {
     const decoded = decodeURIComponent(link.getAttribute("href") ?? "");
     expect(decoded).toContain("Karaoke + 2 micrófonos");
     expect(decoded).toContain("Duración: 4 horas");
+  });
+
+  it("hides mobile quote controls out of view and switches to manual transport", async () => {
+    let observerCallback: IntersectionObserverCallback = () => {};
+    vi.stubGlobal(
+      "IntersectionObserver",
+      class {
+        root = null;
+        rootMargin = "";
+        thresholds = [];
+        constructor(callback: IntersectionObserverCallback) {
+          observerCallback = callback;
+        }
+        observe() {}
+        unobserve() {}
+        disconnect() {}
+        takeRecords() {
+          return [];
+        }
+      },
+    );
+
+    const user = userEvent.setup();
+    render(<ServicesSection />);
+    await user.click(screen.getByRole("tab", { name: "Arma tu evento" }));
+    const bar = screen.getByTestId("mobile-quote-bar");
+    expect(bar).toBeInTheDocument();
+    expect(within(bar).getByText("Ver desglose")).toBeInTheDocument();
+    await user.click(
+      screen.getByRole("button", { name: /Fuera de Santiago/ }),
+    );
+    expect(
+      within(bar).getByRole("link", {
+        name: /Cotización de traslado por WhatsApp/,
+      }),
+    ).toBeInTheDocument();
+    act(() =>
+      observerCallback(
+        [{ isIntersecting: false } as IntersectionObserverEntry],
+        {} as IntersectionObserver,
+      ),
+    );
+    expect(screen.queryByTestId("mobile-quote-bar")).not.toBeInTheDocument();
   });
 });
