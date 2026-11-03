@@ -1,32 +1,16 @@
 ---
-import { Image } from "astro:assets";
 import SectionHeading from "./SectionHeading.astro";
-import bodas from "@assets/eventos/bodas-de-oro.jpg";
-import cumple from "@assets/eventos/cumpleanos-calera.jpg";
-import privada from "@assets/eventos/fiesta-privada.jpg";
-import teatro from "@assets/eventos/teatro-oriente.jpg";
 
-const reels = [
-  {
-    code: "DezQqZBRO4N",
-    cover: bodas,
-    title: "Bodas de oro con DJ y animación",
-  },
-  {
-    code: "DT80j5IEZOl",
-    cover: cumple,
-    title: "Cumpleaños en Calera de Tango",
-  },
-  {
-    code: "DX69tN_xYuq",
-    cover: privada,
-    title: "Fiesta privada con sonido e iluminación",
-  },
-  {
-    code: "DbybB_sRG1z",
-    cover: teatro,
-    title: "Evento municipal en Teatro Oriente",
-  },
+interface Reel {
+  code: string;
+  title: string;
+}
+
+const reels: Reel[] = [
+  { code: "DezQqZBRO4N", title: "Bodas de oro con DJ y animación" },
+  { code: "DT80j5IEZOl", title: "Cumpleaños en Calera de Tango" },
+  { code: "DX69tN_xYuq", title: "Fiesta privada con sonido e iluminación" },
+  { code: "DbybB_sRG1z", title: "Evento municipal en Teatro Oriente" },
 ];
 ---
 
@@ -41,7 +25,7 @@ const reels = [
       id="eventos-title"
       kicker="Eventos reales"
       title="Así se ve"
-      lead="Reels de fiestas que ya pasaron. Tocalos y se reproducen acá mismo."
+      lead="Reels de fiestas que ya pasaron, directo desde nuestro Instagram."
     />
   </div>
 
@@ -51,31 +35,16 @@ const reels = [
     {
       reels.map((reel) => (
         <li class="w-[240px] shrink-0 snap-start lg:w-auto">
-          <button
-            type="button"
-            data-reel={reel.code}
-            class="group relative block h-[420px] w-full overflow-hidden rounded-card border border-line bg-surface text-left transition duration-snap hover:-translate-y-0.5 hover:border-line-strong focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-          >
-            <Image
-              src={reel.cover}
-              alt={reel.title}
-              width={540}
-              height={720}
-              loading="lazy"
-              class="h-full w-full object-cover opacity-85 transition duration-reveal ease-reveal group-hover:scale-[1.03] group-hover:opacity-100"
-            />
-            <span
-              class="absolute inset-0 block bg-gradient-to-t from-ink via-ink/20 to-transparent"
-              aria-hidden="true"
-            />
-            <span
-              class="absolute left-1/2 top-1/2 grid size-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-pill bg-accent text-lg text-ink shadow-lg transition duration-snap group-hover:scale-110"
-              aria-hidden="true"
-            >
-              ▶
-            </span>
-            <span class="sr-only">Reproducir {reel.title} de Instagram</span>
-          </button>
+          <iframe
+            src={`https://www.instagram.com/reel/${reel.code}/embed/`}
+            title={reel.title}
+            class="h-[420px] w-full rounded-card border border-line bg-surface"
+            loading="lazy"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+            allowtransparency="true"
+            frameborder="0"
+            scrolling="no"
+          />
         </li>
       ))
     }
@@ -84,35 +53,7 @@ const reels = [
   <p
     class="mx-auto mt-4 max-w-7xl px-4 text-[10px] font-bold uppercase tracking-wide text-muted sm:px-6 lg:px-8"
   >
-    Los videos se cargan desde Instagram al tocarlos. Si no aparecen, revisá el
+    Los videos se reproducen dentro de Instagram. Si no cargan, revisá el
     bloqueador de contenido.
   </p>
 </section>
-
-<script>
-  document
-    .querySelectorAll<HTMLButtonElement>("[data-reel]")
-    .forEach((button) => {
-      button.addEventListener(
-        "click",
-        () => {
-          const code = button.dataset.reel;
-          if (!code) return;
-
-          const frame = document.createElement("iframe");
-          frame.src = `https://www.instagram.com/reel/${code}/embed/`;
-          frame.title =
-            button.querySelector(".sr-only")?.textContent?.trim() ?? "Reel";
-          frame.className =
-            "h-[420px] w-full rounded-card border border-line bg-surface";
-          frame.loading = "lazy";
-          frame.allow =
-            "autoplay; clipboard-write; encrypted-media; picture-in-picture";
-          frame.setAttribute("scrolling", "no");
-
-          button.replaceWith(frame);
-        },
-        { once: true },
-      );
-    });
-</script>
