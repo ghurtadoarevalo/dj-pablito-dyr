@@ -1,5 +1,6 @@
 ---
 import { SEO } from "astro-seo";
+import "../styles/global.css";
 
 interface Props {
   title: string;
@@ -8,11 +9,11 @@ interface Props {
   ogImage?: string;
 }
 
-const { 
-  title, 
+const {
+  title,
   description,
   keywords = "DJ, eventos, fiestas, matrimonios, cumpleaños, DJ Chile, DJ Maipú, DJ Santiago, animación eventos, karaoke profesional, sonido profesional, iluminación LED, DJ profesional, eventos corporativos, graduaciones, bautizos, disc jockey, zona oeste Santiago, DJ Región Metropolitana, productor musical, entretenimiento eventos, DJ matrimonios, DJ cumpleaños 2025, servicio DJ, arriendo equipos, iluminación eventos",
-  ogImage = "/djpablitodyrweb.png"
+  ogImage = "/djpablitodyrweb.png",
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -22,113 +23,114 @@ const ogImageURL = new URL(ogImage, Astro.site);
 const structuredData = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "EntertainmentBusiness"],
-  "name": "DJ Pablito Dyr Producciones",
-  "alternateName": "DJ Pablito Dyr",
-  "image": ogImageURL.toString(),
-  "description": description,
+  name: "DJ Pablito Dyr Producciones",
+  alternateName: "DJ Pablito Dyr",
+  image: ogImageURL.toString(),
+  description: description,
   "@id": Astro.site?.toString(),
-  "url": Astro.site?.toString(),
-  "telephone": "+56994296961",
-  "priceRange": "$$",
-  "address": {
+  url: Astro.site?.toString(),
+  telephone: "+56994296961",
+  priceRange: "$$",
+  address: {
     "@type": "PostalAddress",
-    "addressLocality": "Maipú",
-    "addressRegion": "Región Metropolitana",
-    "addressCountry": "CL"
+    addressLocality: "Maipú",
+    addressRegion: "Región Metropolitana",
+    addressCountry: "CL",
   },
-  "geo": {
+  geo: {
     "@type": "GeoCoordinates",
-    "latitude": "-33.5081",
-    "longitude": "-70.7656",
-    "addressCountry": "CL"
+    latitude: "-33.5081",
+    longitude: "-70.7656",
+    addressCountry: "CL",
   },
-  "openingHoursSpecification": [
+  openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
+      dayOfWeek: [
         "Monday",
         "Tuesday",
         "Wednesday",
         "Thursday",
         "Friday",
         "Saturday",
-        "Sunday"
+        "Sunday",
       ],
-      "opens": "09:00",
-      "closes": "22:00"
-    }
+      opens: "09:00",
+      closes: "22:00",
+    },
   ],
-  "sameAs": [
+  sameAs: [
     "https://www.instagram.com/dj_pablito_dyr_/",
     "https://www.youtube.com/@DVJPD",
     "https://www.tiktok.com/@djpablitodyr",
-    "https://www.facebook.com/profile.php?id=100083210888590"
+    "https://www.facebook.com/profile.php?id=100083210888590",
   ],
-  "hasOfferCatalog": {
+  hasOfferCatalog: {
     "@type": "OfferCatalog",
-    "name": "Servicios de DJ y Animación",
-    "itemListElement": [
+    name: "Servicios de DJ y Animación",
+    itemListElement: [
       {
         "@type": "Offer",
-        "itemOffered": {
+        itemOffered: {
           "@type": "Service",
-          "name": "Pack Básico",
-          "description": "Servicio de DJ con sonido e iluminación básica"
-        }
+          name: "Pack Básico",
+          description: "Servicio de DJ con sonido e iluminación básica",
+        },
       },
       {
         "@type": "Offer",
-        "itemOffered": {
+        itemOffered: {
           "@type": "Service",
-          "name": "Pack Premium",
-          "description": "Servicio completo con DJ, karaoke, animación e iluminación profesional"
-        }
-      }
-    ]
+          name: "Pack Premium",
+          description:
+            "Servicio completo con DJ, karaoke, animación e iluminación profesional",
+        },
+      },
+    ],
   },
-  "areaServed": [
+  areaServed: [
     {
       "@type": "City",
-      "name": "Santiago",
-      "addressCountry": "CL"
+      name: "Santiago",
+      addressCountry: "CL",
     },
     {
       "@type": "City",
-      "name": "Maipú",
-      "addressCountry": "CL"
+      name: "Maipú",
+      addressCountry: "CL",
     },
     {
       "@type": "State",
-      "name": "Región Metropolitana",
-      "addressCountry": "CL"
-    }
-  ]
+      name: "Región Metropolitana",
+      addressCountry: "CL",
+    },
+  ],
 };
 
 // BreadcrumbList Schema
 const breadcrumbData = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [
+  itemListElement: [
     {
       "@type": "ListItem",
-      "position": 1,
-      "name": "Inicio",
-      "item": Astro.site?.toString()
+      position: 1,
+      name: "Inicio",
+      item: Astro.site?.toString(),
     },
     {
       "@type": "ListItem",
-      "position": 2,
-      "name": "Servicios",
-      "item": `${Astro.site?.toString()}#services`
+      position: 2,
+      name: "Servicios",
+      item: `${Astro.site?.toString()}#services`,
     },
     {
       "@type": "ListItem",
-      "position": 3,
-      "name": "Contacto",
-      "item": `${Astro.site?.toString()}#contact`
-    }
-  ]
+      position: 3,
+      name: "Contacto",
+      item: `${Astro.site?.toString()}#contact`,
+    },
+  ],
 };
 ---
 
@@ -144,12 +146,12 @@ const breadcrumbData = {
           title: `${title} | DJ Profesional en Chile`,
           type: "website",
           image: ogImageURL.toString(),
-          url: canonicalURL.toString()
+          url: canonicalURL.toString(),
         },
         optional: {
           description: description,
           locale: "es_CL",
-          siteName: "DJ Pablito Dyr Producciones"
+          siteName: "DJ Pablito Dyr Producciones",
         },
         image: {
           url: ogImageURL.toString(),
@@ -157,8 +159,8 @@ const breadcrumbData = {
           type: "image/png",
           width: 1200,
           height: 630,
-          alt: "DJ Pablito Dyr - DJ Profesional en Chile"
-        }
+          alt: "DJ Pablito Dyr - DJ Profesional en Chile",
+        },
       }}
       twitter={{
         card: "summary_large_image",
@@ -167,12 +169,12 @@ const breadcrumbData = {
         title: `${title} | DJ Profesional en Chile`,
         description: description,
         image: ogImageURL.toString(),
-        imageAlt: "DJ Pablito Dyr - DJ Profesional en Chile"
+        imageAlt: "DJ Pablito Dyr - DJ Profesional en Chile",
       }}
       extend={{
         link: [
           { rel: "icon", href: "/favicon.webp" },
-          { rel: "sitemap", href: "/sitemap-index.xml" }
+          { rel: "sitemap", href: "/sitemap-index.xml" },
         ],
         meta: [
           { name: "keywords", content: keywords },
@@ -189,18 +191,24 @@ const breadcrumbData = {
           { name: "ICBM", content: "-33.5081, -70.7656" },
           { name: "coverage", content: "Santiago, Chile" },
           { name: "distribution", content: "global" },
-          { name: "rating", content: "general" }
+          { name: "rating", content: "general" },
         ],
       }}
     />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    
+
     <!-- Structured Data -->
-    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
-    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbData)} />
-    
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(breadcrumbData)}
+    />
+
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -214,7 +222,7 @@ const breadcrumbData = {
     <link rel="dns-prefetch" href="https://www.tiktok.com" />
     <link rel="preconnect" href="https://wa.me" />
   </head>
-  <body class="bg-zinc-900">
+  <body class="bg-ink">
     <slot />
     <style is:global>
       body {
