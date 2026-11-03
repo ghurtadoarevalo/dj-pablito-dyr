@@ -65,7 +65,7 @@
   - `buildCustomQuoteWhatsAppUrl(result: QuoteResult): string`
   - `buildPackWhatsAppUrl(plan: ServicePlan): string`
   - Types:
-    - `ServicePlan { id: ServicePlanId; title: string; price: number; hours: number; description: string; highlights: readonly string[]; features: readonly string[]; featured: boolean }`
+    - `ServicePlan { id: ServicePlanId; title: string; price: number; hours: number; extraHourPrice: number; description: string; highlights: readonly string[]; features: readonly string[]; featured: boolean }`
     - `CustomExtraId = "animation" | "coanimation" | "karaoke" | "projector" | "videos" | "smoke"`
     - `LightingLevel = "basic" | "improved" | "advanced" | "pro"`
     - `LocationZone = "santiago" | "rural" | "outside"`
@@ -80,7 +80,7 @@
 Run:
 
 ```bash
-pnpm add -D vitest jsdom @testing-library/react @testing-library/user-event @testing-library/jest-dom
+pnpm add -D -E vitest@2.1.9 jsdom@26.1.0 @testing-library/react@16.3.3 @testing-library/user-event@14.6.8 @testing-library/jest-dom@6.9.1
 ```
 
 Add these scripts to `package.json` without removing existing scripts:
@@ -100,6 +100,7 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: ["./src/test/setup.ts"],
     restoreMocks: true,
+    unstubGlobals: true,
   },
 });
 ```
@@ -280,13 +281,13 @@ Create `src/data/services.ts`. Define `ServicePlanId` as the five current titles
 
 ```ts
 celebration: ["DJ", "Sonido JBL", "Iluminación básica"]
-fullDancing: ["DJ + animación", "Humo", "Iluminación mejorada"]
-karaokeDancing: ["Karaoke", "DJ + animación", "Iluminación avanzada", "2 micrófonos"]
-goldKaraoke: ["Proyector + telón", "Karaoke", "Iluminación avanzada", "Videos"]
-premiumInfinity: ["Coanimación", "Proyector + telón", "Iluminación profesional", "Karaoke"]
+"full-dancing": ["DJ + animación", "Humo", "Iluminación mejorada"]
+"karaoke-dancing": ["Karaoke", "DJ + animación", "Iluminación avanzada", "2 micrófonos"]
+"gold-karaoke": ["Proyector + telón", "Karaoke", "Iluminación avanzada", "Videos"]
+"premium-infinity": ["Coanimación", "Proyector + telón", "Iluminación profesional", "Karaoke"]
 ```
 
-Keep Karaoke Dancing as `featured: true`. Export the custom rate card and option labels exactly as specified in the design document, including all visitor-facing copy. Export `WHATSAPP_NUMBER = "56971768418"` and `RESERVATION_RATE = 0.2`.
+Preserve each plan's existing extra-hour price: 25.000, 30.000, 35.000, 35.000, 40.000. Keep Karaoke Dancing as `featured: true`. Export the custom rate card and option labels exactly as specified in the design document, including all visitor-facing copy. Export `WHATSAPP_NUMBER = "56971768418"` and `RESERVATION_RATE = 0.2`.
 
 - [ ] **Step 5: Implement the pure quote module**
 
@@ -347,6 +348,9 @@ describe("PlanCard", () => {
       for (const feature of plan.features) expect(html).toContain(feature);
       expect(html).toContain("<details");
       expect(html).toContain("<summary");
+      expect(html).toContain(
+        `Hora adicional: $${plan.extraHourPrice.toLocaleString("es-CL")}`,
+      );
       expect(html).toContain("wa.me/56971768418");
     }
   });
@@ -374,7 +378,7 @@ Expected: failure because `PlanCard.tsx` does not exist.
 
 - [ ] **Step 3: Implement `PlanCard`**
 
-Render a semantic `<article>` with a compact header, formatted price, duration, description, highlights, and an `<a>` named `Elegir ${plan.title}` pointing to `buildPackWhatsAppUrl(plan)`. Add a native `<details>` whose `<summary>` is `Ver todo lo incluido en ${plan.title}` and whose content lists every feature. Keep all feature text in the DOM even when collapsed. Apply the Club Premium card treatment from the approved mockup and use yellow only for price, featured state, and primary action.
+Render a semantic `<article>` with a compact header, formatted price, duration, description, highlights, and an `<a>` named `Elegir ${plan.title}` pointing to `buildPackWhatsAppUrl(plan)`. Add a native `<details>` whose `<summary>` is `Ver todo lo incluido en ${plan.title}` and whose content lists every feature plus `Hora adicional: ${formatCLP(plan.extraHourPrice)}`. Keep all feature text in the DOM even when collapsed. Apply the Club Premium card treatment from the approved mockup and use yellow only for price, featured state, and primary action.
 
 - [ ] **Step 4: Run the test and verify it passes**
 
@@ -653,7 +657,7 @@ it("hides mobile quote controls out of view and switches to manual transport", a
   render(<ServicesSection />);
   await user.click(screen.getByRole("tab", { name: "Arma tu evento" }));
   const bar = screen.getByTestId("mobile-quote-bar");
-  expect(bar).toHaveAttribute("aria-hidden", "false");
+  expect(bar).toBeInTheDocument();
   expect(within(bar).getByText("Ver desglose")).toBeInTheDocument();
   await user.click(screen.getByRole("button", { name: /Fuera de Santiago/ }));
   expect(
@@ -667,8 +671,7 @@ it("hides mobile quote controls out of view and switches to manual transport", a
       {} as IntersectionObserver,
     ),
   );
-  expect(bar).toHaveAttribute("aria-hidden", "true");
-  vi.unstubAllGlobals();
+  expect(screen.queryByTestId("mobile-quote-bar")).not.toBeInTheDocument();
 });
 ```
 
@@ -688,8 +691,7 @@ In `CustomQuoteBuilder`:
 
 - Attach the in-view ref to the custom panel container.
 - Keep the full itemized summary on desktop with `hidden lg:block`.
-- Add a separate `data-testid="mobile-quote-bar"` for below `lg`, containing the total, a `Ver desglose` disclosure, and the primary WhatsApp action. Hide it with `lg:hidden`.
-- Set `aria-hidden` from the in-view boolean. When out of view, also translate the bar off-screen and set `tabIndex={-1}` on its disclosure and link.
+- Render a separate `data-testid="mobile-quote-bar"` for below `lg` only while the in-view boolean is true, containing the total, a `Ver desglose` disclosure, and the primary WhatsApp action. Hide it with `lg:hidden`. Unmount it when out of view so it cannot receive focus or enter the accessibility tree.
 - Respect the safe area with `padding-bottom: max(0.75rem, env(safe-area-inset-bottom))`.
 - Add bottom spacing to the configuration content so the bar never covers the last group.
 - Ensure every tab, stepper, option, disclosure, and CTA has a minimum 44×44 px target.
@@ -852,10 +854,16 @@ Run:
 
 ```bash
 pnpm exec prettier --check src/data/services.ts src/lib/quote.ts src/lib/quote.test.ts src/lib/useIsInView.ts src/lib/useIsInView.test.tsx src/components/PlanCard.tsx src/components/PlanCard.test.tsx src/components/CustomQuoteBuilder.tsx src/components/ServicesSection.tsx src/components/ServicesSection.test.tsx src/components/Navbar.tsx src/components/Navbar.test.tsx src/components/Services.astro src/components/Hero.astro
-pnpm exec eslint src/data/services.ts src/lib/quote.ts src/lib/useIsInView.ts src/components/PlanCard.tsx src/components/CustomQuoteBuilder.tsx src/components/ServicesSection.tsx src/components/Navbar.tsx
+pnpm exec eslint src/components/Services.astro src/components/Hero.astro
 ```
 
-Expected: no formatting or lint errors in changed files. Fix only changed-file issues.
+Expected: no formatting errors and no Astro lint errors in changed files. The current ESLint flat config only handles Astro files, so TypeScript coverage comes from `astro check` in Step 1 plus this explicit check:
+
+```bash
+rg -n "\bany\b" src/data/services.ts src/lib src/components/PlanCard.tsx src/components/CustomQuoteBuilder.tsx src/components/ServicesSection.tsx src/components/Navbar.tsx
+```
+
+Expected: no explicit `any` types in production source.
 
 - [ ] **Step 3: Verify structured data and content preservation**
 
@@ -869,7 +877,7 @@ Inspect the production HTML or built page and confirm:
 
 - [ ] **Step 4: Verify keyboard and reduced-motion behavior**
 
-Using keyboard only, switch tabs, change every option dependency, open a plan disclosure, change lighting, choose outside Santiago, reach both WhatsApp actions, and open/close the mobile navigation. Confirm visible focus, correct announced selected states, and no focus left on the hidden mobile bar. Enable reduced motion and confirm the hero does not autoplay.
+Using keyboard only, switch tabs, change every option dependency, open a plan disclosure, change lighting, choose outside Santiago, reach both WhatsApp actions, and open/close the mobile navigation. Confirm visible focus, correct announced selected states, and that the removed mobile bar no longer holds focus. Enable reduced motion and confirm the hero does not autoplay.
 
 - [ ] **Step 5: Verify representative prices manually**
 

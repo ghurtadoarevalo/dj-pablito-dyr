@@ -84,7 +84,7 @@ The redesign scope covers the shared visual treatment of the navbar, hero, and s
 - Two tabs: **Packs base** and **Arma tu evento**.
 - Pack cards show name, duration, price, short event-oriented description, and three or four meaningful included features.
 - Karaoke Dancing remains visually highlighted as the most selected pack.
-- Complete equipment and feature lists remain available through an accessible expandable detail control; nothing is removed from the offering.
+- Complete equipment and feature lists, including each pack's existing extra-hour price, remain available through an accessible expandable detail control; nothing is removed from the offering.
 - Each pack has a clear selection action that opens WhatsApp with the pack name and price prefilled.
 - A sixth, visually secondary entry point leads to the custom configurator.
 - Shared benefits and conditions remain visible without being repeated inside every card.
