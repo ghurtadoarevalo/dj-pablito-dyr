@@ -37,10 +37,16 @@ const fallbackThumb = (code: string) =>
       lead="Sets completos grabados en vivo. Se abren en YouTube, donde podés escucharlos completos."
     />
 
-    <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <ul
+      class="grid grid-cols-2 auto-rows-[150px] gap-3 sm:auto-rows-[190px] md:gap-4 lg:auto-rows-[215px] lg:grid-cols-4"
+    >
       {
-        videos.map((video) => (
-          <li>
+        videos.map((video, index) => (
+          <li
+            class={
+              index < 2 ? "col-span-2 row-span-2" : "col-span-1 row-span-1"
+            }
+          >
             <a
               href={`https://www.youtube.com/watch?v=${video.videoCode}`}
               target="_blank"
@@ -65,10 +71,14 @@ const fallbackThumb = (code: string) =>
                 ▶
               </span>
               <span class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4">
-                <span class="font-display text-xl uppercase leading-none tracking-tight text-white sm:text-2xl">
+                <span
+                  class={`font-display uppercase leading-none tracking-tight text-white ${index < 2 ? "text-2xl sm:text-4xl" : "text-base sm:text-lg"}`}
+                >
                   {video.title}
                 </span>
-                <span class="text-[10px] font-black uppercase tracking-[0.14em] text-accent">
+                <span
+                  class={`text-[10px] font-black uppercase tracking-[0.14em] text-accent ${index < 2 ? "" : "hidden sm:inline"}`}
+                >
                   YouTube
                 </span>
               </span>
