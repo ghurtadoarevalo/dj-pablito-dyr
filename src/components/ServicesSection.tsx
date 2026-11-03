@@ -36,7 +36,7 @@ const ServicesSection = () => {
         </p>
         <h2
           id="services-title"
-          className="mt-2 break-words font-display text-3xl uppercase tracking-tight text-white md:text-4xl lg:text-5xl"
+          className="mt-2 break-words font-display text-4xl uppercase leading-[0.9] tracking-tight text-white sm:text-5xl lg:text-7xl"
         >
           Tu evento, a tu manera
         </h2>
