@@ -1,0 +1,61 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import { INSTAGRAM_PROFILE_URL, TESTIMONIALS } from "../data/testimonials";
+
+const featured = TESTIMONIALS.find((testimonial) => testimonial.highlighted);
+const rest = TESTIMONIALS.filter((testimonial) => !testimonial.highlighted);
+---
+
+<section
+  id="testimonios"
+  aria-labelledby="testimonials-title"
+  class="reveal border-t border-line bg-ink py-16 md:py-24"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <SectionHeading
+      id="testimonials-title"
+      kicker="Clientes reales"
+      title="Testimonios"
+      lead="Comentarios públicos que dejaron en nuestro Instagram, sin editar."
+    />
+
+    {
+      featured && (
+        <figure class="rounded-card border border-line border-l-2 border-l-accent bg-surface p-6 md:p-8">
+          <blockquote class="font-display text-xl uppercase leading-tight tracking-tight text-white md:text-2xl">
+            “{featured.quote}”
+          </blockquote>
+          <figcaption class="mt-4 text-[10px] font-bold uppercase tracking-wide">
+            <span class="text-accent">{featured.handle}</span>
+            <span class="text-muted"> · {featured.context}</span>
+          </figcaption>
+        </figure>
+      )
+    }
+
+    <ul class="mt-4 grid gap-4 md:grid-cols-2">
+      {
+        rest.map((testimonial) => (
+          <li class="rounded-card border border-line bg-surface p-5">
+            <p class="text-sm leading-relaxed text-muted">
+              “{testimonial.quote}”
+            </p>
+            <p class="mt-3 text-[10px] font-bold uppercase tracking-wide">
+              <span class="text-accent">{testimonial.handle}</span>
+              <span class="text-muted"> · {testimonial.context}</span>
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <a
+      href={INSTAGRAM_PROFILE_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mt-6 inline-flex min-h-11 items-center rounded-control border border-line-strong px-5 text-sm font-bold text-white transition-colors duration-snap hover:border-accent hover:text-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+    >
+      Ver más reseñas en Instagram
+    </a>
+  </div>
+</section>

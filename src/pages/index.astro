@@ -6,26 +6,28 @@ import Bio from "@components/Bio.astro";
 import Services from "@components/Services.astro";
 import Videos from "@components/Videos.astro";
 import Footer from "@components/Footer.astro";
-import Contact from "@components/Contact.tsx"
+import Contact from "@components/Contact.tsx";
+import Testimonials from "@components/Testimonials.astro";
 import Equipments from "@components/Equipments.astro";
 import FAQ from "@components/FAQ.astro";
 ---
 
-<Layout 
-  title="DJ Pablito Dyr" 
+<Layout
+  title="DJ Pablito Dyr"
   description="DJ profesional en Santiago y Maipú. Servicio de DJ, animación, karaoke, iluminación y sonido para matrimonios, cumpleaños y eventos corporativos."
 >
-    <Navbar client:load />
-    <main class="pt-16">
-      <Hero />
-      <Videos />
-      <Services />
-      <Equipments />
-      <FAQ />
-      <Bio />
-    </main>
-    <Contact client:load />
-    <Footer />
+  <Navbar client:load />
+  <main class="pt-16">
+    <Hero />
+    <Videos />
+    <Services />
+    <Equipments />
+    <FAQ />
+    <Bio />
+    <Testimonials />
+  </main>
+  <Contact client:load />
+  <Footer />
 </Layout>
 
 <style>
