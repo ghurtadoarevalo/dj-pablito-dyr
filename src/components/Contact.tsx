@@ -34,7 +34,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="border-t border-line bg-ink py-16 md:py-24"
+      className="reveal border-t border-line bg-ink py-16 md:py-24"
       aria-label="Sección de contacto para contratar servicios con dj pablito dyr"
     >
       <div className="mx-auto mb-8 max-w-7xl px-4 sm:px-6 md:mb-12 lg:px-8">
