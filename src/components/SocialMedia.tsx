@@ -18,25 +18,25 @@ type SocialMediaType = {
 const socialMedia: SocialMediaType[] = [
   {
     name: "Instagram",
-    icon: <FaInstagram className="text-2xl text-yellow-500" />,
+    icon: <FaInstagram className="text-2xl text-accent" />,
     url: "https://www.instagram.com/dj_pablito_dyr_/",
     label: "Instagram button link",
   },
   {
     name: "Youtube",
-    icon: <FiYoutube className="text-2xl text-yellow-500" />,
+    icon: <FiYoutube className="text-2xl text-accent" />,
     url: "https://www.youtube.com/@DVJPD",
     label: "Youtube button link",
   },
   {
     name: "Tiktok",
-    icon: <FaTiktok className="text-2xl text-yellow-500" />,
+    icon: <FaTiktok className="text-2xl text-accent" />,
     url: "https://www.tiktok.com/@djpablitodyr",
     label: "Tiktok button link",
   },
   {
     name: "Facebook",
-    icon: <FaFacebook className="text-2xl text-yellow-500" />,
+    icon: <FaFacebook className="text-2xl text-accent" />,
     url: "https://www.facebook.com/profile.php?id=100083210888590",
     label: "Facebook button link",
   },
@@ -57,7 +57,7 @@ const SocialMedia = ({ namesRequired }: { namesRequired: boolean }) => {
         {socialMedia.map((media: SocialMediaType) => (
           <li key={media.name}>
             <a
-              className="flex min-h-11 min-w-11 flex-col items-center justify-center rounded-lg p-2 text-xl text-yellow-500 hover:bg-white/5 lg:gap-2 lg:text-2xl"
+              className="flex min-h-11 min-w-11 flex-col items-center justify-center rounded-card p-2 text-xl text-accent hover:bg-white/5 lg:gap-2 lg:text-2xl"
               href={media.url}
               target="_blank"
               rel="noopener noreferrer"
@@ -65,7 +65,7 @@ const SocialMedia = ({ namesRequired }: { namesRequired: boolean }) => {
             >
               {iconComponents[media.name]}
               {namesRequired ? (
-                <span className=" text-sm text-gray-400">{media.name}</span>
+                <span className=" text-sm text-muted">{media.name}</span>
               ) : (
                 ""
               )}
