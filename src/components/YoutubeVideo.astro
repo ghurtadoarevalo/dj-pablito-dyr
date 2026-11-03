@@ -7,36 +7,30 @@ export interface Props {
 const { title, videoCode } = Astro.props;
 ---
 
-<button
-  class="relative w-full h-52 outline outline-1 outline-white/50 hover:outline-white/100 rounded-xl z-0"
-  style={`background-image:url(https://img.youtube.com/vi/${videoCode}/sddefault.jpg); background-position: center; background-size: 500px auto`}
+<a
+  href={`https://www.youtube.com/watch?v=${videoCode}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="relative block h-52 w-full overflow-hidden rounded-card border border-line transition duration-snap hover:-translate-y-0.5 hover:border-line-strong focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+  style={`background-image:url(https://img.youtube.com/vi/${videoCode}/sddefault.jpg); background-position: center; background-size: cover`}
 >
-  <a
-    href={`https://www.youtube.com/watch?v=${videoCode}`}
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="video con mix de dj pablito dyr"
+  <span
+    class="absolute inset-0 block bg-ink/60 transition-colors duration-snap group-hover:bg-ink/40"
+    aria-hidden="true"></span>
+  <span
+    class="absolute inset-x-0 top-0 block px-3 py-2 text-sm font-semibold text-white"
+    aria-hidden="true">{title}</span
   >
-    <div class="absolute top-0 bg-black/50 w-full h-full rounded-xl"></div>
-    <div
-      class="absolute top-0 bg-zinc-900/20 hover:bg-white/100 rounded-t-l-xl px-2 text-sm text-white font-sans"
-    >
-      {title}
-    </div>
-    <div
-      class="absolute left-1/2 top-1/2 w-12 h-12 -translate-x-1/2 -translate-y-1/2 animate-pulse"
-    >
-      {
-        (
-          <svg height="100%" version="1.1" viewBox="0 0 68 48" width="100%">
-            <path
-              d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z"
-              fill="rgba(255,0,0,0.8)"
-            />
-            <path d="M 45,24 27,14 27,34" fill="#fff" />
-          </svg>
-        )
-      }
-    </div>
-  </a>
-</button>
+  <span
+    class="absolute left-1/2 top-1/2 flex size-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center"
+    aria-hidden="true"
+  >
+    <svg height="100%" version="1.1" viewBox="0 0 68 48" width="100%">
+      <path
+        d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z"
+        fill="rgba(234,179,8,0.9)"></path>
+      <path d="M 45,24 27,14 27,34" fill="#fff"></path>
+    </svg>
+  </span>
+  <span class="sr-only">Ver {title} en YouTube</span>
+</a>

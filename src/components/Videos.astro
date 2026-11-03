@@ -1,4 +1,5 @@
 ---
+import SectionHeading from "./SectionHeading.astro";
 import YoutubeVideo from "./YoutubeVideo.astro";
 
 export interface YoutubeVideo {
@@ -29,20 +30,33 @@ let videos: YoutubeVideo[] = [
   },
   {
     title: "Mix Hip Hop",
-    videoCode: "428MOaKB2qY"
-  }
+    videoCode: "428MOaKB2qY",
+  },
 ];
 ---
 
-<section id="mixing" aria-labelledby="mixing-title">
-  <h2 id="mixing-title" class="text-center font-display text-3xl md:text-4xl bg-zinc-800 py-10">
-    VISITANOS EN YOUTUBE Y CONOCE NUESTROS MIXES
-  </h2>
-  <article class="grid grid-cols-2 lg:grid lg:grid-cols-3 gap-4 px-5 lg:px-40 lg:gap-10 py-10 bg-slate-900">
-    {
-      videos.map(({ title, videoCode }: YoutubeVideo) => {
-        return <YoutubeVideo {title} {videoCode} />;
-      })
-    }
-  </article>
+<section
+  id="mixing"
+  aria-labelledby="mixing-title"
+  class="border-t border-line bg-ink py-16 md:py-24"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <SectionHeading
+      id="mixing-title"
+      kicker="Nuestro sonido"
+      title="Mixes"
+      lead="Visítanos en YouTube y conoce nuestros mixes"
+    />
+    <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
+      {
+        videos.map(({ title, videoCode }: YoutubeVideo) => {
+          return (
+            <li>
+              <YoutubeVideo {title} {videoCode} />
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
 </section>
