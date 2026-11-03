@@ -56,7 +56,7 @@ const Contact = () => {
           <div className="flex flex-col gap-2">
             <p className="text-base">Nombre</p>
             <input
-              className="rounded-r-lg rounded-b-lg bg-black/10 outline outline-1 hover:outline-white p-3 italic"
+              className="rounded-control border border-line bg-ink/60 p-3 italic text-white outline-none transition-colors duration-snap focus-visible:border-accent"
               type="text"
               placeholder="Ingresa tu nombre"
               required
@@ -67,7 +67,7 @@ const Contact = () => {
           <div className="flex flex-col gap-2 mt-2">
             <p className="text-base">Mensaje</p>
             <textarea
-              className="rounded-r-lg rounded-b-lg bg-black/10 outline outline-1 hover:outline-white p-3 italic"
+              className="rounded-control border border-line bg-ink/60 p-3 italic text-white outline-none transition-colors duration-snap focus-visible:border-accent"
               placeholder={
                 "Ejemplo: Hola, me interesa saber más sobre los servicios que entrega."
               }
@@ -85,11 +85,13 @@ const Contact = () => {
           <button
             type="button"
             onClick={handleSubmit}
-            className="flex flex-col place-content-center place-items-center mx-auto hover:bg-white/30 bg-surface rounded-card p-3 outline outline-1 outline-green-500/20 font-sans"
+            className="mx-auto flex min-h-12 w-full place-content-center place-items-center rounded-control bg-accent p-3 font-sans transition-colors duration-snap hover:bg-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
-            <div className="flex md:flex-row place-content-center place-items-center gap-2">
-              <FaWhatsapp className="text-2xl text-green-500/90" />
-              <span className="text-white/80">Hablemos por WhatsApp</span>
+            <div className="flex place-content-center place-items-center gap-2 md:flex-row">
+              <FaWhatsapp className="text-2xl text-ink" aria-hidden="true" />
+              <span className="text-sm font-black uppercase tracking-wide text-ink">
+                Hablemos por WhatsApp
+              </span>
             </div>
           </button>
         </form>
