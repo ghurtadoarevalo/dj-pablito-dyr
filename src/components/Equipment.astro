@@ -59,7 +59,7 @@ const imageScale: Record<string, string> = {
   hero: "left-1/2 top-[42%] h-[62%] w-[72%]",
   wide: "left-[76%] top-[34%] h-[48%] w-[30%]",
   tall: "left-1/2 top-[44%] h-[74%] w-[80%]",
-  base: "left-1/2 top-[42%] h-[64%] w-[80%]",
+  base: "left-1/2 top-[38%] h-[50%] w-[74%]",
 };
 
 const isLarge = size === "hero";
@@ -91,8 +91,10 @@ const isLarge = size === "hero";
       {name}
     </h3>
     {
-      isLarge && (
-        <p class="mt-1 max-w-xs text-xs leading-relaxed text-muted">
+      (
+        <p
+          class={`mt-1 text-muted ${isLarge ? "max-w-sm text-sm leading-relaxed line-clamp-3" : size === "base" ? "text-[11px] leading-snug line-clamp-1" : "text-xs leading-snug line-clamp-2"}`}
+        >
           {description}
         </p>
       )
