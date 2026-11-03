@@ -58,7 +58,7 @@ import djBackground from "@assets/djBackground.mp4";
         height={600}
         loading="eager"
         decoding="async"
-        class="mb-6 h-20 w-auto object-contain lg:hidden"
+        class="mb-6 h-24 w-auto object-contain lg:hidden"
       />
       <p
         class="text-[10px] font-black uppercase tracking-[0.2em] text-accent sm:text-xs"
@@ -94,32 +94,23 @@ import djBackground from "@assets/djBackground.mp4";
       </div>
     </div>
 
-    <div class="relative hidden lg:flex">
+    <div class="relative hidden justify-center lg:flex">
       <div
-        class="absolute inset-0 rounded-pill bg-accent/10 blur-3xl"
+        class="absolute inset-8 rounded-pill bg-accent/10 blur-3xl"
         aria-hidden="true"
       >
       </div>
-      <div
-        class="relative flex w-[280px] flex-col items-center gap-2 rounded-card border border-line bg-surface/70 p-4 backdrop-blur-sm"
-      >
-        <Image
-          src={logo}
-          alt="DJ Pablito Dyr, DJ profesional en Santiago"
-          title="DJ Pablito Dyr Producciones"
-          loading="eager"
-          fetchpriority="high"
-          width={800}
-          height={600}
-          decoding="async"
-          class="h-auto w-full object-contain"
-        />
-        <p
-          class="text-center text-[10px] font-black uppercase tracking-[0.18em] text-accent"
-        >
-          Producciones
-        </p>
-      </div>
+      <Image
+        src={logo}
+        alt="DJ Pablito Dyr, DJ profesional en Santiago"
+        title="DJ Pablito Dyr Producciones"
+        loading="eager"
+        fetchpriority="high"
+        width={408}
+        height={612}
+        decoding="async"
+        class="relative w-[340px] object-contain"
+      />
     </div>
   </div>
 </section>
