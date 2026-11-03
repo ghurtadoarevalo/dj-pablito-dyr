@@ -1,5 +1,5 @@
 import { FaWhatsapp } from "react-icons/fa";
-import type { ServicePlan } from "../data/services";
+import { RESERVATION_RATE, type ServicePlan } from "../data/services";
 import { buildPackWhatsAppUrl, formatCLP } from "../lib/quote";
 
 type PlanCardProps = {
@@ -9,27 +9,31 @@ type PlanCardProps = {
 const PlanCard = ({ plan }: PlanCardProps) => {
   return (
     <article
-      className={`relative flex h-full flex-col rounded-card border bg-surface p-5 text-white ${
-        plan.featured ? "border-accent/60 bg-glow-card" : "border-line"
+      className={`relative flex h-full flex-col overflow-hidden rounded-card border bg-surface p-5 text-white transition duration-snap hover:border-line-strong ${
+        plan.featured ? "border-accent/70 bg-glow-card" : "border-line"
       }`}
     >
       {plan.featured && (
-        <span className="absolute -top-2.5 left-5 rounded-control bg-accent px-2 py-1 text-[10px] font-black uppercase tracking-wider text-ink">
+        <span className="absolute right-0 top-0 rounded-bl-card bg-accent px-3 py-1.5 text-[10px] font-black uppercase tracking-wider text-ink">
           Más elegido
         </span>
       )}
 
-      <div className="flex flex-wrap items-start justify-between gap-3 pt-1">
-        <div className="min-w-0">
-          <h3 className="break-words text-sm font-black uppercase tracking-wide">
-            {plan.title}
-          </h3>
-          <p className="mt-1 text-xs text-muted">{plan.hours} horas</p>
-        </div>
-        <p className="whitespace-nowrap text-xl font-black text-accent">
-          {formatCLP(plan.price)}
-        </p>
-      </div>
+      <p className="text-[10px] font-black uppercase tracking-[0.18em] text-muted">
+        {plan.hours} horas de fiesta
+      </p>
+
+      <h3 className="mt-1 break-words font-display text-2xl uppercase leading-none tracking-tight sm:text-3xl">
+        {plan.title}
+      </h3>
+
+      <p className="mt-4 flex items-baseline gap-1 font-display text-5xl leading-none text-accent">
+        {formatCLP(plan.price)}
+      </p>
+      <p className="mt-1 text-[11px] font-semibold text-muted">
+        Reserva con {formatCLP(plan.price * RESERVATION_RATE)} · hora extra{" "}
+        {formatCLP(plan.extraHourPrice)}
+      </p>
 
       <p className="mt-4 text-sm leading-relaxed text-zinc-300">
         {plan.description}
@@ -79,10 +83,14 @@ const PlanCard = ({ plan }: PlanCardProps) => {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Elegir ${plan.title}`}
-        className="mt-5 flex min-h-11 items-center justify-center gap-2 rounded-control bg-accent px-4 py-2.5 text-xs font-black uppercase tracking-wide text-ink transition-colors hover:bg-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        className={`mt-auto flex min-h-11 items-center justify-center gap-2 rounded-control px-4 py-2.5 pt-2.5 text-xs font-black uppercase tracking-wide transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
+          plan.featured
+            ? "bg-accent text-ink hover:bg-accent-bright"
+            : "border border-line-strong text-white hover:border-accent hover:text-accent-bright"
+        }`}
       >
         <FaWhatsapp aria-hidden="true" className="text-lg" />
-        Elegir pack
+        Elegir {plan.title}
       </a>
     </article>
   );
