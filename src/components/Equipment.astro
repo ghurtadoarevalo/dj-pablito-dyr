@@ -18,6 +18,7 @@ interface Props {
   imgName: string;
   quantity: number;
   label: string;
+  featured?: boolean;
 }
 
 interface Dictionary<T> {
@@ -38,11 +39,22 @@ const imgs: Dictionary<ImageMetadata> = {
   projector,
 };
 
-const { name, description, imgName, quantity, label } = Astro.props;
+const {
+  name,
+  description,
+  imgName,
+  quantity,
+  label,
+  featured = false,
+} = Astro.props;
 ---
 
 <article
-  class="equipment-card flex flex-col items-center rounded-card border border-line bg-white/5 px-6 py-8 text-center"
+  class={`equipment-card rounded-card border border-line bg-surface px-6 py-8 ${
+    featured
+      ? "flex flex-col items-center gap-6 text-center sm:col-span-2 sm:flex-row sm:text-left"
+      : "flex flex-col items-center text-center"
+  }`}
 >
   <Image
     src={imgs[imgName]}
@@ -50,14 +62,18 @@ const { name, description, imgName, quantity, label } = Astro.props;
     title={name}
     width={160}
     height={110}
-    class="mb-6 h-auto w-36 object-contain"
+    class={`h-auto object-contain ${featured ? "w-44 sm:w-52" : "mb-6 w-36"}`}
     loading="lazy"
   />
-  <p class="mb-2 text-sm font-medium text-accent">×{quantity}</p>
-  <h3 class="mb-3 text-base font-bold uppercase tracking-wider text-white">
-    {name}
-  </h3>
-  <p class="max-w-xs text-sm leading-relaxed text-white/60">
-    {description}
-  </p>
+  <div>
+    <p class="mb-2 text-sm font-medium text-accent">×{quantity}</p>
+    <h3 class="mb-3 text-base font-bold uppercase tracking-wider text-white">
+      {name}
+    </h3>
+    <p
+      class={`text-sm leading-relaxed text-muted ${featured ? "" : "max-w-xs"}`}
+    >
+      {description}
+    </p>
+  </div>
 </article>
