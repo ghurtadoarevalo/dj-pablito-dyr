@@ -100,6 +100,7 @@ const equipements = [
       "Proyector y telón de gran formato - Equipo audiovisual profesional para videos, presentaciones y karaoke en eventos",
   },
 ];
+const SIZES = ["hero", "wide", "tall"] as const;
 ---
 
 <section
@@ -116,7 +117,9 @@ const equipements = [
       lead="Sonido, iluminación y tecnología profesional para tu evento"
     />
 
-    <div class="equipment-grid grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-5">
+    <div
+      class="equipment-grid grid grid-cols-2 auto-rows-[168px] gap-3 md:grid-cols-4 md:auto-rows-[190px] md:gap-4"
+    >
       {
         equipements.map((equipment, index) => (
           <Equipment
@@ -125,8 +128,7 @@ const equipements = [
             imgName={equipment.imgName}
             quantity={equipment.quantity}
             label={equipment.label}
-            featured={index === 0}
-            wide={index === 1}
+            size={SIZES[index] ?? "base"}
           />
         ))
       }
