@@ -17,6 +17,8 @@ const videos: YoutubeVideo[] = [
   { title: "Mix Hip Hop", videoCode: "428MOaKB2qY" },
 ];
 
+const SIZES = ["hero", "tall", "base", "base", "wide", "wide"] as const;
+
 const thumb = (code: string) =>
   `https://img.youtube.com/vi/${code}/maxresdefault.jpg`;
 const fallbackThumb = (code: string) =>
@@ -44,7 +46,12 @@ const fallbackThumb = (code: string) =>
         videos.map((video, index) => (
           <li
             class={
-              index < 2 ? "col-span-2 row-span-2" : "col-span-1 row-span-1"
+              {
+                hero: "col-span-2 row-span-2",
+                tall: "col-span-1 row-span-2",
+                wide: "col-span-2 row-span-1",
+                base: "col-span-1 row-span-1",
+              }[SIZES[index] ?? "base"]
             }
           >
             <a
@@ -72,12 +79,18 @@ const fallbackThumb = (code: string) =>
               </span>
               <span class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4">
                 <span
-                  class={`font-display uppercase leading-none tracking-tight text-white ${index < 2 ? "text-2xl sm:text-4xl" : "text-base sm:text-lg"}`}
+                  class={`font-display uppercase leading-none tracking-tight text-white ${
+                    SIZES[index] === "hero"
+                      ? "text-2xl sm:text-4xl"
+                      : SIZES[index] === "base"
+                        ? "text-base sm:text-lg"
+                        : "text-xl sm:text-2xl"
+                  }`}
                 >
                   {video.title}
                 </span>
                 <span
-                  class={`text-[10px] font-black uppercase tracking-[0.14em] text-accent ${index < 2 ? "" : "hidden sm:inline"}`}
+                  class={`text-[10px] font-black uppercase tracking-[0.14em] text-accent ${SIZES[index] === "base" ? "hidden sm:inline" : ""}`}
                 >
                   YouTube
                 </span>
