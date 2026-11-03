@@ -89,12 +89,7 @@ const ServicesSection = () => {
         >
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
             {SERVICE_PLANS.map((plan) => (
-              <div
-                key={plan.id}
-                className={plan.featured ? "xl:col-span-2" : undefined}
-              >
-                <PlanCard plan={plan} />
-              </div>
+              <PlanCard key={plan.id} plan={plan} />
             ))}
 
             <article className="flex min-h-64 flex-col justify-center rounded-card border border-dashed border-accent/40 bg-accent/[0.035] p-5 text-white">
