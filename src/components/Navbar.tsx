@@ -9,7 +9,7 @@ const navigationLinks = [
   { label: "Equipos", href: "#equipment" },
   { label: "Eventos", href: "#eventos" },
   { label: "Preguntas", href: "#faq" },
-  { label: "Biografía", href: "#bio" },
+  { label: "Bio", href: "#bio" },
   { label: "Contacto", href: "#contact" },
 ] as const;
 

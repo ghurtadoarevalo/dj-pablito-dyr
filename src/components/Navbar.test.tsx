@@ -26,7 +26,7 @@ describe("Navbar mobile menu", () => {
       "Mixes",
       "Precios",
       "Equipos",
-      "Biografía",
+      "Bio",
       "Contacto",
     ]) {
       expect(within(menu!).getByRole("link", { name })).toBeInTheDocument();
