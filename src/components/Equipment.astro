@@ -67,17 +67,22 @@ const isWide = size === "wide";
 
 <article
   class={`equipment-card group relative flex overflow-hidden rounded-card border border-line bg-gradient-to-b from-surface to-ink p-4 transition duration-snap hover:border-line-strong md:p-5 ${spans[size]} ${
-    isWide ? "flex-row items-center gap-4 md:gap-6" : "flex-col justify-end"
+    isWide
+      ? "flex-col justify-end md:flex-row md:items-center md:gap-6"
+      : "flex-col justify-end"
   }`}
 >
   {
     isWide ? (
       <>
-        <div class="min-w-0 flex-1">
+        <p class="absolute right-4 top-4 rounded-control border border-accent/40 bg-ink/70 px-2 py-1 text-[11px] font-black text-accent md:hidden">
+          ×{quantity}
+        </p>
+        <div class="relative min-w-0 flex-1 pr-[38%] md:pr-0">
           <h3 class="font-display text-xl uppercase leading-none tracking-tight text-paper">
             {name}
           </h3>
-          <p class="mt-2 text-xs leading-snug text-muted line-clamp-2">
+          <p class="mt-2 text-xs leading-snug text-muted md:line-clamp-2">
             {description}
           </p>
         </div>
@@ -88,7 +93,7 @@ const isWide = size === "wide";
           width={872}
           height={497}
           loading="lazy"
-          class="h-[76%] w-[42%] shrink-0 object-contain drop-shadow-[0_18px_28px_rgba(0,0,0,0.55)] transition duration-reveal ease-reveal group-hover:scale-[1.04]"
+          class="pointer-events-none absolute right-1 top-1/2 h-[64%] w-[34%] -translate-y-1/2 object-contain drop-shadow-[0_18px_28px_rgba(0,0,0,0.55)] transition duration-reveal ease-reveal group-hover:scale-[1.04] md:static md:right-auto md:top-auto md:h-[76%] md:w-[42%] md:translate-y-0 md:shrink-0"
         />
       </>
     ) : (
