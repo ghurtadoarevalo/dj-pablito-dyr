@@ -102,8 +102,8 @@ components:
 The system is a dark room with one warm light in it. Every surface is a warm
 near-black — never a neutral gray — and the only saturated color available is a
 single amber family borrowed from stage lighting. Nothing glows without
-purpose: the amber sits on prices, on primary actions, on kickers, and on the
-thin line under the active nav item, and it stays scarce everywhere else. The
+purpose: the amber sits on prices, on primary actions, and on the thin line
+under the active nav item, and it stays scarce everywhere else. The
 result reads as a booth at night, not as a nightclub flyer.
 
 Type does the shouting so the layout does not have to. Bebas Neue condensed
@@ -135,8 +135,8 @@ tone — the palette of a lit stage in an unlit room.
 
 ### Primary
 - **Amber Gold** (`#d9a62e`): the only accent. Prices, primary buttons,
-  section kickers, the active nav underline, the dot bullet in feature lists,
-  focus rings, and the border of the quote summary card. Nothing else earns it.
+  the active nav underline, the dot bullet in feature lists, the emphasised
+  word in a proof line, focus rings, and the border of the quote summary card.
 - **Lit Amber** (`#f0c75e`): the same hue at higher energy. Hover state of the
   primary button and of nav/plan rows, and the emphasised word inside the
   biography paragraph. Never used at rest as a fill for large areas.
@@ -193,9 +193,9 @@ a phone. Two families only — the pairing is the whole hierarchy.
 - **Body** (400, 0.875rem–1rem, 1.625): descriptions and copy. Secondary text
   is warm gray, primary text is cream. Line length is capped near 65ch by the
   `max-w-2xl` / `max-w-xl` wrappers.
-- **Label** (900, 0.6875rem, 0.14–0.2em tracking, uppercase): kickers, button
-  text, chips, fieldset legends, the "Más elegido" badge, and the small
-  reservation line under a price.
+- **Label** (900, 0.6875rem, 0.14–0.2em tracking, uppercase): button text,
+  chips, fieldset legends, the "Más elegido" badge, and the small reservation
+  line under a price.
 
 ### Named Rules
 
@@ -392,8 +392,8 @@ amber — the row behaves like a link without being one.
 
 ### Quote Summary (signature)
 Sticky side panel (`lg:sticky lg:top-24`) on desktop, a bottom bar on mobile.
-`surface-raised` fill, `border-accent/40`, amber-washed background, kicker
-label, line-item rows (muted label left, cream value right), a hairline divider
+`surface-raised` fill, `border-accent/40`, amber-washed background, a small
+uppercase label, line-item rows (muted label left, cream value right), a hairline divider
 above a large amber total with a small reservation line beneath, and the
 primary WhatsApp action. On mobile it detaches with the sticky-bar shadow and
 `backdrop-blur-md`.
@@ -413,11 +413,14 @@ the same height.
   the tab is hidden or reduced-motion is on.
 
 ### Section Heading
-Kicker first: an 11px black uppercase amber label preceded by a 24px amber
-hairline, 12px gap. Title below in display type at `mt-2`, uppercase. Optional
-lead paragraph at `mt-3`, `max-w-xl`, 14px, warm gray, relaxed leading, with
-`text-balance` so a short lead never leaves a one-word orphan line. The
-kicker-then-hairline sequence is the system's most repeated visual signature.
+The heading alone: display type, uppercase, 4xl → 5xl → 7xl across sm/lg, with
+an optional lead paragraph at `mt-3`, `max-w-xl`, 14px, warm gray, relaxed
+leading, and `text-balance` so a short lead never leaves a one-word orphan line.
+
+There is no kicker or eyebrow above it. The label-plus-hairline device was
+removed from all eight sections because it repeated the heading it introduced
+and delayed the first real sentence, most visibly on the hero. The heading now
+carries its own weight.
 
 ## Do's and Don'ts
 
@@ -434,7 +437,7 @@ kicker-then-hairline sequence is the system's most repeated visual signature.
   interface surfaces.
 - **Do** write Spanish-first UI copy and keep Spanish plan names on one line
   via display type rather than shrinking the size.
-- **Do** reuse the kicker-plus-hairline `SectionHeading` for every new section.
+- **Do** let a section heading stand alone; no kicker, eyebrow or label above it.
 - **Do** put `text-balance` on short leads and captions so they never leave a
   one-word last line.
 - **Do** label nav items with the name of the section they land on.
@@ -451,6 +454,8 @@ kicker-then-hairline sequence is the system's most repeated visual signature.
   `design-tokens` test enforces this and will fail the build.
 - **Don't** put shadows on buttons, cards, fieldsets, or nav.
 - **Don't** use radii above 8px on containers or `rounded-full` on buttons.
+- **Don't** put a kicker, eyebrow or label above a heading. It repeats the
+  heading, delays the first sentence, and the craft floor treats it as a ban.
 - **Don't** set body copy in uppercase, or display copy in sentence case. A
   full sentence in uppercase at 11px — a caption, a footnote, a helper line —
   is body copy, not a label.

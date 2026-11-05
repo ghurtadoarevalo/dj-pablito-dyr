@@ -1,24 +1,17 @@
 ---
 interface Props {
-  kicker: string;
   title: string;
   lead?: string;
   id?: string;
 }
 
-const { kicker, title, lead, id } = Astro.props;
+const { title, lead, id } = Astro.props;
 ---
 
 <div class="mb-8 md:mb-12">
-  <p
-    class="flex items-center gap-3 text-[11px] font-black uppercase tracking-[0.18em] text-accent"
-  >
-    <span class="h-px w-6 bg-accent" aria-hidden="true"></span>
-    {kicker}
-  </p>
   <h2
     id={id}
-    class="mt-2 break-words font-display text-4xl uppercase leading-[0.9] tracking-tight text-paper sm:text-5xl lg:text-7xl"
+    class="break-words font-display text-4xl uppercase leading-[0.9] tracking-tight text-paper sm:text-5xl lg:text-7xl"
   >
     {title}
   </h2>

@@ -37,7 +37,6 @@ const initial = (handle: string) =>
     <div class="flex flex-wrap items-end justify-between gap-4">
       <SectionHeading
         id="testimonials-title"
-        kicker="Clientes reales"
         title="Testimonios"
         lead="Comentarios públicos que dejaron en nuestro Instagram, sin editar."
       />
@@ -94,26 +93,24 @@ const initial = (handle: string) =>
               “{testimonial.quote}”
             </blockquote>
             <div class="mt-4 flex items-center gap-3">
-              {
-                avatars[testimonial.handle] ? (
-                  <Image
-                    src={avatars[testimonial.handle]}
-                    alt=""
-                    aria-hidden="true"
-                    width={72}
-                    height={72}
-                    loading="lazy"
-                    class="size-9 shrink-0 rounded-pill border border-accent/40 object-cover"
-                  />
-                ) : (
-                  <span
-                    class="grid size-9 shrink-0 place-items-center rounded-pill border border-accent/40 bg-accent/10 font-display text-base leading-none text-accent"
-                    aria-hidden="true"
-                  >
-                    {initial(testimonial.handle)}
-                  </span>
-                )
-              }
+              {avatars[testimonial.handle] ? (
+                <Image
+                  src={avatars[testimonial.handle]}
+                  alt=""
+                  aria-hidden="true"
+                  width={72}
+                  height={72}
+                  loading="lazy"
+                  class="size-9 shrink-0 rounded-pill border border-accent/40 object-cover"
+                />
+              ) : (
+                <span
+                  class="grid size-9 shrink-0 place-items-center rounded-pill border border-accent/40 bg-accent/10 font-display text-base leading-none text-accent"
+                  aria-hidden="true"
+                >
+                  {initial(testimonial.handle)}
+                </span>
+              )}
               <p class="text-[11px] font-bold uppercase tracking-wide">
                 <span class="text-accent">{testimonial.handle}</span>
                 <span class="text-muted"> · {testimonial.context}</span>

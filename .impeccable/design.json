@@ -311,7 +311,7 @@
   ],
   "narrative": {
     "northStar": "La Cabina Dorada",
-    "overview": "The system is a dark room with one warm light in it. Every surface is a warm near-black — never a neutral gray — and the only saturated color available is a single amber family borrowed from stage lighting. Nothing glows without purpose: the amber sits on prices, on primary actions, on kickers, and on the thin line under the active nav item, and it stays scarce everywhere else. The result reads as a booth at night, not as a nightclub flyer.\n\nType does the shouting so the layout does not have to. Bebas Neue condensed uppercase carries every heading, plan name, and price at poster scale, while Montserrat — in small, tight, mostly gray-cream body sizes — handles everything that has to be read rather than scanned. Sections are separated by a single hairline rule instead of large gaps, which keeps the page dense and continuous, the way a set runs without a break.\n\nThe world is content-led and mobile-first. Video loops of real parties and the booth itself are the primary imagery and they are the only elements allowed a deep shadow; interface surfaces stay flat with a hairline border. Numbers are treated as content: prices render in display type at the same weight as headings, because a customer who already knows the price before calling is the whole point of this site.",
+    "overview": "The system is a dark room with one warm light in it. Every surface is a warm near-black — never a neutral gray — and the only saturated color available is a single amber family borrowed from stage lighting. Nothing glows without purpose: the amber sits on prices, on primary actions, and on the thin line under the active nav item, and it stays scarce everywhere else. The result reads as a booth at night, not as a nightclub flyer.\n\nType does the shouting so the layout does not have to. Bebas Neue condensed uppercase carries every heading, plan name, and price at poster scale, while Montserrat — in small, tight, mostly gray-cream body sizes — handles everything that has to be read rather than scanned. Sections are separated by a single hairline rule instead of large gaps, which keeps the page dense and continuous, the way a set runs without a break.\n\nThe world is content-led and mobile-first. Video loops of real parties and the booth itself are the primary imagery and they are the only elements allowed a deep shadow; interface surfaces stay flat with a hairline border. Numbers are treated as content: prices render in display type at the same weight as headings, because a customer who already knows the price before calling is the whole point of this site.",
     "keyCharacteristics": [
       "Warm black ground (#0c0a09) with warm brown-black surfaces, never gray.",
       "One accent hue only: amber gold, used on ≤10% of any screen.",
@@ -368,13 +368,14 @@
       "Do separate sections with border-t border-line and keep vertical rhythm at py-12 md:py-20.",
       "Do give every control a 44px minimum touch target and a visible amber focus ring.",
       "Do write Spanish-first UI copy and keep Spanish plan names on one line via display type rather than shrinking the size.",
-      "Do reuse the kicker-plus-hairline SectionHeading for every new section.",
       "Do use the amber wash gradients for depth instead of shadows on interface surfaces.",
       "Do put text-balance on short leads and captions so they never leave a one-word last line.",
       "Do label nav items with the name of the section they land on.",
-      "Do fade in an element that appears after a state change (120ms, pack-fade, opacity only). details cannot animate height without measuring, so a fade is the whole budget."
+      "Do fade in an element that appears after a state change (120ms, pack-fade, opacity only). details cannot animate height without measuring, so a fade is the whole budget.",
+      "Do let a section heading stand alone; no kicker, eyebrow or label above it."
     ],
     "donts": [
+      "Don't put a kicker, eyebrow or label above a heading. It repeats the heading, delays the first sentence, and the craft floor treats it as a ban.",
       "Don't introduce a second accent hue, including for semantic states, badges, or third-party brand colors.",
       "Don't use pure black, pure white, slate, zinc, or cool grays — the design-tokens test enforces this and will fail the build.",
       "Don't put shadows on buttons, cards, fieldsets, or nav.",

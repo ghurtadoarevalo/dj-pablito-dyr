@@ -38,13 +38,9 @@ const ServicesSection = ({ showCustomPack = false }: ServicesSectionProps) => {
   return (
     <div className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 lg:px-8">
       <div className="mb-8 md:mb-12">
-        <p className="flex items-center gap-3 text-[11px] font-black uppercase tracking-[0.18em] text-accent">
-          <span className="h-px w-6 bg-accent" aria-hidden="true" />
-          Servicios
-        </p>
         <h2
           id="services-title"
-          className="mt-2 break-words font-display text-4xl uppercase leading-[0.9] tracking-tight text-paper sm:text-5xl lg:text-7xl"
+          className="break-words font-display text-4xl uppercase leading-[0.9] tracking-tight text-paper sm:text-5xl lg:text-7xl"
         >
           Packs y precios
         </h2>
