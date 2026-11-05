@@ -16,6 +16,8 @@ const BANNED = [
   /\bbg-green-/,
   /rounded-t-l-xl/,
   /bg-white\/100/,
+  /\bpaper-muted\b/,
+  /\bsurface-muted\b/,
 ];
 
 function files(dir: string): string[] {

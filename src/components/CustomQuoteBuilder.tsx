@@ -132,9 +132,7 @@ const CustomQuoteBuilder = () => {
                       </span>
                       {option.label}
                     </span>
-                    <span
-                      className={selected ? "text-accent" : "text-paper-muted"}
-                    >
+                    <span className={selected ? "text-accent" : "text-muted"}>
                       +{formatCLP(option.amount)}
                     </span>
                   </button>
@@ -216,9 +214,7 @@ const CustomQuoteBuilder = () => {
                       </span>
                       {option.label}
                     </span>
-                    <span
-                      className={selected ? "text-accent" : "text-paper-muted"}
-                    >
+                    <span className={selected ? "text-accent" : "text-muted"}>
                       {option.amount === null
                         ? "Consultar"
                         : option.amount === 0
@@ -270,7 +266,7 @@ const CustomQuoteBuilder = () => {
                   {formatCLP(quote.total)}
                 </strong>
               </div>
-              <p className="mt-2 text-right text-[11px] text-paper-muted">
+              <p className="mt-2 text-right text-[11px] text-muted">
                 Reserva con el 20%:{" "}
                 <span data-testid="quote-deposit" className="text-paper">
                   {formatCLP(quote.deposit)}
@@ -291,7 +287,7 @@ const CustomQuoteBuilder = () => {
           >
             {quoteCtaLabel}
           </a>
-          <p className="mt-3 text-center text-[11px] leading-relaxed text-paper-muted">
+          <p className="mt-3 text-center text-[11px] leading-relaxed text-muted">
             {quote.kind === "exact"
               ? "El valor no cambia al contactar. La fecha queda sujeta a disponibilidad."
               : "Enviaremos la configuración para calcular el traslado contigo."}
