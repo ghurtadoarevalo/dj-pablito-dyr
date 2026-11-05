@@ -51,6 +51,11 @@ Three claims the business can defend:
 - **Transparent published prices.** Every package price and every add-on is
   public on the site, plus a 20% reservation rate. This is uncommon in the
   category, where price is usually hidden until after a call.
+- **Range of styles and music built around the client.** The owner names two
+  differentiators explicitly: a wide repertoire of styles, and a playlist
+  personalized to each party. Neither competitor's copy can claim this
+  generically, so it belongs in the positioning, not only in the pack
+  descriptions.
 - **Years of experience and the best energy on the floor.** More than three
   years running events, from neighborhood venues in Maipú to municipal
   theatres, with the stated promise that the party stays up all night.
@@ -85,8 +90,9 @@ Confirmed and implemented:
   `showCustomPack`. It was hidden at the client's request, not removed. Do not
   advertise a configurator in copy unless it is switched back on.
 - Each plan includes 2 LED screens personalized with the name of the person
-  being celebrated. This is a differentiator in the category and must not be
-  dropped from package descriptions.
+  being celebrated. Must not be dropped from package descriptions. The owner
+  corrected the positioning: this is **not** the differentiator, so the
+  marketing copy must not lead with it.
 - Equipment is documented with photos and specs as a separate view, so a
   visitor can judge whether the gear suits the venue.
 - FAQ answers the recurring questions: zones covered, price, pack differences,

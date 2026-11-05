@@ -225,10 +225,14 @@ Density is compact and continuous. Sections use `py-12 md:py-20` and are
 separated by a `border-t border-line` hairline rather than large gaps, so the
 page reads as one long strip. Internal card padding is `p-5` (1.25rem); lists
 and grids use 8–12px gaps (`gap-2`, `gap-3`) with larger 16–20px gaps between
-form groups. The hero is the exception: `pt-12 md:pt-20`, and its media is one dominant
-4:5 tile at roughly 1.7fr beside a column of two smaller tiles at 1fr, all
-stretched to the same height so neither side leaves a void. Three equal tiles
-made the section read flat; one big object makes the eye land.
+form groups. The hero is the exception: `py-10 md:py-16 lg:py-20`, and it is the
+one section with a media ground: the console loop (hands on the mixer, 1280×720)
+full-bleed under a `bg-ink/90` scrim and the amber glow. From `lg` it splits into the
+lockup at 420px on the left and the selling block on the right; below `lg` the
+lockup centres above the copy. The ground keeps the fold alive without spending
+a column on media, which is what the brand mark now needs. The styles ledger —
+the genres the DJ actually plays, label 11px/900 with an amber dot each — closes
+the fold, because the range of styles is the claim no competitor can copy.
 
 Horizontal scrollers (`overflow-x-auto` with `snap-x snap-mandatory` and a
 hidden scrollbar) are the mobile pattern for repeating media, becoming a grid
@@ -242,10 +246,11 @@ fill, never a shadow. Shadows exist for two things only: photography and video
 that should feel lifted off the page, and the mobile sticky bar that must
 detach from the content scrolling beneath it.
 
-The amber radial and linear gradients (`glow-hero`, `glow-card`,
-`glow-summary`) are the other depth cue: they read as light falling on a
-surface rather than as elevation. They are low-opacity washes, never a filled
-color block.
+The amber radial and linear gradients (`glow-hero`, `glow-hero-media`,
+`glow-card`, `glow-summary`) are the other depth cue: they read as light falling
+on a surface rather than as elevation. They are low-opacity washes, never a
+filled color block. Both hero glows are amber only: the second radial of
+`glow-hero` used to be magenta, which broke the One Accent Rule.
 
 ### Shadow Vocabulary
 - **Media Lift** (`0 30px 80px -40px rgba(0,0,0,0.9)`): hero video tiles and
@@ -283,6 +288,30 @@ other than the rectangle with these radii; the only crop is `object-cover` on
 16:20 portrait media and `aspect-[4/5]` framing.
 
 ## Components
+
+### Logo
+The brand is one lockup: ring, `PD` monogram, microphone, the
+`DJ / ANIMACIÓN / KARAOKE` ribbon and the script signature. It is the identity
+being sold and its art is never cropped — a derived monogram was tried and
+rejected by the owner. Do not cut the ring, the ribbon or the signature.
+
+Two files, same art:
+
+- `public/logo.png` (408×612): the canonical file. Keep it untouched.
+- `src/assets/logo-lockup.png` (408×397): the same art with the transparent
+  padding trimmed — the ink occupies `y=104..496`, so 36% of the canonical
+  canvas is empty and renders as dead air around the crest. The hero uses this
+  one. Trimming canvas is not cropping art.
+
+The lockup needs roughly 200px of width before its microtext stops being gold
+noise, so the hero gives it the left column: 230px wide on phones, 280px from
+`sm`, and the full 420px column from `lg`. It breathes with a 4s `hero-pulse`
+(scale 1 → 1.035) — the fold's only continuous motion — and rests under
+`prefers-reduced-motion`. Never render it under 200px wide.
+
+It sits on the ink ground on its own transparency, with no plate, border or
+shadow behind it: the gold is the lit object, and the `glow-hero-media` pool
+behind it is the light.
 
 ### Buttons
 - **Shape:** 4px radius (`rounded-control`), `min-h-12` on the hero, `min-h-11`
@@ -399,29 +428,37 @@ primary WhatsApp action. On mobile it detaches with the sticky-bar shadow and
 `backdrop-blur-md`.
 
 ### Hero (signature)
-The page's one authored arrival. Headline set in display type at
-`clamp(2.5rem, 7vw, 6rem)` with `leading-[0.88]` and `text-balance`, so it
-lands on two lines from 1024px up instead of stranding a single word. The media
-cluster is one dominant 4:5 tile plus two smaller ones, both sides stretched to
-the same height.
+The page's one authored arrival, and the one place where a media ground carries
+the fold. The console loop runs full-bleed behind everything under a
+`bg-ink/90` scrim plus `glow-hero`, so the fold is lit without competing with
+the type.
 
-- **Rhythm:** `pt-8 pb-8 md:pt-20 md:pb-20`, with the mobile logo at `h-20`.
-  Measured at 390x844 the hero is 787px, so the next section's hairline shows
-  at the fold instead of the visitor scrolling on faith.
+- **Composition:** two columns from `lg` — the brand lockup at 420px on the
+  left, the selling block on the right. Below `lg` it becomes one column with
+  the lockup centred above the copy (230px on phones, 280px from `sm`).
+- **Headline:** display type at `clamp(2.5rem, 6.4vw, 5.5rem)`,
+  `leading-[0.86]`, forced onto two lines with two `block` spans so it never
+  strands a single word at any width.
+- **Price:** `$150.000` renders in display type in amber at `text-4xl sm:text-5xl`,
+  derived from `SERVICE_PLANS` through `formatCLP`, with `Desde` and the
+  reservation percentage as labels. The Numbers Are Content Rule applies from
+  the first screen.
+- **Styles ledger:** the genres close the fold under a hairline, label 11px/900,
+  one amber dot each, `tracking-[0.14em]`. `flex flex-wrap` below `xl`; a four
+  column grid from `xl`, where the eight entries land as a 4 + 4 ledger instead
+  of a wrapping row that leaves the last item alone.
+- **Rhythm:** measured at 390×844 the hero is 787px and at 1440×900 it is 640px,
+  so the next section's hairline always shows at the fold.
+- **Ground:** `preload="metadata"` with a webp poster, `tabindex="-1"` and
+  `aria-hidden` on its wrapper — it is scenery, never a tab stop. An inline
+  script pauses it when the tab is hidden or reduced-motion is on.
 - **WhatsApp:** the fold's action is the highest-intent click on the page, so it
   opens with the opener already written
   (`Hola, vengo de la web. Quiero cotizar un evento.`) through
   `buildWhatsAppUrl`. It never arrives as an empty chat.
-- **Known asset limit:** `sign-loop.mp4` is cropped to 4:5 inside the asset
-  itself — the first letter of each line on the LED sign is outside the frame.
-  No CSS recovers it; only a re-export does. The tile stays because the sign is
-  still legible as a personalized LED sign.
-- **Entrance:** the three tiles rise in reading order — `hero-tile-rise`,
-  620ms, cubic-bezier(0.22, 1, 0.36, 1), staggered 0 / 90 / 180ms. One authored
-  moment for the whole page, not an entrance per section. Reduced-motion turns
-  it off.
-- **Playback:** the loops are driven by an inline script that pauses them when
-  the tab is hidden or reduced-motion is on.
+- **Focus:** on the amber primary button the focus ring is `paper`, not amber —
+  an amber ring two pixels outside an amber fill reads as a thicker border, not
+  as state. Amber stays the ring on every control that sits on ink.
 
 ### Section Heading
 The heading alone: display type, uppercase, 4xl → 5xl → 7xl across sm/lg, with
@@ -442,8 +479,10 @@ carries its own weight.
   heading scale.
 - **Do** separate sections with `border-t border-line` and keep vertical
   rhythm at `py-12 md:py-20`.
-- **Do** give every control a 44px minimum touch target and a visible amber
-  focus ring.
+- **Do** give every control a 44px minimum touch target and a visible focus ring
+  — amber on ink, cream on an amber fill.
+- **Do** theme what the browser draws from the palette too: `::selection` is
+  amber on ink, never the OS blue.
 - **Do** use the amber wash gradients for depth instead of shadows on
   interface surfaces.
 - **Do** write Spanish-first UI copy and keep Spanish plan names on one line
