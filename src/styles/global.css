@@ -3,6 +3,13 @@
   outline-offset: 2px;
 }
 
+/* Text selection is part of the palette: the amber only otherwise lives on
+   prices, primary actions and the active nav rule. */
+::selection {
+  background-color: theme(colors.accent);
+  color: theme(colors.ink);
+}
+
 section[id] {
   scroll-margin-top: 5rem;
 }

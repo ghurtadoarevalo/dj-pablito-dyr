@@ -25,7 +25,9 @@ export default {
       },
       backgroundImage: {
         "glow-hero":
-          "radial-gradient(circle at 75% 20%, rgba(217,166,46,0.16), transparent 36%), radial-gradient(circle at 12% 86%, rgba(224,33,138,0.10), transparent 38%)",
+          "radial-gradient(circle at 75% 20%, rgba(217,166,46,0.16), transparent 36%), radial-gradient(circle at 12% 86%, rgba(217,166,46,0.10), transparent 38%)",
+        "glow-hero-media":
+          "radial-gradient(closest-side, rgba(217,166,46,0.15), transparent 78%)",
         "glow-card":
           "linear-gradient(145deg, rgba(217,166,46,0.08), transparent 60%)",
         "glow-summary":

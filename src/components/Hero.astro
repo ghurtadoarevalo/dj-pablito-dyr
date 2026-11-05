@@ -1,17 +1,30 @@
 ---
 import { Image } from "astro:assets";
-import { SITE_TAGLINE } from "../data/site";
-import logo from "../../public/logo.png";
-import partyLoop from "@assets/hero/party-loop.mp4";
-import partyPoster from "@assets/hero/party-poster.webp";
-import boothLoop from "@assets/hero/booth-loop.mp4";
-import boothPoster from "@assets/hero/booth-poster.webp";
-import signLoop from "@assets/hero/sign-loop.mp4";
-import signPoster from "@assets/hero/sign-poster.webp";
-import { buildWhatsAppUrl } from "../lib/quote";
+import logo from "@assets/logo-lockup.png";
+import groundLoop from "@assets/hero/ground-loop.mp4";
+import groundPoster from "@assets/hero/ground-poster.webp";
+import { formatCLP, buildWhatsAppUrl } from "../lib/quote";
+import { RESERVATION_RATE, SERVICE_PLANS } from "../data/services";
 
-const [taglineLead, ...taglineRest] = SITE_TAGLINE.split(",");
-const taglineTail = taglineRest.join(",").trim();
+// The fold's price is the pack the whole catalogue is anchored to, so it is
+// derived from the data and never retyped here.
+const leadPrice = formatCLP(
+  Math.min(...SERVICE_PLANS.map((plan) => plan.price)),
+);
+const reservationLabel = `${Math.round(RESERVATION_RATE * 100)}% para reservar`;
+
+// The styles are the owner's own list, confirmed as the business's real
+// differentiator: the range of the repertoire, not the gear.
+const MUSIC_STYLES = [
+  "Cumbia",
+  "Reggaetón",
+  "Pop 90s",
+  "Latina",
+  "Electrónica",
+  "Rock",
+  "K-pop",
+  "Y mucho más",
+] as const;
 
 // The fold is the highest-intent click on the page, so it never opens an empty
 // chat: the visitor arrives with the opener already written.
@@ -23,48 +36,81 @@ const heroWhatsAppUrl = buildWhatsAppUrl(
 <section
   id="home"
   aria-labelledby="hero-title"
-  class="reveal relative isolate overflow-hidden bg-ink pt-8 pb-8 md:pt-20 md:pb-20"
+  class="reveal relative isolate overflow-hidden bg-ink"
 >
-  <div
-    class="pointer-events-none absolute inset-0 bg-glow-hero"
-    aria-hidden="true"
-  >
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <video
+      data-hero-video
+      class="h-full w-full object-cover"
+      src={groundLoop}
+      poster={groundPoster.src}
+      preload="metadata"
+      muted
+      loop
+      playsinline
+      tabindex="-1"
+    ></video>
+    <div class="absolute inset-0 bg-ink/90"></div>
+    <div class="absolute inset-0 bg-glow-hero"></div>
   </div>
 
   <div
-    class="relative mx-auto grid w-full max-w-7xl items-center gap-8 px-4 sm:px-6 md:gap-10 lg:grid-cols-[minmax(0,1fr)_520px] lg:gap-14 lg:px-8"
+    class="relative mx-auto grid w-full max-w-7xl items-center gap-10 px-4 py-10 sm:px-6 md:py-16 lg:grid-cols-[minmax(0,420px)_minmax(0,1fr)] lg:gap-16 lg:px-8 lg:py-20"
   >
-    <div class="max-w-4xl">
+    <div class="relative mx-auto w-full max-w-[230px] sm:max-w-[280px] lg:max-w-none">
+      <div
+        class="pointer-events-none absolute -inset-10 bg-glow-hero-media"
+        aria-hidden="true"
+      >
+      </div>
       <Image
         src={logo}
-        alt=""
-        aria-hidden="true"
+        alt="DJ Pablito Dyr Producciones. DJ, animación y karaoke."
         width={408}
-        height={612}
+        height={397}
         loading="eager"
+        fetchpriority="high"
         decoding="async"
-        class="mb-4 h-20 w-auto object-contain lg:hidden"
+        class="hero-lockup relative h-auto w-full object-contain"
       />
+    </div>
+
+    <div class="max-w-3xl">
       <h1
         id="hero-title"
-        class="text-balance font-display text-[clamp(2.5rem,7vw,6rem)] uppercase leading-[0.88] tracking-tight text-paper"
+        class="font-display text-[clamp(2.5rem,6.4vw,5.5rem)] uppercase leading-[0.86] tracking-tight text-paper"
       >
-        {taglineLead}, {taglineTail}
+        <span class="block">Tu evento,</span>
+        <span class="block">nuestra pasión</span>
       </h1>
+
       <p
         class="mt-5 max-w-2xl text-sm leading-relaxed text-paper/80 sm:text-base"
       >
-        Sonido, luces, karaoke y animación en una sola productora. Packs desde
-        <strong class="font-semibold text-accent">$150.000</strong>, con 20%
-        para reservar.
+        DJ, sonido, iluminación y karaoke con una sola productora, para
+        matrimonios, cumpleaños y eventos en Santiago.
       </p>
 
+      <div class="mt-7 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+        <span
+          class="text-[0.6875rem] font-black uppercase tracking-[0.18em] text-muted"
+        >
+          Desde
+        </span>
+        <span class="font-display text-4xl leading-none text-accent sm:text-5xl">
+          {leadPrice}
+        </span>
+        <span class="text-xs font-semibold text-muted">
+          · {reservationLabel}
+        </span>
+      </div>
+
       <div
-        class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
+        class="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
       >
         <a
           href="#services"
-          class="flex min-h-12 items-center justify-center whitespace-nowrap rounded-control bg-accent px-6 py-3 text-sm font-black uppercase tracking-wide text-ink transition-colors hover:bg-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          class="flex min-h-12 items-center justify-center whitespace-nowrap rounded-control bg-accent px-6 py-3 text-sm font-black uppercase tracking-wide text-ink transition-colors duration-snap hover:bg-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper"
         >
           Ver packs y precios
         </a>
@@ -72,95 +118,59 @@ const heroWhatsAppUrl = buildWhatsAppUrl(
           href={heroWhatsAppUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="flex min-h-12 items-center justify-center whitespace-nowrap rounded-control border border-line px-6 py-3 text-sm font-bold text-paper transition-colors hover:border-accent hover:text-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          class="flex min-h-12 items-center justify-center whitespace-nowrap rounded-control border border-line px-6 py-3 text-sm font-bold text-paper transition-colors duration-snap hover:border-accent hover:text-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
           Escríbenos por WhatsApp
         </a>
       </div>
-    </div>
 
-    <div
-      class="mx-auto grid w-full max-w-sm grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] items-stretch gap-3 sm:max-w-md lg:mx-0 lg:max-w-none lg:justify-self-end"
-    >
-      <div
-        class="hero-tile h-full overflow-hidden rounded-card border border-accent/30 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)]"
-      >
-        <video
-          data-hero-video
-          class="h-full min-h-[240px] w-full object-cover"
-          src={boothLoop}
-          poster={boothPoster.src}
-          preload="metadata"
-          muted
-          loop
-          playsinline
-          aria-label="DJ Pablito Dyr operando su controlador y laptop en un evento al aire libre"
-        ></video>
-      </div>
-      <div class="grid gap-3">
-        <div
-          class="hero-tile hero-tile--2 overflow-hidden rounded-card border border-accent/30 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)]"
+      <div class="mt-7 border-t border-line pt-4">
+        <p
+          id="hero-styles-title"
+          class="text-[0.6875rem] font-black uppercase tracking-[0.18em] text-muted"
         >
-          <video
-            data-hero-video
-            class="aspect-[4/5] w-full object-cover"
-            src={partyLoop}
-            poster={partyPoster.src}
-            preload="metadata"
-            muted
-            loop
-            playsinline
-            aria-label="Invitados bailando de noche con luces de colores en un evento"
-          ></video>
-        </div>
-        <div
-          class="hero-tile hero-tile--3 overflow-hidden rounded-card border border-accent/30 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)]"
+          Estilos
+        </p>
+        <ul
+          aria-labelledby="hero-styles-title"
+          class="mt-2 flex flex-wrap gap-x-3 gap-y-1.5 text-[0.6875rem] font-black uppercase tracking-[0.14em] text-paper/80 xl:grid xl:grid-cols-4"
         >
-          <video
-            data-hero-video
-            class="aspect-[4/5] w-full object-cover"
-            src={signLoop}
-            poster={signPoster.src}
-            preload="metadata"
-            muted
-            loop
-            playsinline
-            aria-label="Cartel LED luminoso con el mensaje Feliz triple cumple junto al equipamiento de DJ"
-          ></video>
-        </div>
+          {
+            MUSIC_STYLES.map((style) => (
+              <li class="flex items-center gap-2">
+                <span
+                  class="size-1.5 shrink-0 rounded-pill bg-accent"
+                  aria-hidden="true"
+                />
+                {style}
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
 <style>
-  @keyframes hero-tile-rise {
-    from {
-      opacity: 0;
-      transform: translateY(14px) scale(0.985);
+  @keyframes hero-pulse {
+    0%,
+    100% {
+      transform: scale(1);
     }
-    to {
-      opacity: 1;
-      transform: none;
+    50% {
+      transform: scale(1.035);
     }
   }
 
-  /* One authored arrival for the hero: the tiles land in reading order, so the
-     section opens with movement instead of a static poster. */
-  .hero-tile {
-    animation: hero-tile-rise 620ms cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
-
-  .hero-tile--2 {
-    animation-delay: 90ms;
-  }
-
-  .hero-tile--3 {
-    animation-delay: 180ms;
+  /* The crest breathes: the fold's only continuous motion is the brand mark,
+     the way a lit sign pulses in a dark room. */
+  .hero-lockup {
+    animation: hero-pulse 4s ease-in-out infinite;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero-tile {
+    .hero-lockup {
       animation: none;
     }
   }
