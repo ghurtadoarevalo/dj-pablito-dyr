@@ -5,7 +5,7 @@ import SocialMedia from "./SocialMedia";
 const navigationLinks = [
   { label: "Inicio", href: "#home" },
   { label: "Mixes", href: "#mixing" },
-  { label: "Servicios", href: "#services" },
+  { label: "Precios", href: "#services" },
   { label: "Equipos", href: "#equipment" },
   { label: "Eventos", href: "#eventos" },
   { label: "Preguntas", href: "#faq" },
@@ -46,9 +46,7 @@ const Navbar = () => {
       (entries) => {
         const visible = entries
           .filter((entry) => entry.isIntersecting)
-          .sort(
-            (a, b) => a.boundingClientRect.top - b.boundingClientRect.top,
-          );
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
 
         const current = visible[0];
         if (!current) return;
@@ -85,7 +83,7 @@ const Navbar = () => {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-ink/95 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-6 xl:px-8">
         <a
           href="#home"
           onClick={() => selectRoute("Inicio")}

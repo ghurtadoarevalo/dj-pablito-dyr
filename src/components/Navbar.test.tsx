@@ -24,7 +24,7 @@ describe("Navbar mobile menu", () => {
     for (const name of [
       "Inicio",
       "Mixes",
-      "Servicios",
+      "Precios",
       "Equipos",
       "Biografía",
       "Contacto",
@@ -39,9 +39,7 @@ describe("Navbar mobile menu", () => {
 
     await user.click(screen.getByRole("button", { name: "Abrir menú" }));
     const reopened = document.getElementById(controls!);
-    await user.click(
-      within(reopened!).getByRole("link", { name: "Servicios" }),
-    );
+    await user.click(within(reopened!).getByRole("link", { name: "Precios" }));
     expect(screen.getByRole("button", { name: "Abrir menú" })).toHaveAttribute(
       "aria-expanded",
       "false",
