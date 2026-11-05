@@ -16,7 +16,7 @@ import SectionHeading from "./SectionHeading.astro";
       class="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,420px)_minmax(0,1fr)] lg:items-stretch lg:gap-14"
     >
       <Image
-        class="aspect-[4/5] w-full rounded-card border border-line object-cover object-top shadow-[0_24px_70px_-30px_rgba(0,0,0,0.9)] lg:aspect-auto lg:h-full lg:min-h-[480px]"
+        class="aspect-[4/5] w-full max-h-[380px] rounded-card border border-line object-cover object-top shadow-[0_24px_70px_-30px_rgba(0,0,0,0.9)] lg:aspect-auto lg:h-full lg:max-h-none lg:min-h-[480px]"
         src={portrait}
         alt="DJ Pablito Dyr - Retrato profesional del DJ en Santiago de Chile"
         width={540}
@@ -29,7 +29,7 @@ import SectionHeading from "./SectionHeading.astro";
           como VirtualDJ. Así, lo que comenzó como un hobby rápidamente se
           transformó en una de mis mayores pasiones.
         </p>
-        <p class="mt-5 text-sm leading-relaxed text-paper/75">
+        <p class="mt-5 text-sm leading-relaxed text-paper/80">
           Esta aventura se inició hace más de 3 años en uno de los locales más
           prestigiosos de la comuna de Maipú. Desde ese momento, comenzó una
           carrera por distintos recintos donde me presenté exitosamente hasta
@@ -40,7 +40,7 @@ import SectionHeading from "./SectionHeading.astro";
           como Barwoman, Garzones, Coctelería, Cámara 360°, trabajando en
           alianza con distintas marcas.
         </p>
-        <p class="mt-5 text-sm leading-relaxed text-paper/75">
+        <p class="mt-5 text-sm leading-relaxed text-paper/80">
           Hemos realizado distintos tipos de eventos a lo largo del tiempo,
           tales como matrimonios, bautizos, cumpleaños, graduaciones, entre
           otros. Logrando llevar a cabo con éxito las múltiples celebraciones en
@@ -58,6 +58,13 @@ import SectionHeading from "./SectionHeading.astro";
             <SocialMedia namesRequired={true} align="start" />
           </div>
         </div>
+
+        <a
+          href="#services"
+          class="mt-8 inline-flex min-h-11 items-center rounded-control border border-line-strong px-5 text-sm font-bold text-paper transition-colors duration-snap hover:border-accent hover:text-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          Ver packs y precios
+        </a>
       </div>
     </div>
   </div>
