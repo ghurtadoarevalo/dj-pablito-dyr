@@ -405,6 +405,17 @@ lands on two lines from 1024px up instead of stranding a single word. The media
 cluster is one dominant 4:5 tile plus two smaller ones, both sides stretched to
 the same height.
 
+- **Rhythm:** `pt-8 pb-8 md:pt-20 md:pb-20`, with the mobile logo at `h-20`.
+  Measured at 390x844 the hero is 787px, so the next section's hairline shows
+  at the fold instead of the visitor scrolling on faith.
+- **WhatsApp:** the fold's action is the highest-intent click on the page, so it
+  opens with the opener already written
+  (`Hola, vengo de la web. Quiero cotizar un evento.`) through
+  `buildWhatsAppUrl`. It never arrives as an empty chat.
+- **Known asset limit:** `sign-loop.mp4` is cropped to 4:5 inside the asset
+  itself — the first letter of each line on the LED sign is outside the frame.
+  No CSS recovers it; only a re-export does. The tile stays because the sign is
+  still legible as a personalized LED sign.
 - **Entrance:** the three tiles rise in reading order — `hero-tile-rise`,
   620ms, cubic-bezier(0.22, 1, 0.36, 1), staggered 0 / 90 / 180ms. One authored
   moment for the whole page, not an entrance per section. Reduced-motion turns

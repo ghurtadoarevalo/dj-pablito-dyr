@@ -8,14 +8,22 @@ import boothLoop from "@assets/hero/booth-loop.mp4";
 import boothPoster from "@assets/hero/booth-poster.webp";
 import signLoop from "@assets/hero/sign-loop.mp4";
 import signPoster from "@assets/hero/sign-poster.webp";
+import { buildWhatsAppUrl } from "../lib/quote";
+
 const [taglineLead, ...taglineRest] = SITE_TAGLINE.split(",");
 const taglineTail = taglineRest.join(",").trim();
+
+// The fold is the highest-intent click on the page, so it never opens an empty
+// chat: the visitor arrives with the opener already written.
+const heroWhatsAppUrl = buildWhatsAppUrl(
+  "Hola, vengo de la web. Quiero cotizar un evento.",
+);
 ---
 
 <section
   id="home"
   aria-labelledby="hero-title"
-  class="reveal relative isolate overflow-hidden bg-ink pt-12 pb-12 md:pt-20 md:pb-20"
+  class="reveal relative isolate overflow-hidden bg-ink pt-8 pb-8 md:pt-20 md:pb-20"
 >
   <div
     class="pointer-events-none absolute inset-0 bg-glow-hero"
@@ -24,7 +32,7 @@ const taglineTail = taglineRest.join(",").trim();
   </div>
 
   <div
-    class="relative mx-auto grid w-full max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_520px] lg:gap-14 lg:px-8"
+    class="relative mx-auto grid w-full max-w-7xl items-center gap-8 px-4 sm:px-6 md:gap-10 lg:grid-cols-[minmax(0,1fr)_520px] lg:gap-14 lg:px-8"
   >
     <div class="max-w-4xl">
       <Image
@@ -35,7 +43,7 @@ const taglineTail = taglineRest.join(",").trim();
         height={612}
         loading="eager"
         decoding="async"
-        class="mb-6 h-24 w-auto object-contain lg:hidden"
+        class="mb-4 h-20 w-auto object-contain lg:hidden"
       />
       <h1
         id="hero-title"
@@ -44,7 +52,7 @@ const taglineTail = taglineRest.join(",").trim();
         {taglineLead}, {taglineTail}
       </h1>
       <p
-        class="mt-6 max-w-2xl text-sm leading-relaxed text-paper/80 sm:text-base"
+        class="mt-5 max-w-2xl text-sm leading-relaxed text-paper/80 sm:text-base"
       >
         Sonido, luces, karaoke y animación en una sola productora. Packs desde
         <strong class="font-semibold text-accent">$150.000</strong>, con 20%
@@ -61,7 +69,7 @@ const taglineTail = taglineRest.join(",").trim();
           Ver packs y precios
         </a>
         <a
-          href="https://wa.me/56971768418"
+          href={heroWhatsAppUrl}
           target="_blank"
           rel="noopener noreferrer"
           class="flex min-h-12 items-center justify-center whitespace-nowrap rounded-control border border-line px-6 py-3 text-sm font-bold text-paper transition-colors hover:border-accent hover:text-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"

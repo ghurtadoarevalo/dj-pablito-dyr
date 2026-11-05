@@ -215,7 +215,7 @@ export function buildCustomQuoteMessage(result: QuoteResult): string {
   return lines.join("\n");
 }
 
-function buildWhatsAppUrl(message: string): string {
+export function buildWhatsAppUrl(message: string): string {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 

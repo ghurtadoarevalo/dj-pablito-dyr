@@ -4,6 +4,7 @@ import {
   buildCustomQuoteMessage,
   buildCustomQuoteWhatsAppUrl,
   buildPackWhatsAppUrl,
+  buildWhatsAppUrl,
   calculateCustomQuote,
   formatCLP,
   normalizeQuoteSelection,
@@ -147,5 +148,12 @@ describe("formatting and handoff", () => {
         plan.title,
       );
     }
+  });
+
+  it("opens WhatsApp with the message already written", () => {
+    const url = buildWhatsAppUrl("Hola, vengo de la web.");
+
+    expect(url.startsWith("https://wa.me/56971768418?text=")).toBe(true);
+    expect(decodeURIComponent(url)).toContain("Hola, vengo de la web.");
   });
 });

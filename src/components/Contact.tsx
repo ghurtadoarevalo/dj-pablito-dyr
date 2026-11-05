@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import SocialMedia from "./SocialMedia.tsx";
 import { EVENT_TYPES } from "../data/site";
 import { WHATSAPP_NUMBER } from "../data/services";
+import { buildWhatsAppUrl } from "../lib/quote";
 
 const displayPhone = "+56 9 7176 8418";
 
@@ -51,9 +52,7 @@ const Contact = () => {
       .filter((line): line is string => line !== null)
       .join("\n");
 
-  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    buildMessage(),
-  )}`;
+  const whatsappUrl = buildWhatsAppUrl(buildMessage());
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
