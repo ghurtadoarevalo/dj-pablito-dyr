@@ -2,6 +2,7 @@ import { useRef, useState, type KeyboardEvent } from "react";
 import { SERVICE_PLANS } from "../data/services";
 import CustomQuoteBuilder from "./CustomQuoteBuilder";
 import PlanCard from "./PlanCard";
+import PlanComparison from "./PlanComparison";
 
 type ServicesTab = "packs" | "custom";
 
@@ -78,7 +79,9 @@ const ServicesSection = ({ showCustomPack = false }: ServicesSectionProps) => {
                 onClick={() => setActiveTab(tab.id)}
                 onKeyDown={moveFocus}
                 className={`min-h-11 rounded-control px-4 py-2.5 text-xs font-black transition-colors ${
-                  selected ? "bg-accent text-ink" : "text-muted hover:text-paper"
+                  selected
+                    ? "bg-accent text-ink"
+                    : "text-muted hover:text-paper"
                 }`}
               >
                 {selected && <span aria-hidden="true">✓ </span>}
@@ -128,6 +131,7 @@ const ServicesSection = ({ showCustomPack = false }: ServicesSectionProps) => {
               </div>
             )}
           </div>
+          <PlanComparison />
           <p className="mt-4 text-center text-xs leading-relaxed text-muted">
             Todos los packs incluyen playlist personalizada, amplificación
             profesional y{" "}

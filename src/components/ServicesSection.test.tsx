@@ -8,7 +8,9 @@ describe("ServicesSection", () => {
   it("renders every plan and hides the custom pack by default", () => {
     render(<ServicesSection />);
     for (const plan of SERVICE_PLANS)
-      expect(screen.getByText(plan.title)).toBeInTheDocument();
+      expect(
+        screen.getByText(`Ver detalle de ${plan.title}`),
+      ).toBeInTheDocument();
     expect(screen.queryByRole("tab")).not.toBeInTheDocument();
     expect(screen.queryByText("Diseña tu pack")).not.toBeInTheDocument();
   });
