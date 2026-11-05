@@ -31,3 +31,7 @@ pnpm-debug.log*
 
 # Impeccable: per-developer hook consent and local overrides
 .impeccable/config.local.json
+
+# Impeccable live mode: project config is shared, session state is runtime
+.impeccable/live/*
+!.impeccable/live/config.json
