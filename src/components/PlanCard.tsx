@@ -9,7 +9,7 @@ type PlanCardProps = {
 const PlanCard = ({ plan }: PlanCardProps) => {
   return (
     <details className="group" open={plan.featured}>
-      <summary className="grid cursor-pointer list-none grid-cols-[3.5rem_minmax(0,1fr)_auto] items-center gap-3 py-5 transition-colors hover:text-accent-bright sm:grid-cols-[5rem_minmax(0,1fr)_auto] sm:gap-5">
+      <summary className="grid cursor-pointer list-none grid-cols-[3.5rem_minmax(0,1fr)_auto_0.875rem] items-center gap-3 py-5 transition-colors hover:text-accent-bright sm:grid-cols-[5rem_minmax(0,1fr)_auto_0.875rem] sm:gap-5">
         <span className="flex flex-wrap items-baseline gap-x-1 text-muted">
           <span className="font-display text-xl leading-none sm:text-2xl">
             {plan.hours}
@@ -44,9 +44,22 @@ const PlanCard = ({ plan }: PlanCardProps) => {
             Reserva {formatCLP(plan.price * RESERVATION_RATE)}
           </span>
         </span>
+
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="size-3.5 text-muted transition-transform duration-200 ease-reveal group-open:rotate-180"
+        >
+          <path d="m6 9 6 6 6-6" />
+        </svg>
       </summary>
 
-      <div className="pb-7 sm:pl-[3.75rem]">
+      <div className="pack-panel pb-7 sm:pl-[3.75rem]">
         <p className="text-sm leading-relaxed text-paper/80">
           {plan.description}
         </p>
@@ -65,7 +78,9 @@ const PlanCard = ({ plan }: PlanCardProps) => {
           ))}
         </ul>
 
-        <ul className="mt-5 space-y-2 text-xs leading-relaxed text-muted">          {plan.features.map((feature) => (
+        <ul className="mt-5 space-y-2 text-xs leading-relaxed text-muted">
+          {" "}
+          {plan.features.map((feature) => (
             <li key={feature} className="flex gap-2">
               <span aria-hidden="true" className="text-accent">
                 ·
