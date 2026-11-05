@@ -15,7 +15,7 @@ const taglineTail = taglineRest.join(",").trim();
 <section
   id="home"
   aria-labelledby="hero-title"
-  class="reveal relative isolate overflow-hidden bg-ink pt-10 pb-10 md:pt-14 md:pb-14"
+  class="reveal relative isolate overflow-hidden bg-ink pt-12 pb-12 md:pt-20 md:pb-20"
 >
   <div
     class="pointer-events-none absolute inset-0 bg-glow-hero"
@@ -45,7 +45,7 @@ const taglineTail = taglineRest.join(",").trim();
       </p>
       <h1
         id="hero-title"
-        class="mt-4 font-display text-[clamp(2.5rem,8vw,5.5rem)] uppercase leading-[0.92] tracking-tight text-paper"
+        class="mt-4 text-balance font-display text-[clamp(2.5rem,7vw,6rem)] uppercase leading-[0.88] tracking-tight text-paper"
       >
         {taglineLead}, {taglineTail}
       </h1>
@@ -78,14 +78,14 @@ const taglineTail = taglineRest.join(",").trim();
     </div>
 
     <div
-      class="mx-auto grid w-full max-w-sm grid-cols-2 items-start gap-3 sm:max-w-none sm:grid-cols-3 lg:mx-0 lg:justify-self-end"
+      class="mx-auto grid w-full max-w-sm grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] items-stretch gap-3 sm:max-w-md lg:mx-0 lg:max-w-none lg:justify-self-end"
     >
       <div
-        class="overflow-hidden rounded-card border border-accent/30 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)]"
+        class="hero-tile h-full overflow-hidden rounded-card border border-accent/30 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)]"
       >
         <video
           data-hero-video
-          class="aspect-[4/5] w-full object-cover"
+          class="h-full min-h-[240px] w-full object-cover"
           src={boothLoop}
           poster={boothPoster.src}
           preload="metadata"
@@ -95,39 +95,74 @@ const taglineTail = taglineRest.join(",").trim();
           aria-label="DJ Pablito Dyr operando su controlador y laptop en un evento al aire libre"
         ></video>
       </div>
-      <div
-        class="mt-10 overflow-hidden rounded-card border border-accent/30 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)]"
-      >
-        <video
-          data-hero-video
-          class="aspect-[4/5] w-full object-cover"
-          src={partyLoop}
-          poster={partyPoster.src}
-          preload="metadata"
-          muted
-          loop
-          playsinline
-          aria-label="Invitados bailando de noche con luces de colores en un evento"
-        ></video>
-      </div>
-      <div
-        class="mt-20 hidden overflow-hidden rounded-card border border-accent/30 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)] sm:block"
-      >
-        <video
-          data-hero-video
-          class="aspect-[4/5] w-full object-cover"
-          src={signLoop}
-          poster={signPoster.src}
-          preload="metadata"
-          muted
-          loop
-          playsinline
-          aria-label="Cartel LED luminoso con el mensaje Feliz triple cumple junto al equipamiento de DJ"
-        ></video>
+      <div class="grid gap-3">
+        <div
+          class="hero-tile hero-tile--2 overflow-hidden rounded-card border border-accent/30 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)]"
+        >
+          <video
+            data-hero-video
+            class="aspect-[4/5] w-full object-cover"
+            src={partyLoop}
+            poster={partyPoster.src}
+            preload="metadata"
+            muted
+            loop
+            playsinline
+            aria-label="Invitados bailando de noche con luces de colores en un evento"
+          ></video>
+        </div>
+        <div
+          class="hero-tile hero-tile--3 overflow-hidden rounded-card border border-accent/30 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)]"
+        >
+          <video
+            data-hero-video
+            class="aspect-[4/5] w-full object-cover"
+            src={signLoop}
+            poster={signPoster.src}
+            preload="metadata"
+            muted
+            loop
+            playsinline
+            aria-label="Cartel LED luminoso con el mensaje Feliz triple cumple junto al equipamiento de DJ"
+          ></video>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  @keyframes hero-tile-rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px) scale(0.985);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* One authored arrival for the hero: the tiles land in reading order, so the
+     section opens with movement instead of a static poster. */
+  .hero-tile {
+    animation: hero-tile-rise 620ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .hero-tile--2 {
+    animation-delay: 90ms;
+  }
+
+  .hero-tile--3 {
+    animation-delay: 180ms;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-tile {
+      animation: none;
+    }
+  }
+</style>
 
 <script is:inline>
   (() => {

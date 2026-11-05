@@ -209,6 +209,11 @@
         "name": "pack-fade",
         "value": "120ms cubic-bezier(0.22, 1, 0.36, 1)",
         "purpose": "Opacity-only entrance for the expanded pack panel and any element that appears after a state change."
+      },
+      {
+        "name": "hero-tile-rise",
+        "value": "620ms cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Hero media arrival, staggered 0/90/180ms; the page's one authored entrance."
       }
     ],
     "breakpoints": [

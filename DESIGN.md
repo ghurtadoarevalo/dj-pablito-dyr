@@ -225,9 +225,10 @@ Density is compact and continuous. Sections use `py-12 md:py-20` and are
 separated by a `border-t border-line` hairline rather than large gaps, so the
 page reads as one long strip. Internal card padding is `p-5` (1.25rem); lists
 and grids use 8–12px gaps (`gap-2`, `gap-3`) with larger 16–20px gaps between
-form groups. The hero is the exception: `pt-10 md:pt-14` and an asymmetric
-three-up video grid where the second tile is offset `mt-10` and the third
-`mt-20`, so the imagery never reads as a clean row.
+form groups. The hero is the exception: `pt-12 md:pt-20`, and its media is one dominant
+4:5 tile at roughly 1.7fr beside a column of two smaller tiles at 1fr, all
+stretched to the same height so neither side leaves a void. Three equal tiles
+made the section read flat; one big object makes the eye land.
 
 Horizontal scrollers (`overflow-x-auto` with `snap-x snap-mandatory` and a
 hidden scrollbar) are the mobile pattern for repeating media, becoming a grid
@@ -396,6 +397,20 @@ label, line-item rows (muted label left, cream value right), a hairline divider
 above a large amber total with a small reservation line beneath, and the
 primary WhatsApp action. On mobile it detaches with the sticky-bar shadow and
 `backdrop-blur-md`.
+
+### Hero (signature)
+The page's one authored arrival. Headline set in display type at
+`clamp(2.5rem, 7vw, 6rem)` with `leading-[0.88]` and `text-balance`, so it
+lands on two lines from 1024px up instead of stranding a single word. The media
+cluster is one dominant 4:5 tile plus two smaller ones, both sides stretched to
+the same height.
+
+- **Entrance:** the three tiles rise in reading order — `hero-tile-rise`,
+  620ms, cubic-bezier(0.22, 1, 0.36, 1), staggered 0 / 90 / 180ms. One authored
+  moment for the whole page, not an entrance per section. Reduced-motion turns
+  it off.
+- **Playback:** the loops are driven by an inline script that pauses them when
+  the tab is hidden or reduced-motion is on.
 
 ### Section Heading
 Kicker first: an 11px black uppercase amber label preceded by a 24px amber
