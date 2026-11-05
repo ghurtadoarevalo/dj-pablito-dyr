@@ -1,0 +1,383 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-04T00:00:00.000Z",
+  "title": "Design System: DJ Pablito Dyr Producciones",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "neutral",
+        "displayName": "Warm Ink",
+        "canonical": "#0c0a09",
+        "tonalRamp": [
+          "#0c0a09",
+          "#17130f",
+          "#231c17",
+          "#30261f",
+          "#3e322a",
+          "#4d3f35",
+          "#5d4d42",
+          "#6e5c50"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Booth Surface",
+        "canonical": "#181210",
+        "tonalRamp": [
+          "#0c0a09",
+          "#120e0c",
+          "#181210",
+          "#241c18",
+          "#302520",
+          "#3d2f29",
+          "#4b3a33",
+          "#5a473e"
+        ]
+      },
+      "surface-raised": {
+        "role": "neutral",
+        "displayName": "Raised Surface",
+        "canonical": "#1f1815",
+        "tonalRamp": [
+          "#0f0c0a",
+          "#171210",
+          "#1f1815",
+          "#2b221e",
+          "#382c27",
+          "#463731",
+          "#55443c",
+          "#654f46"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#34261f",
+        "tonalRamp": [
+          "#150f0c",
+          "#221813",
+          "#34261f",
+          "#46342a",
+          "#5a4437",
+          "#6f5546",
+          "#8a6d5c",
+          "#a68a79"
+        ]
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "Strong Hairline",
+        "canonical": "#4a382d",
+        "tonalRamp": [
+          "#1a140f",
+          "#2a2019",
+          "#3a2c23",
+          "#4a382d",
+          "#5f4839",
+          "#765a48",
+          "#93705a",
+          "#b39176"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Amber Gold",
+        "canonical": "#d9a62e",
+        "tonalRamp": [
+          "#2b1f06",
+          "#4d380b",
+          "#6f5010",
+          "#916a16",
+          "#b3831c",
+          "#d9a62e",
+          "#e8c46b",
+          "#f6e6bd"
+        ]
+      },
+      "accent-bright": {
+        "role": "primary",
+        "displayName": "Lit Amber",
+        "canonical": "#f0c75e",
+        "tonalRamp": [
+          "#33280b",
+          "#5a4613",
+          "#80641c",
+          "#a68225",
+          "#cca02e",
+          "#f0c75e",
+          "#f4d78d",
+          "#fbeecb"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Warm Gray",
+        "canonical": "#b9a99a",
+        "tonalRamp": [
+          "#241f1b",
+          "#423931",
+          "#61544a",
+          "#817163",
+          "#a08d7d",
+          "#b9a99a",
+          "#cfc2b5",
+          "#e5dcd1"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Cream Paper",
+        "canonical": "#f4ede4",
+        "tonalRamp": [
+          "#1a1714",
+          "#332d27",
+          "#4d443b",
+          "#685c50",
+          "#847566",
+          "#a19080",
+          "#c8bcae",
+          "#f4ede4"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only. Uppercase, poster scale, breaks across lines instead of shrinking."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles via SectionHeading. Uppercase at 4xl to 7xl across breakpoints."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Plan names, hour counts, and prices inside plan rows."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Descriptions and copy. Cream for primary, warm gray for secondary."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Kickers, buttons, chips, legends, badges, and the reservation line."
+      }
+    },
+    "shadows": [
+      {
+        "name": "media-lift",
+        "value": "0 30px 80px -40px rgba(0,0,0,0.9)",
+        "purpose": "Hero video tiles and their framed borders."
+      },
+      {
+        "name": "portrait-lift",
+        "value": "0 24px 70px -30px rgba(0,0,0,0.9)",
+        "purpose": "The bio portrait."
+      },
+      {
+        "name": "product-drop",
+        "value": "drop-shadow(0 18px 28px rgba(0,0,0,0.55))",
+        "purpose": "Equipment cut-outs floating on their tile."
+      },
+      {
+        "name": "sticky-bar",
+        "value": "0 -12px 35px rgba(0,0,0,0.45)",
+        "purpose": "Mobile quote bar, cast upward."
+      },
+      {
+        "name": "card-wash",
+        "value": "linear-gradient(145deg, rgba(217,166,46,0.08), transparent 60%)",
+        "purpose": "Light falling across a card, in place of a shadow."
+      }
+    ],
+    "motion": [
+      {
+        "name": "reveal",
+        "value": "520ms cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Scroll-driven entrance and media transitions."
+      },
+      {
+        "name": "snap",
+        "value": "160ms cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Color and border state changes on hover."
+      },
+      {
+        "name": "scroll-reveal",
+        "value": "animation-timeline: view(); animation-range: entry 10% cover 30%",
+        "purpose": "Section fade-and-rise, gated behind prefers-reduced-motion: no-preference and @supports."
+      },
+      {
+        "name": "pack-fade",
+        "value": "120ms cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Opacity-only entrance for the expanded pack panel and any element that appears after a state change."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single conversion action. Amber fill, warm-ink uppercase label, verb-first Spanish copy.",
+      "html": "<button class=\"ds-btn-primary\">Ver packs y precios</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 24px; background: #d9a62e; color: #0c0a09; border: 0; border-radius: 4px; font-family: Montserrat, system-ui, sans-serif; font-size: 14px; font-weight: 900; letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; transition: background-color 160ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn-primary:hover { background: #f0c75e; } .ds-btn-primary:active { background: #d9a62e; } .ds-btn-primary:focus-visible { outline: 2px solid #f0c75e; outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Side action with a hairline border. Used for the WhatsApp entry point, never for the main conversion.",
+      "html": "<button class=\"ds-btn-secondary\">Escríbenos por WhatsApp</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 24px; background: transparent; color: #f4ede4; border: 1px solid #34261f; border-radius: 4px; font-family: Montserrat, system-ui, sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; transition: border-color 160ms cubic-bezier(0.22, 1, 0.36, 1), color 160ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn-secondary:hover { border-color: #d9a62e; color: #f0c75e; } .ds-btn-secondary:focus-visible { outline: 2px solid #d9a62e; outline-offset: 2px; }"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Desktop header link. Muted at rest, cream on hover, amber with a 1px underline when its section is in view.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link\" href=\"#services\">Servicios</a><a class=\"ds-nav-link ds-nav-link--active\" href=\"#equipos\" aria-current=\"location\">Equipos</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 4px; align-items: center; background: #0c0a09; padding: 8px 12px; border-bottom: 1px solid #34261f; } .ds-nav-link { position: relative; display: inline-flex; align-items: center; min-height: 44px; padding: 8px; border-radius: 4px; font-family: Montserrat, system-ui, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #b9a99a; text-decoration: none; transition: color 160ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-nav-link:hover { color: #f4ede4; } .ds-nav-link:focus-visible { outline: 2px solid #d9a62e; outline-offset: 2px; } .ds-nav-link--active { color: #d9a62e; } .ds-nav-link--active::after { content: \"\"; position: absolute; left: 8px; right: 8px; bottom: -1px; height: 1px; background: #d9a62e; }"
+    },
+    {
+      "name": "Panel / Fieldset",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "The default container for grouped controls. Surface fill, hairline border, no shadow.",
+      "html": "<fieldset class=\"ds-panel\"><legend class=\"ds-panel-legend\">Horas de servicio</legend><p class=\"ds-panel-hint\">Elige entre 4 y 8 horas.</p></fieldset>",
+      "css": ".ds-panel { background: #181210; border: 1px solid #34261f; border-radius: 8px; padding: 20px; margin: 0; } .ds-panel-legend { padding: 0 4px; font-family: Montserrat, system-ui, sans-serif; font-size: 12px; font-weight: 900; letter-spacing: 0.05em; text-transform: uppercase; color: #f4ede4; } .ds-panel-hint { margin: 4px 0 0; font-family: Montserrat, system-ui, sans-serif; font-size: 12px; line-height: 1.625; color: #b9a99a; }"
+    },
+    {
+      "name": "Chip Highlight + Featured Badge",
+      "kind": "chip",
+      "refersTo": "chip-highlight",
+      "description": "Static spec tags on a plan row, and the single amber badge in the system.",
+      "html": "<ul class=\"ds-chips\"><li class=\"ds-chip\">Karaoke</li><li class=\"ds-chip\">DJ + animación</li><li class=\"ds-chip\">2 micrófonos</li></ul><span class=\"ds-badge\">Más elegido</span>",
+      "css": ".ds-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; } .ds-chip { padding: 4px 8px; border: 1px solid #4a382d; border-radius: 4px; background: transparent; font-family: Montserrat, system-ui, sans-serif; font-size: 11px; color: rgba(244, 237, 228, 0.8); } .ds-badge { display: inline-block; margin-left: 8px; padding: 2px 6px; border-radius: 4px; background: #d9a62e; color: #0c0a09; font-family: Montserrat, system-ui, sans-serif; font-size: 11px; font-weight: 900; letter-spacing: 0.05em; text-transform: uppercase; }"
+    },
+    {
+      "name": "Quote Option",
+      "kind": "input",
+      "refersTo": "quote-option",
+      "description": "Selectable radio tile. The system's input pattern: real radio inside a 44px label, amber wash when selected.",
+      "html": "<div class=\"ds-option-grid\"><label class=\"ds-option\"><input class=\"ds-option-input\" type=\"radio\" name=\"extras\"><span class=\"ds-option-flex\"><span class=\"ds-option-dot\"></span><span class=\"ds-option-label\">Animación</span></span><span class=\"ds-option-value\">$20.000</span></label><label class=\"ds-option ds-option--selected\"><input class=\"ds-option-input\" type=\"radio\" name=\"extras\" checked><span class=\"ds-option-flex\"><span class=\"ds-option-dot ds-option-dot--on\"></span><span class=\"ds-option-label\">Karaoke + 2 micrófonos</span></span><span class=\"ds-option-value\">$30.000</span></label></div>",
+      "css": ".ds-option-grid { display: grid; gap: 8px; background: #181210; padding: 20px; border-radius: 8px; } .ds-option { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 44px; padding: 10px 12px; border: 1px solid #4a382d; border-radius: 4px; font-family: Montserrat, system-ui, sans-serif; font-size: 12px; color: #f4ede4; cursor: pointer; transition: border-color 160ms cubic-bezier(0.22, 1, 0.36, 1), background-color 160ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-option:hover { border-color: #d9a62e; } .ds-option:focus-within { outline: 2px solid #d9a62e; outline-offset: 2px; } .ds-option--selected { border-color: rgba(217, 166, 46, 0.8); background: rgba(217, 166, 46, 0.1); } .ds-option-input { position: absolute; width: 1px; height: 1px; opacity: 0; } .ds-option-flex { display: flex; align-items: center; gap: 8px; } .ds-option-dot { display: grid; place-items: center; width: 16px; height: 16px; border: 1px solid #4a382d; border-radius: 4px; font-size: 11px; } .ds-option-dot--on { border-color: #d9a62e; color: #d9a62e; } .ds-option-dot--on::after { content: \"✓\"; } .ds-option-value { color: #b9a99a; } .ds-option--selected .ds-option-value { color: #d9a62e; }"
+    },
+    {
+      "name": "Plan Row",
+      "kind": "custom",
+      "refersTo": "plan-row",
+      "description": "Signature accordion row carrying the pricing argument: hours, plan name plus what it adds, price plus reservation.",
+      "html": "<details class=\"ds-plan\" open><summary class=\"ds-plan-summary\"><span class=\"ds-plan-hours\">6<span class=\"ds-plan-hours-unit\">horas</span></span><span class=\"ds-plan-name\"><span class=\"ds-plan-title\">Karaoke Dancing <span class=\"ds-badge\">Más elegido</span></span><span class=\"ds-plan-adds\">suma karaoke con 2 micrófonos, videos y luces avanzadas</span></span><span class=\"ds-plan-price\"><span class=\"ds-plan-amount\">$250.000</span><span class=\"ds-plan-deposit\">Reserva $50.000</span></span></summary></details>",
+      "css": ".ds-plan { border-top: 1px solid #34261f; background: #0c0a09; } .ds-plan-summary { display: grid; grid-template-columns: 5rem minmax(0, 1fr) auto; align-items: center; gap: 20px; padding: 20px 0; cursor: pointer; list-style: none; transition: color 160ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-plan-summary:hover { color: #f0c75e; } .ds-plan-summary::-webkit-details-marker { display: none; } .ds-plan-hours { display: flex; align-items: baseline; gap: 4px; font-family: \"Bebas Neue\", sans-serif; font-size: 24px; line-height: 1; color: #b9a99a; } .ds-plan-hours-unit { font-family: Montserrat, system-ui, sans-serif; font-size: 11px; font-weight: 700; } .ds-plan-name { min-width: 0; } .ds-plan-title { display: block; font-family: \"Bebas Neue\", sans-serif; font-size: 24px; line-height: 1; letter-spacing: -0.01em; text-transform: uppercase; color: #f4ede4; } .ds-plan-adds { display: block; margin-top: 4px; font-family: Montserrat, system-ui, sans-serif; font-size: 12px; line-height: 1.6; color: #b9a99a; } .ds-plan-price { text-align: right; } .ds-plan-amount { display: block; font-family: \"Bebas Neue\", sans-serif; font-size: 30px; line-height: 1; color: #d9a62e; } .ds-plan-deposit { display: block; margin-top: 4px; font-family: Montserrat, system-ui, sans-serif; font-size: 11px; color: #b9a99a; }"
+    },
+    {
+      "name": "Quote Summary",
+      "kind": "custom",
+      "refersTo": "quote-summary",
+      "description": "Signature running total. Sticky side panel on desktop, bottom bar on mobile, amber border marks it as live.",
+      "html": "<aside class=\"ds-summary\"><p class=\"ds-summary-kicker\">Tu cotización</p><h3 class=\"ds-summary-title\">Fiesta lista para reservar</h3><div class=\"ds-summary-lines\"><div class=\"ds-summary-line\"><span class=\"ds-summary-label\">Base · DJ, sonido e iluminación</span><span class=\"ds-summary-value\">$150.000</span></div><div class=\"ds-summary-line\"><span class=\"ds-summary-label\">Karaoke + 2 micrófonos</span><span class=\"ds-summary-value\">$30.000</span></div></div><div class=\"ds-summary-total\"><span class=\"ds-summary-total-label\">Total exacto</span><span class=\"ds-summary-total-value\">$180.000</span></div><p class=\"ds-summary-deposit\">Reserva 20%: <span class=\"ds-summary-deposit-value\">$36.000</span></p><button class=\"ds-btn-primary\">Reservar por WhatsApp</button></aside>",
+      "css": ".ds-summary { max-width: 340px; padding: 20px; border: 1px solid rgba(217, 166, 46, 0.4); border-radius: 8px; background: #1f1815; background-image: linear-gradient(150deg, rgba(217, 166, 46, 0.07), transparent 45%); } .ds-summary-kicker { margin: 0; font-family: Montserrat, system-ui, sans-serif; font-size: 11px; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; color: #d9a62e; } .ds-summary-title { margin: 8px 0 0; font-family: Montserrat, system-ui, sans-serif; font-size: 20px; font-weight: 900; color: #f4ede4; } .ds-summary-lines { display: grid; gap: 8px; margin-top: 20px; } .ds-summary-line { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; font-family: Montserrat, system-ui, sans-serif; font-size: 11px; } .ds-summary-label { color: #b9a99a; } .ds-summary-value { color: #f4ede4; white-space: nowrap; } .ds-summary-total { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-top: 20px; padding-top: 16px; border-top: 1px solid #4a382d; } .ds-summary-total-label { font-family: Montserrat, system-ui, sans-serif; font-size: 12px; color: #b9a99a; } .ds-summary-total-value { font-family: Montserrat, system-ui, sans-serif; font-size: 24px; font-weight: 900; color: #d9a62e; } .ds-summary-deposit { margin: 8px 0 0; text-align: right; font-family: Montserrat, system-ui, sans-serif; font-size: 11px; color: #b9a99a; } .ds-summary-deposit-value { color: #f4ede4; } .ds-summary .ds-btn-primary { width: 100%; margin-top: 20px; }"
+    },
+    {
+      "name": "Comparison Table",
+      "kind": "custom",
+      "refersTo": "comparison-table",
+      "description": "Signature feature matrix with a two-pack comparator. Rows are the differences between packs, columns are the packs, equal rows dim when comparing.",
+      "html": "<div class=\"ds-compare\"><div class=\"ds-compare-controls\"><label class=\"ds-compare-label-control\">Pack A<select class=\"ds-compare-select\"><option>Full Dancing</option></select></label><label class=\"ds-compare-label-control\">Pack B<select class=\"ds-compare-select\"><option>Karaoke Dancing</option></select></label><button class=\"ds-compare-reset\">Ver los cinco</button></div><table><caption class=\"ds-compare-caption\">Comparación de los packs</caption><thead><tr><th scope=\"col\" class=\"ds-compare-corner\">Incluye</th><th scope=\"col\" class=\"ds-compare-head\">Full Dancing</th><th scope=\"col\" class=\"ds-compare-head ds-compare-head--featured\">Karaoke Dancing</th></tr></thead><tbody><tr class=\"ds-compare-row\"><th scope=\"row\" class=\"ds-compare-label\">Precio</th><td class=\"ds-compare-cell\">$200.000</td><td class=\"ds-compare-cell ds-compare-cell--featured\">$250.000</td></tr><tr class=\"ds-compare-row ds-compare-row--equal\"><th scope=\"row\" class=\"ds-compare-label\">Máquina de humo</th><td class=\"ds-compare-cell\">✓</td><td class=\"ds-compare-cell ds-compare-cell--featured\">✓</td></tr><tr class=\"ds-compare-row\"><th scope=\"row\" class=\"ds-compare-label\">Karaoke con 2 micrófonos</th><td class=\"ds-compare-cell\">—</td><td class=\"ds-compare-cell ds-compare-cell--featured\">✓</td></tr></tbody></table></div>",
+      "css": ".ds-compare { overflow-x: auto; border: 1px solid #34261f; border-radius: 8px; background: #0c0a09; font-family: Montserrat, system-ui, sans-serif; } .ds-compare-controls { display: grid; gap: 12px; padding: 16px; border-bottom: 1px solid #34261f; } .ds-compare-label-control { display: flex; flex-direction: column; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #b9a99a; } .ds-compare-select { min-height: 44px; border: 1px solid #34261f; border-radius: 4px; background: rgba(12, 10, 9, 0.6); color: #f4ede4; padding: 0 12px; font-size: 14px; color-scheme: dark; } .ds-compare-reset { min-height: 44px; border: 1px solid #34261f; border-radius: 4px; background: transparent; color: #f4ede4; font-size: 12px; font-weight: 900; letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; } .ds-compare-reset:hover { border-color: #d9a62e; color: #f0c75e; } .ds-compare table { width: 100%; min-width: 620px; border-collapse: collapse; text-align: left; } .ds-compare-caption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } .ds-compare thead tr { border-bottom: 1px solid #4a382d; } .ds-compare-corner { position: sticky; left: 0; background: #0c0a09; padding: 12px 16px; font-size: 11px; font-weight: 900; letter-spacing: 0.05em; text-transform: uppercase; color: #b9a99a; } .ds-compare-head { padding: 12px 8px; text-align: center; font-size: 11px; font-weight: 900; letter-spacing: 0.05em; text-transform: uppercase; color: #f4ede4; } .ds-compare-head--featured { color: #d9a62e; } .ds-compare-row { border-bottom: 1px solid #34261f; } .ds-compare-row:last-child { border-bottom: 0; } .ds-compare-row--equal { opacity: 0.55; } .ds-compare-label { position: sticky; left: 0; background: #0c0a09; padding: 12px 16px; font-size: 12px; font-weight: 600; color: #f4ede4; } .ds-compare-cell { padding: 12px 8px; text-align: center; font-size: 12px; color: #d9a62e; } .ds-compare-cell--featured { background: rgba(217, 166, 46, 0.06); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "La Cabina Dorada",
+    "overview": "The system is a dark room with one warm light in it. Every surface is a warm near-black — never a neutral gray — and the only saturated color available is a single amber family borrowed from stage lighting. Nothing glows without purpose: the amber sits on prices, on primary actions, on kickers, and on the thin line under the active nav item, and it stays scarce everywhere else. The result reads as a booth at night, not as a nightclub flyer.\n\nType does the shouting so the layout does not have to. Bebas Neue condensed uppercase carries every heading, plan name, and price at poster scale, while Montserrat — in small, tight, mostly gray-cream body sizes — handles everything that has to be read rather than scanned. Sections are separated by a single hairline rule instead of large gaps, which keeps the page dense and continuous, the way a set runs without a break.\n\nThe world is content-led and mobile-first. Video loops of real parties and the booth itself are the primary imagery and they are the only elements allowed a deep shadow; interface surfaces stay flat with a hairline border. Numbers are treated as content: prices render in display type at the same weight as headings, because a customer who already knows the price before calling is the whole point of this site.",
+    "keyCharacteristics": [
+      "Warm black ground (#0c0a09) with warm brown-black surfaces, never gray.",
+      "One accent hue only: amber gold, used on ≤10% of any screen.",
+      "Poster-case display type for headings, plan names, and prices.",
+      "Hairline section rules instead of whitespace-only separation.",
+      "Flat interface surfaces; depth reserved for photography and video.",
+      "Mobile-first density with 44px minimum touch targets."
+    ],
+    "rules": [
+      {
+        "name": "The One Accent Rule",
+        "body": "There is exactly one accent hue. No second saturated color enters the system — not for success, not for a badge, not for a social platform's brand color. src/test/design-tokens.test.ts enforces this against Tailwind's default palettes; treat that test as the rule's implementation.",
+        "section": "colors"
+      },
+      {
+        "name": "The No Neutral Gray Rule",
+        "body": "Every dark value is warm. #000, #fff, slate, zinc, and cool grays are banned. If a surface needs to be darker or lighter, mix the warm ink toward the warm paper, not toward gray.",
+        "section": "colors"
+      },
+      {
+        "name": "The Scarcity Rule",
+        "body": "Amber is the price of attention and the budget is small. If two elements compete for the accent on one screen, one of them is wrong.",
+        "section": "colors"
+      },
+      {
+        "name": "The Poster Case Rule",
+        "body": "Display type is always uppercase; body type is never uppercase. There is no third case rule and no sentence-case heading.",
+        "section": "typography"
+      },
+      {
+        "name": "The Numbers Are Content Rule",
+        "body": "A price renders in Bebas Neue at heading scale with the accent color. Prices never get demoted to a gray label — the published price is the argument.",
+        "section": "typography"
+      },
+      {
+        "name": "The Two Families Rule",
+        "body": "Adding a third family is a system change, not a detail. If Montserrat cannot carry a role, the answer is weights and tracking, not a new font.",
+        "section": "typography"
+      },
+      {
+        "name": "The Lit Media Rule",
+        "body": "Only media lifts. A button, panel, fieldset, or card gets a border and a surface step; if it needs a shadow to be seen, the fill or the border is wrong.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Warm Light Rule",
+        "body": "Depth gradients are amber at 7–16% opacity, falling away to transparent. A gray or black gradient fill is a different system.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep every dark value warm; pull new neutrals by mixing toward #f4ede4 and #0c0a09, never toward gray.",
+      "Do set prices, plan names, and section titles in Bebas Neue uppercase at heading scale.",
+      "Do separate sections with border-t border-line and keep vertical rhythm at py-12 md:py-20.",
+      "Do give every control a 44px minimum touch target and a visible amber focus ring.",
+      "Do write Spanish-first UI copy and keep Spanish plan names on one line via display type rather than shrinking the size.",
+      "Do reuse the kicker-plus-hairline SectionHeading for every new section.",
+      "Do use the amber wash gradients for depth instead of shadows on interface surfaces.",
+      "Do put text-balance on short leads and captions so they never leave a one-word last line.",
+      "Do label nav items with the name of the section they land on.",
+      "Do fade in an element that appears after a state change (120ms, pack-fade, opacity only). details cannot animate height without measuring, so a fade is the whole budget."
+    ],
+    "donts": [
+      "Don't introduce a second accent hue, including for semantic states, badges, or third-party brand colors.",
+      "Don't use pure black, pure white, slate, zinc, or cool grays — the design-tokens test enforces this and will fail the build.",
+      "Don't put shadows on buttons, cards, fieldsets, or nav.",
+      "Don't use radii above 8px on containers or rounded-full on buttons.",
+      "Don't set body copy in uppercase, or display copy in sentence case. A full sentence in uppercase at 11px — a caption, a footnote, a helper line — is body copy, not a label.",
+      "Don't lower the price to a secondary gray label or hide it behind a cotizar CTA — published price is the positioning.",
+      "Don't use clickable divs; interactive patterns are real links, real buttons, or real radio inputs inside a label.",
+      "Don't invent muted variants of paper (paper-muted, surface-muted, and the like). They are not defined in tailwind.config.mjs, so the class silently does nothing and the element inherits its parent color. Soften primary body copy with text-paper/80; use muted for helper, metadata, and secondary-value text. src/test/design-tokens.test.ts rejects both names."
+    ]
+  }
+}

@@ -28,3 +28,6 @@ pnpm-debug.log*
 
 # superpowers brainstorming artifacts
 .superpowers/
+
+# Impeccable: per-developer hook consent and local overrides
+.impeccable/config.local.json
