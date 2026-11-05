@@ -85,8 +85,8 @@ const initial = (handle: string) =>
         SLIDES.map((testimonial, index) => (
           <li
             aria-hidden={index >= TOTAL ? "true" : undefined}
-            class={`relative flex shrink-0 snap-start basis-[85%] flex-col justify-between rounded-card border border-line bg-surface p-5 sm:basis-[48%] lg:basis-[32%] ${
-              testimonial.highlighted ? "border-l-2 border-l-accent" : ""
+            class={`relative flex shrink-0 snap-start basis-[85%] flex-col justify-between rounded-card border bg-surface p-5 sm:basis-[48%] lg:basis-[32%] ${
+              testimonial.highlighted ? "border-line-strong" : "border-line"
             }`}
           >
             <blockquote class="text-sm leading-relaxed text-paper">
@@ -136,9 +136,6 @@ const initial = (handle: string) =>
       >
         Ver más reseñas en Instagram
       </a>
-      <p class="text-[11px] font-bold uppercase tracking-wide text-muted">
-        Desliza, usa las flechas o pausa el movimiento
-      </p>
     </div>
   </div>
 </section>
