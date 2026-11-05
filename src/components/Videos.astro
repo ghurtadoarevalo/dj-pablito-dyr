@@ -53,21 +53,22 @@ const fallbackThumb = (code: string) =>
                 class="h-full w-full object-cover transition duration-reveal ease-reveal group-hover:scale-[1.04]"
               />
               <span
-                class="absolute inset-0 block bg-gradient-to-t from-ink via-ink/25 to-transparent"
+                class="absolute inset-0 block bg-gradient-to-t from-ink via-ink/30 to-transparent"
                 aria-hidden="true"
               />
               <span
-                class="absolute left-1/2 top-1/2 grid size-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-pill bg-accent text-lg text-ink shadow-lg transition duration-snap group-hover:scale-110"
+                class="absolute left-1/2 top-1/2 grid size-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-pill border border-paper/60 text-paper transition duration-snap group-hover:border-accent group-hover:text-accent-bright group-hover:scale-110"
                 aria-hidden="true"
               >
-                ▶
+                <svg viewBox="0 0 24 24" class="size-5 fill-current">
+                  <path d="M8 5.5v13l11-6.5z" />
+                </svg>
               </span>
-              <span class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4">
+              <span
+                class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4"
+              >
                 <span class="font-display text-xl uppercase leading-none tracking-tight text-paper sm:text-2xl">
                   {video.title}
-                </span>
-                <span class="text-[11px] font-black uppercase tracking-[0.14em] text-accent">
-                  YouTube
                 </span>
               </span>
             </a>
@@ -76,10 +77,7 @@ const fallbackThumb = (code: string) =>
       }
     </ul>
 
-    <div class="mt-8 flex flex-wrap items-center justify-between gap-4">
-      <p class="text-[11px] font-bold uppercase tracking-wide text-muted">
-        {videos.length} mixes · {videos.length} noches de fiesta
-      </p>
+    <div class="mt-8 flex flex-wrap items-center justify-end gap-4">
       <a
         href={CHANNEL_URL}
         target="_blank"
