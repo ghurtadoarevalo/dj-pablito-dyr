@@ -1,39 +1,83 @@
 import { FaWhatsapp } from "react-icons/fa";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import SocialMedia from "./SocialMedia.tsx";
+import { EVENT_TYPES } from "../data/site";
 import { WHATSAPP_NUMBER } from "../data/services";
 
 const displayPhone = "+56 9 7176 8418";
 
+type FieldErrors = {
+  name?: string;
+  message?: string;
+};
+
 const Contact = () => {
   const [formClientName, setFormClientName] = useState("");
+  const [formClientDate, setFormClientDate] = useState("");
+  const [formClientEventType, setFormClientEventType] = useState("");
   const [formClientMessage, setFormClientMessage] = useState("");
-  const [isFormValid, setIsFormValid] = useState(true);
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const [popupBlocked, setPopupBlocked] = useState(false);
+  const nameRef = useRef<HTMLInputElement>(null);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
+
+  const fieldClassName = (invalid: boolean) =>
+    `rounded-control border bg-ink/60 p-3 text-paper outline-none transition-colors duration-snap placeholder:text-paper/60 focus-visible:border-accent ${
+      invalid ? "border-accent-bright" : "border-line"
+    }`;
+
+  const validateForm = () => {
+    const nextErrors: FieldErrors = {};
+
+    if (formClientName.trim() === "") {
+      nextErrors.name = "Escribe tu nombre para saber cómo llamarte.";
+    }
+
+    if (formClientMessage.trim() === "") {
+      nextErrors.message = "Cuéntame qué necesitas para tu evento.";
+    }
+
+    setErrors(nextErrors);
+    return Object.keys(nextErrors).length === 0;
+  };
+
+  const buildMessage = () =>
+    [
+      `Nombre: ${formClientName}`,
+      formClientDate ? `Fecha del evento: ${formClientDate}` : null,
+      formClientEventType ? `Tipo de evento: ${formClientEventType}` : null,
+      `Mensaje: ${formClientMessage}`,
+    ]
+      .filter((line): line is string => line !== null)
+      .join("\n");
+
+  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+    buildMessage(),
+  )}`;
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (validateForm()) {
-      redirectToWhatsApp();
+    setPopupBlocked(false);
+
+    if (!validateForm()) {
+      if (formClientName.trim() === "") {
+        nameRef.current?.focus();
+      } else {
+        messageRef.current?.focus();
+      }
+      return;
+    }
+
+    const opened = window.open(whatsappUrl, "_blank");
+
+    if (!opened) {
+      setPopupBlocked(true);
     }
   };
 
-  const validateForm = () => {
-    if (formClientName.trim() === "" || formClientMessage.trim() === "") {
-      setIsFormValid(false);
-      return false;
-    }
-    setIsFormValid(true);
-    return true;
-  };
-
-  const redirectToWhatsApp = () => {
-    window.open(
-      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-        `Nombre cliente: ${formClientName}\nMensaje: ${formClientMessage}`,
-      )}`,
-      "_blank",
-    );
-  };
+  const errorMessages = [errors.name, errors.message].filter(
+    (message): message is string => Boolean(message),
+  );
 
   return (
     <section
@@ -60,25 +104,126 @@ const Contact = () => {
           <form
             className="flex flex-col gap-5 rounded-card border border-line bg-surface p-5 sm:p-7"
             onSubmit={handleSubmit}
+            noValidate
           >
             <h3 className="text-lg font-bold text-paper">
-              Formulario de contacto
+              Cuéntame de tu evento
             </h3>
+
+            {errorMessages.length > 0 && (
+              <div
+                role="alert"
+                className="flex items-start gap-2 rounded-control border border-accent-bright/60 bg-accent/10 p-3"
+              >
+                <span aria-hidden="true" className="mt-0.5 text-accent-bright">
+                  ⚠
+                </span>
+                <ul className="flex flex-col gap-1 text-sm font-semibold text-paper">
+                  {errorMessages.map((message) => (
+                    <li key={message}>{message}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {popupBlocked && (
+              <div
+                role="alert"
+                className="flex flex-col gap-1 rounded-control border border-accent-bright/60 bg-accent/10 p-3 text-sm text-paper"
+              >
+                <span className="font-semibold">
+                  No pudimos abrir WhatsApp: tu navegador bloqueó la ventana.
+                </span>
+                <a
+                  className="font-bold text-accent-bright underline underline-offset-2"
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Abrir WhatsApp con el mensaje escrito
+                </a>
+                <span>
+                  O escríbeme directo al{" "}
+                  <a
+                    className="font-bold text-paper underline underline-offset-2"
+                    href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {displayPhone}
+                  </a>
+                  .
+                </span>
+              </div>
+            )}
+
             <div className="flex flex-col gap-2">
               <label className="text-sm text-paper/80" htmlFor="contact-name">
                 Nombre
               </label>
               <input
+                ref={nameRef}
                 id="contact-name"
-                className="rounded-control border border-line bg-ink/60 p-3 text-paper outline-none transition-colors duration-snap placeholder:text-paper/45 focus-visible:border-accent"
+                name="nombre"
+                className={fieldClassName(Boolean(errors.name))}
                 type="text"
                 placeholder="Ingresa tu nombre"
                 autoComplete="name"
-                required
+                aria-invalid={Boolean(errors.name)}
+                aria-describedby={
+                  errors.name ? "contact-name-error" : undefined
+                }
                 value={formClientName}
                 onChange={(event) => setFormClientName(event.target.value)}
               />
+              {errors.name && (
+                <p id="contact-name-error" className="text-xs text-paper/80">
+                  {errors.name}
+                </p>
+              )}
             </div>
+
+            <div className="grid gap-5 sm:grid-cols-2">
+              <div className="flex flex-col gap-2">
+                <label className="text-sm text-paper/80" htmlFor="contact-date">
+                  Fecha del evento
+                </label>
+                <input
+                  id="contact-date"
+                  name="fecha"
+                  className={`${fieldClassName(false)} [color-scheme:dark]`}
+                  type="date"
+                  value={formClientDate}
+                  onChange={(event) => setFormClientDate(event.target.value)}
+                />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label
+                  className="text-sm text-paper/80"
+                  htmlFor="contact-event-type"
+                >
+                  Tipo de evento
+                </label>
+                <select
+                  id="contact-event-type"
+                  name="tipo-evento"
+                  className={fieldClassName(false)}
+                  value={formClientEventType}
+                  onChange={(event) =>
+                    setFormClientEventType(event.target.value)
+                  }
+                >
+                  <option value="">Elige una opción</option>
+                  {EVENT_TYPES.map((eventType) => (
+                    <option key={eventType} value={eventType}>
+                      {eventType}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
             <div className="flex flex-col gap-2">
               <label
                 className="text-sm text-paper/80"
@@ -87,23 +232,31 @@ const Contact = () => {
                 Mensaje
               </label>
               <textarea
+                ref={messageRef}
                 id="contact-message"
-                className="rounded-control border border-line bg-ink/60 p-3 text-paper outline-none transition-colors duration-snap placeholder:text-paper/45 focus-visible:border-accent"
-                placeholder="Fecha del evento, tipo de celebración y qué te gustaría incluir."
+                name="mensaje"
+                className={fieldClassName(Boolean(errors.message))}
+                placeholder="Comensales, lugar, qué te gustaría incluir."
                 value={formClientMessage}
-                rows={6}
-                required
+                rows={5}
+                aria-invalid={Boolean(errors.message)}
+                aria-describedby={
+                  errors.message ? "contact-message-error" : undefined
+                }
                 onChange={(event) => setFormClientMessage(event.target.value)}
               />
+              {errors.message && (
+                <p id="contact-message-error" className="text-xs text-paper/80">
+                  {errors.message}
+                </p>
+              )}
             </div>
-            {!isFormValid && (
-              <p
-                role="alert"
-                className="text-sm font-semibold text-accent-bright"
-              >
-                Completa tu nombre y el mensaje para continuar.
-              </p>
-            )}
+
+            <p className="text-xs leading-relaxed text-muted">
+              Se abre WhatsApp con tu mensaje ya escrito, listo para enviar. No
+              se envía nada desde esta página.
+            </p>
+
             <button
               type="submit"
               className="flex min-h-12 items-center justify-center gap-2 rounded-control bg-accent p-3 font-sans transition-colors duration-snap hover:bg-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"

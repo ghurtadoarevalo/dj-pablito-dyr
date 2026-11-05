@@ -18,8 +18,14 @@ import FAQ from "@components/FAQ.astro";
   title="DJ Pablito Dyr"
   description="DJ profesional en Santiago y Maipú. Servicio de DJ, animación, karaoke, iluminación y sonido para matrimonios, cumpleaños y eventos corporativos."
 >
+  <a
+    href="#main"
+    class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-control focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-black focus:uppercase focus:text-ink"
+  >
+    Saltar al contenido
+  </a>
   <Navbar client:load />
-  <main class="pt-16 text-paper">
+  <main id="main" class="pt-16 text-paper">
     <Hero />
     <Testimonials />
     <Videos />
